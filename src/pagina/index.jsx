@@ -1,9 +1,14 @@
-import React from "react"
-import {Link} from 'react-router-dom'
-import { useState } from 'react'
+import React from "react";
+import {Link} from 'react-router-dom';
+import { useState } from 'react';
+import obtenerNombresDeRepositorios from "../components/github_info.jsx";
+const carlesmatoses = "carlesmatoses";
 
 function Index(){
-    return(
+
+  const mostrarNombresDeRepositorios = obtenerNombresDeRepositorios(carlesmatoses);
+
+  return(
 
   <div className="container" >
 
@@ -14,16 +19,20 @@ function Index(){
       </h1>
     </div>
 
-    <div className="row p-3 fw-normal">
-      <p>
-        And sometimes SelraK!
-      </p>
-      <p className="pt-1">
-        I studied Digital Technologies and Multimedia at the Polytechnic University of Valencia,
-      </p>
-      <p>
-        And I like photography, Visual Effects, CGI, and deploying multimedia apps.
-      </p>
+    <div className="row justify-content-center">
+      <div className="col-auto m-3">
+
+        <p>
+          And sometimes SelraK!
+        </p>
+        <p className="pt-1">
+          I studied Digital Technologies and Multimedia at the Polytechnic University of Valencia,
+        </p>
+        <p>
+          And I like photography, Visual Effects, CGI, and developing multimedia apps.
+        </p>
+        
+      </div>
     </div>
     
   </div>

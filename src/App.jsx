@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import {BrowserRouter, HashRouter, Routes, Route, Link} from 'react-router-dom'
 import Header  from "./components/Header.jsx";
 import Index from './pagina/index.jsx';
+import GithubRepos from './pagina/github_repos.jsx';
 
 // Styles
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
@@ -19,6 +20,7 @@ function App() {
             <>
               <Header />
               <Index />
+              <GithubRepos/>
             </>
           }/>
           <Route path='photography' element={
