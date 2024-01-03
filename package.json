@@ -7,7 +7,7 @@
   "scripts": {
     "start": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "build": "vite build",
     "homepage": "https://carlesmatoses.github.io"
