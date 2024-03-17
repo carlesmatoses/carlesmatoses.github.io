@@ -8,7 +8,7 @@ function Index() {
 
   return (
     <>
-    <Helmet><title>Carles Matoses</title></Helmet>
+    <Helmet><title>Carles Matoses Gimenez</title></Helmet>
     
     <Container>
 
