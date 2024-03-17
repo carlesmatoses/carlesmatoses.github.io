@@ -1,35 +1,33 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { Col, Container, Image, Row } from "react-bootstrap";
+import { Col, Container, Image, Row, Card } from "react-bootstrap";
 import DictionaryProjects from "../components/DictionaryProjects";
 
-function Proyecto_plantilla({ proyectos }) {
+function Proyecto_plantilla({ proyecto }) {
     return (
-        <Container className="pt-4 mb-5">
-            {proyectos.map((proyecto, index) => (
-                <Link to={`${proyecto.url}`} style={{textDecoration: 'none'}} >
-                    <Row className="pt-4 justify-content-center shadow rounded-4 mb-2 py-3" key={index}>
-                        <Col bsPrefix="col-auto my-auto" style={{ width: "300px" }}>
-                            <Row className="g-0">
-                                <Image src={proyecto.image} alt="" style={{ objectFit: "cover" }} />
-                            </Row>
-                        </Col>
-                        <Col bsPrefix="col-auto col-md-5 my-auto">
-                            <div className="h3">{proyecto.nombre}</div>
-                            <p className="text-dark ">{proyecto.description}</p>
-                        </Col>
-                    </Row>
-                </Link>
-            ))}
-        </Container >
+        <Link to={`${proyecto.url}`} style={{ textDecoration: 'none' }} >
+            <Card style={{ maxHeight: "400px" }} className="overflow-hidden shadow-sm">
+                <Card.Img variant="top" src={proyecto.image} />
+                <Card.Body>
+                    <Card.Title>{proyecto.nombre}</Card.Title>
+                    <Card.Text>{proyecto.description}</Card.Text>
+                </Card.Body>
+            </Card>
+        </Link>
     );
 }
 
 function Proyectos() {
     return (
 
-        <Container>
-            <Proyecto_plantilla proyectos={DictionaryProjects} />
+        <Container className="p-0 m-0 mt-2 mb-5">
+            <Row xs={1} md={2} className="g-4 justify-content-center">
+                {DictionaryProjects.map((proyecto, idx) => (
+                    <Col key={idx} style={{ maxWidth: "300px" }}>
+                        <Proyecto_plantilla proyecto={proyecto} />
+                    </Col>
+                ))}
+            </Row>
         </Container>
     )
 }

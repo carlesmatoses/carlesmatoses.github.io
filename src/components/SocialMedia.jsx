@@ -12,7 +12,7 @@ const socialMediaList = [
 
 const SocialMedia = ({ size }) => {
     return (
-        <Container >
+        <Container>
             <Row className="justify-content-center">
                 {socialMediaList.map((item, index) => (
                     <Col key={index} xs="auto" className="p-2">

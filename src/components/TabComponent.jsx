@@ -10,7 +10,7 @@ function TabComponent() {
   };
 
   return (
-    <div className="container " style={{ minHeight: "1000px" }}>
+    <div className="container" style={{ minHeight: "1000px", width:"1000px" }}>
       <div className="nav nav-tabs">
         <a
           className={`nav-link ${activeTab === 'Projects' ? 'active' : ''}`}
