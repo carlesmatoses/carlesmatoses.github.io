@@ -22,9 +22,9 @@ function Proyectos() {
     return (
 
         <Container className="p-0 m-0 mt-2 mb-5">
-            <Row xs={1} md={2} className="g-4 justify-content-center">
+            <Row xs={1} sm={2} className="g-4 justify-content-center">
                 {DictionaryProjects.map((proyecto, idx) => (
-                    <Col key={idx} style={{ maxWidth: "300px" }}>
+                    <Col key={idx} style={{ width: "300px" }}>
                         <Proyecto_plantilla proyecto={proyecto} />
                     </Col>
                 ))}
