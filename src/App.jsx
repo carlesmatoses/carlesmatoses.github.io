@@ -1,11 +1,12 @@
 
 import React from 'react'
 import { createRoot } from 'react-dom/client';
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from "./components/Header.jsx";
 import Index from './pagina/index.jsx';
 import SocialMedia from './components/SocialMedia.jsx';
 import Gallery from './pagina/Gallery.jsx';
+import BlogDetailPage from './pagina/blogs.jsx';
 
 // Styles
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
@@ -15,7 +16,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js'; // Importa el Ja
 function App() {
   return (
     <div>
-      <HashRouter basename='/'>
+      <Router>
         <Routes>
           <Route index element={
             <>
@@ -38,10 +39,16 @@ function App() {
             </>
           }
           />
-
+          <Route path='blogs/:blogId' element={
+            <>
+              <Header />
+              <BlogDetailPage />
+            </>
+          } 
+          />
 
         </Routes>
-      </HashRouter>
+      </Router>
     </div>
   );
 }

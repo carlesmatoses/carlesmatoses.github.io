@@ -29,5 +29,11 @@ const dictionary_projects = [
         image: "https://img.youtube.com/vi/iIL-srRsbbU/hqdefault.jpg",
         url: "https://www.youtube.com/watch?v=iIL-srRsbbU",
     },
+    {
+        nombre: "Lens Distortion",
+        description: ``,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7SqVNU0sfXWOF85av_Ek_FbrJn5f35_WXaQ&usqp=CAU",
+        url: "blogs/lens_distortion",
+    },
 ];
 export default  dictionary_projects

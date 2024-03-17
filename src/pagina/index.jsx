@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Container } from "react-bootstrap";
 import TabComponent from "../components/TabComponent.jsx";
 import SocialMedia from "../components/SocialMedia.jsx";
 
@@ -7,9 +8,9 @@ function Index() {
 
   return (
 
-    <div className="container pt-3">
+    <Container>
 
-      <div className="row justify-content-center">
+      <Row className="justify-content-center">
         <div className="row row-cols-1 row-cols-sm-2" style={{ maxWidth: "700px" }}>
 
           <div className="col d-flex align-items-center pb-3">
@@ -28,17 +29,16 @@ function Index() {
           </div>
 
         </div>
-      </div>
-      <SocialMedia size={"30px"} />
+      </Row>
+
+      <SocialMedia size={"40px"}/>
 
       <hr />
-      <div className="row pt-3">
+      <Row className="mt-3">
         <TabComponent />
-      </div>
+      </Row>
 
-
-
-    </div >
+    </Container >
   )
 }
 
