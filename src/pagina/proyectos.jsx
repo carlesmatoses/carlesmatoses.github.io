@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Col, Container, Image, Row, Card } from "react-bootstrap";
 import DictionaryProjects from "../components/DictionaryProjects";
+import "./proyectos.css"
 
 function Proyecto_plantilla({ proyecto }) {
     return (
         <Link to={`${proyecto.url}`} style={{ textDecoration: 'none' }} >
-            <Card style={{ maxHeight: "400px" }} className="overflow-hidden shadow-sm">
-                <Card.Img variant="top" src={proyecto.image} />
+            <Card className="overflow-hidden shadow-sm">
+                <Card.Img variant="top" src={proyecto.image} className=""/>
                 <Card.Body>
                     <Card.Title>{proyecto.nombre}</Card.Title>
                     <Card.Text>{proyecto.description}</Card.Text>
