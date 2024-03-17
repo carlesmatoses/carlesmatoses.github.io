@@ -33,7 +33,7 @@ const dictionary_projects = [
         nombre: "Lens Distortion",
         description: ``,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7SqVNU0sfXWOF85av_Ek_FbrJn5f35_WXaQ&usqp=CAU",
-        url: "blogs/lens_distortion",
+        url: "blogs/lens-distortion",
     },
 ];
 export default  dictionary_projects

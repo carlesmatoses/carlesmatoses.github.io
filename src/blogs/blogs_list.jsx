@@ -1,5 +1,5 @@
 const blogComponentPaths = {
-    "lens_distortion": () => import('../blogs/lens_distortion/blog'),
+    "lens-distortion": () => import('../blogs/lens_distortion/blog'),
     "color": () => import('../blogs/color/blog'),
     
     

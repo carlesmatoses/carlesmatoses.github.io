@@ -3,7 +3,9 @@ import { Container } from "react-bootstrap";
 
 function LensDistortion(){
     return(
+        <>
         <p>Lens Distortion Blog</p>
+        </>
     );
 }
 

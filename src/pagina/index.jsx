@@ -2,12 +2,14 @@ import React from "react";
 import { Row, Container } from "react-bootstrap";
 import TabComponent from "../components/TabComponent.jsx";
 import SocialMedia from "../components/SocialMedia.jsx";
-
+import { Helmet } from "react-helmet-async";
 
 function Index() {
 
   return (
-
+    <>
+    <Helmet><title>Carles Matoses</title></Helmet>
+    
     <Container>
 
       <Row className="justify-content-center">
@@ -39,6 +41,7 @@ function Index() {
       </Row>
 
     </Container >
+    </>
   )
 }
 

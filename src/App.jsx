@@ -7,6 +7,7 @@ import Index from './pagina/index.jsx';
 import SocialMedia from './components/SocialMedia.jsx';
 import Gallery from './pagina/Gallery.jsx';
 import BlogDetailPage from './pagina/blogs.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 
 // Styles
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
@@ -15,7 +16,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js'; // Importa el Ja
 
 function App() {
   return (
-    <div>
+    <HelmetProvider>
       <Router>
         <Routes>
           <Route index element={
@@ -49,7 +50,7 @@ function App() {
 
         </Routes>
       </Router>
-    </div>
+    </HelmetProvider>
   );
 }
 
