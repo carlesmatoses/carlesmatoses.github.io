@@ -18,7 +18,7 @@ function Index() {
           <div className="col d-flex align-items-center pb-3">
             <div className="row row-cols-1">
               <div className="col"><div className="h1 text-center">Hello!</div></div>
-              <div className="col"><div className="h3 fw-light text-center">My Name's Carles</div></div>
+              <div className="col"><div className="h3 fw-light text-center">My Name's Carles Matoses Gimenez</div></div>
               <div className="col"><div className="fw-light text-center">And sometimes SelraK!</div></div>
             </div>
           </div>

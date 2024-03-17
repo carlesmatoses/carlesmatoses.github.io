@@ -33,11 +33,11 @@ function Header() {
   }, []);
 
   return (
-    <Navbar expand="sm">
+    <Navbar expand="sm" className='shadow-sm mb-4'>
       <Container>
         <Navbar.Brand as={Link} to="/">
           {/* <LogoPlantilla scaleX={1} /> */}
-          SelraK
+          Carles Matoses Gimenez
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="navbarNavAltMarkup" />
