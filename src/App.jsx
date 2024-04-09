@@ -27,19 +27,19 @@ function App() {
             </>
           }
           />
-          <Route path='photography' element={
+          {/* <Route path='photography' element={
             <>
               <Header />
-              {/* <Gallery /> */}
+              <Gallery />
             </>
           }
-          />
-          <Route path='blender' element={
+          /> */}
+          {/* <Route path='blender' element={
             <>
               <Header />
             </>
           }
-          />
+          /> */}
           <Route path='blogs/:blogId' element={
             <>
               <Header />
