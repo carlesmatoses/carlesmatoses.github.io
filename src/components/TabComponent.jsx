@@ -3,6 +3,8 @@ import Proyectos from '../pagina/proyectos';
 import GithubRepos from '../pagina/github_repos';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
+import ArticlesAndBlender from '../pagina/articles_and_blender';
+
 
 function TabComponent() {
   const [activeTab, setActiveTab] = useState('Projects');
@@ -26,15 +28,15 @@ function TabComponent() {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="Blender" onClick={() => handleTabClick('Blender')}>
-            Blender
+            Articles & Blender
           </Nav.Link>
         </Nav.Item>
       </Nav>
 
       {/* Content of the tabs */}
       {activeTab === 'Projects' && <Proyectos />}
-      {activeTab === 'GitHub' && <GithubRepos />}
-      {activeTab === 'Blender' && <div>Content of Blender tab</div>}
+      {activeTab === 'GitHub'   && <GithubRepos />}
+      {activeTab === 'Blender'  && <ArticlesAndBlender />}
     </Container>
   );
 }

@@ -25,7 +25,7 @@ function GithubRepos() {
       const data = await response.json();
 
       const repositorios = data.map((repo) => ({
-        nombre: repo.name,
+        name: repo.name,
         avatar: repo.owner.avatar_url,
         url: repo.html_url,
         description: repo.description,

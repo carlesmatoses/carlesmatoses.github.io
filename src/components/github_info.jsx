@@ -4,8 +4,8 @@ function obtenerNombresDeRepositorios(username) {
     return fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        const nombres = data.map((repo) => repo.name);
-        return nombres;
+        const name = data.map((repo) => repo.name);
+        return name;
       })
       .catch((error) => {
         console.error('Error:', error);

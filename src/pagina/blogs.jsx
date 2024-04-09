@@ -15,7 +15,7 @@ function BlogDetailPage() {
     useEffect(() => {
         // Dynamically import the component based on blogId
         const importComponent = async () => {
-            const path = blogComponentPaths[blogId];
+            const path = () => import(`../blogs/${blogId}/blog` /* @vite-ignore */);
             if (path) {
                 const module = await path();
                 setBlogComponent(() => module.default);
@@ -29,7 +29,6 @@ function BlogDetailPage() {
             <Helmet>
                 <title>{transformText(blogId)}</title>
             </Helmet>
-            <h2>Blog Detail Page</h2>
             {BlogComponent && <BlogComponent />}
         </div>
     );
