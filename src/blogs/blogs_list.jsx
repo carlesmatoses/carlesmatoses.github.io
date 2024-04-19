@@ -1,7 +1,7 @@
 // This file works as a white list
 
 const blogs = [
-  "color"
+  "irradiance_cube_map"
 ]
 
 // blogs require:
@@ -13,7 +13,7 @@ const blogs = [
 const blogComponentPaths = blogs.map(blog=>{
   let image =  `../src/blogs/${blog}/preview.png`;
   let name = blog;
-  let url = `blogs/${blog}`
+  let url = `src/blogs/${blog}`
 
   return {image, name, url}
 });

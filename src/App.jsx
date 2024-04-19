@@ -40,7 +40,7 @@ function App() {
             </>
           }
           /> */}
-          <Route path='blogs/:blogId' element={
+          <Route path='src/blogs/:blogId' element={
             <>
               <Header />
               <BlogDetailPage />
