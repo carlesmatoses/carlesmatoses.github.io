@@ -1,0 +1,75 @@
+---
+layout: wrapper
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+    <meta name="generator" content="Jekyll v4.3.3" />
+    <meta property="og:title" content="About" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description"
+        content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+    <meta property="og:description"
+        content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+    <link rel="canonical" href="http://localhost:4000/about/" />
+    <meta property="og:url" content="http://localhost:4000/about/" />
+    <meta property="og:site_name" content="Your awesome title" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="About" />
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"About","name":"Your awesome title","url":"http://localhost:4000/about/"}</script>
+
+    <title>Carles</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container" style="width: 700px;">
+            <div class="my-4">
+                <div class="h3 fw-normal ">About me</div>
+                <div class="fw-light ">
+                    I have a <span class="fw-bolder">master degree in computer graphics</span> by the Polytechnic
+                    University of Catalonya
+                    and a <span class="fw-bolder">bachelor's degree in Digital Technologies and Multimedia</span> by the
+                    Polytechnic University of Valencia.
+                </div>
+            </div>
+
+            <div class="fw-light my-4">
+                I like photography, Visual Effects, CGI, and developing multimedia apps.
+            </div>
+        </div>
+
+
+        <div class="row">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects"
+                        type="button" role="tab" aria-controls="projects" aria-selected="true">Projects</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button"
+                        role="tab" aria-controls="posts" aria-selected="false">Posts</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="projects" role="tabpanel" aria-labelledby="home-tab">
+                    {% include project_list.html %}
+
+                </div>
+                <div class="tab-pane fade" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                    {% include post_list.html %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

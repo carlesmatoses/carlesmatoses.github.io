@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/assets/css/post.css">
+
+<div class="row post-preview" href>
+    {% comment %} If screen is extra small (xs) or small (sm), display as one row {% endcomment %}
+    <div class="col-12 col-sm-6">
+        <a href="{{post.permalink}}">
+            <img src="{{post.preview}}" alt="..." class="img-fluid">
+        </a>
+    </div>
+    <div class="col-12 col-sm-6">
+        <a href="{{post.permalink}}">
+            <div class="row">
+                <h4 class="g-0">{{post.title}}</h4>
+            </div>
+            <div class="row">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non sapien lacus. Sed elit massa,
+                sollicitudin eget pretium sed, semper ut sapien. Curabitur mollis ultricies leo posuere fringilla. Donec
+                ut
+                mollis ante, feugiat congue urna. Donec posuere ante vel molestie volutpat. Praesent velit turpis,
+                venenatis
+                vel quam sed, eleifend convallis lectus. Mauris aliquet lorem nec quam fermentum tincidunt.
+            </div>
+        </a>
+    </div>
+</div>

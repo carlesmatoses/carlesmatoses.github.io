@@ -1,0 +1,37 @@
+.post-preview{
+    transition: all 0.3s;
+    width: 600px;
+    max-height: 200px;
+    margin: 20px;
+    overflow: hidden;
+    /* box-shadow: 0 4px 6px -6px gray; */
+
+}
+
+.post-preview:hover{
+    z-index: 1;
+    max-height: none;
+    transform: scale(1.05);
+    box-shadow: 0 2px 2px -2px gray;
+}
+
+.post-preview img{
+    object-fit: cover;
+    width: 250px;
+    height: 200px;
+}
+
+a{
+    display: inline;
+    text-decoration: none;
+    color: gray;
+}
+
+@media (max-width: 576px) { /* Small screens */
+    .post-preview {
+        max-height: 400px; /* Double the height */
+    }
+    .post-preview img{
+        width: 100%;
+    }
+}
