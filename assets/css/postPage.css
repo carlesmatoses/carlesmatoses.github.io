@@ -1,0 +1,13 @@
+.headerIMG{
+    object-fit: cover;
+    /* overflow: hidden; */
+    height: 250px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.baseContainer{
+    max-width: 750px;
+    margin-top: 20px;
+}

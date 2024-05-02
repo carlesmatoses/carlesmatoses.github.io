@@ -1,14 +1,19 @@
 ---
 layout: wrapper
 ---
-<div class="container">
 
-    <div class="row justify-content-center">
-        <div class="col-sm-8">
-            <img src="{{page.preview}}" alt="Couldn't load preview image :\" class="img-fluid">
-        </div>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/postPage.css">
+</head>
+
+
+<div class="container baseContainer">
+    <div class="row">
+        <h1> {{page.title}} </h1>
     </div>
-
+    <div class="my-3">
+        <img src="{{page.preview}}" alt="Couldn't load preview image :\" class="headerIMG">
+    </div>
     <div class="row">
         {{content}}
     </div>
