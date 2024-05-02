@@ -5,9 +5,20 @@
     width: 100%;
     margin: 0px;
     padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .baseContainer{
     max-width: 750px;
     margin-top: 20px;
+}
+
+body{
+    font-size: 90%; /* Adjust the font size as needed */
+    font-weight: 300;    
+}
+p{
+    line-height: 2.2;
+    margin-bottom: 30px;
 }
