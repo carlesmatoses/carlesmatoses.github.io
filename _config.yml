@@ -21,14 +21,17 @@
 title: Carles Matoses Gimenez
 name: Carles Matoses Gimenez
 email: carlesmatosesg@gmail.com
+youtube: channel/UC6aWlHNMv-VGU7LRBeZaj7w
+linkedin_username: carles-matoses-b2b9a82b7
+github_username:  carlesmatoses
+
 description: >- # this means to ignore newlines until "baseurl:"
   Carles Matoses Gimenez works as my portfolio where I upload relevant and recent works. 
   I'm a computer graphics student with a degree in multimedia technologies. I'm interested in open source softwares, photography and visual effects. 
   I spend some of my time studiying blender as well as game engines!!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+# twitter_username: jekyllrb
 keywords: Computer Graphics, Programming, Python, Blender, Render, Rendering, Game Engines, Real Time Rendering, Fast Realistic Rendering
 
 # Build settings
