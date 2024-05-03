@@ -1,0 +1,9 @@
+<div class="row justify-content-center">
+
+    {% for post in site.posts %}
+        {% if post.categories contains 'project' %}
+            {% include default_card.html %}
+        {% endif %}
+    {% endfor %}
+
+</div>

@@ -1,0 +1,21 @@
+---
+layout: wrapper
+---
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/postPage.css">
+</head>
+
+<body>
+    
+    <div class="container baseContainer">
+        <div class="row">
+            <h1> {{page.title}} </h1>
+        </div>
+        <img src="{{page.preview}}" alt="Couldn't load preview image :\" class="headerIMG">
+        <div class="row">
+        {{content}}
+    </div>
+    
+</div>
+</body>
