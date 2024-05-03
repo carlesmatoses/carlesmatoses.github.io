@@ -1,9 +1,0 @@
-.card{
-    transition: all 0.3s;
-    max-height: 400px;
-}
-.card:hover{
-    z-index: 1;
-    max-height: none;
-    transform: scale(1.05);
-}
