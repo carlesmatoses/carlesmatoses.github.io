@@ -1,11 +1,7 @@
-{% assign abstract = nil %}
-{% assign paragraphs = post.content | split: '\n\n' %}
-{% for paragraph in paragraphs %}
-  {% if paragraph contains '<!-- abstract -->' %}
-    {% assign abstract = paragraph | strip_html %}
-    {% break %}
-  {% endif %}
-{% endfor %}
+{% assign parts = post.content | split:"<!-- end-abstract -->" %}
+{% capture abstract %}{{ parts[0] }}{% endcapture %}
+{% capture content %}{{ parts[1] }}{% endcapture %}
+
 
 <link rel="stylesheet" href="/assets/css/post.css">
 
@@ -21,13 +17,12 @@
         <a href="{{post.permalink}}">
             <div class="row fill">
                 <div class="row">
-                    <h4 >{{post.title}}</h4>
+                    <h4>{{post.title}}</h4>
                 </div>
-                <div class="row fill">
-                    <p class="compact">{{ abstract }}</p>
+                <div class="row fill compact">
+                    {{ abstract }}
                 </div>
             </div>
         </a>
     </div>
 </div>
- 
