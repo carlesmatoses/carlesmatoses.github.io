@@ -6,16 +6,29 @@ layout: wrapper
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/post.css">
 </head>
 
+{% assign parts = page.content | split:"<!-- end-abstract -->" %}
+{% capture abstract %}{{ parts[0] }}{% endcapture %}
+{% capture content %}{{ parts[1] }}{% endcapture %}
+
+
 <body>
-    
     <div class="container baseContainer">
         <div class="row">
-            <h1> {{page.title}} </h1>
+            <div class="col-auto">
+                <h1 class="display-5"> {{page.title}} </h1>
+            </div>
         </div>
+
         <img src="{{page.preview}}" alt="Couldn't load preview image :\" class="headerIMG">
+
         <div class="row">
-        {{content}}
+            <h1 class="display-6">Abstract:</h1>
+            <p class="lead">{{ abstract }}</p>
+        </div>
+
+        <div class="row">
+            {{ content }}
+        </div>
+
     </div>
-    
-</div>
 </body>
