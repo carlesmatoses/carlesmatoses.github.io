@@ -1,9 +1,12 @@
 ---
-layout: wrapper
 ---
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/post.css">
+    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
 </head>
 
 {% assign parts = page.content | split:"<!-- end-abstract -->" %}
@@ -12,6 +15,9 @@ layout: wrapper
 
 
 <body>
+
+    {% include navbar.html %}
+
     <div class="container baseContainer">
         <div class="row">
             <div class="col-auto">
@@ -31,4 +37,5 @@ layout: wrapper
         </div>
 
     </div>
+    {% include footer.html %}
 </body>

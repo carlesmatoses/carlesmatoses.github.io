@@ -1,5 +1,4 @@
 ---
-layout: wrapper
 ---
 
 <!DOCTYPE html>
@@ -12,11 +11,20 @@ layout: wrapper
     <!-- Begin Jekyll SEO tag v2.8.0 -->
     <meta name="description" content="{{ site.description }}">
     <meta name="keywords" content="{{ site.keywords }}">
+    
+    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
     <title>{{ site.title }}</title>
 </head>
 
 <body>
+
+    {% include navbar.html %}
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="row about-me">
@@ -32,7 +40,7 @@ layout: wrapper
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -40,8 +48,8 @@ layout: wrapper
                         type="button" role="tab" aria-controls="projects" aria-selected="true">Projects</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button"
-                        role="tab" aria-controls="posts" aria-selected="false">Posts</button>
+                    <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts"
+                        type="button" role="tab" aria-controls="posts" aria-selected="false">Posts</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -56,6 +64,9 @@ layout: wrapper
         </div>
 
     </div>
+
+    {% include footer.html %}
+
 </body>
 
 </html>
