@@ -56,7 +56,7 @@
 
 .baseContainer .alert{
     width: 90%;
-    margin: auto;
+    margin: auto 0;
     margin-bottom: 20px;
 }
 
