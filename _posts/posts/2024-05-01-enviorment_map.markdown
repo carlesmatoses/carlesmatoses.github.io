@@ -7,14 +7,14 @@ categories: post
 permalink: post/EnviormentMaps!
 ---
 
-* What kind of enviorment maps exist?  
-* How are they calculated?  
-* How can they be implemented?  
+- What kind of enviorment maps exist?  
+- How are they calculated?  
+- How can they be implemented?  
 <!-- end-abstract --> 
 
 
-<h1>Enviorment Maps</h1>
-In computer graphics is really common to use this so called enviorment maps. This concept is usually refferred to `images that represent the surrounding light of the scene origin.
+# Enviorment Maps
+In computer graphics is really common to use this so called enviorment maps. This concept is usually refferred to images that represent the surrounding light of the scene origin.
 
 Two common aproaches for storing this information are `cube maps` and `sphere maps`. 
 
@@ -27,28 +27,22 @@ Two common aproaches for storing this information are `cube maps` and `sphere ma
 </div>
 
 
-<h2>Basic concepts</h2>
+## Basic concepts
 Enviorment maps comme from the necessity of representing realistic light for digital scenes. In a digital enviorment is really common to represent a light as a single point irradiating on all directions but in the real world light bounces from multiple directions before getting to the subject.
 
-<div class="row">
-    <div class="col">
-        {% include figure.html image="/images/image-not-found.png" caption="Image Description" 
-        %}
-    </div>
-    <div class="col">
-        {% include figure.html image="/images/image-not-found.png" caption="Second Image Description sss" 
-        id="figure1" 
-        %}
-    </div>
-</div>
+{% include figure.html image="/images/image-not-found.png" caption="Image Description" 
+%}
+{% include figure.html image="/images/image-not-found.png" caption="Second Image Description sss" 
+id="figure1" 
+%}
 
 Of course, `enviorment maps are just an aproximation and simplification` but they provide a really good improvement in digital scenes.
 
 To get an enviorment light we can use a perfect metallic sphere and take a picture. This will result in all the information of the surrounding light on a single image. Of course the final resolution of the enviorment map will depend on the camera and some information on the borders may be lost for distortion and lack of resolution.
 
-<h1>Sphere Maps</h1>
+# Sphere Maps
 
-<h1>Cube Maps</h1>
+# Cube Maps
 
 
 
