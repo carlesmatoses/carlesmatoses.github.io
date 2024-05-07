@@ -4,7 +4,7 @@ title:  "Environment Maps"
 date:   2024-05-1 18:17:51 +0200
 preview: "/images/EnvironmentMap.png"
 categories: post
-permalink: post/EnvironmentMaps!
+permalink: post/EnvironmentMaps
 ---
 
 - What kind of Environment maps exist?  
