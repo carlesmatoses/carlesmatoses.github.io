@@ -35,15 +35,18 @@ Two common aproaches for storing this information are `cube maps` and `sphere ma
 
 2. On the other hand, **Cube Maps** require six diferent images as shown in the image [Cube Map](#img:cube-map).
 
+
 {% include figure.html image="/images/cubeMap.png" 
 caption="3. Cube Map." 
 id="img:cube-map"
 %}
 
+
 {% include figure.html image="/images/sphereMap.png" 
 caption="4. Sphere Map." 
 id="img:sphere-map"
 %}
+
 
 <div class="alert alert-secondary" role="alert">
     We are not going to explore the file extensions or datatypes of the pixel values. I consider this information more relevant for future posts explaining digital color science.
@@ -58,6 +61,7 @@ Environment maps comme from the necessity of representing realistic light for di
 caption="Eevee image of a point" 
 id="img:2"
 %}
+
 {% include figure.html image="/images/image-not-found.png" 
 caption="Cycles image with enviorment light" 
 id="img:3"
