@@ -46,12 +46,21 @@
 }
 
 .baseContainer p{
-    line-height: 2.2;
+    line-height: 2.;
     margin-bottom: 30px;
 }
 
 .baseContainer ul, .baseContainer ol {
     padding-left: 30px;
+}
+
+.baseContainer .alert{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+p a{
+    color: #3498db;
 }
 
 @media (max-width: 576px) { /* Small screens */
