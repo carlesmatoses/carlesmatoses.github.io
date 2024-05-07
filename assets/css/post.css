@@ -55,8 +55,9 @@
 }
 
 .baseContainer .alert{
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 p a{
