@@ -1,9 +1,18 @@
-figure img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 300px ;    
+figure.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%; /* Ensures the figure does not exceed the width of its container */
+    overflow: hidden; /* Prevents overflowing content from being visible outside the figure */
 }
-figure figcaption {
+
+figure.col img {
+    max-width: 100%; /* Ensures the image does not exceed the width of its container */
+    height: auto; /* Maintains the aspect ratio of the image */
+    display: block;
+    margin: auto; /* Centers the image horizontally */
+}
+
+figure.col figcaption {
     text-align: center;
 }
