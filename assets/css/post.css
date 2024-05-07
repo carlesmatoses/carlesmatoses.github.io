@@ -29,10 +29,29 @@
     text-align: start;
 }
 
-a{
-    display: inline;
-    text-decoration: none;
-    color: gray;
+.headerIMG{
+    object-fit: cover;
+    /* overflow: hidden; */
+    height: 250px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.baseContainer{
+    max-width: 750px;
+    /* margin-top: 20px; */
+}
+
+.baseContainer p{
+    line-height: 2.2;
+    margin-bottom: 30px;
+}
+
+.baseContainer ul, .baseContainer ol {
+    padding-left: 30px;
 }
 
 @media (max-width: 576px) { /* Small screens */
