@@ -12,7 +12,7 @@ permalink: post/SRGGE-Qsplat
 
 # Links & aditional info
 
-[Original aper](https://dl.acm.org/doi/pdf/10.1145/344779.344940)
+[Original paper](https://dl.acm.org/doi/pdf/10.1145/344779.344940)
 
 
 
@@ -31,6 +31,15 @@ permalink: post/SRGGE-Qsplat
 
 - Node data:
     - Position and radius
+
+| Key Value | X Position (1/13) | Y Position (1/13) | Z Position (1/13) |
+|-----------|-------------------|-------------------|-------------------|
+| 0         | 0                 | 0                 | 0                 |
+| 500       | 1/13             | 1/13             | 1/13             |
+| 2000      | 1/13            | 2/13            | 1/13            |
+| 7621      | 13/13            | 13/13            | 13/13            |
+
+
     - Normals
     - Colors
     - Normal cones
@@ -73,7 +82,7 @@ permalink: post/SRGGE-Qsplat
 <div class="col-12 text-center">Marc Levoy  </div>
 <div class="col-12 text-center">Stanford University  </div>
 
-- Carles Matoses GImenez
+- Carles Matoses Gimenez
 
 ***Context and Motivation: Explain why this paper is important. Briefly discuss the challenges in rendering large meshes and the need for efficient solutions.***
 

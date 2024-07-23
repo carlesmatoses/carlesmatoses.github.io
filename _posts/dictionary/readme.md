@@ -1,0 +1,1 @@
+This folder contains multiple descriptions for words or concepts that can be relevant. This works as a dictionary description of a world that can be referenced on the posts so the users can discover the meaning of a word without exiting the post.
