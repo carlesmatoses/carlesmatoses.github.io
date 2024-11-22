@@ -9,9 +9,15 @@
 <div class="row post-preview" href="{{post.permalink}}">
     {% comment %} If screen is extra small (xs) or small (sm), display as one row {% endcomment %}
     <div class="col-12 col-sm-6">
-        <a href="{{post.permalink}}">
-            <img src="{{post.preview}}" alt="..." class="img-fluid">
-        </a>
+        {% if post.e_permalink %}
+            <a href="{{post.e_permalink}}">
+                <img src="{{post.preview}}" alt="..." class="img-fluid">
+            </a>
+        {% else %}
+            <a href="{{post.permalink}}">
+                <img src="{{post.preview}}" alt="..." class="img-fluid">
+            </a>
+        {% endif %}
     </div>
     <div class="col-12 col-sm-6 p-sm-0">
         <a href="{{post.permalink}}">
