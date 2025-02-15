@@ -11,6 +11,7 @@ some abstract content...
 <!-- end-abstract -->
 
 
+<!-- index -->
 * Do not remove this line (it will not be displayed)
 {:toc}
 
