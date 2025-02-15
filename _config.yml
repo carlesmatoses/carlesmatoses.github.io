@@ -39,6 +39,16 @@ theme: minima
 plugins:
   - jekyll-feed
 
+toc:
+  min_level: 1
+  max_level: 6
+  no_toc_section_class: "no_toc"
+  list_class: "toc-list"
+  sublist_class: "toc-sublist"
+  item_class: "toc-item"
+  item_prefix: "toc-item-"
+  list_number: false
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

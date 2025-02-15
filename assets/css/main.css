@@ -1,8 +1,7 @@
 body{
-    font-size: 90%; /* Adjust the font size as needed */
+    font-size: 100%; /* Adjust the font size as needed */
     font-weight: 300;    
 }
-
 
 a{
     display: inline;
@@ -14,3 +13,8 @@ a{
     color: #df6f06; /* Change the background color as desired */
     /* Add more styling rules as needed */
 }
+
+strong {
+    font-weight: 600;
+}
+

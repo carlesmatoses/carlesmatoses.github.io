@@ -1,18 +1,14 @@
 ---
 layout: post
-title:  "default draft"
-date:   2024-04-21 18:17:51 +0200
+title:  "Ambient Occlusion"
+date:   2024-11-27 18:17:51 +0200
 preview: "/images/image-not-found.png"
 categories: post # post, project
-permalink: post/default-draft
+permalink: post/ambient-occlusion
 ---
 
 some abstract content...
 <!-- end-abstract -->
-
-
-* Do not remove this line (it will not be displayed)
-{:toc}
 
 rest of content...
 
