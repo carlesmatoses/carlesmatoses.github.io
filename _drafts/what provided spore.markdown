@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "default draft"
+title:  "Spore provided new techniques"
 # date:   2024-04-21 18:17:51 +0200
 preview: "/images/image-not-found.png"
 categories: post
