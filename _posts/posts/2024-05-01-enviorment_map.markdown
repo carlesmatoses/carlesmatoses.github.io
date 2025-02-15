@@ -12,6 +12,8 @@ permalink: post/EnvironmentMaps
 - How can they be implemented?  
 <!-- end-abstract --> 
 
+* Do not remove this line (it will not be displayed)
+{:toc}
 
 # Environment Maps
 
