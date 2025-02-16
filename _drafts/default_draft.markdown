@@ -59,10 +59,14 @@ print_hi('Tom')
 This is an external link [jekyll-docs](https://jekyllrb.com/docs/home)  
 This is an external link from the bibliography [Jekyll docs][jekyll-docs]
 
-<!-- bibliography -->
 [jekyll-docs]: https://jekyllrb.com/docs/home
 
 # Header 1
 ## Header 2
 ### Header 3
 #### Header 4
+
+# Bibliography
+{% render_time %}
+page rendered at:
+{% endrender_time %}
