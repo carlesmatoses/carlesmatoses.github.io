@@ -98,3 +98,8 @@ p a{
 #markdown-toc a {
     color: rgb(70, 176, 238);
 }
+
+.bibliography{
+    padding: 1.2em;
+    
+}

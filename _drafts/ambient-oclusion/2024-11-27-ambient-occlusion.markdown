@@ -40,3 +40,6 @@ This effect is artistic and ``not phisically accurate``. This said, it's still `
 
 # History
 <!-- On which documents was first treated this concept -->
+
+# Bibliography
+{% bibliography _bibliography/ao_references.bib%}

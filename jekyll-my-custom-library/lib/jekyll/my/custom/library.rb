@@ -2,6 +2,8 @@
 
 require_relative "library/version"
 require_relative "library/bibliography"
+require_relative "library/bibliography_loader"
+require_relative "library/ref"
 
 module Jekyll
   module My

@@ -15,6 +15,9 @@ some abstract content...
 * Do not remove this line (it will not be displayed)
 {:toc}
 
+<!-- Load all references -->
+{% bibliography_loader _bibliography/references.bib %}
+
 rest of content...
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec facilisis libero. Sed ac nisi dolor. Nulla gravida, elit non placerat mollis, tortor nisi consequat quam, ac dignissim quam nunc molestie ipsum. Fusce id efficitur nisi, quis ultrices augue. Phasellus condimentum porttitor lacinia. Nulla maximus elit id sapien ornare aliquam. Fusce id suscipit diam, a sodales orci. Vivamus eget dictum magna, porta porta augue. Nam non blandit odio. Vivamus ac sapien eu justo consequat porta vitae sed elit.
@@ -66,9 +69,18 @@ This is an external link from the bibliography [Jekyll docs][jekyll-docs]
 ### Header 3
 #### Header 4
 
-# Bibliography
+# custom script example
 {% render_time %}
 page rendered at:
 {% endrender_time %}
 
-{% bibliography _bibliography/references.bib %}
+# Bibliography
+
+
+The complete bibliography is shown with the bibliography tag
+
+
+
+We can reference the bilbiography elements {% ref ruby %} with a liquid tag.
+
+{% bibliography %}
