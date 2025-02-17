@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "library/version"
+require_relative "library/bibliography"
 
 module Jekyll
   module My
@@ -9,15 +10,14 @@ module Jekyll
         class Error < StandardError; end
         # Your code goes here...
         class RenderTimeTagBlock < Liquid::Block
-
           def render(context)
             text = super
             "<p>#{text} #{Time.now}</p>"
           end
-      
         end
 
-
+        
+        # end you're code
       end
     end
   end

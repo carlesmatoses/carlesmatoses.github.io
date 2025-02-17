@@ -70,3 +70,5 @@ This is an external link from the bibliography [Jekyll docs][jekyll-docs]
 {% render_time %}
 page rendered at:
 {% endrender_time %}
+
+{% bibliography _bibliography/references.bib %}
