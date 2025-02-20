@@ -14,8 +14,8 @@ module Jekyll
             # Open and parse BibTeX file
             bib = BibTeX.open(bib_path, filter: :latex)
 
-            # Store references in site data (preserve existing ones)
-            site.data["references"] ||= {}
+            # Clear previous references and store new ones in site data
+            site.data["references"] = {}
 
             bib.each do |entry|
                 key = entry.key.to_s  # Correct way to get the key
