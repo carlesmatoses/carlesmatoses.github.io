@@ -57,7 +57,7 @@ To generate the ambient light (global illumination technique) we generate an ima
 <!-- picture of an hdri -->
 <!-- picture of object being globally illuminated, show the problems of occlusion -->
 
-As shown in the prevous image, we can not tell how much light reaches each point but we can apply ambient occlusion to fake it.
+As shown in the previous image, we can not tell how much light reaches each point but we can apply ambient occlusion to fake it.
 
 <!--
 lets review how this technique works.
@@ -66,7 +66,7 @@ In the beggining it was meant to recognize how much (quantity) of global illumin
 
 In cruise controll they used this technique for exactly that purpose, deciding how much illumination should each window recieve (but not the reflection itself)
 
-This technique seems to provide better results on non reflective surfacces like in pearl harbour. Lets say we are provided an airplain surronded by a blue sphere, we know how much of this light will get to each surface point.
+This technique seems to provide better results on non reflective surfaces like in pearl harbour. Lets say we are provided an airplain surronded by a blue sphere, we know how much of this light will get to each surface point.
 
 0. we require to generate global illumination: explain technique a little bit
 1. Calculate ambient occlusion of a self object
@@ -74,6 +74,8 @@ This technique seems to provide better results on non reflective surfacces like 
 3. the problem with dynamic ambient occlusion: it requires to be updated each time the scene geometry changes.
 4. This technique may not be that useful with ray tracing or light paths render engines. it is meant for IBL
 -->
+
+<!-- Explaining improvved technique by generating a map that contains the direction from wich a point recieves light from specific angles. -->
 
 # Bibliography
 {% bibliography %}
