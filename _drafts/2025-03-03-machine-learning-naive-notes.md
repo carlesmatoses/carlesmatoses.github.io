@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "default draft"
+title:  "ML Notes"
 date:   2024-04-21 18:17:51 +0200
 preview: "/images/image-not-found.png"
 categories: post # post, project
@@ -18,9 +18,28 @@ This are some notes taken for my machine learning classes.
 <!-- Load all references -->
 {% bibliography_loader _bibliography/references.bib %}
 
-rest of content...
+# 1
+## Introduction 
+- Supervised learning: uses labelled data. ``Main objective`` in classiﬁcation: predict class from feature values.
+  - regression: predict real value label for each example
+  - classification: predict discrete value (class, category) for each example
+- Unsupervised learning: has no labels
+  - clustering: discover homogeneous groups in data
+  - dimensionality reduction: find lower-dimensional representation
+  - association rule mining
+  - outlier detection
+  - . . .
+- Semi-supervised learning: only few labels:
+  - ranking: order examples according to some criterion
+  - reinforcement learning: delayed rewards, learning to act in an environment
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec facilisis libero. Sed ac nisi dolor. Nulla gravida, elit non placerat mollis, tortor nisi consequat quam, ac dignissim quam nunc molestie ipsum. Fusce id efficitur nisi, quis ultrices augue. Phasellus condimentum porttitor lacinia. Nulla maximus elit id sapien ornare aliquam. Fusce id suscipit diam, a sodales orci. Vivamus eget dictum magna, porta porta augue. Nam non blandit odio. Vivamus ac sapien eu justo consequat porta vitae sed elit.
+## Errors
+- Overfitting: The model learned to follow the training data pattern and now is not able to predict unseen data on the expected way.
+    <!-- Anyadir imatge de un seno amb ruido que segueix el propi ruido -->
+    - Regularization: Penalize too high &theta; or complex models. For this, we add a new element **&lambda; &times; |*f*|**. The **|*f*|** component will depend on the chosen strategy being a common one `Ridge`.
+# 2
+# 3
+
 
 
 <!-- # Images:
