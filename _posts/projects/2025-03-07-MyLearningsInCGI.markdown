@@ -15,10 +15,18 @@ My path to learn CGI.
 My interest in CGI started when I was around 14 years old. My generation lived during the ``raising of youtube and social media content``. One of those days, people like CaptainSparklez and other content creators published videos like 
 ["Revenge" - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video)](https://www.youtube.com/watch?v=cPJUBQd-PNM) where they remix a song with a ``minecraft animation following the history``. 
 
-<iframe width="420" height="315" src="https://www.youtube.com/watch?v=cPJUBQd-PNM" frameborder="0" allowfullscreen></iframe>
+{% include figure.html image="https://i.ytimg.com/vi/cPJUBQd-PNM/sddefault.jpg" 
+    caption="Revenge" 
+    id="img:1"
+%}
+One day I stept upon a video called  [Stick With Me - Minecraft Animation - Slamacow](https://www.youtube.com/watch?v=iGz7ltTqEfk) and the idea of creating a transparent creature that behaves like a soft body fascinated me to the point that ``I wanted to try by myself``. 
 
+{% include figure.html image="https://i.ytimg.com/vi/iGz7ltTqEfk/maxresdefault.jpg" 
+    caption="Stick With Me" 
+    id="img:2"
+%}
 
-One day I stept upon a video called  [Stick With Me - Minecraft Animation - Slamacow](https://www.youtube.com/watch?v=iGz7ltTqEfk) and the idea of creating a transparent creature that behaves like a soft body fascinated me to the point that ``I wanted to try by myself``. I started with Autodesk Maya for a few days without much success. On a second try I discovered that those kind of animatins where made with Cinema4D but it was not for me, it felt cumbersom and I lacked the neccessary background knowledge. A few months later I was told that there whas this free prgram that was grwing really fast.
+I started with Autodesk Maya for a few days without much success. On a second try I discovered that those kind of animatins where made with Cinema4D but it was not for me, it felt cumbersom and I lacked the neccessary background knowledge. A few months later I was told that there whas this free prgram that was grwing really fast.
 
 ``Blender`` was a game changer for me. I was able to understand the interface pretty quick and not only that but I found on internet a guru, Blender Guru. ``Andrew Price`` teachd me for years. I spent my following years recreating tutorials and studiyng the basics of CGI.
 
