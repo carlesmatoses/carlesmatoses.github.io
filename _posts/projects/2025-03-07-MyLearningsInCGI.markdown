@@ -12,7 +12,9 @@ My path to learn CGI.
 <!-- end-abstract -->
 
 # My history
-My interest in CGI started when I was around 14 years old. My generation lived during the ``raising of youtube and social media content``. One of those days, content creators published videos like 
+My interest in CGI started when I was around 14 years old. My generation lived during the ``raising of youtube and social media content``. 
+
+One of those days, content creators published videos like 
 ["Revenge" - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video)](https://www.youtube.com/watch?v=cPJUBQd-PNM) where they remix a song with a ``minecraft animation following the history``. 
 
 {% include figure.html image="https://i.ytimg.com/vi/cPJUBQd-PNM/sddefault.jpg" 
@@ -26,9 +28,15 @@ Eventually I stept into a video called  [Stick With Me - Minecraft Animation - S
     id="img:2"
 %}
 
-I started with Autodesk Maya for a few days without much success. On a second try I discovered Cinema4D, it felt cumbersom and I lacked the neccessary background knowledge. A few months later I was told there was a free prgram that was growing really fast.
+I started with Autodesk Maya for a few days without much success. 
 
-``Blender`` was a game changer for me. I was able to understand the interface pretty quick and not only that but I found on internet a guru, Blender Guru. ``Andrew Price`` teachd me for years. I spent my following years recreating tutorials and studiyng the basics of CGI.
+On a second try I discovered Cinema4D, it felt cumbersom and I lacked the neccessary background knowledge. 
+
+A few months later I was told there was a free prgram that was growing really fast.
+
+``Blender`` was a game changer for me. I was able to understand the interface pretty quick and not only that but I found on internet a guru, Blender Guru. ``Andrew Price`` teachd me all the basics. 
+
+I spent my following years recreating tutorials and studiyng the bases of CGI.
 
 {% include figure.html image="/images/my_learning_path_cgi/donuts3.jpg" 
     caption="Donuts" 
@@ -72,7 +80,12 @@ I started with Autodesk Maya for a few days without much success. On a second tr
 %}
 
 
-Remember that those are tutorials, not my level at the time. After all that experience ``I decided to just learn more`` without actually making projects, just testing thins. In this period of time I didnt actually make pictures so here is just a few ones I found to reflect my improvements. 
+Remember that those are tutorials, not my level at the time. 
+
+After all that experience ``I decided to just learn more`` without actually making projects. 
+
+I don't have many pictures of this period but here are some: 
+
 {% include figure.html image="/images/my_learning_path_cgi/myown/abre2.jpg" 
     caption="Abre 2" 
     id="img:23"
@@ -101,8 +114,6 @@ Remember that those are tutorials, not my level at the time. After all that expe
     caption="Arbres with Road" 
     id="img:27"
 %}
-
-
 {% include figure.html image="/images/my_learning_path_cgi/myown/flordecristal.jpg" 
     caption="Flor de Cristal" 
     id="img:30"
