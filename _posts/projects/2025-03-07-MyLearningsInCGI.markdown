@@ -19,13 +19,13 @@ Gallery | My path to learn CGI.
 My interest in CGI started when I was around 14 years old. My generation lived during the ``raising of youtube and social media content``. 
 
 One of those days, content creators published videos like 
-["Revenge" - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video)](https://www.youtube.com/watch?v=cPJUBQd-PNM) where they remix a song with a ``minecraft animation following the history``. 
+["Revenge" - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video)](https://www.youtube.com/watch?v=cPJUBQd-PNM) where they remixed songs with`` Minecraft animations following the storyline``.
 
 {% include figure.html image="https://i.ytimg.com/vi/cPJUBQd-PNM/sddefault.jpg" 
     caption="Revenge" 
     id="img:1"
 %}
-Eventually I stept into a video called  [Stick With Me - Minecraft Animation - Slamacow](https://www.youtube.com/watch?v=iGz7ltTqEfk) and the idea of creating a transparent creature that behaves like a soft body fascinated me to the point that ``I wanted to try by myself``. 
+I stumbled upon a video called  [Stick With Me - Minecraft Animation - Slamacow](https://www.youtube.com/watch?v=iGz7ltTqEfk) and the idea of creating a transparent creature that behaves like a soft body fascinated me to the point that ``I wanted to try by myself``. 
 
 {% include figure.html image="https://i.ytimg.com/vi/iGz7ltTqEfk/maxresdefault.jpg" 
     caption="Stick With Me" 
@@ -38,7 +38,7 @@ On a second try I discovered Cinema4D, it felt cumbersom and I lacked the necces
 
 A few months later I was told there was a free prgram that was growing really fast.
 
-``Blender`` was a game changer for me. I was able to understand the interface pretty quick and not only that but I found on internet a guru, Blender Guru. ``Andrew Price`` teachd me all the basics. 
+``Blender`` was a game changer for me. I was able to understand the interface pretty quick and not only that but I found a Blender Guru. ``Andrew Price`` teachd me all the basics. 
 
 I spent my following years recreating tutorials and studiyng the bases of CGI.
 
@@ -138,6 +138,8 @@ I don't have many pictures of this period but here are some:
     caption="Madera (creating materials from my own pictures)" 
     id="img:34"
 %}
+
+I still don't make many projects in blender but I like to learn from it and use the tool for different projects. 
 
 # Gallery
 {% include big_figure.html image="\images\my_learning_path_cgi\current\silla.jpg" 
