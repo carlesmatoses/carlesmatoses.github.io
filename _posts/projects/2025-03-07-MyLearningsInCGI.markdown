@@ -7,8 +7,11 @@ permalink: projects/MyLearningPathCGI
 preview: "/images/my_learning_path_cgi/header.jpg"
 
 ---
-<!-- abstract --> My path to learn CGI.
+<!-- abstract --> 
+My path to learn CGI.
+<!-- end-abstract -->
 
+# My history
 My interest in CGI started when I was around 14 years old. My generation lived during the ``raising of youtube and social media content``. One of those days, people like CaptainSparklez and other content creators published videos like 
 ["Revenge" - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video)](https://www.youtube.com/watch?v=cPJUBQd-PNM) where they remix a song with a ``minecraft animation following the history``. 
 
@@ -47,5 +50,68 @@ One day I stept upon a video called  [Stick With Me - Minecraft Animation - Slam
     caption="Basketball Scene" 
     id="img:2"
 %}
+{% include figure.html image="/images/my_learning_path_cgi/pendul mono.jpg" 
+    caption="Simulación Físicas" 
+    id="img:20"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/cup_2.jpg" 
+    caption="Cup with normal maps" 
+    id="img:21"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/anvil1.jpg" 
+    caption="Anvil" 
+    id="img:22"
+%}
 
 
+Remember that those are tutorials, not my level at the time. After all that experience ``I decided to just learn more`` without actually making projects, just testing thins. In this period of time I didnt actually make pictures so here is just a few ones I found to reflect my improvements. 
+{% include figure.html image="/images/my_learning_path_cgi/myown/abre2.jpg" 
+    caption="Abre 2" 
+    id="img:23"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/cuet_4.jpg" 
+    caption="Cuet 4" 
+    id="img:28"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/cuet1.jpg" 
+    caption="Cuet 1" 
+    id="img:29"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/abres+volumetric.jpg" 
+    caption="Abres with Volumetric" 
+    id="img:24"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/abres+volumetric1.jpg" 
+    caption="Abres with Volumetric 1" 
+    id="img:25"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/arbres.jpg" 
+    caption="Arbres" 
+    id="img:26"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/arbres+carretera.jpg" 
+    caption="Arbres with Road" 
+    id="img:27"
+%}
+
+
+{% include figure.html image="/images/my_learning_path_cgi/myown/flordecristal.jpg" 
+    caption="Flor de Cristal" 
+    id="img:30"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/giotarra.jpg" 
+    caption="Guitarra" 
+    id="img:31"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/hammer.jpg" 
+    caption="Hammer" 
+    id="img:32"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/libelula2.jpg" 
+    caption="Libelula 2" 
+    id="img:33"
+%}
+{% include figure.html image="/images/my_learning_path_cgi/myown/madera.jpg" 
+    caption="Madera (creating materials from my own pictures)" 
+    id="img:34"
+%}
