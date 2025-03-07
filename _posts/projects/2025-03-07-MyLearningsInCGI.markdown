@@ -8,8 +8,12 @@ preview: "/images/my_learning_path_cgi/header.jpg"
 
 ---
 <!-- abstract --> 
-My path to learn CGI.
+Gallery | My path to learn CGI.
 <!-- end-abstract -->
+
+<!-- index -->
+* Do not remove this line (it will not be displayed)
+{:toc}
 
 # My history
 My interest in CGI started when I was around 14 years old. My generation lived during the ``raising of youtube and social media content``. 
@@ -133,4 +137,25 @@ I don't have many pictures of this period but here are some:
 {% include figure.html image="/images/my_learning_path_cgi/myown/madera.jpg" 
     caption="Madera (creating materials from my own pictures)" 
     id="img:34"
+%}
+
+# Gallery
+{% include big_figure.html image="\images\my_learning_path_cgi\current\armario.jpg" 
+    caption="Armario de madera antiguo" 
+    id="img:35"
+%}
+
+{% include big_figure.html image="\images\my_learning_path_cgi\current\silla.jpg" 
+    caption="Silla de paja" 
+    id="img:36"
+%}
+
+{% include big_figure.html image="\images\my_learning_path_cgi\current\armario_grande.jpg" 
+    caption="Armario de madera cn cristal" 
+    id="img:37"
+%}
+
+{% include big_figure.html image="\images\my_learning_path_cgi\current\mesa_pobre.jpg" 
+    caption="Mesa Básica de madera" 
+    id="img:38"
 %}
