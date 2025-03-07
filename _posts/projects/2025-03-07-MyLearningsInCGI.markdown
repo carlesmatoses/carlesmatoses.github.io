@@ -140,22 +140,23 @@ I don't have many pictures of this period but here are some:
 %}
 
 # Gallery
-{% include big_figure.html image="\images\my_learning_path_cgi\current\armario.jpg" 
-    caption="Armario de madera antiguo" 
-    id="img:35"
-%}
-
 {% include big_figure.html image="\images\my_learning_path_cgi\current\silla.jpg" 
     caption="Silla de paja" 
     id="img:36"
 %}
-
 {% include big_figure.html image="\images\my_learning_path_cgi\current\armario_grande.jpg" 
     caption="Armario de madera cn cristal" 
     id="img:37"
 %}
-
+{% include big_figure.html image="\images\my_learning_path_cgi\current\armario.jpg" 
+    caption="Armario de madera antiguo" 
+    id="img:35"
+%}
 {% include big_figure.html image="\images\my_learning_path_cgi\current\mesa_pobre.jpg" 
     caption="Mesa Básica de madera" 
     id="img:38"
+%}
+{% include big_figure.html image="\images\my_learning_path_cgi\current\guitar.jpg" 
+    caption="Guitarra basada en libros de lutiers" 
+    id="img:39"
 %}
