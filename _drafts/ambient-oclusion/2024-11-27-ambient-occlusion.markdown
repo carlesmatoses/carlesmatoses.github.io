@@ -52,6 +52,21 @@ Ambinet Occlusion was first used in "Pearl harbour" to store the quantity if amb
 <!-- Picture of Pearl harbour -->
 <!-- Picture of Cruise Control -->
 
+<!-- 
+APROACHES:
+- Ambient occlusion: a technique that, like reflection occlusion, uses a pre-rendered occlusion map accessed at render time to give the scene realistic shadowing. In addition, they developed a way to derive directional information so that a given surface point would be illuminated by the most appropriate part of the ambient environment map.
+
+- Reflection occlusion: occluding or shadowing the reflections on the CG elements. It
+addresses the problem of reflections not being correctly occluded when you use an all encompassing reflection environment. 
+
+- Reflection Maps: Single channel reflection maps are used to attenuate reflection in areas that are either self occluding or blocked by other objects in the scene.
+
+- Ambient environments:  Is a technique that gives a way of getting diffuse fill light illumination that is more like what we’d get from global illumination.
+
+- Global illumination: 
+
+-->
+
 To generate the ambient light (global illumination technique) we generate an image (HDRI, cube map, sphere image...) that combines all surronding lights (sky, sun, ground) recieved in a single point. 
 
 <!-- picture of an hdri -->
@@ -68,11 +83,11 @@ In cruise controll they used this technique for exactly that purpose, deciding h
 
 This technique seems to provide better results on non reflective surfaces like in pearl harbour. Lets say we are provided an airplain surronded by a blue sphere, we know how much of this light will get to each surface point.
 
-0. we require to generate global illumination: explain technique a little bit
-1. Calculate ambient occlusion of a self object
-2. calculate ambient occlusion of the proximity of two objects
-3. the problem with dynamic ambient occlusion: it requires to be updated each time the scene geometry changes.
-4. This technique may not be that useful with ray tracing or light paths render engines. it is meant for IBL
+1. we require to generate global illumination: explain technique a little bit
+2. Calculate ambient occlusion of a self object
+3. calculate ambient occlusion of the proximity of two objects
+4. the problem with dynamic ambient occlusion: it requires to be updated each time the scene geometry changes.
+5. This technique may not be that useful with ray tracing or light paths render engines. it is meant for IBL
 -->
 
 <!-- Explaining improvved technique by generating a map that contains the direction from wich a point recieves light from specific angles. -->
