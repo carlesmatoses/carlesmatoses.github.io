@@ -106,17 +106,29 @@ p a{
 
 /* WEBGL */
 .glb-viewer{
-    height: 400px;
-    width: 80%;
     padding: 0px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding-bottom:20px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
+.canvas-container{
+    width: 100%;
+    height: 400px;
+    margin: auto;
+    padding: 0;
+}
+
+.dg {
+    left: 20px !important; /* Adds 20px padding from right edge */
+  }
+
 @media (max-width: 576px) { /* Small screens */
-    .glb-viewer {
+    .canvas-container{
         margin: 0;
         padding: 0;
-        width: 100%;
         height: 300px;
+        width: 100%;
     }
 }

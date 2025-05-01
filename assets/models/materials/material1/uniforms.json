@@ -2,7 +2,7 @@
     "uniforms": {
       "tex_diffuse": {
         "type": "sampler2D",
-        "value": "textures/diffuse.jpg"
+        "value": "textures/diffuse.png"
       },
       "shadowMap": {
         "type": "sampler2D",
@@ -12,11 +12,17 @@
         "type": "samplerCube",
         "value": "textures/photo_studio_loft_hall_2k_irradiance.exr"
       },
-      "factor": {
+      "global_illumination": {
         "type": "float",
-        "value": 0.5,
+        "value": 0.1,
         "min": 0.0,
-        "max": 2.0
+        "max": 1.0
+      },
+      "shadow": {
+        "type": "float",
+        "value": 0.1,
+        "min": 0.0,
+        "max": 1.0
       }
     }
 }

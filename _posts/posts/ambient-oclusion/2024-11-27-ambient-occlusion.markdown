@@ -20,7 +20,7 @@ permalink: post/ambient-occlusion
 
 {% bibliography_loader _bibliography/ao_references.bib %}
 
-# Ambient occlusion
+# Introduction
 <!-- small introduction -->
 The concept Ambient Occlusion refers to the ``light reduction when two surfaces are really close`` to each other.
 
@@ -73,14 +73,21 @@ Ambinet Occlusion was first used in "Pearl harbour" to store the quantity of amb
 <!-- Picture of Pearl harbour -->
 <!-- Picture of Cruise Control -->
 
+Films do not require real time processes even though they can save money. For this productions they backed geometry occlusions in image sequences and use it in the rendering pipeline as another texture. 
 
-
-To generate the ambient enviorments (image based lightning technique) we create an image (HDRI, cube map, sphere image...) that combines all surronding lights (sky, sun, ground) recieved in a single point (usually where the character is placed). This is a simplification of global illumination where we place the lights in the scene and iterate over all of them to calculate the light on a surface point.
+<!-- To generate the ambient enviorments (image based lightning technique) we create an image (HDRI, cube map, sphere image...) that combines all surronding lights (sky, sun, ground) recieved in a single point (usually where the character is placed). This is a simplification of global illumination where we place the lights in the scene and iterate over all of them to calculate the light on a surface point. -->
 
 <!-- picture of an hdri -->
 <!-- picture of object being globally illuminated, show the problems of occlusion when an object is irregular, like objects with identations or holes. -->
 
-As shown in the previous image, we can not tell how much light reaches each point but we can apply ambient occlusion to fake it.
+<!-- As shown in the previous image, we can not tell how much light reaches each point but we can apply ambient occlusion to fake it. -->
+
+# Problem
+We already know we want to calculate the light arriving to each surface point. In real time applications its common to use  ``Image Based techniques`` to fake illumination on surfaces. The main problem with this approach is that we use normal directions from the surface to get the image pixel illuminating that point. This approach will not take into account self occlusion or between objects occlusion. 
+
+In the following example you can see how the hat is not casting shadows and faces oriented towards the windows are lighted even when they shouldn't. The first slide allows you to illuminate the object and the second one activates the backed shadow generated using light paths rendering techniques.
+
+{% glb_viewer id='viewer-1' models='suzane,sphere' materials='material1,enviorment' %}
 
 # Ambient Occlusion
 Ambient Occlusion map: Once we have the scene geometry, we iterate over all points in the surface and generate an hemisphere oriented in the surface normal direction. Now we can check for colisions of the rays being casted in those directions and store the result plus the angle. Based on the lambertian formula, we know that incident light has more effect when the angle is close to 0º and it starts to reflect more light the closer it gets to 90º degrees.
@@ -90,9 +97,8 @@ To know which part of the enviorment map is most representative of a certain sur
 
 Here is the interactive 3D viewer:
 
-{% glb_viewer id='viewer-1' models='suzane,sphere' materials='material1,enviorment' %}
+
 # Reflection Occlusion
-{% glb_viewer id='viewer-1' models='suzane,sphere' materials='material1,enviorment' %}
 
 <!--
 lets review how this technique works.

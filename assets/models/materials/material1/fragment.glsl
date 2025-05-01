@@ -2,7 +2,8 @@
 uniform sampler2D tex_diffuse;
 uniform sampler2D shadowMap;
 uniform samplerCube envMap;
-uniform float factor;
+uniform float shadow;
+uniform float global_illumination;
 
 varying vec2 vUv; 
 varying vec3 vNormal;
@@ -14,8 +15,12 @@ void main() {
   vec3 shadowColor = texture2D(shadowMap, vec2(vUv.x, 1.0-vUv.y)).rgb;
   vec3 envColor = textureCube(envMap, normal).rgb;
   
-  vec3 finalColor = envColor*pow(shadowColor,vec3(1.2));
-  finalColor = mix(envColor,finalColor,factor);
+  // calculate global illumination
+  vec3 color = texColor*mix(envColor,vec3(1.0),1.0-global_illumination);
+
+  // calculate shadow
+  shadowColor = mix(vec3(1.0), shadowColor, shadow);
+  vec3 finalColor = color*shadowColor;
 
   gl_FragColor = vec4(pow(finalColor, vec3(1.0/2.2)), 1.0);
 }

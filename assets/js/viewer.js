@@ -6,11 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const modelNames = JSON.parse(container.dataset.models || '[]');
     const materialNames = JSON.parse(container.dataset.materials || '[]');
 
+    const canvas_container = document.createElement('div');
+    canvas_container.className = 'canvas-container';
+    container.appendChild(canvas_container);
+
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, canvas_container.clientWidth / canvas_container.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    container.appendChild(renderer.domElement);
+    renderer.setSize(canvas_container.clientWidth, canvas_container.clientHeight);
+    canvas_container.appendChild(renderer.domElement);
 
     scene.background = new THREE.Color('#c0c0c0');
     camera.position.z = 5;
@@ -23,12 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
     controls.maxDistance = 10;
 
     const gui = new dat.GUI(); // Initialize dat.GUI
+    gui.width = window.innerWidth-window.innerWidth/4; 
+
     // Create a wrapper for GUI under the canvas
     const guiContainer = document.createElement('div');
     guiContainer.className = 'gui-container';
     container.appendChild(guiContainer);
     guiContainer.appendChild(gui.domElement);
-
 
     modelNames.forEach((modelName, index) => {
       const materialName = materialNames[index];
@@ -78,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('resize', () => {
-      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.aspect = canvas_container.clientWidth / canvas_container.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setSize(canvas_container.clientWidth, canvas_container.clientHeight);
     });
 
     function animate() {
@@ -196,7 +201,6 @@ function loadEquirectAsCube(path, renderer) {
 function addMaterialGUI(gui, material, uniforms) {
   const folderName = `Material Properties (${material.name || 'Model ' + Math.random().toFixed(3)})`;
   const folder = gui.addFolder(folderName);
-  console.log('Uniforms passed to GUI:', uniforms);
   
   for (const key in uniforms) {
     const uniform = uniforms[key];
@@ -211,7 +215,7 @@ function addMaterialGUI(gui, material, uniforms) {
       });
     } else if (typeof uniform.value === 'number') {
       // Add slider for float uniforms
-      folder.add(uniform, 'value', 0, 1).name(key);
+      folder.add(uniform, 'value', 0.0, 1.0).name(key);
     }
   }
 
