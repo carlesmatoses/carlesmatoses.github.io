@@ -103,3 +103,11 @@ p a{
     padding: 1.2em;
     
 }
+
+/* WEBGL */
+.glb-viewer{
+    height: 400px;
+    width: 80%;
+    padding: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

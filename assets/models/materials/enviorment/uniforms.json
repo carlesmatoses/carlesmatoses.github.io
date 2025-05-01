@@ -1,0 +1,13 @@
+{
+    "uniforms": {
+      "envMap": {
+        "type": "sampler2D",
+        "value": "textures/photo_studio_loft_hall_2k.exr"
+      },
+      "color": {
+        "type": "vec3",
+        "value": [0.67, 0.0, 0.67]  
+      }
+    }
+  }
+  

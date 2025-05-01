@@ -81,6 +81,10 @@ Ambient Occlusion map: Once we have the scene geometry, we iterate over all poin
 
 <!-- Ambient Occlusion bend normal map -->
 To know which part of the enviorment map is most representative of a certain surface point we can store that information based on the hemisphere rays generated before. 
+
+Here is the interactive 3D viewer:
+
+{% glb_viewer id='viewer-1' models='suzane/suzane,enviorment' materials='material1,enviorment' %}
 # Reflection Occlusion
 <!--
 lets review how this technique works.
