@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     controls.maxDistance = 10;
 
     const gui = new dat.GUI(); // Initialize dat.GUI
-    gui.width = window.innerWidth-window.innerWidth/4; 
+    gui.width = canvas_container.clientWidth - 30; // Set width to 90% of the canvas width
 
     // Create a wrapper for GUI under the canvas
     const guiContainer = document.createElement('div');
