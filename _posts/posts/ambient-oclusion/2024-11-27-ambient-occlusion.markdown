@@ -45,6 +45,10 @@ This effect is artistic and ``not phisically accurate``. This said, it's still `
 
 More technically, Ambient Occlusion refers to the value of occlusion there is in each point of the surface.
 
+You may ask, **`Why can't we calculate how much light reaches the surface?`**. Short answer is `We can!!`. Long answer is `it requires lots of computation that do not allow for real time updates`. 
+
+To summarize, any point on a scene will recieve light bounces from any part of the world. Sometimes, this paths may be blocked by another object casting shadows. Global ilumination is usually computed in `ray tracing` or `path tracing` engines like Cycles. On static scenes we may be able to precompute and store it in textures but in dynamic scenes we need to calculate it per frame.
+
 {% comment %}
 <!-- 
 APROACHES:
@@ -64,10 +68,12 @@ addresses the problem of reflections not being correctly occluded when you use a
 
 # History
 <!-- On which documents was first treated this concept -->
-Ambinet Occlusion was first used in "Pearl harbour" to store the quantity if ambient light that reaches each point of an airplain. This same technique was used in Cruise Control a few years before to detect how much reflection should radiate each window.
+Ambinet Occlusion was first used in "Pearl harbour" to store the quantity of ambient light that reaches the surface of an airplain. This same technique was used in Cruise Control a few years before to detect how much reflection should radiate each window.
 
 <!-- Picture of Pearl harbour -->
 <!-- Picture of Cruise Control -->
+
+
 
 To generate the ambient enviorments (image based lightning technique) we create an image (HDRI, cube map, sphere image...) that combines all surronding lights (sky, sun, ground) recieved in a single point (usually where the character is placed). This is a simplification of global illumination where we place the lights in the scene and iterate over all of them to calculate the light on a surface point.
 
@@ -86,6 +92,8 @@ Here is the interactive 3D viewer:
 
 {% glb_viewer id='viewer-1' models='suzane,sphere' materials='material1,enviorment' %}
 # Reflection Occlusion
+{% glb_viewer id='viewer-1' models='suzane,sphere' materials='material1,enviorment' %}
+
 <!--
 lets review how this technique works.
 

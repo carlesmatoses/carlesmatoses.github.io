@@ -6,24 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const modelNames = JSON.parse(container.dataset.models || '[]');
     const materialNames = JSON.parse(container.dataset.materials || '[]');
 
-    // Scene, Camera, Renderer setup
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#c0c0c0');
-
-    const camera = new THREE.PerspectiveCamera(
-      50,
-      container.clientWidth / container.clientHeight,
-      0.1,
-      1000
-    );
-    camera.position.z = 5;
-
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.outputColorSpace = THREE.LinearSRGBColorSpace ;
     container.appendChild(renderer.domElement);
 
-    // OrbitControls setup
+    scene.background = new THREE.Color('#c0c0c0');
+    camera.position.z = 5;
+
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = false;
     controls.dampingFactor = 0.05;
@@ -31,33 +22,33 @@ document.addEventListener('DOMContentLoaded', () => {
     controls.minDistance = 2;
     controls.maxDistance = 10;
 
-    // Optional: Add a light if your shaders require lighting
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 5, 5).normalize();
-    // scene.add(light);
+    const gui = new dat.GUI(); // Initialize dat.GUI
+    // Create a wrapper for GUI under the canvas
+    const guiContainer = document.createElement('div');
+    guiContainer.className = 'gui-container';
+    container.appendChild(guiContainer);
+    guiContainer.appendChild(gui.domElement);
 
-    // Load models and apply shader materials
+
     modelNames.forEach((modelName, index) => {
       const materialName = materialNames[index];
       const loader = new THREE.GLTFLoader();
-    
+
       loader.load(
         `/assets/models/${modelName}.glb`,
         async (gltf) => {
           const object = gltf.scene;
-    
+
           try {
-            // Load shader files and uniforms
             const [vertexShader, fragmentShader, uniformsJson] = await Promise.all([
               fetch(`/assets/models/materials/${materialName}/vertex.glsl`).then(r => r.text()),
               fetch(`/assets/models/materials/${materialName}/fragment.glsl`).then(r => r.text()),
               fetch(`/assets/models/materials/${materialName}/uniforms.json`).then(r => r.json())
             ]);
-    
-            // Format uniforms (async)
+
             const materialPath = `/assets/models/materials/${materialName}`;
             const uniforms = await formatUniformsAsync(uniformsJson, materialPath, renderer);
-    
+
             const shaderMaterial = new THREE.ShaderMaterial({
               vertexShader,
               fragmentShader,
@@ -65,13 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
               lights: false,
               side: THREE.DoubleSide
             });
-    
+
             // Apply shader material to all meshes in the model
             object.traverse(child => {
               if (child.isMesh) child.material = shaderMaterial;
             });
-    
+
             scene.add(object);
+
+            // Add GUI controls for the material
+            addMaterialGUI(gui, {name:materialName}, uniforms);
           } catch (err) {
             console.error('Error loading shader or uniforms:', err);
           }
@@ -82,9 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       );
     });
-    
 
-    // Handle window resize
     window.addEventListener('resize', () => {
       camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
@@ -196,4 +188,32 @@ function loadEquirectAsCube(path, renderer) {
       reject
     );
   });
+}
+
+/**
+ * Add GUI controls for a material's uniforms.
+ */
+function addMaterialGUI(gui, material, uniforms) {
+  const folderName = `Material Properties (${material.name || 'Model ' + Math.random().toFixed(3)})`;
+  const folder = gui.addFolder(folderName);
+  console.log('Uniforms passed to GUI:', uniforms);
+  
+  for (const key in uniforms) {
+    const uniform = uniforms[key];
+    if (uniform.value instanceof THREE.Color) {
+      // Add color picker for vec3 uniforms representing colors
+      folder.addColor({ [key]: `#${uniform.value.getHexString()}` }, key)
+        .onChange(value => uniform.value.set(value));
+    } else if (Array.isArray(uniform.value)) {
+      // Add sliders for vec3 or vec2 uniforms
+      uniform.value.forEach((_, i) => {
+        folder.add(uniform.value, i, 0, 1).name(`${key}[${i}]`);
+      });
+    } else if (typeof uniform.value === 'number') {
+      // Add slider for float uniforms
+      folder.add(uniform, 'value', 0, 1).name(key);
+    }
+  }
+
+  folder.open();
 }
