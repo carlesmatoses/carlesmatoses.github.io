@@ -1,8 +1,4 @@
 // viewer.js
-// Assumes the following scripts are loaded in your HTML:
-// <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
-// <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/loaders/GLTFLoader.js"></script>
-// <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.glb-viewer').forEach(container => {
@@ -24,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.outputColorSpace = THREE.LinearSRGBColorSpace ;
     container.appendChild(renderer.domElement);
 
     // OrbitControls setup
@@ -43,33 +40,41 @@ document.addEventListener('DOMContentLoaded', () => {
     modelNames.forEach((modelName, index) => {
       const materialName = materialNames[index];
       const loader = new THREE.GLTFLoader();
-      console.log('Loading model:', modelName, 'with material:', materialName);
+    
       loader.load(
         `/assets/models/${modelName}.glb`,
-        gltf => {
+        async (gltf) => {
           const object = gltf.scene;
-
-          // Load shader files
-          Promise.all([
-            fetch(`/assets/models/materials/${materialName}/vertex.glsl`).then(r => r.text()),
-            fetch(`/assets/models/materials/${materialName}/fragment.glsl`).then(r => r.text()),
-            fetch(`/assets/models/materials/${materialName}/uniforms.json`).then(r => r.json())
-          ]).then(([vertexShader, fragmentShader, uniforms]) => {
+    
+          try {
+            // Load shader files and uniforms
+            const [vertexShader, fragmentShader, uniformsJson] = await Promise.all([
+              fetch(`/assets/models/materials/${materialName}/vertex.glsl`).then(r => r.text()),
+              fetch(`/assets/models/materials/${materialName}/fragment.glsl`).then(r => r.text()),
+              fetch(`/assets/models/materials/${materialName}/uniforms.json`).then(r => r.json())
+            ]);
+    
+            // Format uniforms (async)
+            const materialPath = `/assets/models/materials/${materialName}`;
+            const uniforms = await formatUniformsAsync(uniformsJson, materialPath, renderer);
+    
             const shaderMaterial = new THREE.ShaderMaterial({
               vertexShader,
               fragmentShader,
-              uniforms: formatUniforms(uniforms, `/assets/models/materials/${materialName}`),
-              lights: false // Set to true if shaders expect lighting uniforms
+              uniforms,
+              lights: false,
+              side: THREE.DoubleSide
             });
-
+    
+            // Apply shader material to all meshes in the model
             object.traverse(child => {
               if (child.isMesh) child.material = shaderMaterial;
             });
-
+    
             scene.add(object);
-          }).catch(err => {
-            console.error('Shader loading error:', err);
-          });
+          } catch (err) {
+            console.error('Error loading shader or uniforms:', err);
+          }
         },
         undefined,
         error => {
@@ -77,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       );
     });
+    
 
     // Handle window resize
     window.addEventListener('resize', () => {
@@ -95,42 +101,99 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-function formatUniforms(uniformData, materialPath) {
-  
+/**
+ * Async utility to format shader uniforms from a JSON definition.
+ */
+async function formatUniformsAsync(uniformData, materialPath, renderer) {
   const formatted = {};
   const data = uniformData.uniforms || uniformData;
 
-  for (const key in data) {
-    const entry = data[key];
+  for (const key of Object.keys(data)) {
+    const { type, value, wrap } = data[key]; // Destructure `wrap` if present
 
-    // Handle texture loading based on the file extension
-    if (entry.type === 'sampler2D') {
-      const texturePath = `${materialPath}/${entry.value}`;
-      const extension = texturePath.split('.').pop().toLowerCase();
-
-      let texture;
-
-      // Choose the appropriate loader based on extension
-      if (['hdr', 'exr'].includes(extension)) {
-        const loader = extension === 'exr' ? new THREE.EXRLoader() : new THREE.RGBELoader();
-        texture = loader.load(texturePath, (loadedTexture) => {
-          loadedTexture.mapping = THREE.EquirectangularReflectionMapping; // For HDR or EXR
-          formatted[key] = { value: loadedTexture };
-        });
-        // texture = loader.load(texturePath);
-        formatted[key] = { value: texture };
-
-      } else if (['png', 'jpg', 'jpeg'].includes(extension)) {
-        const loader = new THREE.TextureLoader();
-        texture = loader.load(texturePath);
-        formatted[key] = { value: texture };
-      } else {
-        console.warn(`Unsupported texture format: ${extension}`);
+    if (type === 'sampler2D') {
+      const texture = await loadTexture2D(`${materialPath}/${value}`);
+      
+      // Apply wrapping if specified
+      if (wrap) {
+        const wrapType = getWrapType(wrap);
+        texture.wrapS = wrapType;
+        texture.wrapT = wrapType;
       }
-    } else {
-      formatted[key] = { value: entry.value };
+
+      formatted[key] = { value: texture };
+    } 
+    else if (type === 'samplerCube') {
+      formatted[key] = { value: await loadEquirectAsCube(`${materialPath}/${value}`, renderer) };
+    } 
+    else {
+      formatted[key] = { value }; // Pass through raw values (vec3, float, etc.)
     }
   }
 
   return formatted;
+}
+
+function getWrapType(wrap) {
+  switch (wrap.toLowerCase()) {
+    case 'repeat':
+      return THREE.RepeatWrapping;
+    case 'mirroredrepeat':
+      return THREE.MirroredRepeatWrapping;
+    case 'clamp':
+    case 'clamptoedge':
+      return THREE.ClampToEdgeWrapping;
+    default:
+      console.warn(`Unknown wrap type: ${wrap}. Defaulting to ClampToEdgeWrapping.`);
+      return THREE.ClampToEdgeWrapping;
+  }
+}
+
+function getFileExtension(path) {
+  return path.split('.').pop().toLowerCase();
+}
+
+function loadTexture2D(path) {
+  return new Promise((resolve, reject) => {
+    const ext = getFileExtension(path);
+
+    let loader;
+    if (ext === 'hdr') loader = new RGBELoader();
+    else if (ext === 'exr') loader = new THREE.EXRLoader();
+    else loader = new THREE.TextureLoader();
+
+    loader.load(
+      path,
+      (texture) => {
+        // if (ext === 'hdr' || ext === 'exr') {
+        //   texture.mapping = THREE.EquirectangularReflectionMapping;
+        // }
+        resolve(texture);
+      },
+      undefined,
+      reject
+    );
+  });
+}
+
+function loadEquirectAsCube(path, renderer) {
+  return new Promise((resolve, reject) => {
+    const ext = getFileExtension(path);
+    const loader = ext === 'exr' ? new THREE.EXRLoader() : new THREE.RGBELoader();
+
+    loader.load(
+      path,
+      (texture) => {
+        const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256, {
+          format: THREE.RGBAFormat,
+          generateMipmaps: true,
+          minFilter: THREE.LinearMipmapLinearFilter,
+      });
+        const cubeMap = cubeRenderTarget.fromEquirectangularTexture(renderer, texture).texture;
+        resolve(cubeMap);
+      },
+      undefined,
+      reject
+    );
+  });
 }

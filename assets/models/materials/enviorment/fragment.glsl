@@ -1,19 +1,10 @@
-uniform sampler2D envMap;
-uniform vec3 color;
+// fragment.glsl
+uniform samplerCube envMap;
 
-varying vec3 vReflect;
-
-vec2 sampleSphericalMap(vec3 v) {
-  vec2 uv = vec2(
-    atan(v.z, v.x) / (2.0 * 3.1415926) + 0.5,
-    asin(v.y) / 3.1415926 + 0.5
-  );
-  return uv;
-}
+varying vec3 vNormal;
 
 void main() {
-  vec2 uv = sampleSphericalMap(normalize(vReflect));
-  vec3 envColor = texture2D(envMap, uv).rgb;
-
-  gl_FragColor = vec4(envColor, 1.0);
+  vec3 normal = normalize(vNormal);
+  vec4 envColor = textureCube(envMap, normal);
+  gl_FragColor = vec4(pow(envColor.rgb,vec3(1.0/2.2)), 1.0);
 }
