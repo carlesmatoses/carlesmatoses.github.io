@@ -12,7 +12,7 @@ void main() {
   vec3 texColor = texture2D(tex_diffuse, vUv).rgb;
   vec3 envColor = textureCube(envMap, normal).rgb;
   
-  vec3 finalColor = envColor;
+  vec3 finalColor = envColor*texColor;
 
   gl_FragColor = vec4(pow(finalColor, vec3(1.0/2.2)), 1.0);
 }
