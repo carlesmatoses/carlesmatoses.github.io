@@ -26,5 +26,5 @@ module Jekyll
     end
   end
   
-  Liquid::Template.register_tag('ref', Jekyll::ReferenceTag)
+  Liquid::Template.register_tag('cite', Jekyll::ReferenceTag)
   

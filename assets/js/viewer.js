@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(canvas_container);
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, canvas_container.clientWidth / canvas_container.clientHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(50, canvas_container.clientWidth / canvas_container.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(canvas_container.clientWidth, canvas_container.clientHeight);
     canvas_container.appendChild(renderer.domElement);
 
     scene.background = new THREE.Color('#c0c0c0');
-    camera.position.z = 5;
+    camera.position.z = 3;
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = false;
@@ -216,6 +216,9 @@ function addMaterialGUI(gui, material, uniforms) {
     } else if (typeof uniform.value === 'number') {
       // Add slider for float uniforms
       folder.add(uniform, 'value', 0.0, 1.0).name(key);
+    } else if (typeof uniform.value === 'boolean') {
+      // Add checkbox for boolean uniforms
+      folder.add(uniform, 'value').name(key);
     }
   }
 

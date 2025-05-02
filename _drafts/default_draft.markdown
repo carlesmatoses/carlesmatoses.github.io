@@ -74,6 +74,13 @@ This is an external link from the bibliography [Jekyll docs][jekyll-docs]
 page rendered at:
 {% endrender_time %}
 
+# Equations
+{% equation id="eq:energy" %}
+E = mc^2
+{% endequation %}
+
+As shown in equation {% ref "eq:energy" %}, energy is proportional to mass.
+
 # Bibliography
 
 

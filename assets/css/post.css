@@ -111,6 +111,7 @@ p a{
     padding-bottom:20px;
     padding-left: 2px;
     padding-right: 2px;
+    margin-bottom: 10px;
 }
 
 .canvas-container{
@@ -118,6 +119,10 @@ p a{
     height: 400px;
     margin: auto;
     padding: 0;
+}
+
+.canvas-container:hover {
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 .dg {

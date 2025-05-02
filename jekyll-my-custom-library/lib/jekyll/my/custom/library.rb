@@ -5,6 +5,7 @@ require_relative "library/bibliography"
 require_relative "library/bibliography_loader"
 require_relative "library/ref"
 require_relative "library/glb_viewer_tag"
+require_relative "library/equation_refs"
 
 module Jekyll
   module My

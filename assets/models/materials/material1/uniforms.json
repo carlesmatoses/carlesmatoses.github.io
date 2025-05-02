@@ -2,17 +2,27 @@
     "uniforms": {
       "tex_diffuse": {
         "type": "sampler2D",
-        "value": "textures/diffuse.png"
+        "value": "../textures/diffuse.png"
       },
       "shadowMap": {
         "type": "sampler2D",
-        "value": "textures/backed_shadow.png"
+        "value": "../textures/backed_shadow.png"
+      },
+      "AOMap": {
+        "type": "sampler2D",
+        "value": "../textures/Suzanne_AO.png"
       },
       "envMap": {
         "type": "samplerCube",
-        "value": "textures/photo_studio_loft_hall_2k_irradiance.exr"
+        "value": "../textures/photo_studio_loft_hall_2k_irradiance.exr"
       },
       "global_illumination": {
+        "type": "float",
+        "value": 0.1,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "AO": {
         "type": "float",
         "value": 0.1,
         "min": 0.0,
