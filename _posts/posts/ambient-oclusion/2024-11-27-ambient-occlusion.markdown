@@ -142,7 +142,11 @@ fr = k_d \cdot f_{lambert} + k_s \cdot f_{cook−torrance}
 
 In equation {% ref "eq:energy" %} ``labert represents the diffuse component`` and ``cook-torrance represents the specular component``.
 
-Lets visualize now the result with path tracing against global illumination to see the improvements when applying Ambient Occlusion. The model Suzanne should have a shadow under the hat and also occlude light to his right ear. Ambient occlusion will only take care of the shadows on the hat since geometryes are close but it will not cas shadows on the right side. All darkened area will be provided from an irradinace texture of the environment.
+Lets visualize now the result with path tracing against global illumination to see the improvements when applying Ambient Occlusion. The model Suzanne should have a shadow under the hat and also occlude light to his right ear. 
+
+Ambient occlusion will only take care of the shadows on the hat since geometryes are close but it will not cast shadows on the right side. All darkened area will be provided from an irradinace texture of the environment.
+
+The Shadow slide will show a backed path tracing shadow from cycles.
 
 {% glb_viewer id='viewer-1' models='suzane,sphere' materials='material1,enviorment' %}
 
