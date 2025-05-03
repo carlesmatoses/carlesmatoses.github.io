@@ -19,7 +19,7 @@ Gallery | My path to learn CGI.
 My interest in CGI started when I was around 14 years old. My generation lived during the ``raising of youtube and social media content``. 
 
 One of those days, content creators published videos like 
-["Revenge" - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video)](https://www.youtube.com/watch?v=cPJUBQd-PNM) where they remixed songs with`` Minecraft animations following the storyline``.
+["Revenge" - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video)](https://www.youtube.com/watch?v=cPJUBQd-PNM) where they remixed songs with ``Minecraft animations following the storyline``.
 
 {% include figure.html image="https://i.ytimg.com/vi/cPJUBQd-PNM/sddefault.jpg" 
     caption="Revenge" 
@@ -34,13 +34,13 @@ I stumbled upon a video called  [Stick With Me - Minecraft Animation - Slamacow]
 
 I started with Autodesk Maya for a few days without much success. 
 
-On a second try I discovered Cinema4D, it felt cumbersom and I lacked the neccessary background knowledge. 
+On a second try I discovered Cinema4D, it felt cumbersome and I lacked the necessary background knowledge. 
 
-A few months later I was told there was a free prgram that was growing really fast.
+A few months later I was told there was a free program that was growing really fast.
 
-``Blender`` was a game changer for me. I was able to understand the interface pretty quick and not only that but I found a Blender Guru. ``Andrew Price`` teachd me all the basics. 
+``Blender`` was a game changer for me. I was able to understand the interface pretty quick and not only that but I found a Blender Guru's channel where I learned the basics. 
 
-I spent my following years recreating tutorials and studiyng the bases of CGI.
+I spent my following years recreating tutorials and studying the bases of CGI.
 
 {% include figure.html image="/images/my_learning_path_cgi/donuts3.jpg" 
     caption="Donuts" 
