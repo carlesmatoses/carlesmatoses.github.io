@@ -129,7 +129,7 @@ addresses the problem of reflections not being correctly occluded when you use a
 Ambient Occlusion was first used in "Pearl harbour" to store the quantity of ambient light that reaches the surface of an airplane [figure 4](#img:4). This same technique was used in Cruise Control a few years before to determine the reflection intensity of each window. Find more information on  {% cite history-background %}.
 
 <!-- Picture of Pearl harbour -->
-{% include figure.html image="https://www.fxguide.com/wp-content/uploads/2011/01/ocllusion.jpg" 
+{% include big_figure.html image="https://www.fxguide.com/wp-content/uploads/2011/01/ocllusion.jpg" 
     caption="figure 4: Pearl Harbor Reflection Occlusion." 
     id="img:4"
 %}
@@ -172,7 +172,7 @@ Remember, this technique is **view dependent** therefore we need to compute it e
 1. Get the surface normal and position. 
 2. Get the camera position.
 3. Calculate the reflection vector from the three previous variables. It will look like [figure 11](#img:11)
-4. Use some technique to calculate ray intersections from the surface to the rest of geometry.
+4. Use some technique to calculate ray intersections from the surface to the rest of geometry [figure 12](#img:12).
 5. Store the collision distance per fragment.
 6. Use it to darken the Reflection Map using a shader.
 
@@ -187,14 +187,16 @@ Remember, this technique is **view dependent** therefore we need to compute it e
     id="img:12"
 %}
 
+
+
+The limit of this technique is that, ``instead of reflecting itself, it  just darkens the surface``. For general purposes this is enough. In path tracing renderers you are usually provided a parameter to choose how many times light will bounce. This is of course more realistic, but may take several minutes [figure 13](#img:13).
+
 {% include big_figure.html image="/images/ambient_occlusion/cyclesReflections.png" 
     caption="figure 13: Cycles Reflections with 0, 1 and 2 bounces respectively." 
     id="img:13"
 %}
 
-The limit of this technique is that, ``instead of reflecting itself, it  just darkens the surface``. For general purposes this is enough. In path tracing renderers you are usually provided a parameter to choose how many times light will bounce. This is of course more realistic, but may take several minutes.
-
-As easy and powerful this method may seem it is not used because of the processing time it takes for each frame.
+As easy and powerful this method may seem, it is not used because of the processing time it takes for each frame to calculate collision. New techniques like Ray Tracing may be able to provide real time Reflection Maps in the future.
 
 <!-- # Problem
 We already know we want to calculate the light reaching to each surface point. In real time applications its common to use  ``Image Based techniques`` to fake illumination on surfaces. The main problem with this approach is that we use normal directions from the surface to get the image pixel illuminating that point. This approach will not take into account self occlusion or between objects occlusion. 
@@ -207,10 +209,38 @@ Additionally, the hat projects a shadow like a tree. Calculating this types of s
 For This reasons, the ambient occlusion will only simplify self occlusions or inter occlusions but not shadow projection. A phisically correct approach would not require ambient occlusion but it will take longer to render. -->
 
 # Ambient Occlusion
+Finally!!, we get to point of the post. ``We are now on the Lambert site of the formula`` {% ref "eq:energy" %}.
+
+AO is actually the same idea as Reflection Occlusion. The biggest difference is that we will use lots of vectors per fragment instead of one. 
+
+Mirrors bounce light from exactly one point (at least in a perfect mirror). There are cases where the mirror may be a bit dirty and we receive light from closer directions generating a blurred image. Ambient Occlusion works under the premise that the surface is the opposite of a mirror, ``light will come from all directions``. 
+
+I will try to explain in future posts the physical principles behind  diffuse and specular lights. For the moment lets just assume the diffuse component represents the absorbed light inside the surface and radiated back in random directions.
+
+For more context we can look at the lambertian formula. You can also look at {% cite learnopengl_diffuse_irradiance %}:
+{% equation id="eq:lambert" %}
+L_d = k_d \cdot I \cdot max(0,N \cdot L)
+{% endequation %}
+
+
+{% include big_figure.html image="https://learnopengl.com/img/pbr/ibl_hemisphere_sample.png" 
+    caption="figure 14: Lambert. Image extracted from ``learnopengl``." 
+    id="img:14"
+%}
+
+The above explanations are just for illustration purposes. I want to show the relationship between Ambient Occlusion and diffused light. The thing is that since light hits a surface point from all directions we must check occlusion on all directions too. If there is no occlusion, the diffuse component will become the weighted average of all incident light. 
+
+A basic algorithm to calculate Ambient Occlusion is to generate random vectors inside a hemisphere aligned with the fragment normal. We ray cast in those directions and store how many rays have been occluded. We average the result and store it in a texture.
+
+An additional layer of realism would be to integrate lambert's rul where more aligned incident rays with the fragment's normal, the more they contribute to the final result. 
+
+This technique is view independent therefore we can bake it and use it in any context.
+
+
 <!-- Ambient Occlusion map: Once we have the scene geometry, we iterate over all points in the surface and generate an hemisphere oriented in the surface normal direction. Now we can check for colisions of the rays being casted in those directions and store the result plus the angle. Based on the lambertian formula, we know that incident light has more effect when the angle is close to 0º and it starts to reflect more light the closer it gets to 90º degrees.
 
 <!-- Ambient Occlusion bend normal map -->
-To know which part of the enviorment map is most representative of a certain surface point we can store that information based on the hemisphere rays generated before.  -->
+<!-- To know which part of the enviorment map is most representative of a certain surface point we can store that information based on the hemisphere rays generated before. -->
 
 
 
