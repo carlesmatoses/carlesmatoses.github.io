@@ -24,14 +24,15 @@ permalink: post/ambient-occlusion
 ## Global Illumination & Image Base Lightning
 **This concepts are out of the scopes but I will summarize them.**
 
-``Global Illumination`` refers to calculating all bounces of light reaching each surface point. This is expensive but provides good results. This takes into account that light bounces in each surface and reaches other objects. 
+``Global Illumination`` refers to calculating all bounces of light reaching each surface point. This is expensive but provides good results. 
+<!-- This takes into account that light bounces in each surface and reaches other objects.  -->
 
 {% include figure.html image="https://cdn2.unrealengine.com/feed-ue5-early-access-livestream-lumen-1920x1080-a4d78e37fd8e.jpg" 
     caption="figure 6: Unreal Engine: Lumen technology." 
     id="img:6"
 %}
 
-To simplify global illumination **we could place lights from all directions simulating the sky or even the floor** if some objects have to bounce back light.
+To simplify global illumination **we could place lights from all directions simulating the sky or even the floor** if some objects have to bounce light back.
 
 {% include figure.html image="/images/ambient_occlusion/global_ilumination.png" 
     caption="figure 7: Global Illumination using virtual lights." 
@@ -44,7 +45,7 @@ To simplify global illumination **we could place lights from all directions simu
     id="img:8"
 %}
 
-Instead of placing hundreds of lights in the scene, we can **group them in an image**.
+Instead of placing hundreds of lights in the scene, we can **group them into an image**.
 
 {% include figure.html image="/images/ambient_occlusion/global_ilumination_cycles.png" 
     caption="figure 9: Global Illumination using environment image and path trace engine (cycles)." 
@@ -61,10 +62,11 @@ The ``limitations`` of this technique are that **we do not take into account occ
 
 In resume: **The most physically accurate approach for rendering is by ray trancing and path tracing. Real time techniques require a global illumination simplifications, usually Image based lightning techniques. This simplifications have limitations that we must overcome**.
 
+<!-- 
 ## How is Global Illumination faked with an environment image?
-<!-- TODO -->
 1. We use normal direction.
-2. We get the color on that direction.
+2. We get the color on that direction. 
+-->
 
 # Ambient Occlusion Concept
 **Ambient Occlusion (AO)** is a rendering technique used to estimate how much ambient light reaches a surface point in a scene. In essence, it simulates how exposed each point is to surrounding light, based on nearby geometry.
@@ -84,7 +86,6 @@ The long answer: **it’s computationally expensive and often not feasible in re
 
 Physically based techniques like **ray tracing** and **path tracing** (used in renderers like Cycles) simulate full global illumination, but they require significant processing power. In exchange, they provide close to real light occlusion and do not need to use ambient occlusion techniques.
 
-For static scenes in real time applications, ambient occlusion can be precomputed and stored in textures. For dynamic scenes, it must be recalculated every frame, which can be costly.
 
 As seen in [figure 1](#img:1) and [figure 2](#img:2), nearby geometry blocks ambient light, creating soft shadows that enhance the perception of depth and form.
 
@@ -98,14 +99,31 @@ As seen in [figure 1](#img:1) and [figure 2](#img:2), nearby geometry blocks amb
     id="img:2"
 %}
 
-<!-- In short, every point in a scene could theoretically receive light from every direction. However, some of these paths may be blocked by other objects, resulting in subtle shading — this is the essence of ambient occlusion.  -->
-
-For this reason **we can use two techniques for recreating shadows in real time: Ambient occlusion and shadow casting**. Both can be precomputed for static scenes or calculated dynamically in interactive environments.
+For static scenes in real time applications, ambient occlusion can be precomputed and stored in textures. For dynamic scenes, it must be recalculated every frame, which can be costly.
+Lucky for us **we can use two techniques for recreating shadows in real time and dynamic scenes: Ambient occlusion and shadow casting**. 
+<!-- Both can be precomputed or calculated dynamically in interactive environments. -->
 
 There are as many ways for recreate realistic shadows as you can imagine. In this post we are going to explore the ones related to AO techniques. 
 
+Lets visualize now the result with **path tracing against global illumination** to see the improvements when applying Ambient Occlusion. The model ``Suzanne should have a shadow under the hat and also occlude light to his right ear``. 
 
-<!-- More technically, Ambient Occlusion refers to the value of occlusion there is in each point of the surface. -->
+**Ambient occlusion will take care of the contact shadows on the hat**. It will not block the light coming from the window. All darkened and lighted areas will be provided from an irradiance texture of the environment (Image Based Lightning Global Illumination).
+
+{% include figure.html image="/images/ambient_occlusion/shadow_example.png" 
+    caption="figure 9: Path Traicing Shadow Example" 
+    id="img:9"
+%}
+{% include figure.html image="/images/ambient_occlusion/ao_example .png" 
+    caption="figure 10: Ambient Occlusion Example" 
+    id="img:10"
+%}
+
+The Shadow slide will show a backed path tracing shadow from cycles for comparison. Path tracing will use geometry to block light rays from the window.
+
+
+
+{% glb_viewer id='viewer-1' models='suzane,sphere' materials='material1,enviorment' %}
+
 
 {% comment %}
 <!-- 
@@ -140,7 +158,7 @@ Ambient Occlusion was first used in "Pearl harbour" to store the quantity of amb
 
 We already mentioned that this technique can be expensive and time consuming. Luckily for them, films do not require real time processes even though its still desired. For this productions, they ``backed geometry occlusions in image sequences`` and use it in the rendering pipeline as another texture. 
 
-We are going to explore two different techniques developed by ILM: Ambient Occlusion and Reflection Occlusion. The reason they developed two techniques is because materials are usually composed of two components: ``Diffuse`` and ``Specular``.
+We are going to explore **two different techniques developed by ILM: Ambient Occlusion and Reflection Occlusion**. The reason they developed two techniques is because materials are usually composed of two components: ``Diffuse`` and ``Specular``.
 
 {% equation id="eq:energy" %}
 fr = k_d \cdot f_{lambert} + k_s \cdot f_{cook−torrance}
@@ -148,13 +166,7 @@ fr = k_d \cdot f_{lambert} + k_s \cdot f_{cook−torrance}
 
 In equation {% ref "eq:energy" %} ``lambert represents the diffuse component`` and ``cook-torrance represents the specular component``.
 
-Lets visualize now the result with path tracing against global illumination to see the improvements when applying Ambient Occlusion. The model Suzanne should have a shadow under the hat and also occlude light to his right ear. 
 
-Ambient occlusion will only take care of the contact shadows on the hat. It will not cast shadows on the right side of the face even dough intuitively we see it should be darker than the window side. All darkened and lighted areas will be provided from an irradiance texture of the environment (Image Based Lightning Global Illumination).
-
-The Shadow slide will show a backed path tracing shadow from cycles for comparing.
-
-{% glb_viewer id='viewer-1' models='suzane,sphere' materials='material1,enviorment' %}
 
 <!-- To generate the ambient enviorments (image based lightning technique) we create an image (HDRI, cube map, sphere image...) that combines all surronding lights (sky, sun, ground) recieved in a single point (usually where the character is placed). This is a simplification of global illumination where we place the lights in the scene and iterate over all of them to calculate the light on a surface point. -->
 
@@ -166,7 +178,7 @@ The Shadow slide will show a backed path tracing shadow from cycles for comparin
 # Reflection Occlusion
 We will start by explaining Reflection Occlusion. This technique will use ``ray tracing to detect whether the fragment is occluded or not``. We then store the result on an image and use it to darken the final reflections.
 
-Remember, this technique is **view dependent** therefore we need to compute it each frame or bake it if we already know the camera position for the howl animation.
+Remember, this technique is **view dependent** therefore we need to compute it each frame or bake it if we already know the camera position for the hole animation.
 
 ``The process to obtain the Reflection Occlusion path is``:
 1. Get the surface normal and position. 
@@ -209,13 +221,21 @@ Additionally, the hat projects a shadow like a tree. Calculating this types of s
 For This reasons, the ambient occlusion will only simplify self occlusions or inter occlusions but not shadow projection. A phisically correct approach would not require ambient occlusion but it will take longer to render. -->
 
 # Ambient Occlusion
-Finally!!, we get to point of the post. ``We are now on the Lambert site of the formula`` {% ref "eq:energy" %}.
+Finally!!, we get to point of the post. ``We are now on the Lambert side of the formula`` {% ref "eq:energy" %}.
 
 AO is actually the same idea as Reflection Occlusion. The biggest difference is that we will use lots of vectors per fragment instead of one. 
 
-Mirrors bounce light from exactly one point (at least in a perfect mirror). There are cases where the mirror may be a bit dirty and we receive light from closer directions generating a blurred image. Ambient Occlusion works under the premise that the surface is the opposite of a mirror, ``light will come from all directions``. 
+``The diffuse light Concept:`` Mirrors bounce light from exactly one point (at least in a perfect mirror). There are cases where the mirror may be a bit dirty and it reflects light from closer directions generating a blurred image. Diffuse light works under the premise that  ``light will hit the surface from all directions``. 
+{% include big_figure.html image="/images\ambient_occlusion\comparing_spheres.png" 
+    caption="figure 14: Lambert. Image extracted from ``learnopengl``." 
+    id="img:14"
+%}
 
-I will try to explain in future posts the physical principles behind  diffuse and specular lights. For the moment lets just assume the diffuse component represents the absorbed light inside the surface and radiated back in random directions.
+{% alert warning %}
+This is only for illustration purposes. 
+**Concepts like Specular, Diffuse, microfacet model, Roughness, Metalness, Fresnel, Physically Based Rendering and scattering light deserve a post for themselves.** 
+
+I will try to explain in the future the physical principles behind  diffuse and specular lights. For the moment lets just assume the`` diffuse component represents the absorbed light inside the surface and radiated back in random directions``.
 
 For more context we can look at the lambertian formula. You can also look at {% cite learnopengl_diffuse_irradiance %}:
 {% equation id="eq:lambert" %}
@@ -228,11 +248,14 @@ L_d = k_d \cdot I \cdot max(0,N \cdot L)
     id="img:14"
 %}
 
-The above explanations are just for illustration purposes. I want to show the relationship between Ambient Occlusion and diffused light. The thing is that since light hits a surface point from all directions we must check occlusion on all directions too. If there is no occlusion, the diffuse component will become the weighted average of all incident light. 
+{% endalert %}
+
+
+Since light hits a surface point from all directions ``we must check occlusion on all directions too``. If there is no occlusion, the diffuse component will become the weighted average of all incident light. 
 
 A basic algorithm to calculate Ambient Occlusion is to generate random vectors inside a hemisphere aligned with the fragment normal. We ray cast in those directions and store how many rays have been occluded. We average the result and store it in a texture.
 
-An additional layer of realism would be to integrate lambert's rul where more aligned incident rays with the fragment's normal, the more they contribute to the final result. 
+An additional layer of realism would be to integrate lambert's rule where more aligned incident rays with the fragment's normal, the more they contribute to the final result. 
 
 This technique is view independent therefore we can bake it and use it in any context.
 
