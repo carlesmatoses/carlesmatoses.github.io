@@ -20,6 +20,15 @@ permalink: post/ambient-occlusion
 
 {% bibliography_loader _bibliography/ao_references.bib %}
 
+
+<!-- 
+GIDE FOR WRITING THIS POST
+- Ultimate goal: explain ambient occlusion technique and the child techniques such as SSAO
+
+- Contextualize the problem. All media, stylized or not, needs a certain lightning realism to feel appealing. This has been the motivation for thousands of artists and different movements such as impressionism
+- This technique is archived in digital media by calculating certain properties such as how much light reaches the surface.
+ -->
+
 # Introduction
 ## Global Illumination & Image Base Lightning
 **This concepts are out of the scopes but I will summarize them.**
@@ -27,38 +36,39 @@ permalink: post/ambient-occlusion
 ``Global Illumination`` refers to calculating all bounces of light reaching each surface point. This is expensive but provides good results. 
 <!-- This takes into account that light bounces in each surface and reaches other objects.  -->
 
-{% include figure.html image="https://cdn2.unrealengine.com/feed-ue5-early-access-livestream-lumen-1920x1080-a4d78e37fd8e.jpg" 
-    caption="figure 6: Unreal Engine: Lumen technology." 
-    id="img:6"
-%}
+
+{% figure id="lumen" size="0.5" caption="Unreal Engine: Lumen technology." %}
+https://cdn2.unrealengine.com/feed-ue5-early-access-livestream-lumen-1920x1080-a4d78e37fd8e.jpg
+{% endfigure %}
 
 To simplify global illumination **we could place lights from all directions simulating the sky or even the floor** if some objects have to bounce light back.
 
-{% include figure.html image="/images/ambient_occlusion/global_ilumination.png" 
-    caption="figure 7: Global Illumination using virtual lights." 
-    id="img:7"
-%}
+{% figure id="global-illumination" size="1.0" caption="Global Illumination using virtual lights." %}
+    /images/ambient_occlusion/global_ilumination.png
+    /images/ambient_occlusion/global_ilumination_back.png
+{% endfigure %}
 
-
-{% include figure.html image="/images/ambient_occlusion/global_ilumination_back.png" 
-    caption="figure 8: Global Illumination using virtual lights composed on top of a background image." 
-    id="img:8"
-%}
 
 Instead of placing hundreds of lights in the scene, we can **group them into an image**.
 
-{% include figure.html image="/images/ambient_occlusion/global_ilumination_cycles.png" 
-    caption="figure 9: Global Illumination using environment image and path trace engine (cycles)." 
-    id="img:9"
-%}
 
-{% include figure.html image="/images/ambient_occlusion/global_ilumination_eevee.png" 
-    caption="figure 10: Global Illumination using Image Based Lightning (IBL)." 
-    id="img:10"
-%}
+
+{% figure id="gi_cycles" size="0.49" caption="Global Illumination using environment image and path trace engine (cycles)." %}
+    /images/ambient_occlusion/global_ilumination_cycles.png
+{% endfigure %}
+
+{% figure id="ibl" size="0.49" caption="Global Illumination using Image Based Lightning (IBL)." %}
+    /images/ambient_occlusion/global_ilumination_eevee.png
+{% endfigure %}
 
 
 The ``limitations`` of this technique are that **we do not take into account occlusion**, buuuuut... we are trying to overcome that.
+{% figure id="IBL_no_shadows" size="0.49" caption="Suzanne with Image Based Lightning shows light under the hat and is not casting shadows from the windows" %}
+\images\ambient_occlusion\ao_without_shadows.png
+{% endfigure %}
+{% figure id="global_illumination_path_tracing" size="0.49" caption="Suzanne rendered with path tracing shows how light is blocked by near geometry as well as blocking lights from the windows" %}
+\images\ambient_occlusion\ao_with_shadows.png
+{% endfigure %}
 
 In resume: **The most physically accurate approach for rendering is by ray trancing and path tracing. Real time techniques require a global illumination simplifications, usually Image based lightning techniques. This simplifications have limitations that we must overcome**.
 
@@ -69,14 +79,16 @@ In resume: **The most physically accurate approach for rendering is by ray tranc
 -->
 
 # Ambient Occlusion Concept
-**Ambient Occlusion (AO)** is a rendering technique used to estimate how much ambient light reaches a surface point in a scene. In essence, it simulates how exposed each point is to surrounding light, based on nearby geometry.
+**Ambient Occlusion (AO)** is a rendering technique used to estimate how much ambient light reaches a surface point in a scene. In essence, ``it simulates how exposed each point is to surrounding light``, based on nearby geometry.
 
-In the real world, light rays are often blocked or "occluded" by other objects. This effect happens naturally and gives surfaces subtle shadows in creases, corners, and areas where objects are close together. Recreating this effect in computer graphics adds a layer of realism to CGI scenes  ([figure 3](#img:3)).
+In the real world, light rays are often blocked or "occluded" by other objects. This effect happens naturally and gives surfaces subtle shadows in creases, corners, and areas where objects are close together. Recreating this effect in computer graphics adds a layer of realism to CGI scenes ({% ref figure:real-world-ao %}).
 
-{% include figure.html image="/images/ambient_occlusion/real_ao.jpg" 
-    caption="Figure 3: Ambient occlusion visible in real-world objects." 
-    id="img:3"
-%}
+{% figure 
+id="real-world-ao" 
+size="0.49"
+caption="Ambient occlusion visible in real-world objects." %}
+/images/ambient_occlusion/real_ao.jpg
+{% endfigure %}
 
 That said, **ambient occlusion is not physically accurate**, but rather an *artistic approximation* of a real-world phenomenon. It's designed to enhance depth perception and spatial relationships in rendered images without simulating full global illumination.
 
@@ -87,9 +99,13 @@ The long answer: **it’s computationally expensive and often not feasible in re
 Physically based techniques like **ray tracing** and **path tracing** (used in renderers like Cycles) simulate full global illumination, but they require significant processing power. In exchange, they provide close to real light occlusion and do not need to use ambient occlusion techniques.
 
 
-As seen in [figure 1](#img:1) and [figure 2](#img:2), nearby geometry blocks ambient light, creating soft shadows that enhance the perception of depth and form.
+As you can see in {% ref figure:ao_example %}, nearby geometry blocks ambient light, creating soft shadows that enhance the perception of depth and form.
 
-{% include figure.html image="/images/ambient_occlusion/blender_ao_shader_off.png" 
+{% figure id="ao_example" caption="Wave grid before and after applying Ambient Occlusion" %}
+/images/ambient_occlusion/blender_ao_shader_off.png
+/images/ambient_occlusion/blender_ao_shader.png
+{% endfigure %}
+<!-- {% include figure.html image="/images/ambient_occlusion/blender_ao_shader_off.png" 
     caption="Figure 1: Wave grid without ambient occlusion." 
     id="img:1"
 %}
@@ -97,7 +113,7 @@ As seen in [figure 1](#img:1) and [figure 2](#img:2), nearby geometry blocks amb
 {% include figure.html image="/images/ambient_occlusion/blender_ao_shader.png" 
     caption="Figure 2: Wave grid with ambient occlusion applied." 
     id="img:2"
-%}
+%} -->
 
 For static scenes in real time applications, ambient occlusion can be precomputed and stored in textures. For dynamic scenes, it must be recalculated every frame, which can be costly.
 Lucky for us **we can use two techniques for recreating shadows in real time and dynamic scenes: Ambient occlusion and shadow casting**. 

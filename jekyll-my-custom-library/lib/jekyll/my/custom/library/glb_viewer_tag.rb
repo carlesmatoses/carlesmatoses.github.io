@@ -1,4 +1,4 @@
-# glb_viewer_tag.rb (in your custom gem, _plugins/glb_viewer_tag.rb)
+# glb_viewer_tag.rb 
 
 module Jekyll
     class GlbViewerTag < Liquid::Tag
