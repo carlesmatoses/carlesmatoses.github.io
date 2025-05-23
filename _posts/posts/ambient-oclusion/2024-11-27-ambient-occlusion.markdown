@@ -29,11 +29,35 @@ GIDE FOR WRITING THIS POST
 - This technique is archived in digital media by calculating certain properties such as how much light reaches the surface.
  -->
 
+<!-- 
+* Script
+# how history looks for realism
+
+-->
+
 # Introduction
+We all like Games, Films, cartoons and other media contents. On the recent years we have seen an increasing graphical improvement trying to get closer to reality. This has been the case for centuries on lots of fields such as paintings and sculpture. Painters on the impressionism artistic period tried to capture a scene without shapes or form, just capturing the light allowing it to define the objects. This highlights the effect illumination has on our perception. 
+
+{% figure id="lumen" size="1.0" caption="Paintings trying to represent light in an appealing way" col="2" %}
+https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/960px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg
+/images/ambient_occlusion/toystory.jpg
+{% endfigure %}
+
+Computer generated films such as Toy story illustrates the evolution of techniques for photorealism. Even high stylized games are not free of this requirement of respecting light behavior since it will have a direct impact on how we feel about what we see. That is why some rules are constant for good looking media such as having shadows and light intensity and light interaction. 
+
+{% figure id="lumen" size="1.0" caption="https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg" %}
+https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg
+{% endfigure %}
+
+In this post we will try to see how occlusion shadows have been done in games and films to improve realism.
+
+
+
 ## Global Illumination & Image Base Lightning
 **This concepts are out of the scopes but I will summarize them.**
 
-``Global Illumination`` refers to calculating all bounces of light reaching each surface point. This is expensive but provides good results. 
+### Global Illumination
+One of the characteristics of light is that it bounces from one object to the other and so on.  ``Global Illumination`` refers to calculating all bounces of light reaching each surface point. This is expensive but provides good results. 
 <!-- This takes into account that light bounces in each surface and reaches other objects.  -->
 
 
@@ -41,7 +65,7 @@ GIDE FOR WRITING THIS POST
 https://cdn2.unrealengine.com/feed-ue5-early-access-livestream-lumen-1920x1080-a4d78e37fd8e.jpg
 {% endfigure %}
 
-To simplify global illumination **we could place lights from all directions simulating the sky or even the floor** if some objects have to bounce light back.
+To simplify or "fake" global illumination **we could place lights from all directions simulating the sky or even the floor** if some objects have to bounce light back.
 
 {% figure id="global-illumination" size="1.0" caption="Global Illumination using virtual lights." %}
     /images/ambient_occlusion/global_ilumination.png
@@ -49,15 +73,18 @@ To simplify global illumination **we could place lights from all directions simu
 {% endfigure %}
 
 
+### Image Base Lightning
 Instead of placing hundreds of lights in the scene, we can **group them into an image**.
 
+{% figure id="gi_cycles" size="0.55" caption="spherical image of a house" %}
+    /images/ambient_occlusion/photo_studio_loft_hall_2k.jpg
+{% endfigure %}
 
-
-{% figure id="gi_cycles" size="0.49" caption="Global Illumination using environment image and path trace engine (cycles)." %}
+{% figure id="gi_cycles" size="0.5" caption="Global Illumination using environment image and path trace engine (cycles)." %}
     /images/ambient_occlusion/global_ilumination_cycles.png
 {% endfigure %}
 
-{% figure id="ibl" size="0.49" caption="Global Illumination using Image Based Lightning (IBL)." %}
+{% figure id="ibl" size="0.5" caption="Global Illumination using Image Based Lightning (IBL)." %}
     /images/ambient_occlusion/global_ilumination_eevee.png
 {% endfigure %}
 
@@ -70,7 +97,9 @@ The ``limitations`` of this technique are that **we do not take into account occ
 \images\ambient_occlusion\ao_with_shadows.png
 {% endfigure %}
 
+{% alert  %}
 In resume: **The most physically accurate approach for rendering is by ray trancing and path tracing. Real time techniques require a global illumination simplifications, usually Image based lightning techniques. This simplifications have limitations that we must overcome**.
+{% endalert %}
 
 <!-- 
 ## How is Global Illumination faked with an environment image?
@@ -79,9 +108,9 @@ In resume: **The most physically accurate approach for rendering is by ray tranc
 -->
 
 # Ambient Occlusion Concept
-**Ambient Occlusion (AO)** is a rendering technique used to estimate how much ambient light reaches a surface point in a scene. In essence, ``it simulates how exposed each point is to surrounding light``, based on nearby geometry.
+**Ambient Occlusion (AO)** is a rendering technique used to estimate how much ambient light reaches a surface point. In essence, ``it simulates how exposed each point is to surrounding light``, based on nearby geometry.
 
-In the real world, light rays are often blocked or "occluded" by other objects. This effect happens naturally and gives surfaces subtle shadows in creases, corners, and areas where objects are close together. Recreating this effect in computer graphics adds a layer of realism to CGI scenes ({% ref figure:real-world-ao %}).
+In the real world, light rays are often blocked or "occluded" by other objects. This effect happens naturally and gives surfaces subtle shadows in creases, corners, and areas where objects are close together. Recreating this effect adds a layer of realism to CGI scenes ({% ref figure:real-world-ao %}).
 
 {% figure 
 id="real-world-ao" 
@@ -90,7 +119,12 @@ caption="Ambient occlusion visible in real-world objects." %}
 /images/ambient_occlusion/real_ao.jpg
 {% endfigure %}
 
-That said, **ambient occlusion is not physically accurate**, but rather an *artistic approximation* of a real-world phenomenon. It's designed to enhance depth perception and spatial relationships in rendered images without simulating full global illumination.
+That said, **ambient occlusion is not physically accurate**, but rather an *artistic approximation* of a real-world phenomenon. It's designed to enhance depth perception and spatial relationships in rendered images without simulating full global illumination {% ref figure:ao_example %}.
+
+{% figure id="ao_example" caption="Wave grid before and after applying Ambient Occlusion" %}
+/images/ambient_occlusion/blender_ao_shader_off.png
+/images/ambient_occlusion/blender_ao_shader.png
+{% endfigure %}
 
 You might ask, **"Why not calculate actual light from all scene lights?"**  
 The short answer: **we can!**  
@@ -99,12 +133,8 @@ The long answer: **it’s computationally expensive and often not feasible in re
 Physically based techniques like **ray tracing** and **path tracing** (used in renderers like Cycles) simulate full global illumination, but they require significant processing power. In exchange, they provide close to real light occlusion and do not need to use ambient occlusion techniques.
 
 
-As you can see in {% ref figure:ao_example %}, nearby geometry blocks ambient light, creating soft shadows that enhance the perception of depth and form.
 
-{% figure id="ao_example" caption="Wave grid before and after applying Ambient Occlusion" %}
-/images/ambient_occlusion/blender_ao_shader_off.png
-/images/ambient_occlusion/blender_ao_shader.png
-{% endfigure %}
+
 <!-- {% include figure.html image="/images/ambient_occlusion/blender_ao_shader_off.png" 
     caption="Figure 1: Wave grid without ambient occlusion." 
     id="img:1"
@@ -119,20 +149,16 @@ For static scenes in real time applications, ambient occlusion can be precompute
 Lucky for us **we can use two techniques for recreating shadows in real time and dynamic scenes: Ambient occlusion and shadow casting**. 
 <!-- Both can be precomputed or calculated dynamically in interactive environments. -->
 
-There are as many ways for recreate realistic shadows as you can imagine. In this post we are going to explore the ones related to AO techniques. 
+<!-- There are as many ways for recreate realistic shadows as you can imagine. In this post we are going to explore the ones related to AO techniques.  -->
 
 Lets visualize now the result with **path tracing against global illumination** to see the improvements when applying Ambient Occlusion. The model ``Suzanne should have a shadow under the hat and also occlude light to his right ear``. 
 
 **Ambient occlusion will take care of the contact shadows on the hat**. It will not block the light coming from the window. All darkened and lighted areas will be provided from an irradiance texture of the environment (Image Based Lightning Global Illumination).
 
-{% include figure.html image="/images/ambient_occlusion/shadow_example.png" 
-    caption="figure 9: Path Traicing Shadow Example" 
-    id="img:9"
-%}
-{% include figure.html image="/images/ambient_occlusion/ao_example .png" 
-    caption="figure 10: Ambient Occlusion Example" 
-    id="img:10"
-%}
+{% figure id="shadow-example" caption="Path Tracing Shadow Example" size="0.8" %}
+\images\ambient_occlusion\shadow_example.png
+\images\ambient_occlusion\ao_example .png
+{% endfigure %}
 
 The Shadow slide will show a backed path tracing shadow from cycles for comparison. Path tracing will use geometry to block light rays from the window.
 
@@ -199,30 +225,26 @@ Remember, this technique is **view dependent** therefore we need to compute it e
 ``The process to obtain the Reflection Occlusion path is``:
 1. Get the surface normal and position. 
 2. Get the camera position.
-3. Calculate the reflection vector from the three previous variables. It will look like [figure 11](#img:11)
-4. Use some technique to calculate ray intersections from the surface to the rest of geometry [figure 12](#img:12).
+3. Calculate the reflection vector from the three previous variables. It will look like {% ref figure:reflect-vectors %}
+4. Use some technique to calculate ray intersections from the surface to the rest of geometry {% ref figure:reflection-occlusion %}.
 5. Store the collision distance per fragment.
 6. Use it to darken the Reflection Map using a shader.
 
 
-{% include figure.html image="/images/ambient_occlusion/ReflectionOcclusion.png" 
-    caption="figure 11: Generate reflect vectors" 
-    id="img:11"
-%}
+{% figure id="reflect-vectors" caption="Generate reflect vectors" size="0.5" %}
+\images\ambient_occlusion\ReflectionOcclusion.png
+{% endfigure %}
 
-{% include figure.html image="/images/ambient_occlusion/ReflectionOcclusion_raytrace.png" 
-    caption="figure 12: Detect reflect vectors occlusions" 
-    id="img:12"
-%}
+{% figure id="reflection-occlusion" caption="Detect reflect vectors occlusions" size="0.5" %}
+\images\ambient_occlusion\ReflectionOcclusion_raytrace.png
+{% endfigure %}
 
 
+The limit of this technique is that, ``instead of reflecting itself, it  just darkens the surface``. For general purposes this is enough. In path tracing renderers you are usually provided a parameter to choose how many times light will bounce. This is of course more realistic, but may take several minutes {% ref figure:reflect-bounces %}.
 
-The limit of this technique is that, ``instead of reflecting itself, it  just darkens the surface``. For general purposes this is enough. In path tracing renderers you are usually provided a parameter to choose how many times light will bounce. This is of course more realistic, but may take several minutes [figure 13](#img:13).
-
-{% include big_figure.html image="/images/ambient_occlusion/cyclesReflections.png" 
-    caption="figure 13: Cycles Reflections with 0, 1 and 2 bounces respectively." 
-    id="img:13"
-%}
+{% figure id="reflect-bounces" caption="Cycles Reflections with 0, 1 and 2 bounces respectively." %}
+\images\ambient_occlusion\cyclesReflections.png
+{% endfigure %}
 
 As easy and powerful this method may seem, it is not used because of the processing time it takes for each frame to calculate collision. New techniques like Ray Tracing may be able to provide real time Reflection Maps in the future.
 
@@ -242,10 +264,10 @@ Finally!!, we get to point of the post. ``We are now on the Lambert side of the 
 AO is actually the same idea as Reflection Occlusion. The biggest difference is that we will use lots of vectors per fragment instead of one. 
 
 ``The diffuse light Concept:`` Mirrors bounce light from exactly one point (at least in a perfect mirror). There are cases where the mirror may be a bit dirty and it reflects light from closer directions generating a blurred image. Diffuse light works under the premise that  ``light will hit the surface from all directions``. 
-{% include big_figure.html image="/images\ambient_occlusion\comparing_spheres.png" 
-    caption="figure 14: Lambert. Image extracted from ``learnopengl``." 
-    id="img:14"
-%}
+
+{% figure id="diffuse-variable" caption="figure 14: Lambert. Image extracted from ``learnopengl``." %}
+\images\ambient_occlusion\comparing_spheres.png
+{% endfigure %}
 
 {% alert warning %}
 This is only for illustration purposes. 
