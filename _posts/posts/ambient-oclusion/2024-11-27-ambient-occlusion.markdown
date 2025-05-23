@@ -280,11 +280,9 @@ For more context we can look at the lambertian formula. You can also look at {% 
 L_d = k_d \cdot I \cdot max(0,N \cdot L)
 {% endequation %}
 
-
-{% include big_figure.html image="https://learnopengl.com/img/pbr/ibl_hemisphere_sample.png" 
-    caption="figure 14: Lambert. Image extracted from ``learnopengl``." 
-    id="img:14"
-%}
+{% figure caption="figure 14: Lambert. Image extracted from ``learnopengl``." id="lambert_w" %}
+https://learnopengl.com/img/pbr/ibl_hemisphere_sample.png
+{% endfigure %}
 
 {% endalert %}
 
