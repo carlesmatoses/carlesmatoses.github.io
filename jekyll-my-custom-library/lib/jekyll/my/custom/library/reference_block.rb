@@ -73,12 +73,14 @@ class RefTag < Liquid::Tag
   end
 
   def render(context)
-    refs = context.registers[:site].data["refs"] || {}
+    site = context.registers[:site]
+    refs = site.data["refs"] || {}
     number = refs.dig(@type, @id)
 
     if number
       "<a href='##{@id}'>#{number}</a>"
     else
+      # Placeholder for unresolved references
       "<span class='missing-ref'>[??]</span>"
     end
   end
@@ -124,13 +126,21 @@ end
 
     
 class EquationBlock < ReferenceableBlock
-def render_content(number, content)
+  def render_content(number, content)
+    equation_number = number
+    label = @id
+
     <<~HTML
-    <div class="equation" id="#{@id}">
-        <p>Equation #{number}: #{content}</p>
-    </div>
+      <div id="#{label}" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+        <div style="flex: 1;">
+          \\[
+            #{content}
+          \\]
+        </div>
+        <div style="margin-left: 1em; white-space: nowrap;">(#{equation_number})</div>
+      </div>
     HTML
-end
+  end
 end
 
 end
