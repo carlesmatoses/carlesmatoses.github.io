@@ -2,7 +2,7 @@
 require 'bibtex'
 require 'cgi'
 
-module Jekyll
+module JekyllSkcg
   module Bibliography
     class Loader < Liquid::Tag
       def initialize(tag_name, text, tokens)
@@ -114,6 +114,6 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('bibliography_loader', Jekyll::Bibliography::Loader)
-Liquid::Template.register_tag('bibliography', Jekyll::Bibliography::BibliographyTag)
-Liquid::Template.register_tag('cite', Jekyll::Bibliography::CiteTag)
+Liquid::Template.register_tag('bibliography_loader', JekyllSkcg::Bibliography::Loader)
+Liquid::Template.register_tag('bibliography', JekyllSkcg::Bibliography::BibliographyTag)
+Liquid::Template.register_tag('cite', JekyllSkcg::Bibliography::CiteTag)

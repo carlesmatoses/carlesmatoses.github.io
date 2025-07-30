@@ -1,5 +1,5 @@
 # alerts.rb
-module Jekyll
+module JekyllSkcg
   class AlertBlock < Liquid::Block
     def initialize(tag_name, text, tokens)
       super
@@ -16,4 +16,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('alert', Jekyll::AlertBlock)
+Liquid::Template.register_tag('alert', JekyllSkcg::AlertBlock)

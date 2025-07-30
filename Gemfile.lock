@@ -1,7 +1,9 @@
 PATH
-  remote: jekyll-my-custom-library
+  remote: jekyll-science-kit-computer-graphics
   specs:
-    jekyll-my-custom-library (0.1.0)
+    jekyll-science-kit-computer-graphics (0.1.0)
+      bibtex-ruby
+      jekyll (>= 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -319,7 +321,7 @@ DEPENDENCIES
   github-pages
   http_parser.rb (~> 0.6.0)
   jekyll-feed (~> 0.12)
-  jekyll-my-custom-library!
+  jekyll-science-kit-computer-graphics!
   jekyll-toc
   minima (~> 2.5)
   tzinfo (>= 1, < 3)
