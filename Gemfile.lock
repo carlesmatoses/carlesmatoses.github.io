@@ -1,5 +1,6 @@
-PATH
-  remote: jekyll-science-kit-computer-graphics
+GIT
+  remote: https://github.com/carlesmatoses/jekyll-science-kit-computer-graphics.git
+  revision: b23d9ac881e4a1864a69b26554a01b755f94b1e6
   specs:
     jekyll-science-kit-computer-graphics (0.1.0)
       bibtex-ruby

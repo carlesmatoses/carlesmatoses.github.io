@@ -18,7 +18,7 @@ group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-toc"
   gem "bibtex-ruby"  
-  gem "jekyll-science-kit-computer-graphics", path: "./jekyll-science-kit-computer-graphics"
+  gem "jekyll-science-kit-computer-graphics", git: "https://github.com/carlesmatoses/jekyll-science-kit-computer-graphics.git"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
