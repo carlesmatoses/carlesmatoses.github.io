@@ -14,6 +14,11 @@ a{
     /* Add more styling rules as needed */
 }
 
+body, a, strong, .highlighter-rouge {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 400;
+}
+
 strong {
     font-weight: 600;
 }
