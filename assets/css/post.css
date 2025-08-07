@@ -31,28 +31,19 @@
 
 /* Highlight animation for anchor links */
 .target-highlight {
-    animation: highlightFade 3s ease-in-out;
+    animation: highlightFade 2s ease-in-out;
     scroll-margin-top: 20px; /* Add some space above when scrolling to element */
 }
 
 @keyframes highlightFade {
     0% {
         background-color: #fff3cd;
-        border-left: 4px solid #856404;
-        padding-left: 15px;
-        box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
     }
     25% {
         background-color: #fff3cd;
-        border-left: 4px solid #856404;
-        padding-left: 15px;
-        box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
     }
     100% {
         background-color: transparent;
-        border-left: none;
-        padding-left: 0;
-        box-shadow: none;
     }
 }
 
