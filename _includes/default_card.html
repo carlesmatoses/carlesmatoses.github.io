@@ -5,30 +5,26 @@
 
 <link rel="stylesheet" href="/assets/css/post-preview.css">
 
+{% comment %} Use e_permalink for external links, otherwise use permalink {% endcomment %}
+{% if post.e_permalink %}
+    {% assign link_url = post.e_permalink %}
+{% else %}
+    {% assign link_url = post.permalink %}
+{% endif %}
 
-<div class="row post-preview" href="{{post.permalink}}">
-    {% comment %} If screen is extra small (xs) or small (sm), display as one row {% endcomment %}
-    <div class="col">
-        {% if post.e_permalink %}
-            <a href="{{post.e_permalink}}">
-                <img src="{{post.preview}}" alt="..." class="img-fluid">
-            </a>
-        {% else %}
-            <a href="{{post.permalink}}">
-                <img src="{{post.preview}}" alt="..." class="img-fluid">
-            </a>
-        {% endif %}
-    </div>
-    <div class="col-12 col-sm-6">
-        <a href="{{post.permalink}}">
-            <div class="row fill">
-                <div class="row">
-                    <h4>{{post.title}}</h4>
-                </div>
-                <div class="row fill">
+<a href="{{link_url}}" class="post-preview-link">
+    <div class="row post-preview">
+        {% comment %} If screen is extra small (xs) or small (sm), display as one row {% endcomment %}
+        <div class="col-12 col-sm-6 context-image">
+            <img src="{{post.preview}}" alt="..." class="img-fluid">
+        </div>
+        <div class="col-12 col-sm-6 context-text">
+            <div class="text-content">
+                <h4>{{post.title}}</h4>
+                <div class="abstract-content">
                     {{ abstract }}
                 </div>
             </div>
-        </a>
+        </div>
     </div>
-</div>
+</a>

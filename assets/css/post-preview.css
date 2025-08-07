@@ -8,12 +8,16 @@
 .post-preview{
     height: 200px;
     overflow: hidden;
-
     margin-bottom: 1.2rem;
     border-radius: 12px;
-
     transition: all 0.3s;
     transform: scale(1.0);
+    background-color: #f5f7f8;
+    padding: 10px;
+    /* Remove fixed width and margins that cause spacing issues */
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .post-preview:hover{
@@ -35,6 +39,36 @@
     text-decoration: none;
     color: inherit;
 }
+
+.post-preview-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.post-preview-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.text-content h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.abstract-content {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
 
 /* Responsive image for small screens */
 @media (max-width: 575px) {
