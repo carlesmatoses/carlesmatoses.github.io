@@ -60,8 +60,40 @@
     margin-bottom: 20px;
 }
 
+p {
+    margin:0 !important;
+    margin-bottom: 1rem !important;
+}
+
+@media (min-width: 401px) {
+    p {
+        padding-left: 2rem !important;
+    }
+}
+
 p a{
     color: #3498db;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding-top: 3rem;
+}
+
+.display-5 {
+    padding-top: 0rem;
+}
+
+figcaption {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+ol, ul {
+    padding-left: 4rem !important;
+    padding-top: 0;
+    margin:0;
 }
 
 @media (max-width: 576px) { /* Small screens */
@@ -137,3 +169,4 @@ p a{
         width: 100%;
     }
 }
+

@@ -79,9 +79,7 @@ Some other images  {% ref figure:experiment %}
 /images\ambient_occlusion\comparing_spheres.png
 {% endfigure %}
 # custom script example
-{% render_time %}
-page rendered at:
-{% endrender_time %}
+
 
 # Equations
 {% equation id="eq:energy" %}

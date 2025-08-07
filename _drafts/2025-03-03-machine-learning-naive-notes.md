@@ -82,11 +82,6 @@ This is an external link from the bibliography [Jekyll docs][jekyll-docs]
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 
-# custom script example
-{% render_time %}
-page rendered at:
-{% endrender_time %} -->
-
 # Bibliography
 <!-- We can reference the bilbiography elements {% ref ruby %} with a liquid tag. -->
 {% bibliography %}

@@ -15,8 +15,8 @@ permalink: post/ambient-occlusion
 
 
 <!-- index -->
-* Do not remove this line (it will not be displayed)
-{:toc}
+<!-- * Do not remove this line (it will not be displayed)
+{:toc} -->
 
 {% bibliography_loader _bibliography/ao_references.bib %}
 

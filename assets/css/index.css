@@ -1,3 +1,12 @@
 .about-me{
     max-width: 700px;
 }
+
+.container {
+    max-width: 700px;
+}
+
+.tab-content {
+    box-shadow: inset 4px 0 4px -4px rgba(0,0,0,0.2), inset -4px 0 4px -4px rgba(0,0,0,0.2);
+    border-top: 1px solid #ccc;
+}
