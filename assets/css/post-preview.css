@@ -59,14 +59,10 @@
     padding: 5px;
 }
 
-.text-content h4 {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-}
-
 .abstract-content {
     flex-grow: 1;
     overflow: hidden;
+    color: #736e6e;
 }
 
 
