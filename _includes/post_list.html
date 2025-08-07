@@ -1,9 +1,10 @@
 
 {% assign category = include.category %}
-{% for post in site.posts %}
-    {% if post.categories contains category %}
-        <div class="row justify-content-center">
-            {% include default_card.html %}
-        </div>
-    {% endif %}
-{% endfor %}
+
+<div class="container justify-content-center post-list">
+    {% for post in site.posts %}
+        {% if post.categories contains category %}
+                {% include default_card.html %}
+        {% endif %}
+    {% endfor %}
+</div>

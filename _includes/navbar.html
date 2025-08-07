@@ -1,6 +1,126 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <div class="container">
         <a class="navbar-brand" href="/">Carles Matoses Gimenez</a>
+        
+        <!-- Hamburger button for mobile -->
+        {% unless page.url == "/" or page.url == "/index.html" %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Breadcrumb Navigation - Desktop (horizontal) -->
+            <nav aria-label="breadcrumb" class="ms-auto d-none d-lg-block">
+                <ol class="breadcrumb mb-0">
+                    <!-- Home breadcrumb -->
+                    <li class="breadcrumb-item">
+                        <a href="/" class="breadcrumb-link">Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    {% assign url_parts = page.url | split: "/" %}
+                    {% assign current_path = "" %}
+                    {% for part in url_parts %}
+                        {% unless part == "" %}
+                            {% assign current_path = current_path | append: "/" | append: part %}
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            {% if forloop.last %}
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    {% if part == "projects" %}
+                                        Projects
+                                    {% elsif part == "post" %}
+                                        Posts
+                                    {% else %}
+                                        <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                        {% assign formatted_title = part | replace: "-", " " | replace: "_", " " %}
+                                        {% assign words = formatted_title | split: " " %}
+                                        {% for word in words %}
+                                            {{ word | capitalize }}{% unless forloop.last %} {% endunless %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </li>
+                            {% else %}
+                                <li class="breadcrumb-item">
+                                    {% if part == "projects" %}
+                                        <a href="/?projects" class="breadcrumb-link">Projects</a>
+                                    {% elsif part == "post" %}
+                                        <a href="/?posts" class="breadcrumb-link">Posts</a>
+                                    {% else %}
+                                        <!-- Format intermediate path titles -->
+                                        {% assign formatted_title = part | replace: "-", " " | replace: "_", " " %}
+                                        {% assign words = formatted_title | split: " " %}
+                                        <span class="breadcrumb-text">
+                                            {% for word in words %}
+                                                {{ word | capitalize }}{% unless forloop.last %} {% endunless %}
+                                            {% endfor %}
+                                        </span>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endunless %}
+                    {% endfor %}
+                </ol>
+            </nav>
+            
+            <!-- Breadcrumb Navigation - Mobile (vertical) -->
+            <nav aria-label="breadcrumb" class="d-lg-none mt-2">
+                <ul class="navbar-nav">
+                    <!-- Home breadcrumb -->
+                    <li class="nav-item">
+                        <a href="/" class="nav-link breadcrumb-link">🏠 Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    {% assign url_parts = page.url | split: "/" %}
+                    {% assign current_path = "" %}
+                    {% for part in url_parts %}
+                        {% unless part == "" %}
+                            {% assign current_path = current_path | append: "/" | append: part %}
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            {% if forloop.last %}
+                                <li class="nav-item">
+                                    <span class="nav-link active breadcrumb-current">
+                                        📄 {% if part == "projects" %}
+                                            Projects
+                                        {% elsif part == "post" %}
+                                            Posts
+                                        {% else %}
+                                            <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                            {% assign formatted_title = part | replace: "-", " " | replace: "_", " " %}
+                                            {% assign words = formatted_title | split: " " %}
+                                            {% for word in words %}
+                                                {{ word | capitalize }}{% unless forloop.last %} {% endunless %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </span>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    {% if part == "projects" %}
+                                        <a href="/?projects" class="nav-link breadcrumb-link">📁 Projects</a>
+                                    {% elsif part == "post" %}
+                                        <a href="/?posts" class="nav-link breadcrumb-link">📝 Posts</a>
+                                    {% else %}
+                                        <!-- Format intermediate path titles -->
+                                        {% assign formatted_title = part | replace: "-", " " | replace: "_", " " %}
+                                        {% assign words = formatted_title | split: " " %}
+                                        <span class="nav-link breadcrumb-text">
+                                            📂 {% for word in words %}
+                                                {{ word | capitalize }}{% unless forloop.last %} {% endunless %}
+                                            {% endfor %}
+                                        </span>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endunless %}
+                    {% endfor %}
+                </ul>
+            </nav>
         </div>
+        {% endunless %}
     </div>
 </nav>

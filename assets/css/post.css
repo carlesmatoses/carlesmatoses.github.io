@@ -1,28 +1,3 @@
-.post-preview{
-    transition: all 0.3s;
-    width: 600px;
-    max-height: 200px;
-    margin: 20px;
-    overflow: hidden;
-    transform: scale(1.0);
-
-    /* box-shadow: 0 4px 6px -6px gray; */
-
-}
-
-.post-preview:hover{
-    z-index: 1;
-    max-height: none;
-    transform: scale(1.0);
-    box-shadow: 0 2px 2px -2px gray;
-}
-
-.post-preview img{
-    object-fit: cover;
-    width: 250px;
-    height: 200px;
-}
-
 .fill{
     width: 100%;
     height: 100%;

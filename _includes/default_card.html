@@ -3,12 +3,12 @@
 {% capture content %}{{ parts[1] }}{% endcapture %}
 
 
-<link rel="stylesheet" href="/assets/css/post.css">
+<link rel="stylesheet" href="/assets/css/post-preview.css">
 
 
 <div class="row post-preview" href="{{post.permalink}}">
     {% comment %} If screen is extra small (xs) or small (sm), display as one row {% endcomment %}
-    <div class="col-12 col-sm-6">
+    <div class="col">
         {% if post.e_permalink %}
             <a href="{{post.e_permalink}}">
                 <img src="{{post.preview}}" alt="..." class="img-fluid">
@@ -19,7 +19,7 @@
             </a>
         {% endif %}
     </div>
-    <div class="col-12 col-sm-6 p-sm-0">
+    <div class="col-12 col-sm-6">
         <a href="{{post.permalink}}">
             <div class="row fill">
                 <div class="row">

@@ -15,8 +15,61 @@
     <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="/assets/css/index.css"> -->
-    <!-- <link rel="stylesheet" href="/assets/css/main.css"> -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to activate tab based on URL parameter
+        function activateTabFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Check for 'tab' parameter or direct parameter names
+            let activeTab = urlParams.get('tab') || '';
+            
+            // Check for direct parameter names (e.g., ?posts or ?projects)
+            if (urlParams.has('posts') || window.location.search.includes('posts')) {
+                activeTab = 'posts';
+            } else if (urlParams.has('projects') || window.location.search.includes('projects')) {
+                activeTab = 'projects';
+            }
+
+            if (activeTab) {
+                // Wait for DOM to be ready
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Deactivate all tabs
+                    document.querySelectorAll('.nav-link').forEach(tab => {
+                        tab.classList.remove('active');
+                        tab.setAttribute('aria-selected', 'false');
+                    });
+                    
+                    document.querySelectorAll('.tab-pane').forEach(pane => {
+                        pane.classList.remove('show', 'active');
+                    });
+
+                    // Activate the correct tab
+                    const targetTab = document.getElementById(activeTab + '-tab');
+                    const targetPane = document.getElementById(activeTab);
+                    
+                    if (targetTab && targetPane) {
+                        targetTab.classList.add('active');
+                        targetTab.setAttribute('aria-selected', 'true');
+                        targetPane.classList.add('show', 'active');
+                    }
+                });
+            }
+        }
+
+        // Run the function
+        activateTabFromUrl();
+    </script>
 
     <title>{{ site.title }}</title>
 </head>
@@ -25,22 +78,36 @@
 
     {% include navbar.html %}
 
-    <div class="container mt-4">
+    <div class="container about-me" >
         <div class="row justify-content-center">
-            <div class="row about-me">
-                <h3 class="h3 fw-normal">About me</h3>
-                <div class="fw-light">
-                    I have a <span class="fw-bolder">master degree in computer graphics</span> by the Polytechnic
-                    University of Catalonya
-                    and a <span class="fw-bolder">bachelor's degree in Digital Technologies and Multimedia</span> by the
-                    Polytechnic University of Valencia.
+            <!-- Row 1: About me title -->
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="h3 fw-normal">About me</h3>
                 </div>
-                <div class="my-3">
-                    I like photography, Visual Effects, CGI and developing multimedia apps.
+            </div>
+            
+            <!-- Row 2: Image and text -->
+            <div class="row">
+                <div class="col-lg-4 col-md-5 col-12 mb-3 d-flex justify-content-center">
+                    <img src="/images/logogriscuadrado.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
+                </div>
+                <div class="col-lg-8 col-md-7 col-12 d-flex flex-column justify-content-center">
+                    <div class="fw-light">
+                        I have a <span class="fw-bolder">master degree in computer graphics</span> by the Polytechnic
+                        University of Catalonya
+                        and a <span class="fw-bolder">bachelor's degree in Digital Technologies and Multimedia</span> by the
+                        Polytechnic University of Valencia.
+                    </div>
+                    <div class="my-3">
+                        I like photography, Visual Effects, CGI and developing multimedia apps.
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="container lists">
         <div class="row mt-4 list">
             <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -56,13 +123,30 @@
                 <div class="tab-pane fade show active" id="projects" role="tabpanel" aria-labelledby="home-tab">
                     {% include post_list.html category='project' %}
                 </div>
-                <div class="tab-pane fade " id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                <div class="tab-pane fade" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                     {% include post_list.html category='post' %}
                 </div>
             </div>
         </div>
 
     </div>
+
+    <script>
+        // Update URL when tab is clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-bs-target').replace('#', '');
+                    
+                    // Update URL without page refresh
+                    const newUrl = window.location.pathname + '?' + targetId;
+                    window.history.replaceState({}, '', newUrl);
+                });
+            });
+        });
+    </script>
 
     {% include footer.html %}
 

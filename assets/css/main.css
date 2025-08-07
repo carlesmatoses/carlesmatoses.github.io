@@ -1,24 +1,3 @@
-body{
-    font-size: 100%; /* Adjust the font size as needed */
-    font-weight: 300;    
-}
-
-a{
-    display: inline;
-    text-decoration: none;
-    color: gray;
-}
-
-.highlighter-rouge {
-    color: #df6f06; /* Change the background color as desired */
-    /* Add more styling rules as needed */
-}
-
-body, a, strong, .highlighter-rouge {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-weight: 400;
-}
-
-strong {
-    font-weight: 600;
+.container {
+    max-width: 700px;
 }
