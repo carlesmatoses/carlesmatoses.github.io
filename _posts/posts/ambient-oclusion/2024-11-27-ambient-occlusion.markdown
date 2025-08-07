@@ -348,4 +348,4 @@ Screen space ambient occlusion techniques as the name suggest, will provide AO b
 - SAO
 
 # Bibliography
-{% bibliography %}
+{% bibliography ieee %}

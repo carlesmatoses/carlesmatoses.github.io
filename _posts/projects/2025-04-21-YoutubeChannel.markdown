@@ -9,4 +9,5 @@ e_permalink: https://www.youtube.com/@selrak14
 preview: /images/youtube.png
 
 ---
-<!-- abstract --> I try to upload videos presenting subjects and exploring them in detail. You can find blender and graphics related content.
+I try to upload videos presenting subjects and exploring them in detail. You can find blender and graphics related content.
+<!-- end-abstract -->

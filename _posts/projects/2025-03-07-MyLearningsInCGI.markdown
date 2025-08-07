@@ -7,7 +7,7 @@ permalink: projects/MyLearningPathCGI
 preview: "/images/my_learning_path_cgi/header.jpg"
 
 ---
-<!-- abstract --> 
+
 Gallery | My path to learn CGI.
 <!-- end-abstract -->
 

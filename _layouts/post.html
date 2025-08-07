@@ -54,17 +54,21 @@
 
         <img src="{{page.preview}}" alt="Couldn't load preview image :\" class="headerIMG">
 
-        <!-- <div class="row">
-            <h1 class="display-6">Abstract:</h1>
-            <p class="lead">{{ abstract }}</p>
-        </div> -->
 
+        <div class="row">
+            {% alert secondary %}
+                {{ abstract }}
+            {% endalert %}
+        </div>
         <div class="row justify-content-center">
             {{ content }}
         </div>
 
     </div>
     {% include footer.html %}
+    
+    <!-- Anchor highlight script -->
+    <script src="/assets/js/anchor-highlight.js"></script>
 </body>
 
 </html>

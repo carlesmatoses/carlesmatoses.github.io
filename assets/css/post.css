@@ -29,8 +29,60 @@
     padding-left: 30px;
 }
 
+/* Highlight animation for anchor links */
+.target-highlight {
+    animation: highlightFade 3s ease-in-out;
+    scroll-margin-top: 20px; /* Add some space above when scrolling to element */
+}
+
+@keyframes highlightFade {
+    0% {
+        background-color: #fff3cd;
+        border-left: 4px solid #856404;
+        padding-left: 15px;
+        box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+    }
+    25% {
+        background-color: #fff3cd;
+        border-left: 4px solid #856404;
+        padding-left: 15px;
+        box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+    }
+    100% {
+        background-color: transparent;
+        border-left: none;
+        padding-left: 0;
+        box-shadow: none;
+    }
+}
+
+/* Alternative smooth glow effect */
+.target-glow {
+    animation: glowFade 2.5s ease-in-out;
+}
+
+@keyframes glowFade {
+    0% {
+        box-shadow: 0 0 15px #007bff;
+        background-color: rgba(0, 123, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 20px #007bff;
+        background-color: rgba(0, 123, 255, 0.15);
+    }
+    100% {
+        box-shadow: none;
+        background-color: transparent;
+    }
+}
+
+/* Ensure smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
 .baseContainer .alert{
-    width: 90%;
+    width: 100%;
     margin: auto 0;
     margin-bottom: 20px;
 }
@@ -67,9 +119,11 @@ figcaption {
 
 ol, ul {
     padding-left: 4rem !important;
-    padding-top: 0;
+    padding-top: 0 !important;
     margin:0;
 }
+
+
 
 @media (max-width: 576px) { /* Small screens */
     .post-preview {
@@ -107,9 +161,41 @@ ol, ul {
 }
 
 .bibliography{
-    padding: 1.2em;
-    
+    padding: 0;
+    margin: 0;
 }
+.bibliography ol  {
+    padding: 0 !important;
+    margin: 0;
+}
+.bibliography li {
+    padding: 0 !important;
+    margin-left: 2rem !important;
+}
+/* Convert bibliography UL to ordered list appearance */
+/* .bibliography-list {
+    list-style: none;
+    counter-reset: bibliography-counter;
+    padding-left: 0;
+    margin: 0;
+} */
+
+/* .bibliography-list li {
+    counter-increment: bibliography-counter;
+    margin-bottom: 1rem;
+    padding-left: 2.5rem;
+    position: relative;
+} */
+
+/* .bibliography-list li::before {
+    content: "[" counter(bibliography-counter) "]";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+    color: #007bff;
+    width: 2.2rem;
+}  */
 
 /* WEBGL */
 .glb-viewer{

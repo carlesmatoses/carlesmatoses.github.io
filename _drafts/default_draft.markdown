@@ -6,7 +6,7 @@ preview: "/images/image-not-found.png"
 categories: post # post, project
 permalink: post/default-draft
 ---
-<!-- abstract --> 
+
 some abstract content...
 <!-- end-abstract -->
 
