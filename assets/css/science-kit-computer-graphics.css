@@ -126,7 +126,7 @@
   height: auto;
   max-height: 400px; /* Control maximum height */
   max-width: 100%;
-  object-fit: contain; /* Preserve aspect ratio */
+  object-fit: cover; /* Preserve aspect ratio */
   border-radius: 4px;
   /* box-shadow: 0 2px 8px rgba(0,0,0,0.1); */
 }
