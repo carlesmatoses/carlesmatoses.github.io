@@ -7,21 +7,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" >
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/figure.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/assets/css/figure.css"> -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/science-kit-computer-graphics.css">
     <link rel="stylesheet" href="/assets/css/footer.css">
-
+    
+    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/EXRLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
-    <script src="/assets/js/viewer.js"></script>
+    <script src="/assets/js/science-kit-computer-graphics.js"></script>
     
   <!--KaTeX-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
@@ -34,6 +36,8 @@
           });
       });
   </script>
+
+  <title> {{page.title}} </title>
 </head>
 
 {% assign parts = page.content | split:"<!-- end-abstract -->" %}
@@ -47,15 +51,15 @@
 
     <div class="container baseContainer">
         <div class="row">
-            <div class="col-auto">
-                <h1 class="display-5"> {{page.title}} </h1>
+            <div class="col">
+                <p class="post-title"> {{page.title}} </p>
             </div>
         </div>
 
         <img src="{{page.preview}}" alt="Couldn't load preview image :\" class="headerIMG">
 
 
-        <div class="row">
+        <div class="row justify-content-center">
             {% alert secondary %}
                 {{ abstract }}
             {% endalert %}

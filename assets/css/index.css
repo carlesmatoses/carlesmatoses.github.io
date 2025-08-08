@@ -13,15 +13,16 @@
 }
 
 /* Center "About me" title on small screens */
-@media (max-width: 767px) {
+@media (max-width: 575px) {
     .about-me h3 {
         text-align: center;
     }
 }
 
-.tab-content {
+
+/* .tab-content {
     padding: 0;
-}
+} */
 
 /* h3 {
     margin: 0 !important;

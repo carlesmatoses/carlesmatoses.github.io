@@ -1,7 +1,7 @@
 
 {% assign category = include.category %}
 
-<div class="container justify-content-center post-list">
+<div class="justify-content-center post-list">
     {% for post in site.posts %}
         {% if post.categories contains category %}
                 {% include default_card.html %}

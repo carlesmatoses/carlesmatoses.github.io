@@ -1,17 +1,18 @@
 .social-links {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    /* padding: 0; */
+    /* margin: auto; */
     /* margin-top: 50px; */
-    display: flex;
-    justify-content: center; /* Center horizontally */
+    /* display: flex; */
+    /* justify-content: center; */
 }
 
 .social-links li {
-    margin: 0 10px; /* Adjust spacing between icons */
+    margin: 0; /* Adjust spacing between icons */
 }
 
-.social-links li a {
+.social-links a {
     text-decoration: none;
     /* color: inherit; */
+    color: #333; /* Default color */
 }

@@ -1,0 +1,30 @@
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Dependencies
+vendor/
+.bundle/
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

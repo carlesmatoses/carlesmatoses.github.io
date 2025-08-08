@@ -19,6 +19,27 @@
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/index.css">
 
+    <style>
+        /* Custom styling for nav pills */
+        .nav-pills .nav-link:not(.active) {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #6c757d;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .nav-pills .nav-link:not(.active):hover {
+            background-color: #e9ecef;
+            border-color: #adb5bd;
+            color: #495057;
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: #0d6efd;
+            border: 1px solid #0d6efd;
+        }
+    </style>
+
     <script>
         // Function to get URL parameters
         function getUrlParameter(name) {
@@ -40,6 +61,8 @@
                 activeTab = 'posts';
             } else if (urlParams.has('projects') || window.location.search.includes('projects')) {
                 activeTab = 'projects';
+            } else if (urlParams.has('about') || window.location.search.includes('about')) {
+                activeTab = 'about';
             }
 
             if (activeTab) {
@@ -80,11 +103,15 @@
     {% include navbar.html %}
 
     <div class="container about-me" >
+        <!-- About me section -->
         <div class="row justify-content-center">
             <!-- Row 1: About me title -->
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="h3 fw-normal">About me</h3>
+            <div class="row justify-content-center">
+                <div class="col">
+                    <h3 class="h3 fw-normal text-start">About me</h3>
+                </div>
+                <div class="col-auto">
+                    {% include media.html %}
                 </div>
             </div>
             
@@ -110,22 +137,50 @@
 
     <div class="container lists">
         <div class="row mt-4 list">
-            <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+            <ul class="nav nav-pills p-0 nav-fill" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects"
+                    <button class="nav-link active" id="projects-tab" data-bs-toggle="pill" data-bs-target="#projects"
                         type="button" role="tab" aria-controls="projects" aria-selected="true">Projects</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts"
+                    <button class="nav-link" id="posts-tab" data-bs-toggle="pill" data-bs-target="#posts"
                         type="button" role="tab" aria-controls="posts" aria-selected="false">Posts</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="about-tab" data-bs-toggle="pill" data-bs-target="#about"
+                        type="button" role="tab" aria-controls="about" aria-selected="false">About me</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="projects" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                     {% include post_list.html category='project' %}
                 </div>
                 <div class="tab-pane fade" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                     {% include post_list.html category='post' %}
+                </div>
+                <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+                    <div class="container mt-4">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 col-md-10 col-12">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-5 col-12 mb-3 d-flex justify-content-center">
+                                        <img src="/images/logogriscuadrado.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-12 d-flex flex-column justify-content-center">
+                                        <div class="fw-light">
+                                            I have a <span class="fw-bolder">master degree in computer graphics</span> by the Polytechnic
+                                            University of Catalonya
+                                            and a <span class="fw-bolder">bachelor's degree in Digital Technologies and Multimedia</span> by the
+                                            Polytechnic University of Valencia.
+                                        </div>
+                                        <div class="my-3">
+                                            I like photography, Visual Effects, CGI and developing multimedia apps.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -133,11 +188,11 @@
     </div>
 
     <script>
-        // Update URL when tab is clicked
+        // Update URL when pill is clicked
         document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
+            const pillButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
             
-            tabButtons.forEach(button => {
+            pillButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const targetId = this.getAttribute('data-bs-target').replace('#', '');
                     

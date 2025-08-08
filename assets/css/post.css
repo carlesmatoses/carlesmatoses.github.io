@@ -15,121 +15,56 @@
     margin-bottom: 30px;
 }
 
-.baseContainer{
-    max-width: 750px;
-    /* margin-top: 20px; */
-}
-
-.baseContainer p{
-    line-height: 2.;
-    margin-bottom: 30px;
-}
-
-.baseContainer ul, .baseContainer ol {
-    padding-left: 30px;
-}
-
-/* Highlight animation for anchor links */
-.target-highlight {
-    animation: highlightFade 2s ease-in-out;
-    scroll-margin-top: 20px; /* Add some space above when scrolling to element */
-}
-
-@keyframes highlightFade {
-    0% {
-        background-color: #fff3cd;
-    }
-    25% {
-        background-color: #fff3cd;
-    }
-    100% {
-        background-color: transparent;
-    }
-}
-
-/* Alternative smooth glow effect */
-.target-glow {
-    animation: glowFade 2.5s ease-in-out;
-}
-
-@keyframes glowFade {
-    0% {
-        box-shadow: 0 0 15px #007bff;
-        background-color: rgba(0, 123, 255, 0.1);
-    }
-    50% {
-        box-shadow: 0 0 20px #007bff;
-        background-color: rgba(0, 123, 255, 0.15);
-    }
-    100% {
-        box-shadow: none;
-        background-color: transparent;
-    }
-}
-
-/* Ensure smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-.baseContainer .alert{
-    width: 100%;
-    margin: auto 0;
-    margin-bottom: 20px;
-}
-
-p {
-    margin:0 !important;
-    margin-bottom: 1rem !important;
-}
-
-@media (min-width: 401px) {
-    p {
-        padding-left: 2rem !important;
-    }
-}
-
 p a{
     color: #3498db;
 }
 
-h1, h2, h3, h4, h5, h6 {
+.post-title {
+    font-size: 2.5rem;
+    font-weight: 200;
+    margin-bottom: 1rem;
+    color: #333;
+    border-bottom: #333 1px solid;
+}
+
+
+.baseContainer h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
     padding-top: 3rem;
+    color: #000000;
 }
-
-.display-5 {
-    padding-top: 0rem;
+.baseContainer h2 {
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+    color: #333;
 }
-
-figcaption {
-    font-size: 0.9rem;
-    color: #666;
-    text-align: center;
-    margin-top: 0.5rem;
+.baseContainer h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    padding-top: 1.5rem;
+    color: #333;
 }
+/* h1, h2, h3, h4, h5, h6 {
+    padding-top: 3rem;
+} */
 
 .baseContainer ol, .baseContainer ul {
-    padding-left: 3rem;
-    padding-top: 0 ;
-    margin: 0rem ;
+    padding-left: 2.2em; /* Reduce padding so numbers start closer to left */
+    margin-left: 0;
 }
 
-
-
-@media (max-width: 576px) { /* Small screens */
-    .post-preview {
-        max-height: 400px; /* Double the height */
-    }
-    .post-preview img{
-        margin-bottom: 10px;
-        width: 100%;
-    }
-}
-
-/* Adding 'Contents' headline to the TOC */
-#markdown-toc::before {
-    content: "Contents";
-    font-weight: bold;
+#markdown-toc {
+    list-style: decimal;
+    border-left: 3px solid #3498db;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 /* Using numbers instead of bullets for listing */
@@ -137,88 +72,9 @@ figcaption {
     list-style: decimal;
 }
 
-#markdown-toc {
-    border: 1px solid #aaa;
-    padding: 1.5em;
-    margin-left: 1.5em;
-    margin-right: 1.5em;
-    list-style: decimal;
-    display: inline-block;
-    max-width: calc(100% - 3em);
-}
-
-#markdown-toc a {
-    color: rgb(70, 176, 238);
-}
-
-.bibliography{
-    padding: 0;
-    margin: 0;
-}
-.bibliography ol  {
-    padding: 0 !important;
-    margin: 0;
-}
-.bibliography li {
-    padding: 0 !important;
-    margin-left: 2rem !important;
-}
-/* Convert bibliography UL to ordered list appearance */
-/* .bibliography-list {
-    list-style: none;
-    counter-reset: bibliography-counter;
-    padding-left: 0;
-    margin: 0;
-} */
-
-/* .bibliography-list li {
-    counter-increment: bibliography-counter;
-    margin-bottom: 1rem;
-    padding-left: 2.5rem;
-    position: relative;
-} */
-
-/* .bibliography-list li::before {
-    content: "[" counter(bibliography-counter) "]";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: bold;
-    color: #007bff;
-    width: 2.2rem;
-}  */
-
-/* WEBGL */
-.glb-viewer{
-    padding: 0px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding-bottom:20px;
-    padding-left: 2px;
-    padding-right: 2px;
-    margin-bottom: 10px;
-}
-
-.canvas-container{
-    width: 100%;
-    height: 400px;
-    margin: auto;
-    padding: 0;
-}
-
-.canvas-container:hover {
-    cursor: pointer; /* Change cursor to pointer on hover */
-}
-
-.dg {
-    left: 20px !important; /* Adds 20px padding from right edge */
-  }
-
-@media (max-width: 576px) { /* Small screens */
-    .canvas-container{
-        margin: 0;
-        padding: 0;
-        height: 300px;
-        width: 100%;
-    }
+.highlighter-rouge {
+    font-family: inherit;
+    font-weight: inherit;
+    color: #ffa94d;
 }
 
