@@ -1,0 +1,194 @@
+---
+layout: post
+title:  "Science Kit Computer Graphics"
+date:   2025-08-08 18:17:51 +0200
+preview: "/images/image-not-found.png"
+categories: project # post, project
+permalink: post/skcg
+---
+
+This gem is used in the webpage to provide image, bibliography and some other liquid tags for faster formatting.
+<!-- end-abstract -->
+
+
+<!-- index -->
+* Do not remove this line (it will not be displayed)
+{:toc}
+
+<!-- Load all references -->
+{% bibliography_loader _bibliography/references.bib %}
+
+# Text:
+You can write the following code as follow  `code in line`, **bold letter**, *cursiva*. ´
+
+```liquid
+{% raw %}
+`code in line`  
+**bold letter**  
+*cursiva*
+{% endraw %}
+```
+
+## Code:
+
+```liquid
+{% raw %}
+{% highlight ruby %}
+def print_hi(name)
+  puts "Hi, #{name}"
+end
+print_hi('Tom')
+#=> prints 'Hi, Tom' to STDOUT.
+{% endhighlight %}
+{% endraw %}
+```
+
+
+
+## Links
+This is an external link [jekyll-docs](https://jekyllrb.com/docs/home)  
+
+# Header 1
+## Header 2
+### Header 3
+#### Header 4
+
+# Alerts & block content
+Alerts are just a wrapper div with background color. We use bootstrap styles in the background.
+
+{% alert primary %}
+This is how we use liquid tags for alerts:
+{% raw %}
+  {% alert primary %} {% endalert %}
+{% endraw %}
+{% endalert %}
+
+{% alert secondary %}
+This is how we use liquid tags for alerts:
+{% raw %}
+  {% alert secondary %} {% endalert %}
+{% endraw %}
+{% endalert %}
+
+{% alert success %}
+A simple success alert—check it out!
+{% raw %}
+  {% alert success %} {% endalert %}
+{% endraw %}
+{% endalert %}
+
+{% alert danger %}
+This is how we use liquid tags for alerts:
+{% raw %}
+  {% alert danger %} {% endalert %}
+{% endraw %}
+{% endalert %}
+
+{% alert warning %}
+A simple warning alert—check it out!
+{% raw %}
+  {% alert warning %} {% endalert %}
+{% endraw %}
+{% endalert %}
+
+{% alert info %}
+This is how we use liquid tags for alerts:
+{% raw %}
+  {% alert info %} {% endalert %}
+{% endraw %}
+{% endalert %}
+
+{% alert light %}
+A simple light alert—check it out!
+{% raw %}
+  {% alert light %} {% endalert %}
+{% endraw %}
+{% endalert %}
+
+{% alert dark %}
+A simple dark alert—check it out!
+{% raw %}
+  {% alert dark %} {% endalert %}
+{% endraw %}
+{% endalert %}
+
+
+
+# Referenceable elements
+## Images:
+
+- Multiple images in a single figure  {% ref figure:1:2:3 %}:
+
+```liquid
+{% raw %}
+{% figure id="1:2:3" size="1.0" 
+caption="Three images but only a max of two images per row"
+col="2" %}
+/images/test.png
+/images/youtube.png
+/images/ambient_occlusion/comparing_spheres.png
+{% endfigure %}
+{% endraw %}
+```
+
+{% figure id="1:2:3" size="1.0" 
+  caption="Three images but only a max of two images per row"
+  col="2" %}
+  /images/image-not-found.png
+  /images/image-not-found-long.png
+  /images/image-not-found-long.png
+{% endfigure %}
+
+- multiple figures in the same line {% ref figure:img %} {% ref figure:img3 %} {% ref figure:img2 %}: 
+
+{% figure id="img" size="0.49" caption="square image" %}
+/images/image-not-found.png
+{% endfigure %}
+{% figure id="img3" size="0.49" caption="long image" %}
+/images/image-not-found-long.png
+{% endfigure %}
+{% figure id="img2" size="0.49" caption="long image" %}
+/images/image-not-found-long.png
+{% endfigure %}
+
+```liquid
+{% raw %}
+{% figure id="img" size="0.49" caption="square image" %}
+/images/image-not-found.png
+{% endfigure %}
+
+{% figure id="img3" size="0.49" caption="long image" %}
+/images/image-not-found-long.png
+{% endfigure %}
+
+{% figure id="img2" size="0.49" caption="long image" %}
+/images/image-not-found-long.png
+{% endfigure %}
+{% endraw %}
+```
+
+# Equations
+{% equation id="energy" %}
+E = mc^2
+{% endequation %}
+
+As shown in equation {% ref equation:energy %}, energy is proportional to mass.
+
+```liquid
+{% raw %}
+{% equation id="energy" %}
+E = mc^2
+{% endequation %}
+
+As shown in equation {% ref equation:energy %}, energy is proportional to mass.
+{% endraw %}
+```
+
+# Bibliography
+The complete bibliography is shown with the bibliography tag **{% raw %}{% bibliography_loader _bibliography/references.bib %}{% endraw %}**
+
+We can reference the bilbiography elements **{% raw %}{% cite ruby %}{% endraw %}** with a liquid tag. The result is {% cite ruby %}
+
+We can show the referenced elements with **{% raw %}{% bibliography %}{% endraw %}**
+
+{% bibliography %}

@@ -120,13 +120,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  min-height: 200px; /* Ensure enough height for vertical centering */
 }
 
 .figure-image {
   height: auto;
   max-height: 400px; /* Control maximum height */
   max-width: 100%;
-  object-fit: cover; /* Preserve aspect ratio */
+  object-fit: contain; /* Preserve aspect ratio */
   border-radius: 4px;
   /* box-shadow: 0 2px 8px rgba(0,0,0,0.1); */
 }
