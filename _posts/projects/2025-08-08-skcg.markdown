@@ -2,7 +2,7 @@
 layout: post
 title:  "Science Kit Computer Graphics"
 date:   2025-08-08 18:17:51 +0200
-preview: "/images/image-not-found.png"
+preview: "/images/pluggin.png"
 categories: project # post, project
 permalink: post/skcg
 ---
@@ -119,18 +119,6 @@ A simple dark alert—check it out!
 
 - Multiple images in a single figure  {% ref figure:1:2:3 %}:
 
-```liquid
-{% raw %}
-{% figure id="1:2:3" size="1.0" 
-caption="Three images but only a max of two images per row"
-col="2" %}
-/images/test.png
-/images/youtube.png
-/images/ambient_occlusion/comparing_spheres.png
-{% endfigure %}
-{% endraw %}
-```
-
 {% figure id="1:2:3" size="1.0" 
   caption="Three images but only a max of two images per row"
   col="2" %}
@@ -138,6 +126,21 @@ col="2" %}
   /images/image-not-found-long.png
   /images/image-not-found-long.png
 {% endfigure %}
+
+```liquid
+{% raw %}
+
+  Multiple images in a single figure  {% ref figure:multiple-figures %}:
+
+  {% figure id="multiple-figures" size="1.0" 
+  caption="Three images but only a max of two images per row"
+  col="2" %}
+  /images/test.png
+  /images/youtube.png
+  /images/ambient_occlusion/comparing_spheres.png
+  {% endfigure %}
+{% endraw %}
+```
 
 - multiple figures in the same line {% ref figure:img %} {% ref figure:img3 %} {% ref figure:img2 %}: 
 
@@ -153,6 +156,9 @@ col="2" %}
 
 ```liquid
 {% raw %}
+
+multiple figures in the same line {% ref figure:img %} {% ref figure:img3 %} {% ref figure:img2 %}: 
+
 {% figure id="img" size="0.49" caption="square image" %}
 /images/image-not-found.png
 {% endfigure %}
@@ -185,10 +191,49 @@ As shown in equation {% ref equation:energy %}, energy is proportional to mass.
 ```
 
 # Bibliography
-The complete bibliography is shown with the bibliography tag **{% raw %}{% bibliography_loader _bibliography/references.bib %}{% endraw %}**
+Bibliography management allows you to load references from a BibTeX file and cite them throughout your document. The gem supports both IEEE and APA citation styles.
 
-We can reference the bilbiography elements **{% raw %}{% cite ruby %}{% endraw %}** with a liquid tag. The result is {% cite ruby %}
+## Loading Bibliography
+First, load your bibliography file at the beginning of your document:
 
-We can show the referenced elements with **{% raw %}{% bibliography %}{% endraw %}**
+```liquid
+{% raw %}
+{% bibliography_loader _bibliography/references.bib %}
+{% endraw %}
+```
+
+## Citing References
+You can cite references anywhere in your text using the cite tag. For example, citing Ruby {% cite ruby %}:
+
+```liquid
+{% raw %}
+We can reference bibliography elements {% cite ruby %} with a liquid tag.
+{% endraw %}
+```
+
+## Multiple Citations
+You can cite multiple sources in the same paragraph. Here's an example citing different programming languages {% cite ruby %} and {% cite my001 %} frameworks:
+
+```liquid
+{% raw %}
+Multiple citations can be used like {% cite ruby %} and {% cite my001 %}.
+{% endraw %}
+```
+
+## Citation Styles
+The bibliography tag supports different citation styles (IEEE by default, APA available):
+
+```liquid
+{% raw %}
+<!-- Default IEEE style -->
+{% bibliography %}
+
+<!-- APA style -->
+{% bibliography apa %}
+{% endraw %}
+```
+
+## Complete Bibliography
+The bibliography displays all cited references in the order they appear in your document:
 
 {% bibliography %}

@@ -76,16 +76,20 @@ GIDE FOR WRITING THIS POST
 
 
 # Introduction
-We all like Games, Films, cartoons and other media contents. In recent years we have seen an increasing graphical improvement trying to get closer to reality. This pursuit has existed for centuries across various artistic fields such as paintings and sculpture. On the impressionist movement, they tried to capture a scene without shapes or form, just representing the light and letting it define the elements. 
+Representing reality has been an impactful research field for centuries, it existed for centuries across various artistic fields such as apinting and sculpture. Artistic movements like impressionism have tried to find better ways of illustrating reality than reality itself, for this they depict objects as light avoiding a defined shape or form. **Light representation impacts: emotions, credibility, intention and context.**
+
+In recent years we have seen an increasing graphical improvement trying to get closer to reality. This lead to the developement of techniques to simulate light behavior in computers.
+
+<!-- We all like Games, Films, cartoons and other media contents. In recent years we have seen an increasing graphical improvement trying to get closer to reality. This pursuit has existed for centuries across various artistic fields such as paintings and sculpture. On the impressionist movement, they tried to capture a scene without shapes or form, just representing the light and letting it define the elements.  -->
 
 {% figure id="paintings" size="1.0" caption="Paintings trying to represent light in an appealing way" col="2" %}
 https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/960px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg
 /images/ambient_occlusion/toystory.jpg
 {% endfigure %}
 
-Computer generated films such as Toy story, illustrates the evolution of techniques for photorealism. Even high stylized games are not free of this requirement of respecting **light behavior** since it **directly impacts our emotional perception**. 
+Computer generated films such as Toy story, illustrates the evolution of techniques for photorealism. Even high stylized games are not free of this requirement of respecting **light behavior** since it **directly impacts the whatchers inmersion into the story**. 
 
-That is why some rules are constant for good looking media such as representing shadows, light intensity and light interaction. 
+That is why some rules are constant for good looking media such as light characteristics (color, intensity, spectrum, ...) and light interaction (global illumination, ambient occlusion, transparency, caustics, ... ). 
 
 {% figure id="Ambient-Occlusion-Skyrim" size="1.0" caption="https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg" %}
 https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg
@@ -104,9 +108,9 @@ One of the characteristics of light is that it bounces from one surface to anoth
 https://cdn2.unrealengine.com/feed-ue5-early-access-livestream-lumen-1920x1080-a4d78e37fd8e.jpg
 {% endfigure %}
 
-Algorithms like **ray tracing** and **path tracing** simulate full global illumination, but they require significant processing power. In exchange, they provide **close to real light occlusion** and **do not need to use ambient occlusion techniques**.
+Algorithms like **ray tracing** and **path tracing** simulate full ``global illumination``, but they require significant processing power. In exchange, they provide **close to real light occlusion** and **do not need to use ambient occlusion techniques**.
 
-This techniques are so realistic because they use the scene geometry and textures to calculate the light for a certain number of iterations. This iterations are known as ``bounces``, the number of times a light path collides on a surface and changes direction.
+This techniques are so realistic because they use the scene geometry and textures to calculate the light for a certain number of iterations (``global illumination``). This iterations are known as ``bounces``, the number of times a light path collides on a surface and changes direction.
 
 {% alert secondary %}
 **Example Renderers:**  
@@ -115,8 +119,7 @@ This techniques are so realistic because they use the scene geometry and texture
 Cycles, for example, is a path tracing renderer integrated in Blender that simulates global illumination by tracing the paths of many light rays per pixel.
 {% endalert %}
 
-
-To simplify or "fake" global illumination **we could place lights from all directions simulating the sky or even the floor** if some objects bounce light.
+To simplify or "fake" global illumination **we could place lights from all directions** by gessing how the surface should look. Whith this strategy we avoid ``global illumination``, instead we only use a single bounce from each light.
 
 {% figure id="global-illumination" size="1.0" caption="Global Illumination using virtual lights." %}
     /images/ambient_occlusion/global_ilumination.png
@@ -135,12 +138,13 @@ Instead of placing hundreds of lights in the scene, we can **group them into an 
     /images/ambient_occlusion/global_ilumination_cycles.png
 {% endfigure %}
 
-{% figure id="ibl" size="0.5" caption="Global Illumination using Image Based Lighting (IBL)." %}
+{% figure id="ibl" size="0.5" caption="Global Illumination using environment image and Image Based Lighting (IBL)." %}
     /images/ambient_occlusion/global_ilumination_eevee.png
 {% endfigure %}
 
+For ``global illumination`` we will calculate light and bounces assuming the environment image are virtual light placed really far. ``Image Based Lightning`` will use it as a projected texture on the surface making the calculation almost instant compared to Ray Tracing or Path Tracing. 
 
-One ``limitation`` of IBL is that **we do not take into account occlusion**, buuuuut... we are trying to overcome that.
+One limitation of ``IBL`` is that **we do not take into account occlusion**, buuuuut... we are trying to overcome that.
 
 {% figure id="IBL-no-shadows" size="0.49" caption="Suzanne with Image Based Lighting shows light under the hat and is not casting shadows from the windows" %}
 /images/ambient_occlusion/ao_without_shadows.png
@@ -164,7 +168,7 @@ https://www.fxguide.com/wp-content/uploads/2011/01/ocllusion.jpg
 
 We already mentioned that this technique can be expensive and time consuming. Luckily for them, films do not require real time processes even though its still desired. For this productions, they ``baked geometry occlusions in image sequences`` and use it in the rendering pipeline as another texture. 
 
-We are going to explore **two different techniques developed by ILM: Ambient Occlusion and Reflection Occlusion**. The reason they developed two techniques is because materials are usually composed of two components: ``Diffuse`` and ``Specular``.
+We are going to explore **two different techniques developed by ILM: ``Ambient Occlusion`` and ``Reflection Occlusion``**. The reason they developed two techniques is because materials are usually composed of two components: ``Diffuse`` and ``Specular``.
 
 {% equation id="fr_diffuse" %}
 fr_{diffuse} = k_{diffuse} \cdot f_{lambert}
@@ -177,9 +181,6 @@ fr_{specular} = k_{specular} \cdot f_{cook-torrance}
 {% equation id="energy" %}
 fr = fr_{diffuse} + fr_{specular}
 {% endequation %}
-
-In equation {% ref equation:energy %} ``lambert represents the diffuse component`` and ``cook-torrance represents the specular component``.
-
 
 
 # Reflection Occlusion

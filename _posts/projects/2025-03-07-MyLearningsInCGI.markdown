@@ -18,22 +18,20 @@ Gallery | My path to learn CGI.
 # My history
 My interest in CGI started when I was around 14 years old. My generation lived during the ``raising of youtube and social media content``. 
 
-One of those days, content creators published videos like 
-["Revenge" - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video)](https://www.youtube.com/watch?v=cPJUBQd-PNM) where they remixed songs with ``Minecraft animations following the storyline``.
+At that time, content creators published videos like 
+["Revenge" - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video)](https://www.youtube.com/watch?v=cPJUBQd-PNM) where they remixed songs with ``Minecraft animations``.
 
 {% figure id="sddefault.jpg" caption="Revenge" %}
 https://i.ytimg.com/vi/cPJUBQd-PNM/sddefault.jpg
 {% endfigure %}
 
-I stumbled upon a video called  [Stick With Me - Minecraft Animation - Slamacow](https://www.youtube.com/watch?v=iGz7ltTqEfk) and the idea of creating a transparent creature that behaves like a soft body fascinated me to the point that ``I wanted to try by myself``. 
+I stumbled upon a video called  [Stick With Me - Minecraft Animation - Slamacow](https://www.youtube.com/watch?v=iGz7ltTqEfk) and the idea of creating a transparent creature that behaves like a soft body interested me, ``I wanted to try by myself``. 
 
 {% figure id="maxresdefault.jpg" caption="Stick With Me" %}
 https://i.ytimg.com/vi/iGz7ltTqEfk/maxresdefault.jpg
 {% endfigure %}
 
-I started with Autodesk Maya for a few days without much success. 
-
-On a second try I discovered Cinema4D, it felt cumbersome and I lacked the necessary background knowledge. 
+I started with Autodesk Maya for a few days without much success. On a second try I discovered Cinema4D, it felt cumbersome and I lacked the necessary background knowledge. 
 
 A few months later I was told there was a free program that was growing really fast.
 
@@ -72,7 +70,7 @@ I spent my following years recreating tutorials and studying the bases of CGI.
 /images/my_learning_path_cgi/anvil1.jpg
 {% endfigure %}
 
-Remember that those are tutorials, not my level at the time. 
+<!-- Remember that those are tutorials, not my level at the time.  -->
 
 After all that experience ``I decided to just learn more`` without actually making projects. 
 
