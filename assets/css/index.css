@@ -1,19 +1,33 @@
 .about-me {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
     /* background-color: #4a87a5; */
     /* border-radius: 12px; */
-    border-bottom: 2px solid #4a87a5;
-    padding: 20px;
+    /* border-bottom: 2px solid #4a87a5; */
+    /* padding: 20px; */
+    max-height: 70vh;
+}
+
+.hero-row {
+    max-height: 65vh;
 }
 
 /* Ensure main hero section (picture + text) uses max 65% of viewport height */
-.main-hero {
+/* .main-hero {
     max-height: 65vh;
-    overflow: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+} */
+
+/* Make the about-me image shrink if needed to avoid scroll */
+.img-fluid {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    /* display: block; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
 }
 
 
