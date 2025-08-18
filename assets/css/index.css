@@ -7,6 +7,16 @@
     padding: 20px;
 }
 
+/* Ensure main hero section (picture + text) uses max 65% of viewport height */
+.main-hero {
+    max-height: 65vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
 .about-me h3 {
     font-weight: 600;
     color: #333;

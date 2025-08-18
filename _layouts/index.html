@@ -110,7 +110,7 @@
 
     {% include navbar.html %}
 
-    <div class="container about-me" >
+    <div class="container about-me main-hero" >
         <!-- About me section -->
         <div class="row justify-content-center">
             <!-- Row 1: About me title -->
@@ -200,10 +200,19 @@
             pillButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const targetId = this.getAttribute('data-bs-target').replace('#', '');
-                    
                     // Update URL without page refresh
                     const newUrl = window.location.pathname + '?' + targetId;
                     window.history.replaceState({}, '', newUrl);
+
+                    // Smooth scroll to the tab content area
+                    // Find the tab-content container
+                    const tabContent = document.getElementById('myTabContent');
+                    if (tabContent) {
+                        // Calculate offset to place the previews nicely (e.g., below nav)
+                        const yOffset = -100; // adjust as needed for spacing
+                        const y = tabContent.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
                 });
             });
         });
@@ -212,5 +221,6 @@
     {% include footer.html %}
 
 </body>
+
 
 </html>
