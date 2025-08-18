@@ -21,7 +21,7 @@
 } */
 
 /* Make the about-me image shrink if needed to avoid scroll */
-.img-fluid {
+.img-fluid-hero {
     max-width: 200px;
     max-height: 200px;
     border-radius: 10px;
