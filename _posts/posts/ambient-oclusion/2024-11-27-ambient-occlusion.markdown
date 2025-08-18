@@ -76,7 +76,9 @@ GIDE FOR WRITING THIS POST
 
 
 # Introduction
-Representing reality has been an impactful research field for centuries, it existed for centuries across various artistic fields such as apinting and sculpture. Artistic movements like impressionism have tried to find better ways of illustrating reality than reality itself, for this they depict objects as light avoiding a defined shape or form. **Light representation impacts: emotions, credibility, intention and context.**
+Representing reality has been an impactful research field for centuries. It exists across various artistic fields such as painting and sculpture. 
+
+Artistic movements like impressionism have tried to find better ways of illustrating reality than reality itself, for this they depict objects as light avoiding a defined shape or form. **Light representation impacts: emotions, credibility, intention and context.**
 
 In recent years we have seen an increasing graphical improvement trying to get closer to reality. This lead to the developement of techniques to simulate light behavior in computers.
 
@@ -97,7 +99,7 @@ https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlus
 
 
 ## Global Illumination & Image Base Lighting
-<!-- **These concepts are out of scope but I will summarize them.** -->
+These concepts are out of scope but I will summarize them.
 
 ### Global Illumination
 ``Global Illumination`` is a collection of techniques to simulate realistic lighting. 
@@ -142,9 +144,9 @@ Instead of placing hundreds of lights in the scene, we can **group them into an 
     /images/ambient_occlusion/global_ilumination_eevee.png
 {% endfigure %}
 
-For ``global illumination`` we will calculate light and bounces assuming the environment image are virtual light placed really far. ``Image Based Lightning`` will use it as a projected texture on the surface making the calculation almost instant compared to Ray Tracing or Path Tracing. 
+For ``global illumination`` we will calculate light and bounces assuming the environment image are virtual light placed really far. 
 
-One limitation of ``IBL`` is that **we do not take into account occlusion**, buuuuut... we are trying to overcome that.
+``Image Based Lightning`` will use it as a projected texture on the surface making the calculation almost instant compared to Ray Tracing or Path Tracing. One limitation of ``IBL`` is that **we do not take into account occlusion**, buuuuut... we are trying to overcome that.
 
 {% figure id="IBL-no-shadows" size="0.49" caption="Suzanne with Image Based Lighting shows light under the hat and is not casting shadows from the windows" %}
 /images/ambient_occlusion/ao_without_shadows.png
