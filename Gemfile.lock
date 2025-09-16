@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/carlesmatoses/jekyll-science-kit-computer-graphics.git
-  revision: 97dcf05f316759d43e5be22d498507b4b7ebeef6
+  revision: 2cabab940ce01cb9cab78e48bc48b8722ce02557
   specs:
-    jekyll-science-kit-computer-graphics (0.1.9)
+    jekyll-science-kit-computer-graphics (0.1.10)
       bibtex-ruby
       jekyll (>= 3.0)
 
@@ -277,7 +277,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rexml (3.4.1)
+    rexml (3.4.4)
     rouge (3.30.0)
     rubyzip (2.4.1)
     safe_yaml (1.0.5)
