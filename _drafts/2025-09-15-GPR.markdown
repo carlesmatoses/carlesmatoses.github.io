@@ -1,0 +1,251 @@
+---
+layout: post
+title:  "GPR Notes UPC"
+date:   2025-09-15 12:00:00 +0200
+preview: "/images/image-not-found.png"
+categories: post
+permalink: post/GPR
+---
+
+This are some of my notes for Geometry Processing. 
+<!-- end-abstract -->
+
+<!-- index -->
+* Do not remove this line (it will not be displayed)
+{:toc}
+
+{% bibliography_loader _bibliography/ao_references.bib %}
+
+
+# Context
+-  Final Grade = 0.1 Class + 0.35 Lab + 0.4 Exam + 0.15 LabExam.
+
+# Previous capacities
+## vector spaces
+## transformations
+Linear transformations always preserve the origin {% equation_inline A0=0 %}
+
+## change of bases
+## eigenvalues and eigenvectors
+`Eigenvectors` are special, non-zero vectors that do not change their direction when a linear transformation is applied to them, instead being scaled by a constant factor called an `eigenvalue`.
+
+For {% equation_inline v %} to be an eigenvector of {% equation_inline A %}
+
+{% equation id="for-v-to-be-eigenvector" %}
+A v = \lambda v
+{% endequation %}
+
+with {% equation_inline  λ \in R %} and {% equation_inline v \ne 0 %} 
+
+But the **why do we care?** is still fuzzy. Let’s make it concrete with examples from geometry processing and beyond.
+1. Eigenvectors give special directions of a transformation
+
+    Imagine you have a matrix {% equation_inline  A %} that transforms vectors. 
+  
+    In most directions, {% equation_inline  Av %} will change direction and length. But along eigenvectors, {% equation_inline  Av %} only changes length (scaling by {% equation_inline  \lambda %}).
+
+    So:
+      * Eigenvectors = “axes” of the transformation.
+      * Eigenvalues = how much the transformation stretches/squashes along those axes.
+    
+    That’s the raw math meaning. Now — what do we do with that?
+
+## SVD
+## differential geometry of curves and surfaces:
+## C++
+
+# Geometry processing pipeline, (reconstruction)
+
+- point clouds -> alignment -> point cloud -> normal estimation -> point cloud +normal -> Reconstruction -> surface
+- Loss in each step
+
+
+# Surfaces 
+## Linear Algebra
+Linear algebra is a branch of mathematics that studies linear equations, linear functions, and their representations through vectors and matrices. It provides the foundational language and tools for analyzing systems where relationships are linear, meaning they can be described by equations of the form 
+{% equation_inline a_1x_1 + a_2x_2 + \cdots + a_nx_n = b %}. 
+Linear algebra is essential in many fields, including science, engineering, computer graphics, and machine learning, as it allows for the efficient manipulation and understanding of multidimensional data and transformations.
+
+
+**Eigendecomposition** is a method of expressing a square matrix in terms of its eigenvalues and eigenvectors. For a matrix $A$, if it can be written as $A = V D V^{-1}$, where $V$ contains the eigenvectors and $D$ is a diagonal matrix of eigenvalues, then $A$ is said to be diagonalizable. This decomposition reveals the fundamental directions (eigenvectors) and scaling factors (eigenvalues) of the transformation represented by $A$. Eigendecomposition is useful in simplifying matrix operations and understanding the behavior of linear transformations in geometry processing, physics, and data analysis.
+
+{% equation id="energy" %}
+A \in R^{n \times n}
+{% endequation %}
+
+For future examples, let’s use the following $3 \times 3$ matrix as $A$:
+{% equation %}
+A = \begin{pmatrix}
+2 & 1 & 0 \\
+1 & 2 & 1 \\
+0 & 1 & 2
+\end{pmatrix}
+{% endequation %}
+
+The formula $Av = \lambda v$ means that when you apply the matrix $A$ (a linear transformation) to the vector $v$ (an eigenvector), the result is just the same vector $v$ scaled by the number $\lambda$ (the eigenvalue). 
+
+In other words, $v$ is a special direction for $A$: instead of changing direction, $A$ only stretches or shrinks $v$ by the factor $\lambda$. The matrix $A$ does not "store" the eigenvalues; rather, the eigenvalues and eigenvectors are special solutions to this equation for a given $A$.
+
+<!-- eigenvector: 
+    
+    Av=λv
+
+    A is a linear transformation matrix
+    v is a nonzero vector
+    λ is a scalar.
+
+    This equation says: when you apply   -->
+<!-- 
+v eigenvector of A <=> Av=lambda*v where v not equal zero and v belongs to R^{n} and lambda belongs to R and ||v||=1
+Lambda eigenvector of A corresponding to v -->
+
+<!-- Av = lambda v -> Av-lambda v = 0 -> Av -lambda Iv = 0 -> (A-lambdaI)v=0
+A-lambdaI = 0 -->
+
+We can rewrite the eigenvector equation step by step:
+{% equation %}
+Av = \lambda v \\
+Av - \lambda v = 0 \\
+Av - \lambda I v = 0 \\
+(A - \lambda I)v = 0
+{% endequation %}
+
+To have a nontrivial solution ($v \neq 0$), the matrix $(A - \lambda I)$ must be singular (not invertible). This happens only when its determinant is zero:
+{% equation %}
+\det(A - \lambda I) = 0
+{% endequation %}
+This is called the characteristic equation. Solving it gives the eigenvalues $\lambda$ of $A$. For each eigenvalue, you can then find the corresponding eigenvectors $v$ by solving $(A - \lambda I)v = 0$.
+
+<!-- 
+A symetric -> lambda' s belongs to R
+              v' s belongs to R^{n}
+              v' s linearly independent
+              v orthogonal (i can get an orthonormal system?)
+
+These are:
+Characteristic equation of A
+characteristic polynomial of A 
+-->
+
+The **characteristic polynomial** of a matrix $A$ is the polynomial you get when you compute $\det(A - \lambda I)$, where $I$ is the identity matrix and $\lambda$ is a variable. It is called a polynomial because, for an $n \times n$ matrix, expanding the determinant gives a degree $n$ polynomial in $\lambda$. The roots of this polynomial are the eigenvalues of $A$. In summary:
+
+{% equation %}
+	ext{Characteristic polynomial:}\quad p(\lambda) = \det(A - \lambda I)
+{% endequation %}
+Solving $p(\lambda) = 0$ gives all the eigenvalues of $A$.
+
+
+1. Subtract $\lambda$ from each diagonal entry to get $A - \lambda I$:
+  {% equation %}
+  A - \lambda I = \begin{pmatrix}
+  2 - \lambda & 1 & 0 \\
+  1 & 2 - \lambda & 1 \\
+  0 & 1 & 2 - \lambda
+  \end{pmatrix}
+  {% endequation %}
+
+2. Compute the determinant and set it to zero:
+  {% equation %}
+  \det(A - \lambda I) = 
+  \begin{vmatrix}
+  2 - \lambda & 1 & 0 \\
+  1 & 2 - \lambda & 1 \\
+  0 & 1 & 2 - \lambda
+  \end{vmatrix}
+  = 0
+  {% endequation %}
+
+1. Expand the determinant:
+  {% equation %}
+  (2-\lambda)\left[(2-\lambda)(2-\lambda) - 1\cdot1\right] - 1\left[1(2-\lambda) - 1\cdot0\right]
+  {% endequation %}
+  which simplifies to:
+  {% equation %}
+  (2-\lambda)\left[(2-\lambda)^2 - 1\right] - (2-\lambda)
+  {% endequation %}
+  {% equation %}
+  = (2-\lambda)\left[(2-\lambda)^2 - 1\right] - (2-\lambda)
+  {% endequation %}
+  {% equation %}
+  = (2-\lambda)\left[(2-\lambda)^2 - 1 - 1\right]
+  {% endequation %}
+  {% equation %}
+  = (2-\lambda)\left[(2-\lambda)^2 - 2\right]
+  {% endequation %}
+
+
+1. Set this equal to zero and solve for $\lambda$:
+  {% equation %}
+  (2-\lambda)\left[(2-\lambda)^2 - 2\right] = 0
+  {% endequation %}
+
+So the eigenvalues are the solutions to {% equationinline 2-\lambda = 0$ and $(2-\lambda)^2 - 2 = 0 %}.
+
+- $2-\lambda = 0 \implies \lambda_1 = 2$
+- $(2-\lambda)^2 - 2 = 0 \implies (2-\lambda)^2 = 2 \implies 2-\lambda = \pm\sqrt{2} \implies \lambda_2 = 2+\sqrt{2},\ \lambda_3 = 2-\sqrt{2}$
+
+So the eigenvalues are $\boxed{2,\ 2+\sqrt{2},\ 2-\sqrt{2}}$.
+
+
+<!-- Av_i =lambda_i v_i
+A*V=V*D, V=[[...],[v1,v2,...,vn],[...]].T
+A*[v1,v2,...,vn]=[col.Av_1 col.Av_2 ... colAv_n]
+V*V.T = I = V.T*V
+V*D = [col.lambda_1*v_1 ... col.lambda_n*v_n]
+A=V*V.T=V*D*V.T
+A=V*D*V.T
+
+example:
+with Av=λv and |A-λI|=0
+A = (3 1)
+    (1 3)
+
+Solve λ, given the values of λ solve (A-λ_1*I)*v_1=0
+
+what happens when A is (1 4)
+                       (3 2) -->
+## Fitting a line (least squares)
+E(l_1,P_i)= y_i-ax_i-b
+E(P, l) = sumatory{n, i=i}(y_i-ax_i-b)^2
+?what is the derivative of this formula for? with derivative of "a" and "b" we can make a system of equations?   
+
+we can somehow extract the least square error with matrix operations
+E(x) = ||Ax-b||^2 = <Ax-b, Ax-b> = (Ax-b).T*(Ax-b) = (x.T*A.T-b.T) (Ax-b)... = x.T*A.T*A*x-2x.T*A.T*b+b.T*b
+
+we can now get the gradient of E -> ∇E=0
+∇E = 2A.T*Ax-2A.T*b=0 -> A.T*Ax = A.T*b
+
+
+## Analysis (curvatures)
+## Simplification
+## Smoothing (remove noise)
+## Remeshing
+## Parametrization
+## Model repair
+## Editing and reformation
+## Synthesis
+## Symetry detection
+
+<!-- You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+
+Jekyll requires blog post files to be named according to the following format:
+
+`YEAR-MONTH-DAY-title.MARKUP`
+
+Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+
+Jekyll also offers powerful support for code snippets:
+
+{% highlight ruby %}
+def print_hi(name)
+  puts "Hi, #{name}"
+end
+print_hi('Tom')
+#=> prints 'Hi, Tom' to STDOUT.
+{% endhighlight %}
+
+Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/ -->
