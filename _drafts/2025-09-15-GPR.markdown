@@ -372,6 +372,33 @@ we can now get the gradient of E -> ∇E=0
 ## Analysis (curvatures)
 ## Simplification
 
+Lagrange multiplier | lagrange functions
+
+the professor said "solutions to opt f(x) s.t g(x)=0
+are the critical points of Lagrange"
+
+It is doing partial derivative of lambda, x and y (not sure why)
+We are given a function for a line 
+
+l = ax + by + c = 0
+but also an alternative version which can  also represent spheres. This is a bit confusing
+h^t p + d = 0
+||n|| = 1
+d(p,l)=n^T p + d
+E(l) = sum(n, i=1) d(p_i, l)^2 = sum (n^T p_1 + d)^2
+We also can understand Error as 
+E(n,d); OPT E(n,d) s.t. ||n||=1
+
+We end up with n^T C n - lambda(n^T n -1) where C is a covariance matrix
+
+This means 
+derivative lagrange / derivative n = 2*C*n-2*lambda*n=0 which means C*n = lanbda*n
+n will become Eigenvectors of C
+lambda will become eigenvalues of C
+
+E(n,d) = n^T * C * n = n^T * lambda * n = lambda*n^T*n = lambda
+
+n eigenv of C with smallest eigenv lambda
 
 
 ## Smoothing (remove noise)
