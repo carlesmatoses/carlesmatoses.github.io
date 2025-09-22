@@ -135,7 +135,7 @@ The **characteristic polynomial** of a matrix $A$ is the polynomial you get when
 Solving $p(\lambda) = 0$ gives all the eigenvalues of $A$.
 
 
-1. Subtract $\lambda$ from each diagonal entry to get $A - \lambda I$:
+#### 1. Subtract $\lambda$ from each diagonal entry to get $A - \lambda I$: 
   {% equation %}
   A - \lambda I = \begin{pmatrix}
   2 - \lambda & 1 & 0 \\
@@ -144,7 +144,7 @@ Solving $p(\lambda) = 0$ gives all the eigenvalues of $A$.
   \end{pmatrix}
   {% endequation %}
 
-2. Compute the determinant and set it to zero:
+#### 2. Compute the determinant and set it to zero: 
   {% equation %}
   \det(A - \lambda I) = 
   \begin{vmatrix}
@@ -155,8 +155,8 @@ Solving $p(\lambda) = 0$ gives all the eigenvalues of $A$.
   = 0
   {% endequation %}
 
-1. Expand the determinant:
-  {% equation %}
+#### 3. Expand the determinant: 
+   {% equation %}
   (2-\lambda)\left[(2-\lambda)(2-\lambda) - 1\cdot1\right] - 1\left[1(2-\lambda) - 1\cdot0\right]
   {% endequation %}
   which simplifies to:
@@ -174,17 +174,171 @@ Solving $p(\lambda) = 0$ gives all the eigenvalues of $A$.
   {% endequation %}
 
 
-1. Set this equal to zero and solve for $\lambda$:
+#### 4. Set this equal to zero and solve for $\lambda$:
   {% equation %}
   (2-\lambda)\left[(2-\lambda)^2 - 2\right] = 0
   {% endequation %}
 
-So the eigenvalues are the solutions to {% equationinline 2-\lambda = 0$ and $(2-\lambda)^2 - 2 = 0 %}.
+So the eigenvalues are the solutions to {% equation_inline 2-\lambda = 0$ and $(2-\lambda)^2 - 2 = 0 %}.
 
 - $2-\lambda = 0 \implies \lambda_1 = 2$
 - $(2-\lambda)^2 - 2 = 0 \implies (2-\lambda)^2 = 2 \implies 2-\lambda = \pm\sqrt{2} \implies \lambda_2 = 2+\sqrt{2},\ \lambda_3 = 2-\sqrt{2}$
 
 So the eigenvalues are $\boxed{2,\ 2+\sqrt{2},\ 2-\sqrt{2}}$.
+
+
+### Obtain Eigenvectors
+Let’s work this one out step by step. You’ve already correctly found the eigenvalues of
+
+{% equation %}
+A = \begin{bmatrix}
+2 & 1 & 0 \\
+1 & 2 & 1 \\
+0 & 1 & 2
+\end{bmatrix}
+{% endequation %}
+
+The eigenvalues are:
+
+{% equation %}
+\lambda_1 = 2, \quad \lambda_2 = 2+\sqrt{2}, \quad \lambda_3 = 2-\sqrt{2}.
+{% endequation %}
+
+Now let’s find the eigenvectors.
+
+---
+
+#### 1. General method
+
+For each eigenvalue $\lambda$, solve
+
+{% equation %}
+(A - \lambda I) v = 0
+{% endequation %}
+
+for $v \neq 0$.
+
+---
+
+#### 2. Eigenvector for $\lambda_1 = 2$
+
+{% equation %}
+A - 2I =
+\begin{bmatrix}
+0 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 0
+\end{bmatrix}
+{% endequation %}
+
+So we need to solve:
+
+{% equation %}
+\begin{cases}
+y = 0 \\
+x+z = 0 \\
+y = 0
+\end{cases}
+{% endequation %}
+
+That gives $y=0$, $z=-x$.
+So an eigenvector is
+
+{% equation %}
+v_1 = \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix}
+{% endequation %}
+
+---
+
+#### 3. Eigenvector for $\lambda_2 = 2+\sqrt{2}$
+
+{% equation %}
+A - (2+\sqrt{2})I =
+\begin{bmatrix}
+-\sqrt{2} & 1 & 0 \\
+1 & -\sqrt{2} & 1 \\
+0 & 1 & -\sqrt{2}
+\end{bmatrix}
+{% endequation %}
+
+System:
+
+{% equation %}
+\begin{cases}
+-\sqrt{2}x + y = 0 \quad \Rightarrow \; y = \sqrt{2} x \\
+x - \sqrt{2} y + z = 0 \\
+y - \sqrt{2} z = 0
+\end{cases}
+{% endequation %}
+
+From the first: $y = \sqrt{2}x$.
+From the third: $z = y / \sqrt{2} = x$.
+So eigenvector is
+
+{% equation %}
+v_2 = \begin{bmatrix} 1 \\ \sqrt{2} \\ 1 \end{bmatrix}
+{% endequation %}
+
+---
+
+#### 4. Eigenvector for $\lambda_3 = 2-\sqrt{2}$
+
+{% equation %}
+A - (2-\sqrt{2})I =
+\begin{bmatrix}
+\sqrt{2} & 1 & 0 \\
+1 & \sqrt{2} & 1 \\
+0 & 1 & \sqrt{2}
+\end{bmatrix}
+{% endequation %}
+
+System:
+
+{% equation %}
+\begin{cases}
+\sqrt{2}x + y = 0 \quad \Rightarrow \; y = -\sqrt{2}x \\
+x + \sqrt{2}y + z = 0 \\
+y + \sqrt{2} z = 0
+\end{cases}
+{% endequation %}
+
+From the first: $y = -\sqrt{2}x$.
+From the third: $z = -y/\sqrt{2} = x$
+So eigenvector is
+
+{% equation %}
+v_3 = \begin{bmatrix} 1 \\ -\sqrt{2} \\ 1 \end{bmatrix}
+{% endequation %}
+
+---
+
+#### 5. Final result
+
+The eigenpairs are:
+
+* $\lambda_1 = 2 \;\;\Rightarrow v_1 = [1,0,-1]^T$
+* $\lambda_2 = 2+\sqrt{2} \;\;\Rightarrow v_2 = [1,\sqrt{2},1]^T$
+* $\lambda_3 = 2-\sqrt{2} \;\;\Rightarrow v_3 = [1,-\sqrt{2},1]^T$
+
+---
+
+✅ Notice: since $A$ is **symmetric**, the eigenvectors are mutually orthogonal (check dot products — they’re zero).
+
+---
+
+Would you like me to also show you how to **normalize** these eigenvectors (so they become unit length, forming an orthonormal basis)?
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- Av_i =lambda_i v_i
