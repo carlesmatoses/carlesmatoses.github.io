@@ -4,7 +4,7 @@ title:  "My Blender Notes"
 date:   2025-09-16 12:00:00 +0200
 preview: "/images/image-not-found.png"
 categories: post
-permalink: post/GPR
+permalink: post/blender-notes
 ---
 
 This are some of my notes on blender. 
