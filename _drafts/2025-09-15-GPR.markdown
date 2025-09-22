@@ -2,7 +2,7 @@
 layout: post
 title:  "GPR Notes UPC"
 date:   2025-09-15 12:00:00 +0200
-preview: "/images/image-not-found.png"
+preview: "/images/gpr/gpr.png"
 categories: post
 permalink: post/GPR
 ---
@@ -326,7 +326,6 @@ The eigenpairs are:
 
 ---
 
-Would you like me to also show you how to **normalize** these eigenvectors (so they become unit length, forming an orthonormal basis)?
 
 
 
@@ -372,6 +371,9 @@ we can now get the gradient of E -> ∇E=0
 
 ## Analysis (curvatures)
 ## Simplification
+
+
+
 ## Smoothing (remove noise)
 ## Remeshing
 ## Parametrization
