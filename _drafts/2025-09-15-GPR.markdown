@@ -461,6 +461,130 @@ E(n,d) = n^T * C * n = n^T * lambda * n = lambda*n^T*n = lambda
 
 n eigenv of C with smallest eigenv lambda -->
 
+## getting points
+Having multiple point clodes knowing the camera position allows us to know the geometry of the photographed object
+
+### Alignment (registration)
+
+P={P_i} for 1 <= i <= n; Q = {Q_i}; -> transform (rotationtransition)
+
+### SVD (singular value decomposition)
+A belongs to Real^{nxn} -> eigendecomposition -> A=V*A*V.T
+
+A = U * CovarianceMatrixSymbol * V.T
+A belongs to R^{mxn}, CovarianceMatrixSymbol belongs R^{nx1}
+U belongs to R^{mxm}, V belongs to R^{nx1}
+U,V orthogonal == U,V rotations (reflections)
+
+CovarianceMatrixSymbol == Diagonal matrix
+CovarianceMatryxSymbol matrix has a diagonal of alphas. a1,a2,...,amin(min) == singular values of A, alpha_i >= 0;
+
+
+Ax=b A belongs to R^{rxn} -> covarianceMatrixSymbol belongs to R^{nx1}
+U*CovarianceMatrixSymbol*V.T*x = b
+covarianceMatrixsymbol * V.t * x = U.T * b
+x = V * inverse covarianceMatrixSymbol * U.T * b
+
+### Simpler Alignment
+P = {P_i} 1<=i <= n;  Q = {q_i}1<=i <=n
+* same size P and Q
+* P_1 corresponds to q_i;
+
+P_i is almost equal to R*q_i+t, R belongs to R^{3x3}, t belongs to R^3
+
+E(R,t) = summatory (n , i=1) (P_i - R*q_i -t)^2
+t = p' - R*q'  |  P' = R*q'+t
+P' = 1/n sum(n, i=1) P_i
+q' = 1/n sum(n, i=1) q_i
+
+### Steps
+1. Compute centroids {p', q'}
+2. compute centroids adjusted
+    (p'=p_i-p') q`= q_i-q'
+
+3. S = QP.T = (q'1, q'2, ..., q'n) * ([p'1],[p'2],[...],[p'n])
+4. S = U*covariancematrixsymbol*V.T
+5. R=V*U.T
+6. t = p'-R*q'
+
+### Iterative closest point (ICP)
+1. compute correspondence
+  For every q_i fing closest p_k
+2. Use simpler alignment (SVD)
+   * Discard Points in P without correspondence
+   * Replicate points in P multiply selected.
+  From this points we get a P' that will be used temporarily
+  Get R,t 
+3. Apply R_it  [unknown symbol] -> Q q_i' <- Rq_1 + t
+4. Repear from 1
+  
+
+### Stop criteria
+1. norm(R-I)_f < epsilon where ||t||<e
+   1. Correspondance constant
+2. Maximum # iterations
+   1. need initial rough alignment (there are better alternatives in the literature)
+
+### Compute border point status
+One of the posible problems is that point clodes are apart and the closest point for each other is a single point from P for all Q points. 
+
+One solution could be to remove all overlapint points. The single point in P that corresponds to multiple Q points is called border point on P.
+1. how do we detect border points and overlapped points?
+  We will recognise border points by checking the size of the angle that does not posses any point.
+
+For every point P_i:
+  1. compute K-NN(Nearest Neighbours) of P_i -> {Pij} 1<=j<=k
+  2. PCA -> Eigenvectors(v1,v2,v3==normal) + P_i == local frame (local coord system)
+  3. (xij, yij, zij) = ((Pij -Pi)*V1, (Pij-pi)*V2, (Pij-pi)*V3)
+  4. Discard Z'ij 
+  5. Compute direction by taking the angle alpha_{ij}=atan2(y'_ij, x'ij)
+  6. sort alpha_{ij}
+  7. Differenes of adjacent pairs
+     1. we call them deltaSymbol alpha_{ij}
+  8. max(delta alpha_{ij}) >=B <=> P_i border point
+
+(parameters -> K,B(Beta))
+
+### Multiple Scans
+Overlap -> 1st step of ICP -> compute correspondence
+Overlap == Percentage of discarded points of Q
+1. Select 2 unaligned clouds
+2. Perform ICP on them result(successfull | fail)
+   1. successfull == ||R-I||_f means ||t||=0 -> fuse the 2 clouds
+   2. fail == success
+
+### Solving linear systems
+Ax=b, A belongs R^{nxn}, xi b belongs to R^n
+Apply solvers
+* Direct Performs op's to solve exactly (except machine precision)
+* Iterative start with x0 estimation and then refine estimation.
+
+### Properties and requirements to how we want to resolve the system
+* Required performance
+* Reuqired accuracy
+* Limits for storage
+* Problem: Dimensional n (A belongs to R^{nxn}), n > 10000 -> LARGE
+* Sparsity of A == Percentage of O's in A (sparse|dense)
+* symetry of A
+* Positive definiteness of A
+  * InvertedASymbol=/0 -> x.T * A * x > O <=> A is positive definite
+
+### decompositions
+* Direct LU decomposition -> A=LU 
+  * L== lower triangular
+  * U == Upper triangular
+  * Ax=b -> LUx = b -> L_z = b, V_x=z
+* QR decomposition A=QR -> R==Uper triangle, Q == Orthogonal
+  * Ax=b -> QRx=b <=> Rx=z
+  * z = Q.T*b == Qz=b 
+* Cholesky
+  * A is symetric and positive definite
+  * A = LL.T / L==lower triangular
+
+#### interactive
+* Conjugate gradient (CG) A symetric and positive definite
+* Biconjugate gradient (Bi-CG) 
+
 
 ## Smoothing (remove noise)
 ## Remeshing
