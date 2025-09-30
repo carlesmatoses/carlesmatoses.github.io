@@ -372,8 +372,69 @@ we can now get the gradient of E -> ∇E=0
 ## Analysis (curvatures)
 ## Simplification
 
-Lagrange multiplier | lagrange functions
+- Lagrange multiplier & lagrange functions
 
+  Lagrange multipliers and Lagrange functions are mathematical tools used to find the maximum or minimum of a function subject to one or more constraints. Instead of searching for extrema in the whole space, they allow us to optimize a function while ensuring that certain conditions (constraints) are always satisfied. The method introduces new variables (the multipliers) and combines the original function and the constraints into a single function, called the Lagrangian. By finding the critical points of this Lagrangian, we can solve constrained optimization problems efficiently.
+
+  To simplify the process we can eve use matrix notation. You want to minimize a quadratic error function $E(n,d)$ with n = normal vector and d=distance from the origin of an hyperplane.
+
+{% equation %}
+  E(n,d)
+{% endequation %}
+
+  * n = vector to optimize (normal to plane).
+  * d = scalar shift.
+
+Given points 
+$p_i$, the signed distance from a point to the plane is:
+{% equation %}
+  dist(p_i,n,d) = n \cdot p_i + d
+{% endequation %}
+If we want the best-fit plane (least squares), we minimize:
+{% equation %}
+  E(n,d) = \sum{(n \cdot p_i + d)^2}
+{% endequation %}
+That’s the quadratic error function.
+
+If you try to minimize E(n,d) directly, the trivial solution is n=0,d=0, which is meaningless.
+
+We need a constraint:
+{% equation %}
+  ||n||^2=1
+{% endequation %}
+to ensure the normal is a unit vector.
+
+We now minimize:
+{% equation %}
+L(n,d,λ)=E(n,d)−λ(∥n∥^2−1)
+{% endequation %}
+* Here, λ is the Lagrange multiplier.
+* Taking derivatives w.r.t. n,d,λ gives a system of equations.
+* Solving it gives the optimal plane normal n and offset d.
+
+
+The derivatives are:
+
+* With respect to $n$:
+{% equation %}
+\frac{\partial L}{\partial n} = 2 C n + 2 d c - 2 \lambda n
+{% endequation %}
+  (where $C$ and $c$ are the covariance matrix and mean vector, depending on how $E(n,d)$ is written)
+
+* With respect to $d$:
+{% equation %}
+\frac{\partial L}{\partial d} = 2 c^T n + 2 d N
+{% endequation %}
+  (where $N$ is the number of points)
+
+* With respect to $\lambda$:
+{% equation %}
+\frac{\partial L}{\partial \lambda} = - (\|n\|^2 - 1)
+{% endequation %}
+
+Setting these derivatives to zero gives the system of equations whose solution yields the optimal $n$ and $d$.
+
+<!-- 
 the professor said "solutions to opt f(x) s.t g(x)=0
 are the critical points of Lagrange"
 
@@ -398,7 +459,7 @@ lambda will become eigenvalues of C
 
 E(n,d) = n^T * C * n = n^T * lambda * n = lambda*n^T*n = lambda
 
-n eigenv of C with smallest eigenv lambda
+n eigenv of C with smallest eigenv lambda -->
 
 
 ## Smoothing (remove noise)
