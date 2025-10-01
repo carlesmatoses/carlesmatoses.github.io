@@ -300,11 +300,29 @@ L_d = k_d \cdot I \cdot max(0,N \cdot L)
 /images/ambient_occlusion/ibl_hemisphere_sample.png
 {% endfigure %}
 
-Since light hits a surface point from all directions ``we must check occlusion on all directions too!!``. If there is no occlusion, the diffuse component will become the weighted average of all incident light. 
+Since light hits a surface point from all directions **we must check occlusion on all directions too!!**. 
+
+<!-- If there is no occlusion, the diffuse component will become the weighted average of all incident light.  -->
 
 A basic algorithm to calculate Ambient Occlusion is to **generate random vectors inside a hemisphere aligned with the fragment normal**. We ray cast in those directions and store how many rays have been occluded. We average the result and store it in a texture.
 
+{% figure caption="Generate random vectors in a hemisphere oriented with the fragment normal" id="ao-basic"  size="0.5" col="1" %}
+/images/ambient_occlusion/ambient occlusion example2.png
+{% endfigure %}
+
+{% figure caption="Average the number of collisions for each fragment" id="ao-average"  size="0.5" col="1" %}
+/images/ambient_occlusion/ambient occlusion example.png
+{% endfigure %}
+
+{% figure caption="Ambient occlusion Basic implementation" id="ao-result"  size="0.5" col="1" %}
+/images/ambient_occlusion/ambient occlusion example1.png
+{% endfigure %}
+
 An additional layer of realism would be to integrate lambert's rule that states: **the more aligned incident rays are with the fragment's normal, the more they contribute to the final result**.
+
+{% figure caption="Ambient occlusion with dot product weight" id="ao-result"  size="0.5" col="1" %}
+/images/ambient_occlusion/ambient occlusion dot.png
+{% endfigure %}
 
 **This technique is view independent** therefore we can bake it and use it in any context.
 
