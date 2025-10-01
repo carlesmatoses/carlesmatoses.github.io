@@ -2,7 +2,7 @@
 layout: post
 title:  "Ambient Occlusion"
 date:   2024-11-27 18:17:51 +0200
-preview: "/images/ambient_occlusion/header.jpg"
+preview: "/images/ambient_occlusion/ambient occlusion example.png"
 categories: post # post, project
 permalink: post/ambient-occlusion
 ---
@@ -189,8 +189,22 @@ fr = fr_{diffuse} + fr_{specular}
 We will start by explaining Reflection Occlusion. 
 
 **Reflection Occlusion (RO)** is a rendering technique used to estimate how much ``reflected light`` reaches a surface point. In essence, it simulates how exposed each point is towards the reflection vector.
+{% equation id="camera-vector" %}
+v = \text{camera\_position} - \text{surface\_position}
+{% endequation %}
 
-This technique uses **ray tracing to detect whether the fragment is occluded or not**. We then store the result on an image and darken the reflections in the final image.
+{% equation id="reflection-vector" %}
+r = v - 2(v \cdot n)n
+{% endequation %}
+
+First, compute the reflection vector {% equation_inline r %} of the view direction {% equation_inline v %} (from the surface to the camera) against the normal {% equation_inline n %}  using the {% ref equation:reflection-vector %} formula.
+
+Now, define a visibility function along that reflection vector:
+{% equation id="R-occlusion-function" %}
+RO(p)=V(p,r)
+{% endequation %}
+
+{% equation_inline V(p,r) %} uses **ray tracing to detect whether the fragment is occluded or not**. We then can store the result on an image and darken the reflections in the final render.
 
 Remember, this technique is **view dependent** therefore we need to compute it each frame or bake it if we know the camera position and the scene will not be modified.
 
@@ -198,7 +212,7 @@ Remember, this technique is **view dependent** therefore we need to compute it e
 ``The process to obtain the Reflection Occlusion path is``:
 1. Get the surface normal and position. 
 2. Get the camera position.
-3. Calculate the reflection vector from the three previous variables. It will look like {% ref figure:reflect-vectors %}
+3. Calculate the reflection vector from the three previous variables. It will look like {% ref figure:reflect-vectors %}.
 4. Use some technique to calculate ray intersections from the surface to the rest of geometry {% ref figure:reflection-occlusion-image %}.
 5. Store the collision distance per fragment.
 6. Use it to darken the Reflection Map using a shader.
@@ -213,9 +227,11 @@ Remember, this technique is **view dependent** therefore we need to compute it e
 {% endfigure %}
 
 
-The limitation of this technique is that, **instead of reflecting itself, it  just darkens the surface**. For general purposes this is enough. 
+The limitation of this technique is that, **instead of reflecting the collided surface, it  just darkens the fragment**. For general purposes this is enough. 
 
-In path tracing renderers, you are usually provided a parameter to choose the bounces limit. This is of course more realistic, but may take several minutes {% ref figure:reflect-bounces %}.
+One of the scenarios where this approach may fail is on the use of enviorment maps when there are objects in scene. If  {% equation_inline V(p,r) %} is pondered by distance as {% equation_inline  V(p,r)=max(0,1− \frac{d\(p,r\)​}{R} ) %} with a small R, we may end up with a reflection through a wall that does not make sense.
+
+In path tracing renderers, you are usually provided a parameter to choose the bounces limit. This is of course more realistic, but may take several minutes {% ref figure:reflect-bounces %}. We also avoid showing incorrect reflections when occluders are far since we dont use IBL techniques.
 
 {% figure id="reflect-bounces" caption="Cycles Reflections with 0, 1 and 2 bounces respectively." %}
 /images/ambient_occlusion/cyclesReflections.png
@@ -225,9 +241,23 @@ As easy and powerful this method may seem, it is not used because of the process
 
 
 # Ambient Occlusion
-Finally!!, we get to point of the post. We are now on the ``Lambert side of the formula`` {% ref equation:energy %}.
+Finally!!, we get to point of the post. We are now on the ``Diffuse side of the formula`` {% ref equation:energy %}.
 
 **Ambient Occlusion (AO)** is a rendering technique used to estimate how much ambient light reaches a surface point. In essence, **it simulates how exposed each point is to surrounding light**, based on nearby geometry.
+
+{% equation id="ao-formula" %}
+AO(p) = \frac{1}{\pi} \int_{\Omega} V(p, \omega) \, (n \cdot \omega) \, d\omega
+{% endequation %}
+
+**Explanation:**  
+- {% equation_inline p %}: Surface point being evaluated.  
+- {% equation_inline n %}: Surface normal at {% equation_inline p %}.  
+- {% equation_inline \omega %}: Sampled direction within the hemisphere {% equation_inline \Omega %} centered around {% equation_inline n %}.  
+- {% equation_inline V(p, \omega) %}: Visibility function; returns 1 if the direction {% equation_inline \omega %} from {% equation_inline p %} is unoccluded, 0 if occluded by geometry.  
+- {% equation_inline n \cdot \omega %}: Lambertian cosine weighting, giving more influence to directions closer to the normal.  
+- The integral averages visibility over all directions in the hemisphere, weighted by the cosine of the angle to the normal. The result is normalized by {% equation_inline \frac{1}{\pi} %}.
+
+This formula computes the ambient occlusion factor at a point by integrating the fraction of unblocked ambient light over the hemisphere above the surface, simulating how much ambient light reaches that point.
 
 In the real world, light rays are often blocked or "occluded" by objects. This effect happens naturally and gives surfaces subtle shadows in creases, corners, and areas where objects are close together. Recreating this effect adds a layer of realism to CGI scenes ({% ref figure:real-world-ao %}).
 
@@ -274,9 +304,15 @@ The following interactive example offers three slides:
 
 
 ### Computation
-AO is actually the same idea as Reflection Occlusion. The biggest difference is that we will use lots of vectors per fragment instead of one. 
+AO is actually the same idea as Reflection Occlusion. The biggest difference is that we will use a hemisphere per fragment instead of one vector. TO avoid millions of calculations we will approximate the integral with montecarlo.  
 
-``The diffuse light Concept:`` Mirrors bounce light from exactly one point (at least in a perfect mirror). There are cases where the mirror may be a bit dirty and it reflects light from closer directions generating a blurred image. Diffuse light works under the premise that  ``light will hit the surface from all directions``. 
+
+
+{% equation id="ao-formula" %}
+AO(p) \approx \frac{1}{N} \sum_{i=1}^{N} V(p, w_i) \cdot (n \cdot w_i)
+{% endequation %}
+
+``The diffuse light Concept:`` Mirrors bounce light from exactly one point (at least in a perfect mirror). There are cases where the mirror may be a bit dirty and it reflects light from closer directions generating a blurred image. Diffuse light works under the premise that  ``light will hit the surface from all directions``. This is due at the nature of photons that penetrates on the first layers of the object and bounce back to the observator.
 
 {% figure id="diffuse-variable" caption="Three spheres with different diffuse component" %}
 /images/ambient_occlusion/comparing_spheres.png
@@ -300,11 +336,15 @@ L_d = k_d \cdot I \cdot max(0,N \cdot L)
 /images/ambient_occlusion/ibl_hemisphere_sample.png
 {% endfigure %}
 
-Since light hits a surface point from all directions **we must check occlusion on all directions too!!**. 
+Since in a complitelly diffuse surface, light hits a point from all directions {% ref figure:lambert-w %}, **we must check occlusion on all directions too!!**. 
 
 <!-- If there is no occlusion, the diffuse component will become the weighted average of all incident light.  -->
 
 A basic algorithm to calculate Ambient Occlusion is to **generate random vectors inside a hemisphere aligned with the fragment normal**. We ray cast in those directions and store how many rays have been occluded. We average the result and store it in a texture.
+
+{% equation id="ao-simple" %}
+AO(p) = \frac{1}{N} \sum_{i=1}^{N} V(p, w_i)
+{% endequation %}
 
 {% figure caption="Generate random vectors in a hemisphere oriented with the fragment normal" id="ao-basic"  size="0.5" col="1" %}
 /images/ambient_occlusion/ambient occlusion example2.png
@@ -320,13 +360,39 @@ A basic algorithm to calculate Ambient Occlusion is to **generate random vectors
 
 An additional layer of realism would be to integrate lambert's rule that states: **the more aligned incident rays are with the fragment's normal, the more they contribute to the final result**.
 
+{% equation id="ao-weighted" %}
+AO(p) = \frac{1}{N} \sum_{i=1}^{N} V(p, w_i) \cdot (n \cdot w_i)
+{% endequation %}
+
+
 {% figure caption="Ambient occlusion with dot product weight" id="ao-result"  size="0.5" col="1" %}
 /images/ambient_occlusion/ambient occlusion dot.png
 {% endfigure %}
 
 **This technique is view independent** therefore we can bake it and use it in any context.
 
-With the above implementations, hemisphere rays weighted by aligment with normal direction, would be enough to make a correct implementation. further improvements would involve keeping track of the bounce color and weight it on the angle. In case the predominant direction is occluded, we will not use the main color but the surrounding ones. This is particularly usefull to avoid the sky illumination for example when there is a roof.   A simplification of this method is to store a vector that is not the normal but it represents better the final color we look for
+<!-- With the above implementations, hemisphere rays weighted by aligment with normal direction, would be enough to make a correct implementation.  -->
+<!-- Further improvements would involve keeping track of the bounce color and weight it on the angle. In case the predominant direction is occluded, we will not use the main color but the surrounding ones. This is particularly usefull to avoid the sky illumination for example when there is a roof.   A simplification of this method is to store a vector that is not the normal but it represents better the final color we look for -->
+
+We can go even further and register the mean direction of no-occlusion to later on color that fragment based on the bended normal direction of not occluded vectors. We can also detect the distance of the occluding object to weight length collision.
+
+{% equation id="ao-bent-normal" %}
+\mathbf{b}(p) = \frac{1}{M} \sum_{i=1}^{N} V(p, w_i) \cdot w_i
+{% endequation %}
+
+Where:
+- {% equation_inline \mathbf{b}(p) %}: Bent normal (mean not-occluded direction) at point {% equation_inline p %}.
+- {% equation_inline w_i %}: Sampled direction in the hemisphere.
+- {% equation_inline V(p, w_i) %}: Visibility function (1 if not occluded, 0 if occluded).
+- {% equation_inline M = \sum_{i=1}^{N} V(p, w_i) %}: Number of not-occluded samples.
+
+This formula averages all incident directions that are not occluded, resulting in the mean direction of unblocked ambient light.
+
+{% figure caption="Ambient occlusion with dot product weight" id="ao-result"  size="0.5" col="1" %}
+/images/ambient_occlusion/normal collision direction.png
+{% endfigure %}
+
+
 
 <!-- 
 imatge de llum occluida amb la calavera
@@ -347,12 +413,25 @@ Lets review what we got until this point and put names to this techineques:
 <!-- To know which part of the enviorment map is most representative of a certain surface point we can store that information based on the hemisphere rays generated before. -->
 
 
-# Blender Ambient Occlusion
+# Conclusion
+{% figure caption="Image Based Lightning implementation with AO+RO" id="imb-result"  size="1.0" col="3" %}
+/images/ambient_occlusion/IMB1.png
+/images/ambient_occlusion/IMB2.png
+/images/ambient_occlusion/IMB3.png
+{% endfigure %}
+
+This is the basic idea behind Ambient occlusion. The combination of AO and RO on the different sides of PBR rendering provides a good starting point that can be improved further artistically.
+
+{% equation id="eq:PBR" %}
+fr = (fr_{diffuse} \cdot AO_{map}) + (fr_{specular} \cdot RO_{map})
+{% endequation %}
+
+As mentioned, there is a big computation requirement for this technique that prevents it's use in real time. To solve this problem, a new set of techniques called Real Time Ambient Occlusion emerged. In exchange for accuracy, they archieve real time rendering on dynamic scenes that can not be backed. Usually they do not implement the reflection occlusion component since it requires too much computations that can not be avoided if we want a good result on the RO map.  
 
 # Real Time Ambient Occlusion
 When games entered in a *graphics war* they looked for applying AO in the gamplay. At first the only method known was to bake it for static elements of the scene.
 
-This worked but they where lacking dynamic ambient occlusion. The solution was to take into account only geometries of each object (this means that an object will only take into account its own geometry to calculate AO).
+For dynamic elements, the solution was to take into account only objects self geometry to calculate AO. The contact shadows of dynamic elements on the static ones was still an unsolved problem
 
 <!-- image of a skull with a darkened bottom, when rotated, the ao does not update. -->
 

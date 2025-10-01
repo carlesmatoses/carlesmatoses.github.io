@@ -178,7 +178,7 @@ multiple figures in the same line {% ref figure:img %} {% ref figure:img3 %} {% 
 E = mc^2
 {% endequation %}
 
-As shown in equation {% ref equation:energy %}, energy is proportional to mass.
+As shown in equation {% ref equation:energy %}, energy is proportional to mass. Also we can write in line equations as  {% equation_inline E = mc^2 %}
 
 ```liquid
 {% raw %}
@@ -186,7 +186,7 @@ As shown in equation {% ref equation:energy %}, energy is proportional to mass.
 E = mc^2
 {% endequation %}
 
-As shown in equation {% ref equation:energy %}, energy is proportional to mass.
+As shown in equation {% ref equation:energy %}, energy is proportional to mass. Also we can write in line equations as {% equation_inline E = mc^2 %}
 {% endraw %}
 ```
 
