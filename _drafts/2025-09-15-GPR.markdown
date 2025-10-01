@@ -51,6 +51,10 @@ But the **why do we care?** is still fuzzy. Let’s make it concrete with exampl
     That’s the raw math meaning. Now — what do we do with that?
 
 ## SVD
+Singular Value Decomposition (SVD) is a powerful matrix factorization technique that expresses any $m \times n$ matrix $A$ as the product $A = U \Sigma V^T$, where $U$ and $V$ are orthogonal matrices and $\Sigma$ is a diagonal matrix containing the singular values of $A$. SVD reveals the intrinsic geometric structure of the matrix, making it invaluable for applications such as dimensionality reduction, noise filtering, and solving linear systems, especially when $A$ is not square or is ill-conditioned.
+
+To find the singular values of a matrix \(A\), you must compute the square roots of the positive eigenvalues of the matrix \(A^{T}A\) (or \(AA^{T}\)). The general process involves calculating \(A^{T}A\), determining its characteristic polynomial by setting the determinant of (\(A^{T}A-\lambda I\)) to zero, solving for the eigenvalues (\(\lambda \)), and then taking the square root of each positive eigenvalue to find the singular values of  A.
+
 ## differential geometry of curves and surfaces:
 ## C++
 
@@ -462,40 +466,125 @@ E(n,d) = n^T * C * n = n^T * lambda * n = lambda*n^T*n = lambda
 n eigenv of C with smallest eigenv lambda -->
 
 ## getting points
-Having multiple point clodes knowing the camera position allows us to know the geometry of the photographed object
+Having multiple point clouds knowing the camera position allows us to know the geometry of the photographed object
 
 ### Alignment (registration)
 
-P={P_i} for 1 <= i <= n; Q = {Q_i}; -> transform (rotationtransition)
+Given two point clouds, {% equation_inline P = \{P_i\} \text{ for } 1 \leq i \leq n %} and {% equation_inline Q = \{Q_i\} \text{ for } 1 \leq i \leq n %}, we seek a transformation—typically a rotation and translation—that aligns $Q$ to $P$.
+
+The goal is to find a rotation matrix {% equation_inline R %} and a translation vector {% equation_inline t %} such that:
+
+{% equation %}
+P_i \approx R Q_i + t \quad \text{for } 1 \leq i \leq n
+{% endequation %}
+
+This process is known as point cloud registration or alignment.
 
 ### SVD (singular value decomposition)
-A belongs to Real^{nxn} -> eigendecomposition -> A=V*A*V.T
+{% equation_inline A \in \mathbb{R}^{n \times n} %}
+Eigendecomposition:
+{% equation %}
+A = V D V^T
+{% endequation %}
+where
+* {% equation_inline V %} contains the eigenvectors of {% equation_inline A %},
+* {% equation_inline D %} is a diagonal matrix of eigenvalues,
+* {% equation_inline V^T %} is the transpose of {% equation_inline V %}.
 
-A = U * CovarianceMatrixSymbol * V.T
-A belongs to R^{mxn}, CovarianceMatrixSymbol belongs R^{nx1}
-U belongs to R^{mxm}, V belongs to R^{nx1}
-U,V orthogonal == U,V rotations (reflections)
+Singular Value Decomposition (SVD):
+{% equation_inline A \in \mathbb{R}^{m \times n} %}
+{% equation %}
+A = U \Sigma V^T
+{% endequation %}
+where
+* {% equation_inline U \in \mathbb{R}^{m \times m} %} is an orthogonal matrix,
+* {% equation_inline V \in \mathbb{R}^{n \times n} %} is an orthogonal matrix,
+* {% equation_inline \Sigma \in \mathbb{R}^{m \times n} %} is a diagonal matrix with singular values.
 
-CovarianceMatrixSymbol == Diagonal matrix
-CovarianceMatryxSymbol matrix has a diagonal of alphas. a1,a2,...,amin(min) == singular values of A, alpha_i >= 0;
+Orthogonal matrices ({% equation_inline U %} and {% equation_inline V %}) represent rotations or reflections.
 
 
-Ax=b A belongs to R^{rxn} -> covarianceMatrixSymbol belongs to R^{nx1}
-U*CovarianceMatrixSymbol*V.T*x = b
-covarianceMatrixsymbol * V.t * x = U.T * b
-x = V * inverse covarianceMatrixSymbol * U.T * b
+{% equation %}
+\Sigma = \operatorname{diag}(\alpha_1, \alpha_2, \ldots, \alpha_{\min(m,n)})
+{% endequation %}
+where each diagonal entry {% equation_inline \alpha_i %} is a singular value of {% equation_inline A %}, and {% equation_inline \alpha_i \geq 0 %}.
+
+
+Given a linear system {% equation_inline Ax = b %}, where {% equation_inline A \in \mathbb{R}^{r \times n} %}, we can use the Singular Value Decomposition (SVD) to solve for {% equation_inline x %}. If {% equation_inline A = U \Sigma V^T %}, then:
+
+{% equation %}
+U \Sigma V^T x = b
+{% endequation %}
+
+Multiplying both sides by {% equation_inline U^T %}:
+
+{% equation %}
+\Sigma V^T x = U^T b
+{% endequation %}
+
+Let {% equation_inline y = V^T x %}, so:
+
+{% equation %}
+\Sigma y = U^T b
+{% endequation %}
+
+Solving for {% equation_inline y %}:
+
+{% equation %}
+y = \Sigma^{-1} U^T b
+{% endequation %}
+
+Then, recovering {% equation_inline x %}:
+
+{% equation %}
+x = V y = V \Sigma^{-1} U^T b
+{% endequation %}
+
+This expresses the solution to {% equation_inline Ax = b %} using SVD.
+
 
 ### Simpler Alignment
-P = {P_i} 1<=i <= n;  Q = {q_i}1<=i <=n
-* same size P and Q
-* P_1 corresponds to q_i;
+Given two point clouds:
+- {% equation_inline P = \{P_i\} \text{ for } 1 \leq i \leq n %}
+- {% equation_inline Q = \{q_i\} \text{ for } 1 \leq i \leq n %}
 
-P_i is almost equal to R*q_i+t, R belongs to R^{3x3}, t belongs to R^3
+Assume:
+- Both sets have the same number of points ($n$).
+- Each $P_i$ corresponds to $q_i$.
 
-E(R,t) = summatory (n , i=1) (P_i - R*q_i -t)^2
-t = p' - R*q'  |  P' = R*q'+t
-P' = 1/n sum(n, i=1) P_i
-q' = 1/n sum(n, i=1) q_i
+We seek a rotation matrix {% equation_inline R \in \mathbb{R}^{3 \times 3} %} and a translation vector {% equation_inline t \in \mathbb{R}^3 %} such that:
+
+{% equation %}
+P_i \approx R q_i + t
+{% endequation %}
+
+The alignment error function is:
+
+{% equation %}
+E(R, t) = \sum_{i=1}^{n} \| P_i - R q_i - t \|^2
+{% endequation %}
+
+To solve for $t$:
+- Compute the centroids of $P$ and $Q$:
+
+{% equation %}
+P' = \frac{1}{n} \sum_{i=1}^{n} P_i
+{% endequation %}
+{% equation %}
+q' = \frac{1}{n} \sum_{i=1}^{n} q_i
+{% endequation %}
+
+- The optimal translation is:
+
+{% equation %}
+t = P' - R q'
+{% endequation %}
+
+So, the aligned points satisfy:
+
+{% equation %}
+P' = R q' + t
+{% endequation %}
 
 ### Steps
 1. Compute centroids {p', q'}
@@ -526,7 +615,7 @@ q' = 1/n sum(n, i=1) q_i
    1. need initial rough alignment (there are better alternatives in the literature)
 
 ### Compute border point status
-One of the posible problems is that point clodes are apart and the closest point for each other is a single point from P for all Q points. 
+One of the posible problems is that point clouds are apart and the closest point for each other is a single point from P for all Q points. 
 
 One solution could be to remove all overlapint points. The single point in P that corresponds to multiple Q points is called border point on P.
 1. how do we detect border points and overlapped points?
