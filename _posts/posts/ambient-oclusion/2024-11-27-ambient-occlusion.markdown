@@ -76,11 +76,13 @@ GIDE FOR WRITING THIS POST
 
 
 # Introduction
-Representing reality has been an impactful research field for centuries. It exists across various artistic fields such as painting and sculpture. 
+<!-- Representing reality has been an impactful research field for centuries. It exists across various artistic techniques such as painting and sculpture.  -->
 
-Artistic movements like impressionism have tried to find better ways of illustrating reality than reality itself, for this they depict objects as light avoiding a defined shape or form. **Light representation impacts: emotions, credibility, intention and context.**
+Understanding reality and representing it accuratelly has been an active research field for centuries on all artistic disciplines.
 
-In recent years we have seen an increasing graphical improvement trying to get closer to reality. This lead to the developement of techniques to simulate light behavior in computers.
+Movements like impressionism have tried to find better ways of illustrating reality than reality itself (perceived reality). They depict objects as light strokes, avoiding a defined shape or form. **Light representation affects emotions, credibility, intention and context.**
+
+In recent years we have seen an increasing graphical improvement on computer generated images trying to get closer to reality. This provided new techniques to simulate light behavior on virtual enviorments.
 
 <!-- We all like Games, Films, cartoons and other media contents. In recent years we have seen an increasing graphical improvement trying to get closer to reality. This pursuit has existed for centuries across various artistic fields such as paintings and sculpture. On the impressionist movement, they tried to capture a scene without shapes or form, just representing the light and letting it define the elements.  -->
 
@@ -89,9 +91,9 @@ https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Claude_Monet%2C_Impres
 /images/ambient_occlusion/toystory.jpg
 {% endfigure %}
 
-Computer generated films such as Toy story, illustrates the evolution of techniques for photorealism. Even high stylized games are not free of this requirement of respecting **light behavior** since it **directly impacts the whatchers inmersion into the story**. 
+Computer generated films such as Toy story, illustrates the evolution of phisically based rendering techniques (PBR). Even high stylized games are not free of this requirement of respecting **light behavior** since it **directly impacts the viewers inmersion into the story**. 
 
-That is why some rules are constant for good looking media such as light characteristics (color, intensity, spectrum, ...) and light interaction (global illumination, ambient occlusion, transparency, caustics, ... ). 
+That is why some rules are constant for good looking media such as **light propertyes** (color, intensity, spectrum, ...) and **light interaction** (global illumination, ambient occlusion, transparency, caustics, ... ). 
 
 {% figure id="Ambient-Occlusion-Skyrim" size="1.0" caption="https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg" %}
 https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg
@@ -110,9 +112,9 @@ One of the characteristics of light is that it bounces from one surface to anoth
 https://cdn2.unrealengine.com/feed-ue5-early-access-livestream-lumen-1920x1080-a4d78e37fd8e.jpg
 {% endfigure %}
 
-Algorithms like **ray tracing** and **path tracing** simulate full ``global illumination``, but they require significant processing power. In exchange, they provide **close to real light occlusion** and **do not need to use ambient occlusion techniques**.
+Algorithms like **ray tracing** and **path tracing** simulate full ``global illumination``, but they require significant processing power. In exchange, they provide **close to real light occlusion** and **do not need to use ambient occlusion techniques**. AO can still be used for enhancing some effects.
 
-This techniques are so realistic because they use the scene geometry and textures to calculate the light for a certain number of iterations (``global illumination``). This iterations are known as ``bounces``, the number of times a light path collides on a surface and changes direction.
+This techniques are so realistic because **they use the scene geometry and textures to calculate the light** for a certain number of iterations (``global illumination``). This iterations are known as ``bounces``, the number of times a light path collides on a surface and changes direction.
 
 {% alert secondary %}
 **Example Renderers:**  
@@ -121,7 +123,7 @@ This techniques are so realistic because they use the scene geometry and texture
 Cycles, for example, is a path tracing renderer integrated in Blender that simulates global illumination by tracing the paths of many light rays per pixel.
 {% endalert %}
 
-To simplify or "fake" global illumination **we could place lights from all directions** by gessing how the surface should look. Whith this strategy we avoid ``global illumination``, instead we only use a single bounce from each light.
+To simplify or "fake" global illumination **we could place lights from all directions** by "gessing" how the surface should look. Whith this strategy we avoid computing ``global illumination`` and we only use a single bounce from each light.
 
 {% figure id="global-illumination" size="1.0" caption="Global Illumination using virtual lights." %}
     /images/ambient_occlusion/global_ilumination.png
@@ -146,7 +148,7 @@ Instead of placing hundreds of lights in the scene, we can **group them into an 
 
 For ``global illumination`` we will calculate light and bounces assuming the environment image are virtual light placed really far. 
 
-``Image Based Lightning`` will use it as a projected texture on the surface making the calculation almost instant compared to Ray Tracing or Path Tracing. One limitation of ``IBL`` is that **we do not take into account occlusion**, buuuuut... we are trying to overcome that.
+For ``Image Based Lightning`` we will use it as a projected texture on the surface making the calculation almost instant compared to Ray Tracing or Path Tracing. One limitation of ``IBL`` is that **we do not take into account occlusion**, buuuuut... we are trying to overcome that.
 
 {% figure id="IBL-no-shadows" size="0.49" caption="Suzanne with Image Based Lighting shows light under the hat and is not casting shadows from the windows" %}
 /images/ambient_occlusion/ao_without_shadows.png
@@ -168,7 +170,7 @@ https://www.fxguide.com/wp-content/uploads/2011/01/ocllusion.jpg
 
 
 
-We already mentioned that this technique can be expensive and time consuming. Luckily for them, films do not require real time processes even though its still desired. For this productions, they ``baked geometry occlusions in image sequences`` and use it in the rendering pipeline as another texture. 
+We already mentioned that this technique can be expensive and time consuming. Luckily for them, films do not require real time processes even though its still desired. For this productions, they **baked geometry occlusions in image sequences** and use it in the rendering pipeline as another texture. 
 
 We are going to explore **two different techniques developed by ILM: ``Ambient Occlusion`` and ``Reflection Occlusion``**. The reason they developed two techniques is because materials are usually composed of two components: ``Diffuse`` and ``Specular``.
 
@@ -212,10 +214,10 @@ Remember, this technique is **view dependent** therefore we need to compute it e
 ``The process to obtain the Reflection Occlusion path is``:
 1. Get the surface normal and position. 
 2. Get the camera position.
-3. Calculate the reflection vector from the three previous variables. It will look like {% ref figure:reflect-vectors %}.
+3. Calculate the reflection vector from the three previous variables {% ref equation:reflection-vector %}. It will look like figure {% ref figure:reflect-vectors %}.
 4. Use some technique to calculate ray intersections from the surface to the rest of geometry {% ref figure:reflection-occlusion-image %}.
 5. Store the collision distance per fragment.
-6. Use it to darken the Reflection Map using a shader.
+6. Use it to darken the Reflection Map with a shader.
 
 
 {% figure id="reflect-vectors" caption="Generate reflect vectors" size="0.5" %}
@@ -229,9 +231,13 @@ Remember, this technique is **view dependent** therefore we need to compute it e
 
 The limitation of this technique is that, **instead of reflecting the collided surface, it  just darkens the fragment**. For general purposes this is enough. 
 
-One of the scenarios where this approach may fail is on the use of enviorment maps when there are objects in scene. If  {% equation_inline V(p,r) %} is pondered by distance as {% equation_inline  V(p,r)=max(0,1− \frac{d\(p,r\)​}{R} ) %} with a small R, we may end up with a reflection through a wall that does not make sense.
+One of the scenarios where this approach may fail is on the use of ``enviorment maps`` with ``IBL`` when there are objects in scene. If  {% equation_inline V(p,r) %} is pondered by distance as {% equation_inline  V(p,r)=max(0,1− \frac{d\(p,r\)​}{R} ) %} with a small R, we may end up with a reflection through a wall that does not make sense. Imagine being in a basement and you see the sky being reflected by a glass of water, that would be weird...
 
-In path tracing renderers, you are usually provided a parameter to choose the bounces limit. This is of course more realistic, but may take several minutes {% ref figure:reflect-bounces %}. We also avoid showing incorrect reflections when occluders are far since we dont use IBL techniques.
+{% alert secondary %}
+Here, R represents the radius where we are detecting collisions. If R is too small we may end up not detecting any collision and assuming the surface is exposed to the enviorment map even if it is on the inside of a house.
+{% endalert %}
+
+In **path tracing renderers**, you are usually provided a **parameter to choose the bounces limit**. This is of course more realistic, but may take several minutes {% ref figure:reflect-bounces %}. We also avoid showing incorrect reflections when occluders are far since we dont use IBL techniques.
 
 {% figure id="reflect-bounces" caption="Cycles Reflections with 0, 1 and 2 bounces respectively." %}
 /images/ambient_occlusion/cyclesReflections.png
@@ -257,7 +263,13 @@ AO(p) = \frac{1}{\pi} \int_{\Omega} V(p, \omega) \, (n \cdot \omega) \, d\omega
 - {% equation_inline n \cdot \omega %}: Lambertian cosine weighting, giving more influence to directions closer to the normal.  
 - The integral averages visibility over all directions in the hemisphere, weighted by the cosine of the angle to the normal. The result is normalized by {% equation_inline \frac{1}{\pi} %}.
 
-This formula computes the ambient occlusion factor at a point by integrating the fraction of unblocked ambient light over the hemisphere above the surface, simulating how much ambient light reaches that point.
+{% alert secondary %}
+**Reminder:**
+
+Diffuse component is calculated by adding the incident light of all directions into the surface point. For this reason, occlusion can come from any of those directions.
+{% endalert %}
+
+This formula computes the ambient occlusion factor at a point by **integrating the fraction of unblocked ambient light over the hemisphere above the surface**, simulating how much ambient light reaches that point.
 
 In the real world, light rays are often blocked or "occluded" by objects. This effect happens naturally and gives surfaces subtle shadows in creases, corners, and areas where objects are close together. Recreating this effect adds a layer of realism to CGI scenes ({% ref figure:real-world-ao %}).
 
@@ -275,7 +287,7 @@ That said, **ambient occlusion is not physically accurate**, but rather an *arti
 /images/ambient_occlusion/blender_ao_shader.png
 {% endfigure %}
 
-AO will generate a value (usually between 0 and 1) on a surface point that represents how much light is reaching. This technique is agnostic to the scene lights and as long as geometry doesn't change, it can be baked.
+AO(p) will generate a value (usually between 0 and 1) on a surface point that represents how much light is reaching. This technique is agnostic to the scene lights and as long as geometry doesn't change, it can be baked.
 
 
 **Ambient occlusion will take care of the contact shadows**. It will not account for directional shadows cast by distant light sources like windows — it only simulates shadowing caused by nearby geometry. 
@@ -304,7 +316,7 @@ The following interactive example offers three slides:
 
 
 ### Computation
-AO is actually the same idea as Reflection Occlusion. The biggest difference is that we will use a hemisphere per fragment instead of one vector. TO avoid millions of calculations we will approximate the integral with montecarlo.  
+AO is actually the same idea as Reflection Occlusion. The biggest difference is that we will use a hemisphere per fragment instead of one vector. To avoid millions of calculations, we will approximate the integral with montecarlo approximation.  
 
 
 
@@ -423,7 +435,7 @@ Lets review what we got until this point and put names to this techineques:
 This is the basic idea behind Ambient occlusion. The combination of AO and RO on the different sides of PBR rendering provides a good starting point that can be improved further artistically.
 
 {% equation id="eq:PBR" %}
-fr = (fr_{diffuse} \cdot AO_{map}) + (fr_{specular} \cdot RO_{map})
+fr = (fr_{diffuse} \cdot AO_{map}) \\ \hspace{0.8cm} + \\ \hspace{0.8cm} (fr_{specular} \cdot RO_{map})
 {% endequation %}
 
 As mentioned, there is a big computation requirement for this technique that prevents it's use in real time. To solve this problem, a new set of techniques called Real Time Ambient Occlusion emerged. In exchange for accuracy, they archieve real time rendering on dynamic scenes that can not be backed. Usually they do not implement the reflection occlusion component since it requires too much computations that can not be avoided if we want a good result on the RO map.  
