@@ -198,6 +198,36 @@ CHAN = (in -> CHAN
     ).
   ```
 
+- ***Process naming*** -> a : P preﬁxes each action label in the alphabet of P with a.
+```fsp
+SWITCH = (on->off->SWITCH).
+||TWO_SWITCH =(a:SWITCH||b:SWITCH).
+```
+
+- An ***array of instances of processes***:
+```fsp
+||SWITCHES(N=3) = (forall[i:1..N] s[i]:SWITCH).
+||SWITCHES(N=3) = (s[i:1..N]:SWITCH).
+```
+
+- ***Process labeling***
+  Process labeling in FSP allows you to systematically rename actions in a process by adding one or more prefix labels. This is useful for distinguishing actions when composing multiple processes, or when you want to group related actions under a common label.
+
+  How Process Labeling Works
+  Suppose you have a process P with actions like n. If you apply a set of prefix labels {𝑎1,...,𝑎𝑥} to P, written as {𝑎1,...,𝑎𝑥}::𝑃, every action n in P is replaced by 𝑎1.𝑛,...,𝑎𝑥.𝑛
+  ```fsp
+  P = (n -> X).
+  {a, b}::P
+  ```
+This transforms every action n into a.n and b.n, so every transition (n→X) becomes (a.n→X∣b.n→X).
+
+- ***Action relabeling***: Relabeling functions are applied to processes to change the names of action labels. The general form of the relabeling function is:
+/{newlabel_1/oldlabel_1, ...newlabel_n/oldlabel_n}
+
+- ***Action hiding***: When applied to a process P, the hiding operator \{a1, .., ax} removes the action names a1, .., ax from the alphabet of P and makes these concealed actions silent.
+  - These silent actions are labeled `tau`.
+  - Silent actions in different processes are not shared.
+
 ## Modeling concurrency
 As we know, concurrency refers to the ability of a computing system to make progress on multiple tasks during the same time period, allowing different parts of a program to run independently or be interleaved. 
 
@@ -209,7 +239,7 @@ This two strategies on an LTS mathematical model offer a general model independe
 
 We will proceed now to show how to implement Arbitrary speed and Arbitrary relative order of actions:
 
-### Parallel Composition / action interleaving
+### Modeling Parallel Composition / action interleaving
 As mentioned above we must design some kind of communication between processes. In FSP we accomplish this with Parallel Composition:
 ```fsp
 ITCH = (scratch->STOP).
@@ -221,7 +251,70 @@ the characters `||` corresponds to the parallel composition operator. If P and Q
 This processes can now be called on parallel but they are not communicating each other, they are independent. We will talk about shared actions in "Modeling Interaction" chapter.
 
 ### Modeling Interaction
+In concurrent systems, **interaction** between processes is often modeled using *shared actions*. When two or more processes have actions with the same label, those actions are considered shared and must occur simultaneously in all participating processes. Unshared actions, on the other hand, can be interleaved arbitrarily.
 
+**Example: Maker and User**
+
+Consider two processes: a `MAKER` that manufactures an item and a `USER` that consumes it. The `MAKER` signals the item is ready via a shared action `ready`. The `USER` can only use the item after receiving this signal.
+
+```fsp
+MAKER = (make -> ready -> MAKER).
+USER  = (ready -> use -> USER).
+||MAKER_USER = (MAKER || USER).
+```
+
+Here, `ready` is a shared action. Both processes must synchronize on `ready` before proceeding. The LTS Analyzer tool can visualize this interaction by composing the processes and drawing the resulting state diagram.
+
+This approach ensures correct coordination between concurrent processes, preventing issues like using an item before it is ready.
+
+#### More Complex Action Sharing
+
+**Example 1: Handshake**
+
+Suppose both the `MAKER` and `USER` now synchronize not only on `ready`, but also on `used`:
+
+```fsp
+MAKERv2 = (make -> ready -> used -> MAKERv2).
+USERv2  = (ready -> use -> used -> USERv2).
+||MAKER_USERv2 = (MAKERv2 || USERv2).
+```
+
+**Explanation:**  
+- Both processes must synchronize on `ready` as before.
+- After `USERv2` performs `use`, both must also synchronize on `used`.  
+- This models a scenario where the item is not only used, but both parties must agree it has been used (e.g., for cleanup or reset).
+- The system prevents either process from moving past `used` until both are ready, ensuring tighter coordination.
+
+---
+
+**Example 2: Multi-party synchronization**
+
+Now consider a factory with two makers and an assembler:
+
+```fsp
+MAKE_A    = (makeA -> ready -> used -> MAKE_A).
+MAKE_B    = (makeB -> ready -> used -> MAKE_B).
+ASSEMBLE  = (ready -> assemble -> used -> ASSEMBLE).
+||FACTORY = (MAKE_A || MAKE_B || ASSEMBLE).
+```
+
+**Explanation:**  
+- `MAKE_A` and `MAKE_B` each perform their own `makeA` or `makeB` actions independently.
+- All three processes synchronize on `ready`, meaning assembly cannot start until both makers signal readiness.
+- `ASSEMBLE` then performs `assemble`, while makers wait.
+- All synchronize on `used`, indicating the item has been assembled and used, and all can reset.
+- This models a production line where multiple components must be ready before assembly, and all parties must agree when the product is finished.
+
+---
+
+**Key Principle:**  
+When multiple processes share actions, those actions act as synchronization points. The system enforces that all involved processes must be ready to perform the shared action before any can proceed, ensuring correct sequencing and coordination in concurrent systems.
+
+- Handshake: Two-party synchronization
+- Multi-party synchronization: Three or more processes synchronizing on shared actions
+
+
+#### Manual construction of the LTS
 
 ## Concurrency in Java 
 Java allows to create concurrent programs when following certain rules. To translate an LTS or FSP programm to a real  programming language we will have to make use of some creativity and follow certain rules to make good implementations.
