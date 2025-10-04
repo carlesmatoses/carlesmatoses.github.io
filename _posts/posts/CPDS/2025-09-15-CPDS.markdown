@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "GPR Notes UPC"
+title:  "CPDS Notes UPC"
 date:   2025-09-16 12:00:00 +0200
 preview: "/images/CPDS/image.png"
 categories: post
-permalink: post/GPR
+permalink: post/CPDS
 ---
 
 This are some of my notes for CPDS. 
