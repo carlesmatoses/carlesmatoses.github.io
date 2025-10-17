@@ -1,0 +1,226 @@
+---
+layout: post
+title:  "CA Notes UPC"
+date:   2025-09-15 12:00:00 +0200
+preview: "/images/ca/ca.png"
+categories: post
+permalink: post/CA
+---
+
+This are some of my notes for Computer Animation. 
+<!-- end-abstract -->
+
+<!-- index -->
+* Do not remove this line (it will not be displayed)
+{:toc}
+
+{% bibliography_loader _bibliography/ao_references.bib %}
+
+# Course Introduction
+This course covers foundational and advanced topics in computer animation, starting with particle systems as basic animation objects and exploring their state, forces, and collision handling. You will learn how mass-spring models enable the simulation of deformable objects in one, two, and three dimensions. The curriculum includes particle-based fluid simulation (SPH), rigid body dynamics, and articulated chains, focusing on interactions between solids and deformables. Navigation techniques such as cell and portal graphs, path finding, and roadmaps are introduced. The course also addresses character animation through keyframing, skinning, motion capture, and motion graphs, and concludes with crowd simulation using social forces, rule-based models, cellular automata, and precomputed search trees.
+
+# Particles Animation
+
+A particle is a zero-dimensional (0D) object, meaning it has no spatial extent—only a position in space. At any time {% equation_inline t %}, its state is defined by its position {% equation_inline \mathbf{x}(t) %}, velocity {% equation_inline \mathbf{v}(t) %}, and mass {% equation_inline m %}. The forces {% equation_inline \mathbf{F}(t) %} acting on the particle determine its acceleration via Newton's second law: {% equation_inline \mathbf{a}(t) = \frac{\mathbf{F}(t)}{m} %}. The simulation advances by calculating a new step: using the acceleration to update the velocity ({% equation_inline \mathbf{v}(t + \Delta t) = \mathbf{v}(t) + \mathbf{a}(t)\Delta t %}), and then updating the position ({% equation_inline \mathbf{x}(t + \Delta t) = \mathbf{x}(t) + \mathbf{v}(t + \Delta t)\Delta t %}). This process is structured as a loop: **current state → integrator → predicted state → constraint solver → corrected state → update state**. Differential equations (ODEs) describe how the state evolves over time and are solved during the **integrator** step to predict the next state of the particle. For more details, see [ODE](https://youtu.be/p_di4Zn4wz4?si=V41GIw-AXTiGQjAH).
+
+Ordinary Differential Equations (ODEs) are used in particle integrators to model how a particle's state (position and velocity) changes over time under the influence of forces. The general form, {% equation_inline \mathbf{X}' = f(\mathbf{X}, t) %}, describes the rate of change of the state vector {% equation_inline \mathbf{X} %} (which includes position and velocity) as a function of the current state and time. In animation, we typically solve initial value problems, starting from a known state and computing its evolution.
+
+Instead of solving these equations analytically, we use numerical methods (integrators) to estimate the next state. For example, using Euler's method:
+
+- Update position: {% equation_inline \mathbf{x}_{t+\Delta t} = \mathbf{x}_t + \Delta t \cdot \mathbf{v}_t %}
+- Update velocity: {% equation_inline \mathbf{v}_{t+\Delta t} = \mathbf{v}_t + \Delta t \cdot \frac{\mathbf{F}_t}{m} %}
+
+Here, {% equation_inline \mathbf{F}_t %} is the force at time {% equation_inline t %}, and {% equation_inline m %} is the mass. The integrator uses the current state and the ODE to predict the new position and velocity for the next time step, allowing the simulation to progress.
+
+## Numerical Solvers
+
+### Euler's method / Forward Euler
+A simple, first-order method for solving ordinary differential equations (ODEs). It estimates the next value using the current value and its derivative.
+- Formula: {% equation_inline \mathbf{X}_{t+\Delta t} = \mathbf{X}_t + \Delta t \cdot \mathbf{X}'_t %}
+
+### Euler Solver
+Implements Euler's method by stepping forward in time using the slope at the current point.
+- Formula: {% equation_inline \mathbf{X}_{t+\Delta t} = \mathbf{X}_t + \Delta t \cdot f(t, \mathbf{X}_t) %}
+
+### Midpoint Method
+A second-order method that improves accuracy by estimating the slope at the midpoint of the interval.
+- Formula: {% equation_inline \mathbf{X}_{t+\Delta t} = \mathbf{X}_t + \Delta t \cdot f\left(t + \frac{\Delta t}{2}, \mathbf{X}_t + \frac{\Delta t}{2} \cdot f(t, \mathbf{X}_t)\right) %}
+
+### Runge-Kutta solver (RK2, Heun’s method, improved Euler, trapezoidal rule)
+Second-order Runge-Kutta methods use multiple slope estimates to achieve better accuracy than Euler's method. Heun’s method and the trapezoidal rule are common RK2 variants.
+- Formula:  
+{% equation id="rk2" %}
+k_1 = f(t, \mathbf{X}_t) \\
+
+k_2 = f(t + \Delta t, \mathbf{X}_t + \Delta t \cdot k_1) \\
+
+\mathbf{X}_{t+\Delta t} = \mathbf{X}_t + \frac{\Delta t}{2}(k_1 + k_2)
+
+{% endequation %}
+
+<!-- {% equation id="rk2" %}
+\begin{align*}
+k_1 &= f(t, \mathbf{X}_t) \\
+k_2 &= f(t + \Delta t, \mathbf{X}_t + \Delta t \cdot k_1) \\
+\mathbf{X}_{t+\Delta t} &= \mathbf{X}_t + \frac{\Delta t}{2}(k_1 + k_2)
+\end{align*}
+{% endequation %} -->
+
+### Runge-Kutta solver (RK4)
+A widely used fourth-order method that calculates four slope estimates per step, providing high accuracy for solving ODEs.
+- Formula:  
+  {% equation id="rk4" %}
+    k_1 = f(t, \mathbf{X}_t) \\
+    k_2 = f\left(t + \frac{\Delta t}{2}, \mathbf{X}_t + \frac{\Delta t}{2} k_1\right) \\
+    k_3 = f\left(t + \frac{\Delta t}{2}, \mathbf{X}_t + \frac{\Delta t}{2} k_2\right) \\
+    k_4 = f(t + \Delta t, \mathbf{X}_t + \Delta t k_3) \\
+    \mathbf{X}_{t+\Delta t} = \mathbf{X}_t + \frac{\Delta t}{6}(k_1 + 2k_2 + 2k_3 + k_4)
+  {% endequation %}
+
+  <!-- {% equation_inline
+    \begin{align*}
+    k_1 &= f(t, \mathbf{X}_t) \\
+    k_2 &= f\left(t + \frac{\Delta t}{2}, \mathbf{X}_t + \frac{\Delta t}{2} k_1\right) \\
+    k_3 &= f\left(t + \frac{\Delta t}{2}, \mathbf{X}_t + \frac{\Delta t}{2} k_2\right) \\
+    k_4 &= f(t + \Delta t, \mathbf{X}_t + \Delta t k_3) \\
+    \mathbf{X}_{t+\Delta t} &= \mathbf{X}_t + \frac{\Delta t}{6}(k_1 + 2k_2 + 2k_3 + k_4)
+    \end{align*}
+  %} -->
+
+### Symplectic Euler (aka semi-implicit Euler)
+A variant of Euler’s method designed for systems with conserved quantities (like energy), often used in physics simulations.
+- Formula:  
+{% equation id="symplectic" %}
+  \mathbf{v}_{t+\Delta t} = \mathbf{v}_t + \Delta t \cdot \mathbf{a}_t \\
+  \mathbf{x}_{t+\Delta t} = \mathbf{x}_t + \Delta t \cdot \mathbf{v}_{t+\Delta t}
+{% endequation %}
+
+### Verlet Solver
+A method commonly used in molecular dynamics and physics simulations. It calculates positions based on previous positions and accelerations, offering good stability.
+- Formula: 
+{% equation %} 
+\mathbf{x}_{t+\Delta t} = 2\mathbf{x}_t - \mathbf{x}_{t-\Delta t} + \Delta t^2 \cdot \mathbf{a}_t 
+{% endequation %}
+
+### Implicit Euler / Backward Euler
+A stable, first-order method where the next value depends on the derivative at the next time step. Often used for stiff equations.
+- Formula: 
+{% equation %}
+\mathbf{X}_{t+\Delta t} = \mathbf{X}_t + \Delta t \cdot f(t+\Delta t, \mathbf{X}_{t+\Delta t}) 
+{% endequation %}
+
+# Particles Collision
+* Types
+  * Discrete
+  * Substepping
+  * Continous
+
+* Intersection tests:
+
+|            | Point | Segment | Plane | Triangle | AABB | OBB | Sphere | Cylinder |
+|------------|-------|---------|-------|----------|------|-----|--------|----------|
+| **Point**      | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
+| **Segment**    | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
+| **Plane**      | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
+| **Triangle**   | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
+| **AABB**       | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
+| **OBB**        | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
+| **Sphere**     | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
+| **Cylinder**   | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
+
+*✓ indicates that intersection tests exist for the pair of primitives. The actual algorithms and complexity depend on the specific pair.*
+
+[intersections calculation](https://www.realtimerendering.com/intersections.html)
+
+# Mass Spring Systems
+
+# Finite Elements
+Finite elements are small, simple shapes (such as triangles, quadrilaterals, tetrahedra, or hexahedra) used to discretize a complex object or domain into manageable pieces. Each element represents a portion of the object, and together they form a mesh that approximates the geometry and physical properties of the whole.
+
+## Continuum Mechanics and Hooke's Law
+
+Continuum mechanics is the study of the mechanical behavior of materials modeled as continuous masses rather than discrete particles. It describes how materials deform, flow, or respond to forces. Hooke's law is a fundamental principle in continuum mechanics, stating that the deformation (strain) of an elastic material is proportional to the applied force (stress), up to a limit:
+{% equation_inline \sigma = E \cdot \varepsilon %}
+where {% equation_inline \sigma %} is stress, {% equation_inline E %} is Young's modulus (material stiffness), and {% equation_inline \varepsilon %} is strain.
+
+## Finite Element Methods (FEM)
+
+Finite Element Methods are numerical techniques for solving problems in engineering and physics that involve complex geometries, boundary conditions, and material properties. FEM divides the domain into finite elements, formulates equations for each element based on physical laws (like Hooke's law), and assembles them into a global system to solve for unknowns such as displacement, stress, or temperature.
+
+{% equation id="Hook" %}
+\frac{fn}{A} = E \frac{\Delta l}{l}\\
+\sigma = E \epsilon
+{% endequation %}
+Where:
+- {% equation_inline fn %}: Force normal to the cross-sectional area (N). It’s the force applied perpendicular to the area you’re considering in your calculations.
+- {% equation_inline A %}: Cross-sectional area (m²)
+- {% equation_inline E %}: Young's modulus (material stiffness/elasticity, Pa).{% equation_inline E %} is a 6x6 stiffness matrix (for 3D problems using Voigt notation).
+- {% equation_inline \Delta l %}: Change in length (m)
+- {% equation_inline l %}: Original length (m)
+- {% equation_inline \sigma %}: Stress
+- {% equation_inline \epsilon %}: Strain
+
+{% ref equation:Hook %} is used to calculate how much force (fn) is needed to deform an object (cilinder, rod,...) by a certain amount.
+
+Lets say we have:
+{% equation id="Hook Matrix" %}
+\sigma = 
+\begin{bmatrix}
+\sigma_{xx} & \sigma_{xy} & \sigma_{xz} \\
+\sigma_{xy} & \sigma_{yy} & \sigma_{yz} \\
+\sigma_{xz} & \sigma_{yz} & \sigma_{zz}
+\end{bmatrix}
+\\\quad\\
+\epsilon = 
+\begin{bmatrix}
+\epsilon_{xx} & \epsilon_{xy} & \epsilon_{xz} \\
+\epsilon_{xy} & \epsilon_{yy} & \epsilon_{yz} \\
+\epsilon_{xz} & \epsilon_{yz} & \epsilon_{zz}
+\end{bmatrix}
+{% endequation %}
+
+The stress and strain tensors above are symmetric matrices. This symmetry arises because the physical laws governing elastic materials ensure that shear stresses and strains are equal on opposing faces—meaning, for example, {% equation_inline \sigma_{xz} = \sigma_{zx} %} and {% equation_inline \epsilon_{xz} = \epsilon_{zx} %}. As a result, both the upper and lower triangles of the matrices mirror each other. This symmetry reflects the fact that the order of variables (such as _xz appearing in both the top right and lower left positions) is dictated by the underlying physics: the material's response to deformation is the same regardless of the direction in which the shear is applied. This property simplifies calculations and is fundamental to continuum mechanics and finite element analysis.
+
+
+
+
+### Tensor Notation for Hooke's Law
+
+In tensor notation, Hooke's law for linear elasticity is written as:
+{% equation %}
+\sigma_{ij} = E_{ijkl} \, \epsilon_{kl}
+{% endequation %}
+where:
+- {% equation_inline \sigma_{ij} %} is the stress tensor component (i, j = 1, 2, 3),
+- {% equation_inline \epsilon_{kl} %} is the strain tensor component (k, l = 1, 2, 3),
+- {% equation_inline E_{ijkl} %} is the fourth-order elasticity (stiffness) tensor.
+
+This formula expresses that each stress component depends linearly on all strain components, with the proportionality given by the material's stiffness tensor. The indices i, j, k, l run from 1 to 3, covering all spatial directions. For isotropic materials, the stiffness tensor has symmetries that greatly reduce the number of independent components.
+
+### Voigt Notation
+
+Voigt notation is a way to simplify tensor equations in elasticity by flattening the symmetric $3 \times 3$ stress and strain tensors into $6 \times 1$ column vectors. This makes the math easier to work with, especially for computer simulations and FEM.
+
+- The stress tensor $\sigma$ and strain tensor $\epsilon$ are written as vectors:
+  $$(\sigma_{xx}, \sigma_{yy}, \sigma_{zz}, \sigma_{yz}, \sigma_{xz}, \sigma_{xy})^T$$
+  $$(\epsilon_{xx}, \epsilon_{yy}, \epsilon_{zz}, \epsilon_{yz}, \epsilon_{xz}, \epsilon_{xy})^T$$
+- The fourth-order stiffness tensor $E_{ijkl}$ is flattened into a $6 \times 6$ stiffness matrix $C$.
+- The relationship becomes:
+  $${\sigma} = C \epsilon$$
+
+For a general anisotropic material (properties differ in all directions), the $6 \times 6$ stiffness matrix can have up to 21 independent constants. For isotropic materials (same properties in all directions), only 2 independent constants are needed (Young's modulus $E$ and Poisson's ratio $\nu$).
+
+**Summary:** Voigt notation makes it easier to work with stress, strain, and stiffness in 3D elasticity problems by converting tensors to vectors and matrices, reducing complexity and making FEM calculations more practical.
+
+## Real-Life Example
+
+FEM is widely used in game engines for simulating soft bodies, cloth, and deformable objects. For example, in scientific simulations, FEM is used to analyze stress and deformation in bridges, car crash simulations, and biomechanics. In games, Unreal Engine and Unity use FEM-based techniques for realistic cloth and soft body physics, enabling characters' clothing and flexible objects to move and deform naturally.
+
+# Constrained Dynamics
+# Position Based Dynamics
+
+# Laboratory Sessions
+## Integrators
+## Forces
+## Particle Systems
+## Cloth
