@@ -314,11 +314,221 @@ When multiple processes share actions, those actions act as synchronization poin
 - Multi-party synchronization: Three or more processes synchronizing on shared actions
 
 
-#### Manual construction of the LTS
+### Manual Construction of the LTS
 
-## Concurrency in Java 
+Manual construction of the Labeled Transition System (LTS) involves systematically unfolding the process definitions and tracking the possible states and transitions step by step. This helps visualize how concurrent processes interact and synchronize on shared actions.
+
+#### Instructions for Manual Construction
+
+1. **Unfold the initial state:**  
+  Start with the parallel composition of the processes.  
+  ```
+  (MAKER || USER)
+            = (make->ready->MAKER || ready->use->USER)
+  ```
+2. **Identify shared actions:**  
+  Since `ready` is a shared action, both processes must synchronize on it. The only possible transition from the initial state is:
+  ```
+  (MAKER || USER) --make--> (ready->MAKER || ready->use->USER)
+  ```
+3. **Synchronize on shared action:**  
+  Both processes execute `ready` together:
+  ```
+  (ready->MAKER || ready->use->USER) --ready--> (MAKER || use->USER)
+  ```
+4. **Unfold the new state:**  
+  Now, the system can proceed with either process:
+  ```
+  (MAKER || use->USER) = (make->ready->MAKER || use->USER)
+  ```
+  Two transitions are possible:
+  - MAKER acts:  
+    ```
+    (make->ready->MAKER || use->USER) --make--> (ready->MAKER || use->USER)
+    ```
+  - USER acts:  
+    ```
+    (make->ready->MAKER || use->USER) --use--> (make->ready->MAKER || USER)
+    ```
+5. **Continue unfolding:**  
+  From the state `(ready->MAKER || use->USER)`, USER can act:
+  ```
+  (ready->MAKER || use->USER) --use--> (ready->MAKER || USER)
+  ```
+
+#### State Table
+
+| State | Description |
+|-------|-------------|
+| 0 | (MAKER &#124;&#124; USER) = (make-&gt;ready-&gt;MAKER &#124;&#124; USER) = (make-&gt;ready-&gt;MAKER &#124;&#124; ready-&gt;use-&gt;USER) |
+| 1 | (ready-&gt;MAKER &#124;&#124; USER) = (ready-&gt;MAKER &#124;&#124; ready-&gt;use-&gt;USER) |
+| 2 | (MAKER &#124;&#124; use-&gt;USER) = (make-&gt;ready-&gt;MAKER &#124;&#124; use-&gt;USER) |
+| 3 | (ready-&gt;MAKER &#124;&#124; use-&gt;USER) |
+
+# Shared Objects: Problems and Solutions
+## Interference - Monitors
+* Interference (problem): Interference occurs when two or more concurrent threads interleave operations on shared data so that the result depends on the timing of those interleavings. Common examples are lost updates, torn reads, or observing inconsistent intermediate state. Interference breaks program invariants and makes reasoning about correctness hard because atomicity assumptions no longer hold.
+  
+  In real concurrent programs, interference bugs are extremely difﬁcult to locate. They occur infrequently, perhaps due to some speciﬁc combination of device interrupts and application I/O requests. In previous example, we had to include a simulated interrupt to demonstrate the error. Without it, the program is still incorrect, although the erroneous behavior may not manifest itself on all systems
+
+* Monitors (solution): A monitor bundles shared state with mutual-exclusion and condition-waiting primitives. Only one thread executes monitor code at a time (protected by an implicit lock), and threads can wait on condition variables until a desired invariant holds. This restores atomicity for monitor operations and makes it easier to express and verify correct access patterns. Typical gotchas: avoid doing long blocking I/O while holding the monitor lock, use condition waits in a loop to handle spurious wakeups, and design to prevent deadlocks.
+
+  Example (conceptual Java-like monitor):
+  ```java
+  // example: simple monitor for a bounded buffer
+  class BoundedBuffer {
+      private final Object[] items;
+      private int putPtr = 0, takePtr = 0, count = 0;
+
+      public synchronized void put(Object x) throws InterruptedException {
+          while (count == items.length) wait(); // wait for space
+          items[putPtr] = x; putPtr = (putPtr + 1) % items.length; count++;
+          notifyAll(); // signal any waiting consumers
+      }
+
+      public synchronized Object take() throws InterruptedException {
+          while (count == 0) wait(); // wait for data
+          Object x = items[takePtr]; takePtr = (takePtr + 1) % items.length; count--;
+          notifyAll(); // signal any waiting producers
+          return x;
+      }
+  }
+  ```
+
+  Example (conceptual LTS-like monitors):
+
+  ```
+  LOCK = (acquire->release->LOCK).
+  ||LOCKVAR = (LOCK || VAR).
+  set VarAlpha =
+      {value.{read[T],write[T], acquire, release}}
+  TURNSTILE = · · ·
+  RUN = · · ·
+  INCREMENT = (value.acquire
+                  -> value.read[x:T]->value.write[x+1]
+                -> value.release->RUN
+              )+VarAlpha.
+  ```
+  This pattern encapsulates shared state and synchronization, preventing interference while providing clear places to wait for and signal state changes.
+
+## Need of Coordiantion Mechanism - Cordiantion Synchronization
+* Need of a Coordination Mechanism (problem):
+  - In concurrent systems, threads or processes often need to cooperate when accessing shared resources.
+  - Sometimes, a thread must wait until a particular condition holds before it can proceed. Examples include:
+    - Waiting until a count is different from zero
+    - Waiting until new input is available
+    - Waiting until a buffer is non-empty
+    - Waiting until a slot in a bounded buffer is free
+  - Without coordination, threads may interfere, leading to lost updates, inconsistent state, or deadlocks.
+
+* Cordiantion Synchronization (solution):
+  - Allows a process (typically a monitor) to block threads until a specific condition is true.
+  - In FSP, guarded actions (e.g., `when (count > 0) get -> ...`) express these requirements.
+  - In Java, this is implemented using synchronized methods with a while loop and `wait()`:
+    - The while loop checks the negation of the guard condition.
+    - The thread waits until notified that the condition may now hold.
+    - Relevant changes in monitor state are signaled to waiting threads using `notifyAll()`.
+  - This pattern ensures that only threads for which the condition holds proceed, maintaining correctness and preventing interference.
+
+
+## Deadlock - Deadlock free design
+* Deadlock(Problem):
+  Processes P and Q perform the same task: scanning a document and printing it by using a shared printer and a shared scanner.
+
+  P acquires the printer ﬁrst and Q acquires the scanner ﬁrst.
+
+  ```
+  RESOURCE = (get -> put -> RESOURCE).
+  P = (printer.get -> scanner.get -> copy -> printer.put -> scanner.put -> P).
+  Q = (scanner.get -> printer.get -> copy -> printer.put -> scanner.put -> Q).
+  ||SYS = (p:P || q:Q
+            || {p,q}::printer:RESOURCE
+            || {p,q}::scanner:RESOURCE ).
+  ```
+
+  If we execute **Analyser -> Check -> Safety** we get:
+
+  ```
+  Trace to DEADLOCK:
+  p.printer.get
+  q.scanner.get
+  ```
+  Deadlock occurs in a system when all its constituents are blocked. There are no eligible actions to be performed.
+  
+  Conditions (necessary and sufﬁcient):
+  - Serially reusable resources: the processes share resources used under mutual exclusion.
+  - Incremental acquisition: processes hold on to resources allocated to them while waiting to acquire others.
+  - No pre-emption: once acquired by a process, resources cannot be pre-empted (forcibly withdrawn).
+  - Wait-for cycle: a circular chain of processes exists such that each process holds a resource which its successor in the cycle is waiting to acquire.
+
+
+* Deadlock free design(Solution):
+  Strategies to avoid deadlock involve ensuring that at least one of the four conditions for deadlock does not hold.
+
+  - Same order on resource acquiring
+    Denies the possibility of a Wait-for cicle.
+    ```
+    P = (printer.get -> scanner.get -> copy
+        -> printer.put -> scanner.put -> P).
+    Q = (printer.get -> scanner.get -> copy
+        -> printer.put -> scanner.put -> Q).
+    ```
+
+  - set a timeout
+  Denies the second deadlock condition of incremental acquisition
+  
+  ```
+  P = (printer.get-> GETSCANNER),
+  GETSCANNER = (scanner.get->copy->printer.put ->scanner.put->P
+               |timeout -> printer.put->P).
+  Q = (scanner.get-> GETPRINTER),
+  GETPRINTER = (printer.get->copy->printer.put ->scanner.put->Q
+               |timeout -> scanner.put->Q).
+  ```
+
+  It is not always good solution. Under special circunstances (i.e. loaded system) the resulting system does not make any progress towards the copy action
+  
+  No progress trace:
+  
+  ```
+  p.printer.get->q.scanner.get -> p.timeout->p.printer.put-> p.printer.get -> · · ·
+  ```
+
+# Safety and Liveness Properties
+## Correctness properties
+  - Safety Property: Nothing bad happens
+    - No deadlock
+    - no interference
+  
+    In fsp nomenclature we write property before the process.
+    ```
+    property POLITE = (knock -> enter -> POLITE).
+    ```
+    
+    **It should descrite right behaviors**, other traces that violate the POLITE process order will throw an error.
+
+    **Should be deterministic**: 
+
+    We combine the property PROCESS with other process "A" on which we want to check if the safety criteria is fulfilled
+
+    ```
+    ||A POLITE = (A || POLITE).
+    ```
+
+  - Liveness property: Something good happpens
+    - Are process requests for shared resources eventually granted?
+    
+    A general treatment of liveness is rather involved and requieres temporal logic.
+
+  We deal with a restricted class of liveness properties called progress properties
+
+  - A progress property asserts that it is always the case that an action is eventually executed.
+  - Progress is the opposite of starvation, the name given to a concurrent programming situation in which an action is never executed.
+
+
+# Concurrency in Java 
 Java allows to create concurrent programs when following certain rules. To translate an LTS or FSP programm to a real  programming language we will have to make use of some creativity and follow certain rules to make good implementations.
 
 - Actions become methods (more or less)
 
-## Earlang
+# Earlang

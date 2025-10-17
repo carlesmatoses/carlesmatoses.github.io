@@ -78,3 +78,18 @@ p a{
     color: #ffa94d;
 }
 
+/* Table formatting */
+.baseContainer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+.baseContainer th, .baseContainer td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+.baseContainer th {
+    background-color: #f4f4f4;
+}
+
