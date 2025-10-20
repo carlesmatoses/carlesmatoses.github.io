@@ -784,6 +784,96 @@ What we usually do is:
 * Poisson Surface Reconstruction
   It has a set of points and normals and tries to solve the indicator function where 0 is outside and 1 is inside
 
+* SSD
+
+
+
+# Session 4
+We have completed the basic reconstruction pipeline.
+We have the normals and triangles.
+
+
+Now we can compute the Curvature (curvature is refered as K).
+- How much something bends.
+- Interesting properties:
+  - Translation, Rotation invariant
+  - local surface characteristics => Geometric signature
+  - First definition
+    - Deviation from straighttaps?straightlines
+    - Osculating circle
+      - "oscular"->kiss
+      - we create osculating circles R == radious of curvature K=1/R
+    - Osculating circle center as intersection of perpendiculars
+    - Newton realised that there was a connection between f''(x)<->K. He's own formula gave an interesting result whenever we compute K at (0,0) and the derivative of f(0)=0. Then the curvature of K(0,0) is equal to f''(0)
+    - Others realised that Curvature == Rate of turning
+    - K= derivative gamma / derivative S
+  - So we have lots of definitions for a curve. But this is for curves, we now need it for surfaces
+- Surfaces
+  - curve == π in S -> K_{P,π}  
+  - S smooth (continous second derivative f''()) then K at p for S cam be defined. K_{min}, K_{max} == Min, Max K's
+  - V_{min}, V_{max} == Directions of K's
+  - This are principal Curvatures of S at P
+  - In a cylinder we should have a curvature where K_min=0 and K_max=1/R
+
+  - This is an example i dont really get: 
+    - y=ax^2; K=f''(x)=a>0; normal_direction = -y; This is convex
+    - f(x) == -ax^2; k=f''(x)=-a<0;normal_direction = -y; ; Concave
+  - I can have diferent combination of values for K_min and K_max; Kmin>0,Kmax>0 convex; Kmin<0, kmax<0 concave; kmin=0, kmax>0 parabolic convex; Kmin<0, kmax=0 Parabolic concave; Kmin <0, Kmax >0 Saddle. 
+  
+  - Computation of K in 2D: first move the curve to cross (0,0) in a point that its second derivative is also (0,0).We imagine that for a second curve fitting a segment of the original curve is just a collection of points. f(x) -> compute least squares; f(x) = ax^2+bx+c; compute K= f''(0) = 2a; f'(x)=2ax+b
+
+That was the idea for 2D. We are going to have surfaces. We will assume surfaces are poits or triangle meshes so we will look for neighbours. In many cases we will do it restricting the neighbour points along the geometry.
+
+Following same steps as in 2D we must transform the geometry to cross the origin.
+What is the second derivative on a surface and how do we calculate it?
+- W(u,v) = au^2+buv+cv^2+du+ev + f
+- y = f(x)=ax^2+bx+c
+Something that uses multivalua calculus, there is an analogous quantity to the second derivative.
+- f(x)->f'(x) -> f''(x)
+- w(u,v) -> graphSymbol w = -> hessian value Hw=([integral²w/integral u^2,integral²w/integral u integral v ], [integral²w/integral vintegral u, integral^2w(integral y^2)]) -> Eigen decomposition -> lambda1 = kmin, lambda2 = Kmax; v1 , v2
+  - Input: Pi, {p_ij} 1<=j<=K K-NN of Pi
+  - Output: p_i Kmin, p_i Kmax
+            p_i Vmin, p_i Vmax
+  1- LOCAL FRAME -> V= -normal
+                    U= OX cross V (if they are parallel we can use other arbitrary vector | u=OYxV|,|U=OZxV|)
+                    W=U cross X
+
+  2- (U_ij, V_ij, W_ij) = ((p_ij-p_i)*U,(p_ij-pi)*V,(p_ij-pi)*W)
+
+    W = W(u,v) = au^2+buv+cv^2+du+ev+f = q^T S where Q= (u², uv, v²,u,v,1)^T and S=(a,b,c,d,e,f)^T
+    E(S) = sum(K,j=1)(W(u_ij,v_ij)-Wij)² = sum()(1_ij^T S- Wij)² = sum()(q^T_ij*S * q^T_ij*S)-2*Sum(W_ij*q^T_ij)*S + sum(W_ij^2) = ... = S^T*(Sum(q_ij q_ij^T)) S - 2 S^t*(sum(w_ij q_ij)) + sum(w_ij²)
+
+    MIN E(S) <=> delta E = 0 -> delta E = 2*(sum (q_ij, q_ij^T))*S -2(sum(W_ij, q_ij))=0
+
+    (sum(q_ij q_ij^T))*S = sum w_ij  q_ij
+
+    A*S = b
+    A belongs to R^{6x6}, b belongs to R⁶
+
+    q_ij*q_ij^T = [...].T * [....]
+
+    derivate W / derivate u = 2au+bv+d
+    derivative²w/derivative u = 2a
+    derivative² w / derivative v derivative u = derivative² w / derivative u derivative v = b
+    derivative² w/ derivative v² = 2C
+    Hw = (2a,b)(b, 2c) -> eigen decomposition kmin,kmax,vmin,vmax
+
+Gaussian Curvature
+- K_g = kmin*kmax=k
+  - Mean curvature -> K_m = (kmin+kmax)/2 = H
+  - K=0 ---> H=0 ->PLANAR
+        ---> H<0 -> Parab Concave
+        ---> H>0 -> Parab convex
+
+  - Kmax,Kmmin = H+- sqrt(H²-K)
+    ---> K>0 
+          ---> H>0 Convex
+          ---> H<0 concave
+    ---> K<0 SADDLE 
+
+    
+
+
 <!-- You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 Jekyll requires blog post files to be named according to the following format:
