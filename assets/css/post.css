@@ -82,7 +82,11 @@ p a{
 .baseContainer table {
     width: 100%;
     border-collapse: collapse;
-    margin: 1.5rem 0;
+    margin: 0 0;
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: nowrap;
 }
 .baseContainer th, .baseContainer td {
     border: 1px solid #ddd;
@@ -92,4 +96,3 @@ p a{
 .baseContainer th {
     background-color: #f4f4f4;
 }
-

@@ -128,41 +128,32 @@ A stable, first-order method where the next value depends on the derivative at t
 | **Sphere**     | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
 | **Cylinder**   | ✓     | ✓       | ✓     | ✓        | ✓    | ✓   | ✓      | ✓        |
 
+
 *✓ indicates that intersection tests exist for the pair of primitives. The actual algorithms and complexity depend on the specific pair.*
 
 [intersections calculation](https://www.realtimerendering.com/intersections.html)
 
 # Mass Spring Systems
 
-# Finite Elements
-Finite elements are small, simple shapes (such as triangles, quadrilaterals, tetrahedra, or hexahedra) used to discretize a complex object or domain into manageable pieces. Each element represents a portion of the object, and together they form a mesh that approximates the geometry and physical properties of the whole.
 
-## Continuum Mechanics and Hooke's Law
+# Finite Elements Methods
+When we are provided a mesh that represents a real world object such as a metalic cilinder, we intuitivelly understand that it is not empty but filled with the same material exposed in the surface. This omogenical piece of metal can be studied using `Continuum Mechanics`:
 
-Continuum mechanics is the study of the mechanical behavior of materials modeled as continuous masses rather than discrete particles. It describes how materials deform, flow, or respond to forces. Hooke's law is a fundamental principle in continuum mechanics, stating that the deformation (strain) of an elastic material is proportional to the applied force (stress), up to a limit:
-{% equation_inline \sigma = E \cdot \varepsilon %}
-where {% equation_inline \sigma %} is stress, {% equation_inline E %} is Young's modulus (material stiffness), and {% equation_inline \varepsilon %} is strain.
+{% figure id="bending" size="0.5" caption="https://www.acs.psu.edu/drussell/Demos/Flexural-Bar/flexural-cividis.html" %}
+https://www.acs.psu.edu/drussell/Demos/Flexural-Bar/Free-cividis-2.gif
+{% endfigure%}
 
-## Finite Element Methods (FEM)
+Forces such as pulling and pressing a material will result in different behaviors. If we hit a jelly, it will start trembling. Instead, if we hit a metal bar, the deformation and transmission of the energy will be complitelly different.
 
-Finite Element Methods are numerical techniques for solving problems in engineering and physics that involve complex geometries, boundary conditions, and material properties. FEM divides the domain into finite elements, formulates equations for each element based on physical laws (like Hooke's law), and assembles them into a global system to solve for unknowns such as displacement, stress, or temperature.
+To study the deformation of a material subjected to some external forces, we use Hooke's law:
 
+<!-- ## Hooke's law -->
 {% equation id="Hook" %}
-\frac{fn}{A} = E \frac{\Delta l}{l}\\
-\sigma = E \epsilon
+\frac{fn}{A} = E \frac{\Delta l}{l}
+\\\quad\\
+\sigma = E \varepsilon
 {% endequation %}
-Where:
-- {% equation_inline fn %}: Force normal to the cross-sectional area (N). It’s the force applied perpendicular to the area you’re considering in your calculations.
-- {% equation_inline A %}: Cross-sectional area (m²)
-- {% equation_inline E %}: Young's modulus (material stiffness/elasticity, Pa).{% equation_inline E %} is a 6x6 stiffness matrix (for 3D problems using Voigt notation).
-- {% equation_inline \Delta l %}: Change in length (m)
-- {% equation_inline l %}: Original length (m)
-- {% equation_inline \sigma %}: Stress
-- {% equation_inline \epsilon %}: Strain
 
-{% ref equation:Hook %} is used to calculate how much force (fn) is needed to deform an object (cilinder, rod,...) by a certain amount.
-
-Lets say we have:
 {% equation id="Hook Matrix" %}
 \sigma = 
 \begin{bmatrix}
@@ -171,15 +162,139 @@ Lets say we have:
 \sigma_{xz} & \sigma_{yz} & \sigma_{zz}
 \end{bmatrix}
 \\\quad\\
-\epsilon = 
+\varepsilon = 
 \begin{bmatrix}
-\epsilon_{xx} & \epsilon_{xy} & \epsilon_{xz} \\
-\epsilon_{xy} & \epsilon_{yy} & \epsilon_{yz} \\
-\epsilon_{xz} & \epsilon_{yz} & \epsilon_{zz}
+\varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\
+\varepsilon_{xy} & \varepsilon_{yy} & \varepsilon_{yz} \\
+\varepsilon_{xz} & \varepsilon_{yz} & \varepsilon_{zz}
+\end{bmatrix}
+{% endequation %}
+Where:
+- {% equation_inline fn %}: Force normal to the cross-sectional area (N). It’s the force applied perpendicular to the area you’re considering in your calculations.
+- {% equation_inline A %}: Cross-sectional area (m²)
+- {% equation_inline E %}: Young's modulus (material stiffness/elasticity, Pa).{% equation_inline E %} is a 6x6 stiffness matrix (for 3D problems using Voigt notation).
+- {% equation_inline \Delta l %}: Change in length (m)
+- {% equation_inline l %}: Original length (m)
+- {% equation_inline \sigma %}: Stress
+- {% equation_inline \varepsilon %}: Strain
+
+{% ref equation:Hook %} is used to calculate how much force (fn) is needed to deform an object (cilinder, rod,...). More specifically, we can use this theorem, for example, to know how much force we will need to extend a spring twice the size from its original state .
+
+{% figure id="spring" caption="https://engineerexcel.com/hookes-law/" %}
+https://engineerexcel.com/wp-content/uploads/2023/03/hookes-law.webp
+{% endfigure %}
+
+
+Hooke's law is a fundamental principle in continuum mechanics, stating that the deformation (strain) of an elastic material is proportional to the applied force (stress), up to a limit:
+{% equation_inline \sigma = E\varepsilon %}
+where {% equation_inline \sigma %} is stress, {% equation_inline E %} is Young's modulus (material stiffness), and {% equation_inline \varepsilon %} is strain.
+
+Matrices {% equation_inline \sigma %} and {% equation_inline \varepsilon %} {% ref equation:Hook Matrix %} are simetricall. This allows us to use `voigt notation`:
+
+{% equation id="voigt notation" %}
+\begin{bmatrix}
+\sigma_{xx} \\
+\sigma_{yy} \\
+\sigma_{zz} \\
+\sigma_{yz} \\
+\sigma_{xz} \\
+\sigma_{xy}
+\end{bmatrix} = \frac{E}{(1+\nu)(1-2\nu)}
+\begin{bmatrix}
+1-\nu & \nu & \nu & 0 & 0 & 0 \\
+\nu & 1-\nu & \nu & 0 & 0 & 0 \\
+\nu & \nu & 1-\nu & 0 & 0 & 0 \\
+0 & 0 & 0 & \frac{1-2\nu}{2} & 0 & 0 \\
+0 & 0 & 0 & 0 & \frac{1-2\nu}{2} & 0 \\
+0 & 0 & 0 & 0 & 0 & \frac{1-2\nu}{2}
+\end{bmatrix}
+\begin{bmatrix}
+\varepsilon_{xx} \\
+\varepsilon_{yy} \\
+\varepsilon_{zz} \\
+\varepsilon_{yz} \\
+\varepsilon_{xz} \\
+\varepsilon_{xy}
 \end{bmatrix}
 {% endequation %}
 
-The stress and strain tensors above are symmetric matrices. This symmetry arises because the physical laws governing elastic materials ensure that shear stresses and strains are equal on opposing faces—meaning, for example, {% equation_inline \sigma_{xz} = \sigma_{zx} %} and {% equation_inline \epsilon_{xz} = \epsilon_{zx} %}. As a result, both the upper and lower triangles of the matrices mirror each other. This symmetry reflects the fact that the order of variables (such as _xz appearing in both the top right and lower left positions) is dictated by the underlying physics: the material's response to deformation is the same regardless of the direction in which the shear is applied. This property simplifies calculations and is fundamental to continuum mechanics and finite element analysis.
+Where {% equation_inline \nu \in [0, \frac{1}{2}) %} is Poisson's ratio.
+
+If we know the original shape of the element and the deformed object, we can calulcate the strain {% equation_inline \varepsilon %} as the derivatives of the displacement field.
+
+## Displacement Field
+
+The displacement field {% equation_inline \mathbf{u}(\mathbf{x}) %} describes how much each point in the material moves from its original position:
+
+{% equation id="displacement field" %}
+\mathbf{u}(\mathbf{x}) = \mathbf{p}(\mathbf{x}) - \mathbf{x}
+{% endequation %}
+
+Where:
+- {% equation_inline \mathbf{p}(\mathbf{x}) %}: Deformed position
+- {% equation_inline \mathbf{x} %}: Original (reference) position
+- {% equation_inline \mathbf{u}(\mathbf{x}) %}: Displacement vector
+
+## Strain from Displacement
+The strain tensor {% equation_inline \varepsilon %} quantifies the deformation of a material and can be computed from the displacement field. There are two main approaches depending on the magnitude of deformation:
+
+## Cauchy's Linear Strain Tensor (Small Deformations)
+
+For small deformations, we use the linearized (infinitesimal) strain tensor, also known as Cauchy's strain tensor:
+
+{% equation id="cauchy strain" %}
+\varepsilon_{ij} = \frac{1}{2}\left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}\right)
+{% endequation %}
+
+Where {% equation_inline i, j = x, y, z %} represent the spatial coordinates. This formulation assumes that displacements and their gradients are small, allowing us to neglect higher-order terms.
+
+## Green's Nonlinear Strain Tensor (Large Deformations)
+
+For large deformations where the linear assumption breaks down, we use Green's strain tensor (also called the Green-Lagrange strain tensor):
+
+{% equation id="green strain" %}
+E_{ij} = \frac{1}{2}\left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} + \frac{\partial u_k}{\partial x_i}\frac{\partial u_k}{\partial x_j}\right)
+{% endequation %}
+
+Or in matrix form:
+
+{% equation id="green strain matrix" %}
+\mathbf{E} = \frac{1}{2}\left(\nabla \mathbf{u} + (\nabla \mathbf{u})^T + (\nabla \mathbf{u})^T \nabla \mathbf{u}\right)
+{% endequation %}
+
+The additional nonlinear term {% equation_inline \frac{\partial u_k}{\partial x_i}\frac{\partial u_k}{\partial x_j} %} accounts for geometric nonlinearities that arise when displacements are large. When displacements are small, this term becomes negligible, and Green's strain reduces to Cauchy's linear strain.
+
+## Gradient of Displacement Field
+
+The displacement gradient tensor {% equation_inline \nabla \mathbf{u} %} is a 3×3 matrix containing all first-order partial derivatives:
+
+{% equation id="displacement gradient" %}
+\nabla \mathbf{u} = 
+\begin{bmatrix}
+\frac{\partial u_x}{\partial x} & \frac{\partial u_x}{\partial y} & \frac{\partial u_x}{\partial z} \\[0.3em]
+\frac{\partial u_y}{\partial x} & \frac{\partial u_y}{\partial y} & \frac{\partial u_y}{\partial z} \\[0.3em]
+\frac{\partial u_z}{\partial x} & \frac{\partial u_z}{\partial y} & \frac{\partial u_z}{\partial z}
+\end{bmatrix}
+{% endequation %}
+
+This gradient describes how the displacement changes in space and is fundamental for computing the strain tensor.
+
+<!-- # Finite Elements
+Finite elements are small, simple shapes (such as triangles, quadrilaterals, tetrahedra, or hexahedra) used to discretize a complex object or domain into manageable pieces. Each element represents a portion of the object, and together they form a mesh that approximates the geometry and physical properties of the whole.
+
+## Continuum Mechanics and Hooke's Law
+
+Continuum mechanics is the study of the mechanical behavior of materials modeled as continuous masses rather than discrete particles. It describes how materials deform, flow, or respond to forces. 
+
+## Finite Element Methods (FEM)
+
+Finite Element Methods are numerical techniques for solving problems in engineering and physics that involve complex geometries, boundary conditions, and material properties. FEM divides the domain into finite elements, formulates equations for each element based on physical laws (like Hooke's law), and assembles them into a global system to solve for unknowns such as displacement, stress, or temperature.
+
+
+Lets say we have:
+
+
+The stress and strain tensors above are symmetric matrices. This symmetry arises because the physical laws governing elastic materials ensure that shear stresses and strains are equal on opposing faces—meaning, for example, {% equation_inline \sigma_{xz} = \sigma_{zx} %} and {% equation_inline \varepsilon_{xz} = \varepsilon_{zx} %}. As a result, both the upper and lower triangles of the matrices mirror each other. This symmetry reflects the fact that the order of variables (such as _xz appearing in both the top right and lower left positions) is dictated by the underlying physics: the material's response to deformation is the same regardless of the direction in which the shear is applied. This property simplifies calculations and is fundamental to continuum mechanics and finite element analysis.
 
 
 
@@ -188,11 +303,11 @@ The stress and strain tensors above are symmetric matrices. This symmetry arises
 
 In tensor notation, Hooke's law for linear elasticity is written as:
 {% equation %}
-\sigma_{ij} = E_{ijkl} \, \epsilon_{kl}
+\sigma_{ij} = E_{ijkl} \, \varepsilon_{kl}
 {% endequation %}
 where:
 - {% equation_inline \sigma_{ij} %} is the stress tensor component (i, j = 1, 2, 3),
-- {% equation_inline \epsilon_{kl} %} is the strain tensor component (k, l = 1, 2, 3),
+- {% equation_inline \varepsilon_{kl} %} is the strain tensor component (k, l = 1, 2, 3),
 - {% equation_inline E_{ijkl} %} is the fourth-order elasticity (stiffness) tensor.
 
 This formula expresses that each stress component depends linearly on all strain components, with the proportionality given by the material's stiffness tensor. The indices i, j, k, l run from 1 to 3, covering all spatial directions. For isotropic materials, the stiffness tensor has symmetries that greatly reduce the number of independent components.
@@ -201,12 +316,12 @@ This formula expresses that each stress component depends linearly on all strain
 
 Voigt notation is a way to simplify tensor equations in elasticity by flattening the symmetric $3 \times 3$ stress and strain tensors into $6 \times 1$ column vectors. This makes the math easier to work with, especially for computer simulations and FEM.
 
-- The stress tensor $\sigma$ and strain tensor $\epsilon$ are written as vectors:
+- The stress tensor $\sigma$ and strain tensor $\varepsilon$ are written as vectors:
   $$(\sigma_{xx}, \sigma_{yy}, \sigma_{zz}, \sigma_{yz}, \sigma_{xz}, \sigma_{xy})^T$$
-  $$(\epsilon_{xx}, \epsilon_{yy}, \epsilon_{zz}, \epsilon_{yz}, \epsilon_{xz}, \epsilon_{xy})^T$$
+  $$(\varepsilon_{xx}, \varepsilon_{yy}, \varepsilon_{zz}, \varepsilon_{yz}, \varepsilon_{xz}, \varepsilon_{xy})^T$$
 - The fourth-order stiffness tensor $E_{ijkl}$ is flattened into a $6 \times 6$ stiffness matrix $C$.
 - The relationship becomes:
-  $${\sigma} = C \epsilon$$
+  $${\sigma} = C \varepsilon$$
 
 For a general anisotropic material (properties differ in all directions), the $6 \times 6$ stiffness matrix can have up to 21 independent constants. For isotropic materials (same properties in all directions), only 2 independent constants are needed (Young's modulus $E$ and Poisson's ratio $\nu$).
 
@@ -214,7 +329,7 @@ For a general anisotropic material (properties differ in all directions), the $6
 
 ## Real-Life Example
 
-FEM is widely used in game engines for simulating soft bodies, cloth, and deformable objects. For example, in scientific simulations, FEM is used to analyze stress and deformation in bridges, car crash simulations, and biomechanics. In games, Unreal Engine and Unity use FEM-based techniques for realistic cloth and soft body physics, enabling characters' clothing and flexible objects to move and deform naturally.
+FEM is widely used in game engines for simulating soft bodies, cloth, and deformable objects. For example, in scientific simulations, FEM is used to analyze stress and deformation in bridges, car crash simulations, and biomechanics. In games, Unreal Engine and Unity use FEM-based techniques for realistic cloth and soft body physics, enabling characters' clothing and flexible objects to move and deform naturally. -->
 
 # Constrained Dynamics
 # Position Based Dynamics

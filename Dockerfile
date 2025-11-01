@@ -15,4 +15,4 @@ WORKDIR /site
 EXPOSE 4000 35729
 
 # Start Jekyll with live reload
-CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--port", "4000", "--livereload", "--force_polling"]
+CMD ["bundle", "exec", "jekyll", "serve","--drafts", "--host", "0.0.0.0", "--port", "4000", "--livereload", "--force_polling"]
