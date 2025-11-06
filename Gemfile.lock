@@ -46,6 +46,7 @@ GEM
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
+    erb (5.0.2)
     ethon (0.16.0)
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
@@ -317,6 +318,7 @@ DEPENDENCIES
   bibtex-ruby
   bigdecimal
   csv
+  erb
   github-pages
   http_parser.rb (~> 0.6.0)
   jekyll-feed (~> 0.12)

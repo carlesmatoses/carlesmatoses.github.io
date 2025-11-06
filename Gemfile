@@ -39,4 +39,5 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 gem "csv"
 gem "base64"
 gem "bigdecimal"
+gem "erb"
 # gem "sass-embedded", "1.80.7", platforms: [:mingw, :x64_mingw, :mswin]
