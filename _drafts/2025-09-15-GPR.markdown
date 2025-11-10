@@ -53,7 +53,7 @@ But the **why do we care?** is still fuzzy. Let’s make it concrete with exampl
 ## SVD
 Singular Value Decomposition (SVD) is a powerful matrix factorization technique that expresses any $m \times n$ matrix $A$ as the product $A = U \Sigma V^T$, where $U$ and $V$ are orthogonal matrices and $\Sigma$ is a diagonal matrix containing the singular values of $A$. SVD reveals the intrinsic geometric structure of the matrix, making it invaluable for applications such as dimensionality reduction, noise filtering, and solving linear systems, especially when $A$ is not square or is ill-conditioned.
 
-To find the singular values of a matrix \(A\), you must compute the square roots of the positive eigenvalues of the matrix \(A^{T}A\) (or \(AA^{T}\)). The general process involves calculating \(A^{T}A\), determining its characteristic polynomial by setting the determinant of (\(A^{T}A-\lambda I\)) to zero, solving for the eigenvalues (\(\lambda \)), and then taking the square root of each positive eigenvalue to find the singular values of  A.
+To find the singular values of a matrix {% equation_inline A %}, you must compute the square roots of the positive eigenvalues of the matrix {% equation_inline A^{T}A %} (or {% equation_inline AA^{T} %}). The general process involves calculating {% equation_inline A^{T}A %}, determining its characteristic polynomial by setting the determinant of ({% equation_inline A^{T}A-\lambda I %}) to zero, solving for the eigenvalues ({% equation_inline \lambda %}), and then taking the square root of each positive eigenvalue to find the singular values of  A.
 
 ## differential geometry of curves and surfaces:
 ## C++
@@ -675,16 +675,18 @@ Apply solvers
 * Biconjugate gradient (Bi-CG) 
 
 
-## Smoothing (remove noise)
+<!-- ## Smoothing (remove noise)
 ## Remeshing
 ## Parametrization
 ## Model repair
 ## Editing and reformation
 ## Synthesis
-## Symetry detection
+## Symetry detection -->
 
 # Session 3
-in general is more complex to this, but this works for most problems to choose a solver
+Many reconstruction algorithms reduce (or contain subproblems that reduce) to linear systems. Choosing the right solver is crucial for performance and memory.
+
+in general is more complex than this, but this works for most problems to choose a solver
 1. Decide the size of the system. Depends a little bit on the system. size is  a convention made by people, not a mathematical solution
    1. large: means matrix is sparse. 
       1. A is symetric and positive matrix, then we can use CG
@@ -871,7 +873,582 @@ Gaussian Curvature
           ---> H<0 concave
     ---> K<0 SADDLE 
 
+  
+# Session 5
+
+## Smoothing (denoising)
+
+### Laplacian smoothing
+"Umbrella" operator. 
+
+L(v_i)==Discrete Laplacian of v_i
+
+### Mesh (triangle)
+This smethods work for any type of mesh
+M=(G,P)
+G=Mesh Graph: how vertex are connected
+P=Geometry || P belongs to R^{nx3} where n is the number of vertices
+
+G=(V,E)
+V={i | 1<=i<=n}
+E is inside VxV
+
+### 1-ring neighbourhood
+N(i)={j|(i,j) belong to E}
+
+L(v_i)=1/|N(i)| * sum(j belongs to N(i), v_j-v_i)
+
+### Laplacian iterative operator
+Update rule == Vi' <- v_i+lambda*L(v_i) where lambda belongs (0,1]
+
+Choosing lambda -> compromise
+* Large lambda -> larger steps, faster smoother
+* small lambdas -> Avoid vibration
+
+If we look at the behavior, if we have a vertex v_i with normal_i, for a convex vertex we lose area/volume.
+On concave vertices we will gain area/volume
+
+In closed shapes, convexity > Concavity
+Laplacian == Net lost volume
+
+
+There are other ways to do the update method.
+- Biplacian: takes one step forward and one backward
+    vi' = vi+lambda * L(vi)
+    vi'' <- vi' - lambda * L(vi')
     
+    This method loses less volume.
+
+- Taubin's lambda-mu
+    this guy Modified the biplacian 
+    vi' <- vi + lambda * L(vi)
+    vi'' <- vi' + mu*L(vi')
+
+    1/lambda+1/mu =~ 0.1 -> 10mu +10lambda = lambda mu -> 10mu - 10lambda = -10lambda
+
+    mu = -10lambda/10-lambda
+
+We can also implement matrix form. This will open the door to different smoothing approaches
+L=M^-1 * C
+
+C is known as the week laplacian
+
+M is known as the mass matrix, takes into account how many neighbours each vertex has
+
+L laplacian matrix
+
+         |
+(C)_ij = |W_ij                            , i != j where (i,j) belong to E
+         |-sum(k belongs to N(i), W_i*k)  , i=j 
+         | 0                              , otherwise
+         |
+
+W_ij = 1 -> Uniform Laplacian
+
+Cotagent laplacian tryes to preserve the distribution of the sampling
+
+W_ij = 1/2 * (cotangent alpha_ij + cotangent Beta_ij )
+
+This does not take into account that some vertex take into account more curvature and others less. 
+
+now we should calculate the mass matrix mentioned before:
+- mass matrix for the uniform laplacian
+    (M)_ij = ||N(i)|         , i=j
+             |  0            , otherwise
+- Cotangent
+    (M)_ij = | A_i           , i=j
+             | 0             , otherwise
+
+    A_i==1/3 sum(Areas of adjancent triangles to v1)
+
+
+Once we have the matrix definition of L=M^-1*C the update method is simpler
+P'=P+lambda L P'
+P,P' belongs to R^{nx3}
+L belongs to R^{nxm}
+lambda belongs to (0,1]
+
+I*P+lambda L P = (I + lambda * L) * P
+
+P' = P+lambda L P 
+p'' = p' - lambda L P'
+p'' = (P + lambda L P )- lambda L (P + lambda L P) = 
+= P+ lambda L P - lambda L P - lambda^2 L^2 P =
+= (I-lambda^2 L^2) P 
+
+### Global smoothing approach
+The main idea is that the laplacian times P is computing the update vector. FOr each of the points the vector is larger if they are further from the neighbours. 
+
+L*P' =~ 0 -> there is a simple solution -> P'=0; we dont want to turn everithing to 0
+
+keep the update vectors as close to 0 as posible. We will assume that the M 
+
+- Constraint laplacian:
+    n first v's -> smooth {v_i | 1 <= i <= n }
+    others -> constrain {v_i | m < i <= n }
+
+    1<i <=n -> L(v'_i) = 0
+    n<i<=n -> v_i ' = v_i
+    
+    All this is trying to be interpolative.
+
+    L1 == First m rows of L
+
+    A*P'=B , we can solve this with some matrix problem solver 
+
+We want to create a matrix that contains: 
+| L |       | 0 |
+|---| P' =  |---|
+| I |       | P |
+
+This has 2n rows and n columns
+
+(L^T | I) = ( L ) * p' = (L^t|I)*( 0 )
+            (---)                (---)
+            ( I )                ( P )  
+
+Weight smoothing vs constraints
+(lambda L / I ) P' = (O/P)
+mu*I*P'=mu*P
+
+
+P smooth = (I+Lambda*L)^k1 * P; k1 iterations of laplacian
+P low    = (I+lambda*L)^k2 * P k2>k1
+
+P' = Plow + mu (Psmooth- Plow)
+mu = 1 -> P'=Psmooth
+mu < 1  -> attenuating high frequency details
+mu > 1 -> Exaggeratig high frequency details
+
+
+# Session 6
+Mesh parametrization
+
+Attaching properties to a surface, how do we do that?
+Unfold the mesh, we generate distortion wit few exceptions (geometrical objects like cube, cylinder)
+
+meshes are a subset of R³. We get [f_x(u,v),f_y(u,v),f_z(u,v)]
+
+what does derivate of f respect to u and derivate of f respect to v represent?
+
+CAD: f's are polynomials or rsteral functions
+
+
+Output of a mesh parametrization algorithm
+It should give the coordinates of each vertex or "Corner". If you give coordinates of a cube for example, vertices have to be flattened out on the domain so each point is inside an image. It is complex to preserve continuity. That is why we create discontinuityes and assign corners to the UV map.
+
+Bijectivity
+- global bijectivity
+- local bijectivity
+
+
+Topological equivalence
+f continuous:
+    S_i virtually equal S_b
+
+    When homeormophism, continuous | continuous inverse | (injection)
+
+
+Applications : 
+- Mesh morphing
+- Detail transfer
+- Mesh completion
+
+# Session 7 - Geometry Processing: Distortion, Isometries & Parametrization
+
+## 1. Introduction — What is This Lecture About?
+
+This lecture focuses on **measuring and controlling distortion** when mapping between 3D surfaces and 2D domains.
+
+In general, in **geometry processing**, we often have a 3D mesh (a surface embedded in {% equation_inline R^3 %}) that we want to **“unfold” or parametrize** onto a 2D plane {% equation_inline (R^2) %}, while preserving certain geometric properties — like angles, areas, or lengths.
+
+So in this lecture:
+
+* We start from a **2D parameter domain** {% equation_inline (u, v) \in \mathbb{R}^2 %},
+* and a **mapping function** {% equation_inline f(u, v) \rightarrow \mathbb{R}^3 %} that defines a 3D surface.
+
+The goal is to understand **how the local geometry changes** under this mapping — that is, how much stretching, shearing, or compression occurs when going from 2D to 3D (or vice versa, when flattening a 3D surface to 2D).
+
+{% alert warning %}
+This is meant o be applyed in objects that are topologically equivalent to a disc.
+
+### The Goal of This Lecture (Session 7)
+
+**how to analyze and classify mappings between surfaces**, so that you can later:
+
+* **Decide what kind of parameterization** (flattening or texture mapping) is appropriate for your surface {% equation_inline S %},
+* **Quantify distortion** (angle, area, or length distortion),
+* **Choose the right mathematical tool** (isometric, conformal, or area-preserving mapping).
+
+---
+
+You’re taking a **mapping function**:
+{% equation %}
+f : (u,v) \in \mathbb{R}^2 ;\longrightarrow; \mathbf{x} \in \mathbb{R}^3
+{% endequation %}
+and, by examining its **Jacobian** {% equation_inline J %}, understand what kind of geometric distortion it introduces.
+
+- Step 1: Compute the **Jacobian** {% equation_inline J %}
+- Step 2: Compute the **First Fundamental Form**
+- Step 3: Use **SVD decomposition** of {% equation_inline J %}
+- Step 4: Interpret {% equation_inline \alpha_1, \alpha_2 %}
+
+---
+
+
+### What That Means Conceptually
+
+You’re building the mathematical **intuition and tools** to look at a surface and say:
+
+> “If I want to flatten this surface, what’s the best possible mapping I can use —
+> one that keeps lengths, angles, or areas as close as possible to the original?”
+
+So yes — the ultimate purpose is to **detect or choose** the correct type of transformation for your surface ( S ), based on:
+
+* Its **geometry** (developable or not),
+* Its **topology** (disk-like, sphere-like, with holes),
+* And what property you care about preserving (angles, areas, or lengths).
+{% endalert %}
+
+---
+
+## 2. Continuous Mapping and the Jacobian
+
+We describe the local behavior of the mapping {% equation_inline f(u, v) %} using its **Jacobian matrix**, {% equation_inline J %}:
+
+{% equation %}
+J =
+\begin{bmatrix}
+\frac{\partial f_x}{\partial u} & \frac{\partial f_x}{\partial v} \\
+\frac{\partial f_y}{\partial u} & \frac{\partial f_y}{\partial v} \\
+\frac{\partial f_z}{\partial u} & \frac{\partial f_z}{\partial v}
+\end{bmatrix}
+{% endequation %}
+
+This matrix describes how a small differential element in parameter space {% equation_inline (du, dv) %} transforms into 3D space. 
+{% alert secondary %}
+the matrix {% equation_inline J %} (the Jacobian of the mapping) is the gradient of the mapping function 
+{% equation_inline f(u,v) %} — but expressed in matrix form.
+It represents how the position in 3D changes with respect to small changes in 2D parameters.
+{% endalert %}
+
+The **metric tensor** {% equation_inline I %} (also called the **first fundamental form**) captures how lengths and angles are distorted:
+
+{% equation %}
+I = J^T J =
+\begin{bmatrix}
+E & F \\
+F & G
+\end{bmatrix}
+{% endequation %}
+
+where
+- {% equation_inline E = f_u \cdot f_u %}
+- {% equation_inline F = f_u \cdot f_v %}
+- {% equation_inline G = f_v \cdot f_v %}
+
+This tells us how the surface stretches or bends locally.
+
+{% alert secondary %}
+E, F, and G don’t each correspond directly to one specific type of distortion (angle or area) — instead, they jointly encode all distortions.
+
+- E and G: describe stretching along coordinate directions
+- F: describes angular (shear) distortion
+- EG−F²: describes area distortion
+{% endalert %}
+
+---
+
+## 3. Singular Value Decomposition (SVD) of the Jacobian
+
+To analyze distortion, we apply **Singular Value Decomposition (SVD)** to {% equation_inline J %}:
+
+{% equation %}
+J = U \cdot \Sigma \cdot V^T
+{% endequation %}
+
+where:
+
+*  {% equation_inline U %} and  {% equation_inline V %} are orthogonal matrices representing rotations,
+*  {% equation_inline  \Sigma = \text{diag}(\sigma_1, \sigma_2) %} contains **singular values** (positive real numbers).
+
+The singular values {% equation_inline \sigma_1, \sigma_2 %} describe how much the surface stretches along the principal directions.
+
+We can define:
+{% equation %}
+\alpha_1 = \sigma_1, \quad \alpha_2 = \sigma_2
+{% endequation %}
+and they represent **principal stretches**.
+
+### Special Cases
+
+| Type of Transformation  | Conditions on α₁, α₂     | Description                                                       |
+| ----------------------- | ------------------------ | ----------------------------------------------------------------- |
+| **Isometry**            | α₁ = α₂ = 1              | Perfect preservation of lengths and angles (rigid motion)         |
+| **Conformal map**       | α₁ = α₂                  | Angle-preserving, but may change area uniformly                   |
+| **Area-preserving map** | α₁ * α₂ = 1              | Keeps areas constant, but angles may distort                      |
+| **Developable surface** | Gaussian curvature K = 0 | Surface can be flattened without stretching (e.g. cylinder, cone) |
+
+
+{% figure size="1" cols="1" caption="Type of transformations example" %}
+/assets/Posts/GPR/deformation/deformation.gif
+{% endfigure %}
+---
+
+## 4. Isometries and Developable Surfaces
+
+### Isometry
+
+If both stretches are 1, the mapping preserves both **lengths and angles**.
+Isometries correspond to **rigid motions** — translations, rotations, and reflections.
+
+### Developable Surfaces
+
+Developable surfaces are 3D surfaces that can be unfolded to a plane **without distortion** (isometric flattening).
+They satisfy **Gaussian curvature {% equation_inline K = 0 %}**.
+
+Examples:
+
+* Cylinder (without caps)
+* Cone
+
+Non-developable surfaces (like the saddle) have negative Gaussian curvature (K < 0).
+Even though they contain straight lines — in fact, two families of them intersecting at each point — the surface cannot be flattened isometrically because it bends in opposite directions along those lines.
+
+---
+
+## 5. Discrete Case — Mesh Parametrization
+
+When working with **triangle meshes**, we want to find a 2D parametrization of the vertices that minimizes distortion.
+
+Given a triangle with vertices {% equation_inline P, Q, R %} in 3D and their corresponding 2D coordinates {% equation_inline P', Q', R' %}, the local transformation {% equation_inline M %} that maps 3D edges to 2D edges can be written as:
+
+{% equation %}
+M [R - P, Q - P] = [R' - P', Q' - P']
+{% endequation %}
+
+or equivalently:
+
+{% equation %}
+M = M_2 M_1^{-1}
+{% endequation %}
+where
+{% equation %}
+M_1 = [Q - P, R - P], \quad M_2 = [Q' - P', R' - P']
+{% endequation %}
+
+We can again use {% equation_inline M^T M %} to study local distortion — its eigenvalues correspond to the squares of the singular values {% equation_inline \sigma_1^2, \sigma_2^2 %}.
+
+---
+
+## 6. Conformal Maps
+
+A **conformal map** preserves angles but not necessarily areas.
+
+Mathematically, conformality requires that the **Jacobian satisfies**:
+{% equation %}
+f_v = f_u \times n
+{% endequation %}
+where {% equation_inline n %} is a rotation by 90° in the tangent plane.
+
+This implies:
+{% equation %}
+\alpha_1 = \alpha_2
+{% endequation %}
+
+### Examples of Conformal Transformations:
+
+* Translations
+* Rotations
+* Uniform (isotropic) scalings
+* Reflections
+
+---
+
+## 7. Area-Preserving Transformations
+
+For an **area-preserving** mapping:
+{% equation %}
+\det(J) = \alpha_1 \alpha_2 = 1
+{% endequation %}
+
+That means the **local area** of the parameter domain and the corresponding patch on the surface are equal.
+
+---
+
+## 8. Balancing Distortions — Energy Minimization
+
+In practice, exact isometries or perfect conformal/area-preserving maps are rare.
+Instead, we define **energy functions** to measure distortion and minimize them.
+
+Example energy functions:
+
+* **Conformal distortion energy:**
+
+{% equation %}
+E_c(\alpha_1, \alpha_2) = \mu_c (\alpha_1 - \alpha_2)^2
+{% endequation %}
+
+→ minimized when α₁ ≈ α₂.
+
+* **Area distortion energy:**
+{% equation %}
+  E_a(\alpha_1, \alpha_2) = \mu_a \left( \frac{\alpha_1}{\alpha_2} + \frac{\alpha_2}{\alpha_1} \right)
+{% endequation %}
+→ minimized when α₁ * α₂ ≈ 1.
+
+Different parametrization methods optimize different combinations of these.
+
+---
+
+## 9. Historical Approach — Tutte’s Embedding
+
+**Tutte (1963)** proposed one of the first parametrization algorithms:
+
+> “How to draw a graph”
+
+* Works for **planar graphs**.
+* Fixes boundary vertices to a convex polygon.
+* Interior vertices are placed at the **barycenter** of their neighbors, minimizing a “spring energy”.
+* Guarantees **no intersections**, but produces **poor parametrizations** (large distortions).
+
+Later methods improved Tutte’s approach by adjusting edge weights or using curvature-aware Laplacians.
+
+---
+
+## 10. Mean Value Coordinates (Floater, 2003)
+
+To improve upon simple Laplacian weights, **Mean Value Coordinates (MVC)** are used.
+
+Given a vertex {% equation_inline v_0 %} connected to neighbors {% equation_inline v_i %}:
+{% equation %}
+w_i = \frac{\tan(\alpha_{i-1}/2) + \tan(\alpha_i/2)}{||v_i - v_0||}
+{% endequation %}
+and normalized as:
+{% equation %}
+\sigma_i = \frac{w_i}{\sum_j w_j}
+{% endequation %}
+
+This gives:
+{% equation %}
+v_0 = \sum_i \sigma_i v_i, \quad \sum_i \sigma_i = 1
+{% endequation %}
+
+MVC preserves **angle properties** better and provides **stable parametrizations** even for non-convex boundaries.
+
+---
+
+## 11. Summary Table
+
+| Property                | Condition   | Preserves             | Examples                     |
+| ----------------------- | ----------- | --------------------- | ---------------------------- |
+| **Isometric**           | α₁ = α₂ = 1 | Lengths, Angles, Area | Rigid motion                 |
+| **Conformal**           | α₁ = α₂     | Angles only           | Rotations, uniform scaling   |
+| **Area-preserving**     | α₁ * α₂ = 1 | Area only             | Shear or anisotropic scaling |
+| **Developable surface** | K = 0       | Locally flattenable   | Cylinder, Cone               |
+
+---
+
+## 12. Key Takeaways
+
+* The **Jacobian** and its **SVD** describe how a 2D patch is distorted when mapped to 3D.
+* **Isometries** are ideal but rarely achievable for curved surfaces.
+* **Conformal** and **area-preserving** mappings are relaxations used in practice.
+* Parametrization algorithms (like Tutte or Floater) try to **minimize distortion energies** for meshes.
+* **Developable surfaces** {% equation_inline K = 0 %} can be unfolded without stretching — most real surfaces are not.
+
+---
+
+
+
+
+# Laboratory Sessions
+## Lab 1
+We are given a point cloud we will call P. We assume it represents a surface (I dont know what will happen if it was a volume). Our purpose is to calculate the normal direction of the surface in that point. 
+
+We will interpret a collection of points as a set of connected vertices of a surface. We will use Principal Component Analysis to obtain the 3 orthonormal axis that best represent the subset of point clouds.
+
+  {% figure id="multiple-figures" size="1.0" 
+  caption="Select a point, get its kNN points, calculate center of mass, move it to the origin"
+  col="1" %}
+  /images/gpr/ezgif-239f0d3b2d317a3f.gif
+  {% endfigure %}
+
+We can now create a matrix C that will contain how much each point differs from the origin. 
+
+### Covariance matrix C
+
+Formula (centered points):
+
+{% equation id="energy" %}
+C=\sum_{i=1}^{n}\tilde p_i\,\tilde p_i^{T}\quad\text{with}\quad \tilde p_i=p_i-\bar p,\;\bar p=\frac{1}{n}\sum_{i=1}^n p_i
+{% endequation %}
+
+Eigendecomposition:
+{% equation id="energy" %}
+C = V \,\Lambda\, V^{T}
+{% endequation %}
+
+where columns of {% equation_inline V %} are orthonormal eigenvectors and {% equation_inline \Lambda %} is the diagonal matrix of eigenvalues.
+
+Short explanation:
+- \(C\) is the (unnormalized) covariance / scatter matrix of the centered points.  
+- It encodes how the points are distributed around their mean; principal directions (PCA) are given by the eigenvectors, and eigenvalues measure variance along those directions.
+
+Numeric example (3 points in R^3):
+- Points:
+{% equation id="energy" %}
+p_1=(1,0,0),\; p_2=(0,1,0),\; p_3=(0,0,1)
+{% endequation %}
+- Mean:
+{% equation id="energy" %}
+  \bar p=(\tfrac{1}{3},\tfrac{1}{3},\tfrac{1}{3})
+{% endequation %}
+- Centered vectors:
+{% equation id="energy" %}
+  \tilde p_1=(\tfrac{2}{3},-\tfrac{1}{3},-\tfrac{1}{3}),
+  \tilde p_2=(-\tfrac{1}{3},\tfrac{2}{3},-\tfrac{1}{3}),
+  \tilde p_3=(-\tfrac{1}{3},-\tfrac{1}{3},\tfrac{2}{3}).
+{% endequation %}
+- Compute {% equation_inline C=\sum \tilde p_i\tilde p_i^T %} :
+{% equation id="energy" %}
+  C=\begin{pmatrix}
+  \tfrac{2}{3} & -\tfrac{1}{3} & -\tfrac{1}{3}\\[4pt]
+  -\tfrac{1}{3} & \tfrac{2}{3} & -\tfrac{1}{3}\\[4pt]
+  -\tfrac{1}{3} & -\tfrac{1}{3} & \tfrac{2}{3}
+  \end{pmatrix}
+{% endequation %}
+
+
+ - Eigen-decomposition (PCA):
+   - Eigenvalues: {% equation_inline \{1,\,1,\,0\} %}.
+   - Orthonormal eigenvectors (columns of {% equation_inline V %}), for example:
+     v1 = (1,-1,0)/√2, v2 = (1,1,-2)/√6, v3 = (1,1,1)/√3.
+   - So {% equation_inline C = V\,\mathrm{diag}(1,1,0)\,V^{T} %}.
+
+This shows \(C\) captures principal directions (two directions with variance 1, one null direction along the mean vector).
+
+To calculate the normal direction,  we will need a special library capable of solving for {% equation_inline C=VΛV^T %}. We will use 
+
+
+{% highlight cpp linenos %}
+// We use Eigen's SelfAdjointEigenSolver to compute the eigenvalues and eigenvectors
+Eigen::SelfAdjointEigenSolver<Eigen::Matrix3f> eigensolver(cov_eigen);
+if (eigensolver.info() == Eigen::Success) {
+  Eigen::Vector3f eigenvalues = eigensolver.eigenvalues();
+  Eigen::Matrix3f eigenvectors = eigensolver.eigenvectors();
+  
+  // Smallest eigenvalue corresponds to normal direction
+  // we know eigenvalues are sorted in increasing 
+  Eigen::Vector3f normal = eigenvectors.col(0); // First column
+  
+  // Convert back to GLM
+  normals[i] = glm::normalize(glm::vec3(normal.x(), normal.y(), normal.z()));
+}
+{% endhighlight %}
+
+## Lab 2
+## Lab 3
 
 
 <!-- You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
