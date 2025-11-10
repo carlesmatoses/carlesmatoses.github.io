@@ -175,3 +175,105 @@ Applications :
 - Mesh morphing
 - Detail transfer
 - Mesh completion
+
+# Session 7
+
+Distorsion
+Continuous domain, continuous diferentiable
+
+for some reason there is a note in the board that says "jacobian neuron?
+
+We are presented with a square with size (u,v) that belongs to R². It can be transformed to R³ with a continuous diferentiable equation
+
+||v|| = (alpha f u + beta f u)*(alpha f u + beta f u)= x²fu² + 2 alpha beta fu* fv alpha beta² fv²
+
+v^t I *v = [alpha, beta] I [[alpha][beta]]
+
+dd (I-S id)=0   with this we also know that (E-S)*(G-S)-F² = 0
+S² - (E+G)S+EG-F²= ((E+G)+- sqrt((E-G)²-4F²))/2
+
+
+We are also presented with I as 
+I= [[fu*fu, fu*fv][fv*fu, fv*fv]]=[[E,F][F,G]]
+
+
+On the second part we are explained that in SVD, the matrices J = U \Epsilon V^T of the svd store rotation and something else.
+
+With this explanation we are also presented with sqrt(S_{1,2}) = alpha_{1,2}
+
+Finally we get that U^T*J*V = \Epsilon
+
+This is meant to help us do mesh parametrization somehow. We have a triangle with points P,R and Q and we are in a 2D space in X Y axes.
+M*R = R'
+M*Q=Q'
+
+We solve for m_{1,1} m_{1,2} m_{2,1} m_{2,2}
+
+M_1 = [[Qx Rx][Qy Ry]]
+M_2 = [[Q'x R'x][Q'y R'y]]
+
+So:
+M_2 * M^{-1}_1 * Q
+M_2 * [[1][0]] = Q'
+
+
+We continue with an example of a circle that seems to have radius v.
+||Mv||=Mv-Mv=(M*v)^T*Mv)=v^T(M^T*Mv); This will return sigma1 and sigma2
+
+alpha1, alpha2 = sqrt(sigma_{1,2})
+alpha_1 >alpha_2 and M=U[[alpha1, 0][0, alpha2]]V^T
+
+(M^T * M)^T = (M^T*M^T)^T = M^T*M
+
+## Isometry 
+alpha_1, alpha_2 = 1
+
+### Isometries
+alpha_1  = alpha_2 = 1
+transf, rotation, reflections
+
+We call this transformations Rigid motions. 
+
+All this are called Developable Surfaces, for example a cylinder (without caps). There are also Cones.
+
+Developable means that <=> K=0
+
+he also explained something about the horse chair "saddle or something" but i did not understand what he was trying to point out
+
+Is really hard to find developable surfaces in practice. If we have a center point surrounded by points. The sum of all angles connected to v_0 should be less or equal to 2*pi. if i parametrize it in a plane, we can get an overlap or a gap if it is not equal to 2*pi. not really useful.
+
+
+## Conformal?
+(fv = fu * n)
+alpha_1 = alpha_2
+
+Each point has a condition that 
+
+### Confomal maps
+translations, rotations, isotropic scalings, reflections
+
+They are Area preserving transformations are combinations of translations rotations and area preserving scalings. Scalings that satisy thsis restriction. We have this conditions but since we can not have it all, on one hand we can not look at this at all. In general there is an approximation approach. I have my mesh, i want the best parametrization posible, you have to determine what is best for that case. Instead of looking the behavior of the parametrization, you compose some formula :
+E(aplha_1, alpha_2) = mu_c(Sigma_1-Sigma_2)
+
+If you care about area preserving you would say:
+mu*(1/sigma_1 * sigma 2, 1/sigma_2 * sigma_1)
+
+There is a really old paper that did not look at this methods, "Tutte". 
+#### Tutte
+How to draw a graph: planar graphs and not planar graphs. Planar grarphs can be drawn without deformations. If you have a planar graph and you choose some nodes of the graph as vertices of some convex element, and you let all you're points on the graph to move to positins that minimize the stretch energy, they will move to positions where there are no intersections. It gives a disastrous parametrization if used in a mesh. FIrst day we were shoun images done with this algorithm. 
+
+If we do a better choice of spring force, we may be able to improve the method. 
+
+Imagine an interior point in some mesh called v_0. it has connections to different nodes and therefore there are angles (triangular mesh) that we can call alpha_i-1 and alpha_1. The way of correcting the flat laplace is taking into account the curvature of the surface. But the cotangent way has the problem that they maight be negative. negative weights are a problem. I want to define some coordinates for v_0 wehre v_0=sum(Sigma_i*vi); sum(Sigma_i)=1; 0<=Simga_i<1
+This yields to parametrizations that have good properties. 
+
+Floater proposed the scheme Mean Value Coordinates. Consider:
+W_i = tan(a_{i-1}/2)+tan(a_i/2)/||v1_v0||; Sigma_i=W_i/sum(W_i). 
+
+When taken an anamorphic function, we have nice angle preserving properties. This formula is derived from the functionality of a morphic function. We take a mesh (pyramid in this example to show it is not flat, it has volume) anamorphic to a disc. We have N vertices with some of them being bounding vertices [0,...,n_{-1}] and [n1,...,N-1] are the bounding points. (N-n-2)/vertices
+
+
+## Area preservation (aretholic?)
+determinant of the jacobian has to be equal to 1; alpha_1 * alpha_2 = 1
+
+This is area preserving & angle preserving <=> isometry
