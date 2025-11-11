@@ -279,6 +279,8 @@ The displacement gradient tensor {% equation_inline \nabla \mathbf{u} %} is a 3�
 
 This gradient describes how the displacement changes in space and is fundamental for computing the strain tensor.
 
+
+
 <!-- # Finite Elements
 Finite elements are small, simple shapes (such as triangles, quadrilaterals, tetrahedra, or hexahedra) used to discretize a complex object or domain into manageable pieces. Each element represents a portion of the object, and together they form a mesh that approximates the geometry and physical properties of the whole.
 
@@ -334,8 +336,370 @@ FEM is widely used in game engines for simulating soft bodies, cloth, and deform
 # Constrained Dynamics
 # Position Based Dynamics
 
+---
+{% alert info %}
+This are the second half notes of the course
+{% endalert %}
+
+---
+# Rigid Bodies
+While particles are limited to a position in phase space and velocity in phase space, rigid bodies possess a set of new properties for Translation and Rotation. In rigid bodies, the orientation of the object matters.
+
+| Translation (linear) | Symbol / Formula | Rotation (angular) | Symbol / Formula | Notes |
+|---|---|---|---|---|
+| Position | x (or r) | Orientation | R (rotation matrix) or q (quaternion) | Position is a vector in R^3; <br/> orientation is a rotation describing body frame vs world frame. |
+| Linear velocity | v = dx/dt | Angular velocity | ω (vector) | v is translational speed; <br/> ω is rotation axis × rate (radians/s). |
+| Mass | m (scalar) | Inertia tensor | I (3×3 matrix, body or world frame) | Mass resists linear acceleration; <br/> inertia tensor resists angular acceleration and depends on mass distribution. |
+| Linear momentum | p = m v | Angular momentum | L = I ω (or L = I·ω) | Momentum is conserved in absence of forces/torques. <br/> Note: L transforms with rotation if I is in body frame. |
+| Force | F = dp/dt = m a | Torque (moment) | τ = dL/dt = I α + ω × (I ω) | Torque causes change in angular momentum; <br/> for body-frame I constant, use body equations with extra ω×(Iω) term. |
+
+We establish a cordinate system for the rigid body, usually the classic XYZ space. 
+The center of the object is based on the mass distributtion of the volume. We can estimate it however we wish (mean of all vertices, add weight to each vertex, ...)
+
+After applying the corresponding transformations (translation, rotation, scale) we get the object in world coordinatesd. 
+If you are familiarized in games, you will understand this as an asset (in local space) and instance (in global space).
+We can mathematically explain this as:
+
+Let r_0 ∈ R^3 be a point in the body (local) frame, x(t) ∈ R^3 the center-of-mass position in world coordinates, and R(t) ∈ R^{3×3} the rotation matrix from local to world. Then the world position r(t) is
+
+{% equation %}
+r(t)=R(t)\cdot r_0 + x(t).
+{% endequation %}
+
+Component form:
+{% equation %}
+r_i(t)=\sum_{j=1}^3 R_{ij}(t)\cdot r_{0,j} + x_i(t),\qquad i=1,2,3.
+{% endequation %}
+
+The action of R on the local basis vectors gives its columns. For the local x-axis {% equation_inline e_1=(1,0,0)^T %}:
+{% equation %}
+R(t)\cdot e_1 = \begin{bmatrix}R_{11}(t)\\[4pt]R_{21}(t)\\[4pt]R_{31}(t)\end{bmatrix},
+{% endequation %}
+so {% equation_inline R(t) = [u(t)\; v(t)\; w(t)] %}  where u,v,w are the world-space directions of the local x,y,z axes (the columns of R).
+
+Inverse (recover local coordinates):
+{% equation %}
+r_0 = R(t)^\top\bigl(r(t)-x(t)\bigr)
+{% endequation %}
+since R(t) is orthogonal {% equation_inline R^\top = R^{-1} %}.
+
+Equivalently using homogeneous coordinates:
+{% equation %}
+T(t)=\begin{bmatrix}R(t) & x(t)\\[4pt]0\;0\;0 & 1\end{bmatrix},\qquad
+\begin{bmatrix}r(t)\\1\end{bmatrix}=T(t)\begin{bmatrix}r_0\\1\end{bmatrix}
+{% endequation %}
+
+## Linear velociry
+since x(t) is thew position of the center of mass in world spave, x'(t) is the velocity of the center of mass in world spave
+
+{% equation %}
+v(t)=x'(t)
+{% endequation %}
+
+## Angular velociry
+If we freeze the position of the center of mass in space, then any movement is due to the body spinning about some axis that passes through the center of mass.
+Otherwise, the center of mas would itself be moving
+
+We describe the spin as a vector w(f)
+
+{% alert secondary %}
+In the case of Linear position and linear velocity, they are related by:
+{% equation %}
+v(t) = \frac{d}{dt} x(t)
+{% endequation %}
+
+With the same idea, we can predict the new position of a point based on the angular change rate w(t):
+
+{% equation %}
+c'(t) = w(t) \times c(t)
+{% endequation %}
+
+{% endalert %}
+
+As mentioned earlier, R(t) represents the axis of the rigid body at  time t.
+The derivative of R(t) is the change rate from the previous axis to the new one.
+
+We have the 3 axis of the system as e1, e2, e3:
+{% equation id="body_axes" %}
+e_1 = \begin{bmatrix} r_{xx} \\ r_{xy} \\ r_{xz} \end{bmatrix},\quad
+e_2 = \begin{bmatrix} r_{yx} \\ r_{yy} \\ r_{yz} \end{bmatrix},\quad
+e_3 = \begin{bmatrix} r_{zx} \\ r_{zy} \\ r_{zz} \end{bmatrix}
+{% endequation %}
+
+The derivative of the axis x can be obtained with vector w(t):
+{% equation id="e1_derivative_vector" %}
+\frac{d}{dt}\begin{bmatrix} r_{xx} \\ r_{xy} \\ r_{xz} \end{bmatrix}
+= \boldsymbol{\omega}(t)\times\begin{bmatrix} r_{xx} \\ r_{xy} \\ r_{xz} \end{bmatrix}
+{% endequation %}
+
+In matricial form, we get that the full matrix of w(t) looks like:
+{% equation id="e1_derivative_matrix" %}
+\frac{d e_1}{dt} = [\boldsymbol{\omega}]_\times e_1,\qquad
+[\boldsymbol{\omega}]_\times =
+\begin{bmatrix}
+0 & -\omega_z & \omega_y \\
+\omega_z & 0 & -\omega_x \\
+-\omega_y & \omega_x & 0
+\end{bmatrix}
+{% endequation %}
+
+Finally, we get R'(t) (the derivative) as:
+{% equation id="R_derivative" %}
+R'(t) = w(t)*R(t)
+{% endequation %}
+
+
+To calculate the velocity at a single point we get:
+{% equation id="R_derivative" %}
+r_i'(t) = w \times (r_i(t)-x(t))+v(t)
+{% endequation %}
+
+## Mass and Inertia tensor
+
+## Rigid Bodies Collision
+
+
+
+---
+
+# Articulated Motion Capture (MoCap) — Study Notes
+
+Articulated MoCap models a system of **rigid bodies (links)** connected by **joints**, each joint introducing **degrees of freedom (DOF)** (e.g., rotations or translations).
+Understanding motion involves two key processes: **Forward Kinematics (FK)** and **Inverse Kinematics (IK)**.
+
+---
+
+## Homogeneous Transformation Matrix
+
+A **homogeneous matrix** {% equation_inline H %} combines **rotation** and **translation** into one 4×4 matrix, enabling easy chaining of transformations.
+
+General form:
+{% equation %}
+H = T(\text{translation}) \times R(\text{rotation})
+{% endequation %}
+
+For articulated systems, transformations are often expressed **relative to successive local coordinate frames**.
+
+Example composition:
+{% equation %}
+H = T_{XYZ} \times R_{XYZ} \times T_{IJK} \times R_{IJK}
+{% endequation %}
+
+Each term moves from one frame to another.
+
+---
+
+## Forward Kinematics (FK)
+
+> **From joint angles → end-effector position**
+
+### Concept
+
+Given joint parameters (e.g. angles θ₁, θ₂, …) and link lengths (l₁, l₂, …), determine the **position and orientation** of the end-effector.
+
+### Example: Planar 2-Link Arm
+
+* Links of lengths {% equation_inline l_1, l_2 %}
+* Joint angles {% equation_inline \theta_1, \theta_2  %}
+
+Position of end-effector (geometric form):
+{% equation %}
+x = l_1 \cos(\theta_1) + l_2 \cos(\theta_1 + \theta_2)
+{% endequation %}
+{% equation %}
+y = l_1 \sin(\theta_1) + l_2 \sin(\theta_1 + \theta_2)
+{% endequation %}
+
+### Matrix (algebraic) approach
+
+For a 3-link planar manipulator:
+
+{% equation %}
+H = R_z(\theta_1) , T_x(l_1) , R_z(\theta_2) , T_x(l_2) , R_z(\theta_3) , T_x(l_3)
+{% endequation %}
+
+If you multiply ( H ) by the position vector ( [0, 0, 0, 1]^T ) of the end-effector (in its local frame),
+the **last column of ( H )** gives its position in the base frame.
+
+---
+
+## Inverse Kinematics (IK)
+
+> **From desired position → joint angles**
+
+Given desired ([x, y]) (or ([x, y, z])), find {% equation_inline (\theta_1, \theta_2, ...) %}
+
+### Non-uniqueness
+
+* May have **two solutions** (“elbow up” / “elbow down”).
+* Sometimes **no solution** (if target out of reach).
+
+---
+### 3.1 Geometric Solution (for planar 2-link)
+
+The "geometric solution" is a closed-form, analytic method that uses simple geometry (triangle relations) to compute joint angles directly from a desired end-effector position. It does not require iterative solvers or Jacobians — instead it solves triangles formed by the links and the target point.
+
+A "planar 2-link" manipulator is a simple arm with two rigid links connected by revolute joints that move in a plane. Link lengths are l_1 and l_2, joint angles are θ_1 (shoulder) and θ_2 (elbow), and the goal is to find θ_1, θ_2 given a target point (x,y) for the end-effector.
+
+We use the Law of Cosines to relate the three sides of the triangle formed by the two links and the line from the base to the target:
+
+{% equation %}
+c^2 = a^2 + b^2 - 2ab \cos(C)
+{% endequation %}
+
+Step-by-step:
+1. Compute the distance from the base to the target:
+{% equation %}
+r = \sqrt{x^2 + y^2}
+{% endequation %}
+
+2. Use the law of cosines to get the angle at the elbow (θ_2). This gives:
+{% equation %}
+\cos(\theta_2) = \frac{r^2 - l_1^2 - l_2^2}{2 l_1 l_2}
+{% endequation %}
+
+- Check reachability: the target is reachable only if the right-hand side lies in [-1, 1]. If outside, no real solution exists (target too far or too close).
+
+3. Solve for θ_2:
+{% equation %}
+\theta_2 = \arccos\!\left(\frac{r^2 - l_1^2 - l_2^2}{2 l_1 l_2}\right)
+{% endequation %}
+
+- There are typically two valid solutions for θ_2 (elbow-up and elbow-down) corresponding to θ_2 and -θ_2 (or equivalently using ± for the sine term in the next step).
+
+4. Compute θ_1 using geometry (angle to target minus the angle between l1 and the line to the wrist):
+{% equation %}
+\theta_1 = \arctan2(y, x) - \arctan2\!\bigl(l_2 \sin(\theta_2),\; l_1 + l_2 \cos(\theta_2)\bigr)
+{% endequation %}
+
+Notes:
+- To obtain the alternate (elbow) configuration, use the alternate sign for sin(θ_2) in the θ_1 formula (or use θ_2' = -θ_2).
+
+- This method returns direct (analytic) joint angles for the planar 2-link arm given (x,y); numerical methods are not needed unless additional constraints or redundancy exist.
+
+- Handle degenerate cases {% equation_inline r = 0, r ≈ |l1±l2| %} carefully to avoid numerical instability.
+
+---
+
+### 3.2 Algebraic / Matrix Solution
+
+Model FK as:
+{% equation %}
+H = R_y(r_1) , T_x(l_1) , R_z(r_2) , T_x(l_2) , R_z(r_3) , T_x(l_3)
+{% endequation %}
+Given a desired end-effector position ( W = [X, Y, Z, 1]^T ), solve numerically for ( r_1, r_2, r_3 ).
+
+---
+
+### 3.3 Numerical Solution (Newton’s Method)
+
+**Goal:** Find ( \mathbf{r} ) such that ( f(\mathbf{r}) = W )
+
+Jacobian ( J = \frac{\partial f}{\partial r} ) (matrix of partial derivatives)
+
+Iterative update:
+{% equation %}
+J , \Delta r = W - f(r)
+{% endequation %}
+{% equation %}
+r_{\text{new}} = r_{\text{old}} + \Delta r
+{% endequation %}
+
+* Works well if initial guess is close.
+* Can **diverge** if not.
+* Large movements → break into smaller steps:
+{% equation %}
+W_0 \rightarrow W_1 \rightarrow W_2 \rightarrow W_f
+{% endequation %}
+
+---
+
+## The Jacobian
+
+### Numerical Derivative
+
+Column {% equation_inline i %} of {% equation_inline J %}:
+{% equation %}
+J_i \approx \frac{f(\theta_i + \Delta \theta_i) - f(\theta_i)}{\Delta \theta_i}
+{% endequation %}
+
+### Analytical Derivative
+
+Use product rule — only the term involving the current DOF varies.
+
+---
+
+## Derivatives of Basic Transformations
+
+### Derivative of Translation Matrix
+
+Translation along {% equation_inline x %}:
+{% equation %}
+T_x(l) =
+\begin{bmatrix}
+1 & 0 & 0 & l \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+{% endequation %}
+
+Derivative wrt {% equation_inline l %}:
+{% equation %}
+\frac{dT_x}{dl} =
+\begin{bmatrix}
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+{% endequation %}
+
+---
+
+### Derivative of Rotation about z-axis
+
+{% equation %}
+R_z(\theta) =
+\begin{bmatrix}
+\cos\theta & -\sin\theta & 0 & 0\\
+\sin\theta &  \cos\theta & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+{% endequation %}
+
+Derivative wrt {% equation_inline \theta %}:
+{% equation %}
+\frac{dR_z}{d\theta} =
+\begin{bmatrix}
+-\sin\theta & -\cos\theta & 0 & 0\\
+\cos\theta & -\sin\theta & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+{% endequation %}
+
+---
+
+## Summary Cheat Sheet
+
+| Concept                | Maps                              | Method                             |
+| ---------------------- | --------------------------------- | ---------------------------------- |
+| **Forward Kinematics** | Angles → Position                 | Multiply transformations           |
+| **Inverse Kinematics** | Position → Angles                 | Geometric, algebraic, or numerical |
+| **Homogeneous Matrix** | Rotation + Translation            | 4×4 matrix                         |
+| **Jacobian**           | Sensitivity of position to angles | Used in numerical IK               |
+| **Newton’s Method**    | Iterative numerical solver        | Needs good initial guess           |
+
+---
+
+
 # Laboratory Sessions
 ## Integrators
 ## Forces
 ## Particle Systems
 ## Cloth
+
+# Laboratory Sessions 2
+
