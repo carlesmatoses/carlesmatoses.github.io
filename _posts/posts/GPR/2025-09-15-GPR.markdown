@@ -1363,7 +1363,7 @@ MVC preserves **angle properties** better and provides **stable parametrizations
 
 
 # Laboratory Sessions
-## Lab 1
+## Lab 1: Normal approximation
 We are given a point cloud we will call P. We assume it represents a surface (I dont know what will happen if it was a volume). Our purpose is to calculate the normal direction of the surface in that point. 
 
 We will interpret a collection of points as a set of connected vertices of a surface. We will use Principal Component Analysis to obtain the 3 orthonormal axis that best represent the subset of point clouds.
@@ -1447,9 +1447,30 @@ if (eigensolver.info() == Eigen::Success) {
 }
 {% endhighlight %}
 
-## Lab 2
-## Lab 3
+## Lab 2: Iterative Closest Point
+## Lab 3: Reconstruction
 
+We will generate a mesh from a point cloud. We are instructed two methods:
+- Simple reconstruction
+- Radial Basis FUnctions (RBF)
+
+### Simple reconstruction
+```
+i ← Index of pi, closest point to p
+{ Compute z as the projection of p onto the tangent plane at pi }
+z ← pi − ((p − pi) · ni) · ni
+if distance(z, pi) ≤ ρ + δ then
+    f (p) ← (p − pi) · ni
+else
+    f (p) ← undef ined
+end if
+```
+
+
+
+
+### Hoppe Abstract
+We describe and demonstrate an algorithm that takes as input an unorganized set of points {x1,...,xn} belonging to R³ on or near an unknown manifold M, and produces as output a simplicial surface that approximates M. Neither the topology, the presence of boundaries, nor the geometry of M are assumed to be known in advance — all are inferred automatically from the data. This problem naturally arises in a variety of practical situations such as range scanning an object from multiple view points, recovery of biological shapes from two-dimensional slices, and interactive surface sketching.
 
 <!-- You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
