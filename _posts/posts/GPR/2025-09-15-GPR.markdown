@@ -51,7 +51,7 @@ But the **why do we care?** is still fuzzy. Let’s make it concrete with exampl
     That’s the raw math meaning. Now — what do we do with that?
 
 ## SVD
-Singular Value Decomposition (SVD) is a powerful matrix factorization technique that expresses any $m \times n$ matrix $A$ as the product $A = U \Sigma V^T$, where $U$ and $V$ are orthogonal matrices and $\Sigma$ is a diagonal matrix containing the singular values of $A$. SVD reveals the intrinsic geometric structure of the matrix, making it invaluable for applications such as dimensionality reduction, noise filtering, and solving linear systems, especially when $A$ is not square or is ill-conditioned.
+Singular Value Decomposition (SVD) is a powerful matrix factorization technique that expresses any $m \times n$ matrix $A$ as the product $A = U \Sigma V^T$, where $U$ and $V$ are orthogonal matrices and $\Sigma$ is a diagonal matrix containing the singular values of $A$. SVD reveals the intrinsic geometric structure of the matrix, making it invaluable for applications such as dimensionality reduction, noise filtering, and solving linear systems, especially when $A$ is not square or is ill-conditioned. 
 
 To find the singular values of a matrix {% equation_inline A %}, you must compute the square roots of the positive eigenvalues of the matrix {% equation_inline A^{T}A %} (or {% equation_inline AA^{T} %}). The general process involves calculating {% equation_inline A^{T}A %}, determining its characteristic polynomial by setting the determinant of ({% equation_inline A^{T}A-\lambda I %}) to zero, solving for the eigenvalues ({% equation_inline \lambda %}), and then taking the square root of each positive eigenvalue to find the singular values of  A.
 
@@ -1455,7 +1455,7 @@ We will generate a mesh from a point cloud. We are instructed two methods:
 - Radial Basis FUnctions (RBF)
 
 ### Simple reconstruction
-```
+```python
 i ← Index of pi, closest point to p
 { Compute z as the projection of p onto the tangent plane at pi }
 z ← pi − ((p − pi) · ni) · ni
@@ -1471,6 +1471,53 @@ end if
 
 ### Hoppe Abstract
 We describe and demonstrate an algorithm that takes as input an unorganized set of points {x1,...,xn} belonging to R³ on or near an unknown manifold M, and produces as output a simplicial surface that approximates M. Neither the topology, the presence of boundaries, nor the geometry of M are assumed to be known in advance — all are inferred automatically from the data. This problem naturally arises in a variety of practical situations such as range scanning an object from multiple view points, recovery of biological shapes from two-dimensional slices, and interactive surface sketching.
+
+We get input: Set of pairs {% equation_inline (p_i, v_i), p_i ∈ R^3, v_i ∈ R %}.
+
+{% equation_inline p_i %}  is just the sampled points in the surface (point cloud). {% equation_inline v_i %}  is a scalar obtained with {% equation_inline f(p) ← (p − p_i) · n_i %} 
+
+
+Using the input (p_i, v_i) we compute
+
+{% equation %}
+f(p) = \sum_{i=1}^{m} f_i(p), \quad f_i(p) = \phi(\|p - p_i\|)\,c_i
+{% endequation %}
+
+Definitions:
+
+- {% equation_inline \phi %} — radial basis kernel: a scalar function of the radial distance {% equation_inline r %} that controls smoothness and support. It depends only on {% equation_inline r = norm(p - p_i) %}. Common choices:
+  - Gaussian: {% equation_inline \phi(r) = exp(-r^2 / (2 sigma^2)) %}
+  - Multiquadric: {% equation_inline \phi(r) = sqrt(r^2 + eps^2) %}
+  - Inverse multiquadric: {% equation_inline \phi(r) = 1 / sqrt(r^2 + eps^2) %}
+  - Thin-plate spline: {% equation_inline \phi(r) = r^2 * log(r) %}
+  - Compactly supported (Wendland): {% equation_inline \phi(r) = (1 - r / R)^k_+ * polynomial %}
+  The choice determines smoothness, support radius and numerical conditioning.
+
+- {% equation_inline norm(p - p_i) %} — Euclidean ({% equation_inline l2 %}) distance between query point {% equation_inline p \in R^3 %} and center {% equation_inline p_i \in R^3 %}:
+  {% equation_inline r = norm(p - p_i)_2 %}.
+
+- {% equation_inline c_i %} — scalar coefficient (weight) associated to center {% equation_inline p_i %}. Coefficients are solved so {% equation_inline f %} interpolates or approximates the data:
+  - Assemble {% equation_inline A \in R^{m x m} %} with {% equation_inline A_{ij} = \phi(norm(p_i - p_j)) %}.
+  - Solve {% equation_inline A c = v %} for {% equation_inline c %} (or regularized: {% equation_inline (A + \lambda I) c = v %}) where {% equation_inline c = [c_1 ... c_m]^T %} and {% equation_inline v = [v_1 ... v_m]^T %}.
+
+- {% equation_inline p_i %} — centers (sample positions) in {% equation_inline R^3 %}. Typically {% equation_inline m = n %} and centers coincide with the input samples, but you may choose a subset of centers.
+
+- {% equation_inline v_i %} — target scalar values at centers (observations). In surface reconstruction from point+normal data these are often:
+  - {% equation_inline v_i = 0 %} for on-surface samples,
+  - additional synthetic off-surface samples {% equation_inline v_i = +- d %} (offset by normal) to impose normal constraints.
+  More generally {% equation_inline v_i %} is the desired value {% equation_inline f(p_i) %}.
+
+Notes:
+- After solving for {% equation_inline c %}, evaluate {% equation_inline f(p) %} cheaply by summing {% equation_inline \phi(norm(p - p_i)) * c_i %}.
+- Regularization ({% equation_inline lambda > 0 %}) improves conditioning for large {% equation_inline m %} or noisy data.
+- Choosing compactly supported {% equation_inline \phi %} makes {% equation_inline A %} sparse and evaluation faster.
+As m increases, the matrix A tends to become ill-conditioned. "Ill-conditioned" means the mathematical problem (typically a linear system or a matrix) is highly sensitive to small changes in the input data or to rounding errors. In practice:
+
+- The determinant of A is close to zero and the condition number is very large.
+- Solving A x = b becomes unstable: tiny changes in A or b can produce huge changes in x.
+- This commonly occurs when the sample points (or basis functions) are nearly linearly dependent, are very close together, or when the system is near singular.
+
+(Regularization such as solving (A + λI) c = v is a common mitigation.)
 
 <!-- You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
