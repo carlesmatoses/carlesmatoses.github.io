@@ -1360,7 +1360,56 @@ MVC preserves **angle properties** better and provides **stable parametrizations
 ---
 
 
+# Session 8
+- Distorsion singular values of A.
+- Isometries, angle preserving (conformal)
+  - cueo preserving (authalic) ?
+- which surfaces admit isometric R
+  - K==0 <-> developable surfaces
+- Mix and match prop. (energy opt)
+- MVC
 
+---
+
+- In depth analysis of planar param.
+  - optimization goal: 
+  - by alpha cordin ?
+  - quality guarantees
+  - cost
+
+Last day we mentioned that Tuttes result is connected to the quality guarantees because a convex convination always produces bijections... (i dont actually know what he is refering to)
+{% equation %}
+M = (V,E,F) -> f(p_i) = U_i belonging to D in R²
+{% endequation %}
+
+V are the {P_i}
+E are the edges {(i,j)}
+D can be any area like a circle or square or arbitrary surface.
+
+We have a boundary {1,...,n}=interior and {n+1,...,N}=derivave M
+N_i = {j|(i,j) in E}
+
+
+U_i for i in Interior points = 1/(sum w_i*j where i belongs to N_i) * (sum w_i*j*U_j where j belongs to N_i)
+
+<!-- Here he lost me a bit: -->
+U is the surface composed of (M_i, N_i). we can create matrix A * [M_1, M_2...].T that is the same as B [U_{n},...,U_N]
+
+a_{ij} is:
+- sum w_{ik} if n=i
+- -w_{ij} if i != j and (i,j) belongs to E
+- 0 otherwise
+
+A will only depend on W_{ij}. B will be W_{ij} and is multiplying fixed delta schemes.
+
+The selection of points in boundary and what can be expected. We have the points in R³, i draw a curve that is a polygon and i can compute the lenght L of the hole poligon as the sum || p_i-p_{something} ||^{alpha} where i is {N_1..., N}
+
+Now for the other points i choose an image for the next point and i compute the distance to the boundary
+d_j = sum ||p_i-p_{something}||^{alpha}
+
+d_j/L belongs to [0,1]
+
+d_i/L * P; (P is perimeter)
 
 # Laboratory Sessions
 ## Lab 1: Normal approximation
