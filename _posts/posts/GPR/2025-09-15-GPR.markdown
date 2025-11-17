@@ -1411,6 +1411,34 @@ d_j/L belongs to [0,1]
 
 d_i/L * P; (P is perimeter)
 
+--- 
+<!-- Second part of session 8 -->
+Lets draw points  and we add a spring between the points. We can calculate how much they are being pressed or separated with E=1/l * k * s². We name this srings k
+
+With this information we get that 
+E = 1/2 (sum 1/2 * k_{ij} ||p_i - p_j||²) = 1/4 (sum k_{ij*(pi_pj).T*(pi-pj)})
+
+delta E / delta M_i = 1/4 (sum k_{ij} 2*(p_i-p_j)) ? not finished, i assume it is summing all the springs or something.
+
+
+Linear reoriducibility: Tutte only cares about geometry (the connection of points) moving the non boundary points. This does not have reproducibility. 
+
+This means that A scheme will have reproducibility only if it represents the baricenter coordinates.
+
+Baricenter coordinated for poligons
+- cotangent weights (harmonic params)
+- w_ij = (ctan(alpha) + cotan(beta)) / 2
+- cotangent weights can be negative, diferently to tutte, we can not assure to have a 1 to 1 parametrization.
+
+Waclispaces coordinates
+- w_ij = (cot(alpha) + cot(beta)) / || pi-pj ||
+
+<!-- For some reasom, this is meant to be strongly relationated with laplacian  -->
+
+
+
+
+
 # Laboratory Sessions
 ## Lab 1: Normal approximation
 We are given a point cloud we will call P. We assume it represents a surface (I dont know what will happen if it was a volume). Our purpose is to calculate the normal direction of the surface in that point. 
