@@ -1433,6 +1433,8 @@ Baricenter coordinated for poligons
 Waclispaces coordinates
 - w_ij = (cot(alpha) + cot(beta)) / || pi-pj ||
 
+eigendecomposition, less square, laplacian.
+
 <!-- For some reasom, this is meant to be strongly relationated with laplacian  -->
 
 
