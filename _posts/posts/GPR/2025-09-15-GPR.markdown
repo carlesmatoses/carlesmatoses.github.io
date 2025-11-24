@@ -1502,10 +1502,13 @@ This is the definition of **barycentric coordinates** on a mesh.
 
 > “If your weights reproduce linear functions, the scheme is affine, and therefore suitable for mesh parameterization.”
 
-{% alert primary %}
+{% alert secondary %}
 **Reminder**: What are weights?
 Weights {% equation_inline w_{ij} %} are scalars assigned to each edge {% equation_inline (i,j) %} used to express an interior vertex (or point) as an affine/barycentric combination of its neighbors:
 {% equation_inline p_i = \sum_{j \in N(i)} \sigma_{ij} \, p_j %}, with {% equation_inline \sigma_{ij} = w_{ij} / \sum_k w_{ik} %} (normalization)
+
+
+
 {% endalert %}
 
 ---
@@ -1701,9 +1704,10 @@ Key idea:
 * Measure distortion at every triangle using singular values {% equation_inline \alpha_1, \alpha_2 %}.
 * Improve the map by minimizing:
 
-[
+{% equation %}
 E = \frac{\alpha_1}{\alpha_2} + \frac{\alpha_2}{\alpha_1}
-]
+{% endequation %}
+
 
 That is the “worst distortion” the professor refers to.
 
