@@ -1492,11 +1492,11 @@ The important condition from last time is:”
 
 We want a coordinate scheme that satisfies:
 
-[
-p_i = \sum_{j \in N(i)} w_{ij} , p_j
-]
+{% equation id="linear-reproduction" %}
+p_i = \sum_{j \in N(i)} w_{ij} \, p_j
+{% endequation %}
 
-for **any** *affine* function (p).
+for **any** *affine* function {% equation_inline p %}.
 This means the weights reproduce linear functions exactly.
 This is the definition of **barycentric coordinates** on a mesh.
 
@@ -1504,8 +1504,8 @@ This is the definition of **barycentric coordinates** on a mesh.
 
 {% alert primary %}
 **Reminder**: What are weights?
-Weights w_ij are scalars assigned to each edge (i,j) used to express an interior vertex (or point) as an affine/barycentric combination of its neighbors:
-p_i = sum_{j in N(i)} sigma_ij * p_j, with sigma_ij = w_ij / sum_k w_ik (normalization
+Weights {% equation_inline w_{ij} %} are scalars assigned to each edge {% equation_inline (i,j) %} used to express an interior vertex (or point) as an affine/barycentric combination of its neighbors:
+{% equation_inline p_i = \sum_{j \in N(i)} \sigma_{ij} \, p_j %}, with {% equation_inline \sigma_{ij} = w_{ij} / \sum_k w_{ik} %} (normalization)
 {% endalert %}
 
 ---
@@ -1534,13 +1534,13 @@ They are connected to the Laplace–Beltrami operator.
 
 ### **Definition (for a triangulated mesh)**
 
-For an interior edge (i \leftrightarrow j):
+For an interior edge {% equation_inline i \leftrightarrow j %}:
 
-[
-w_{ij} = \frac{1}{2} \left( \cot \alpha_{ij} + \cot \beta_{ij} \right),
-]
+{% equation id="cotangent-weights" %}
+w_{ij} = \frac{1}{2} \left( \cot \alpha_{ij} + \cot \beta_{ij} \right)
+{% endequation %}
 
-where (\alpha_{ij}) and (\beta_{ij}) are the angles opposite the edge (ij) in the two adjacent triangles.
+where {% equation_inline \alpha_{ij} %} and {% equation_inline \beta_{ij} %} are the angles opposite the edge {% equation_inline (i,j) %} in the two adjacent triangles.
 
 These are the weights used in **harmonic maps** and **discrete Laplacian**.
 
@@ -1567,23 +1567,23 @@ The Laplacian matrix with cot weights is symmetric but not uniform, and not alwa
 These originate from projective geometry.
 They are generalized barycentric coordinates on convex polygons.
 
-Consider a convex polygon with vertices (p_1, p_2, ..., p_n).
-For each vertex (p_j), the **Wachspress weight** at interior point (p) is:
+Consider a convex polygon with vertices {% equation_inline p_1, p_2, \ldots, p_n %}.
+For each vertex {% equation_inline p_j %}, the **Wachspress weight** at interior point {% equation_inline p %} is:
 
-[
-w_j(p) = \frac{B_j(p)}{A_{j-1}(p) , A_j(p)}.
-]
+{% equation id="wachspress-weights" %}
+w_j(p) = \frac{B_j(p)}{A_{j-1}(p) \, A_j(p)}
+{% endequation %}
 
 Where:
 
-* (A_j) = signed area of triangle ((p, p_j, p_{j+1}))
-* (B_j) = area of the quadrilateral formed by edges meeting at vertex (j)
+* {% equation_inline A_j %} = signed area of triangle {% equation_inline (p, p_j, p_{j+1}) %}
+* {% equation_inline B_j %} = area of the quadrilateral formed by edges meeting at vertex {% equation_inline j %}
 
 These areas appear in formula:
 
-[
-w_j = \frac{B_j}{A_{i-1}A_j}
-]
+{% equation id="wachspress-simplified" %}
+w_j = \frac{B_j}{A_{j-1}A_j}
+{% endequation %}
 
 This matches the Wachspress construction.
 
@@ -1604,11 +1604,11 @@ Not useful on arbitrary boundary shapes.
 
 This is the professor deriving the **linear precision condition**:
 
-[
-\sum_j w_j(p) , p_j = p.
-]
+{% equation id="linear-precision" %}
+\sum_j w_j(p) \, p_j = p
+{% endequation %}
 
-To prove Wachspress coordinates reproduce affine functions, he expresses the vector (p) as a combination of neighbors using areas.
+To prove Wachspress coordinates reproduce affine functions, he expresses the vector {% equation_inline p %} as a combination of neighbors using areas.
 This long expression is the expanded form of that algebraic proof.
 
 He likely said:
@@ -1627,9 +1627,9 @@ sum(j, B_i / A_j*A_{j-1})(p-p_j)=0
 
 This is shorthand for:
 
-[
-\sum_j w_j(p),(p - p_j) = 0.
-]
+{% equation id="equilibrium-equation" %}
+\sum_j w_j(p) \, (p - p_j) = 0
+{% endequation %}
 
 Which is the **equilibrium equation** for barycentric coordinates.
 This is the key property: the weighted neighbors “pull” the point into equilibrium at (p).
@@ -1647,13 +1647,13 @@ MVC works on **any simple polygon**, convex or not.
 
 ### **Definition**
 
-For each neighbor ( j ):
+For each neighbor {% equation_inline j %}:
 
-[
+{% equation id="mvc-weights" %}
 w_j(p) = \frac{\tan(\theta_{j-1}/2) + \tan(\theta_j/2)}{|p - p_j|}
-]
+{% endequation %}
 
-Where (\theta_j) is the angle between edges to (p_j) and (p_{j+1}).
+Where {% equation_inline \theta_j %} is the angle between edges to {% equation_inline p_j %} and {% equation_inline p_{j+1} %}.
 
 ### **Properties**
 
@@ -1680,7 +1680,7 @@ Barycentric coordinate systems typically require:
 * a fixed boundary polygon (arbitrary shape), or
 * circular boundary (for Floater’s MVC disk embedding)
 
-This is necessary to avoid the trivial solution (p_i = \text{constant}).
+This is necessary to avoid the trivial solution {% equation_inline p_i = \text{constant} %}.
 
 ---
 
@@ -1698,7 +1698,7 @@ This refers to **Most Isometric Parameterization (MIPS)** by Hormann & Greiner.
 Key idea:
 
 * Start with an initial mapping (e.g., MVC).
-* Measure distortion at every triangle using singular values ( \alpha_1, \alpha_2 ).
+* Measure distortion at every triangle using singular values {% equation_inline \alpha_1, \alpha_2 %}.
 * Improve the map by minimizing:
 
 [
@@ -1742,9 +1742,9 @@ Your professor wants you to understand:
 
 All these schemes boil down to:
 
-[
-p_i = \sum_j w_{ij} p_j,\qquad \sum_j w_{ij} = 1,\qquad w_{ij} \ge 0
-]
+{% equation id="general-barycentric" %}
+p_i = \sum_j w_{ij} p_j, \qquad \sum_j w_{ij} = 1, \qquad w_{ij} \ge 0
+{% endequation %}
 
 The goal is to find weights that produce:
 
