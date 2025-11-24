@@ -1438,8 +1438,36 @@ eigendecomposition, less square, laplacian.
 <!-- For some reasom, this is meant to be strongly relationated with laplacian  -->
 
 
+# Session 9
+Last day we saw Analysis of scheme and based affine combinations. We also explored the NN spring model.
+
+- Linear reproduction
+<-> scheme == baryanlic coro?
+p_i = sum(j in d(i), w_ij * p_i) for triangle uniq...
+
+Now we explore:
+* Cotangent weights:
+  * harmonic weights
+  * + Matrix is non uniform
+  * + small angle dist
+  * - negative weights
+* wachpress weights
+  * in two connected triangles on an edge:
+    w_j = (cot \alpha + cot \beta / ||p_i-p_j||) 
+    where:
+      - p, p_j, d, p_{j+1} are angles
+    
+    w_j = B_j / (A_{i-1} * A_j)
+We caclulate the varicentre to recalculate the point b?
+
+B_j*P = A_j * p_{i-1} = (A_{i-1}+A_j-B_i)*P_j + A_{i-1}
+= A_j (P_{j-1} - P_j) - A_{j-1}(P_j-P_{j+1}) + B_j *\phi_i
 
 
+sum(j, B_i / A_j*A_{j-1})(p-p_j)=0
+
+
+- MVC: floater
 
 # Laboratory Sessions
 ## Lab 1: Normal approximation
