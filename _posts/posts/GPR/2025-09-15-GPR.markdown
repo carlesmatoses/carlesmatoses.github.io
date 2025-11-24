@@ -1439,7 +1439,7 @@ eigendecomposition, less square, laplacian.
 
 
 # Session 9
-Last day we saw Analysis of scheme and based affine combinations. We also explored the NN spring model.
+<!-- Last day we saw Analysis of scheme and based affine combinations. We also explored the NN spring model.
 
 - Linear reproduction
 <-> scheme == baryanlic coro?
@@ -1466,8 +1466,296 @@ B_j*P = A_j * p_{i-1} = (A_{i-1}+A_j-B_i)*P_j + A_{i-1}
 
 sum(j, B_i / A_j*A_{j-1})(p-p_j)=0
 
+We still need to discuss somethings like three boundary points to make use of this section.
 
 - MVC: floater
+Do we have some free boundary?
+
+
+- **Most isometric Paom**
+  - start with a guess (with good properties) usually fixed derivative.
+  - Iterativelly improve past of "worst" point  (int ac derivative) 
+
+
+
+NEXT TOPIC: REMESHING
+WE need a metric that tells us what is better "mesh"
+- types of primitives
+  - triangle, square, hexagonal...
+-->
+
+“Last day we looked at linear schemes for parameterization, affine combinations, and the ‘spring model’ (Tutte).
+
+The important condition from last time is:”
+
+### **Linear reproduction**
+
+We want a coordinate scheme that satisfies:
+
+[
+p_i = \sum_{j \in N(i)} w_{ij} , p_j
+]
+
+for **any** *affine* function (p).
+This means the weights reproduce linear functions exactly.
+This is the definition of **barycentric coordinates** on a mesh.
+
+> “If your weights reproduce linear functions, the scheme is affine, and therefore suitable for mesh parameterization.”
+
+{% alert primary %}
+**Reminder**: What are weights?
+Weights w_ij are scalars assigned to each edge (i,j) used to express an interior vertex (or point) as an affine/barycentric combination of its neighbors:
+p_i = sum_{j in N(i)} sigma_ij * p_j, with sigma_ij = w_ij / sum_k w_ik (normalization
+{% endalert %}
+
+---
+
+## **2. Today: Three families of barycentric weights**
+
+Today’s lecture surveys **three classic weight constructions** used in mesh parametrization:
+
+1. **Cotangent weights** (a.k.a. harmonic weights)
+2. **Wachspress coordinates**
+3. **Mean Value Coordinates (MVC)** by Floater
+
+For each:
+
+* why it's good
+* why it's bad
+* where it comes from
+* how it affects parameterization quality
+
+---
+
+## **3. Cotangent weights**
+
+These arise from discrete differential geometry.
+They are connected to the Laplace–Beltrami operator.
+
+### **Definition (for a triangulated mesh)**
+
+For an interior edge (i \leftrightarrow j):
+
+[
+w_{ij} = \frac{1}{2} \left( \cot \alpha_{ij} + \cot \beta_{ij} \right),
+]
+
+where (\alpha_{ij}) and (\beta_{ij}) are the angles opposite the edge (ij) in the two adjacent triangles.
+
+These are the weights used in **harmonic maps** and **discrete Laplacian**.
+
+### **Properties**
+
+**+ Very good angle behavior**
+They minimize Dirichlet energy and give low angle distortion.
+
+**+ Produce very smooth parameterizations**
+
+**– Can produce negative weights**
+If a triangle has an obtuse angle, the cotangent of an obtuse angle is negative.
+Negative weights break injectivity → possible fold-overs in parameterization.
+
+**– Matrix is non-uniform**
+The Laplacian matrix with cot weights is symmetric but not uniform, and not always diagonally dominant.
+
+> “Cotangent weights are great, but dangerous. They are the gold standard for geometry processing, but you have to watch the signs.”
+
+---
+
+## **4. Wachspress coordinates**
+
+These originate from projective geometry.
+They are generalized barycentric coordinates on convex polygons.
+
+Consider a convex polygon with vertices (p_1, p_2, ..., p_n).
+For each vertex (p_j), the **Wachspress weight** at interior point (p) is:
+
+[
+w_j(p) = \frac{B_j(p)}{A_{j-1}(p) , A_j(p)}.
+]
+
+Where:
+
+* (A_j) = signed area of triangle ((p, p_j, p_{j+1}))
+* (B_j) = area of the quadrilateral formed by edges meeting at vertex (j)
+
+These areas appear in formula:
+
+[
+w_j = \frac{B_j}{A_{i-1}A_j}
+]
+
+This matches the Wachspress construction.
+
+### **Properties**
+
+**+ Always positive (for convex polygons)**
+No negative weights → preserves injectivity.
+
+**+ Coordinate functions are rational**
+Smooth inside, but more complex.
+
+**– Only guaranteed to work on convex polygons**
+Not useful on arbitrary boundary shapes.
+
+---
+
+## **5. Where the “baricenter equation”  comes from**
+
+This is the professor deriving the **linear precision condition**:
+
+[
+\sum_j w_j(p) , p_j = p.
+]
+
+To prove Wachspress coordinates reproduce affine functions, he expresses the vector (p) as a combination of neighbors using areas.
+This long expression is the expanded form of that algebraic proof.
+
+He likely said:
+
+> “Don’t memorize this. Just understand: Wachspress coordinates satisfy linear precision because of the area-ratio construction.”
+
+---
+
+## **6. The “sum over j” formula**
+
+I wrote:
+
+```
+sum(j, B_i / A_j*A_{j-1})(p-p_j)=0
+```
+
+This is shorthand for:
+
+[
+\sum_j w_j(p),(p - p_j) = 0.
+]
+
+Which is the **equilibrium equation** for barycentric coordinates.
+This is the key property: the weighted neighbors “pull” the point into equilibrium at (p).
+
+---
+
+## **7. MVC — Mean Value Coordinates (Floater)**
+
+This was introduced because:
+
+* cotangent weights have negative weights
+* Wachspress works only for convex boundaries
+
+MVC works on **any simple polygon**, convex or not.
+
+### **Definition**
+
+For each neighbor ( j ):
+
+[
+w_j(p) = \frac{\tan(\theta_{j-1}/2) + \tan(\theta_j/2)}{|p - p_j|}
+]
+
+Where (\theta_j) is the angle between edges to (p_j) and (p_{j+1}).
+
+### **Properties**
+
+**+ Always positive weights**
+Works on non-convex polygons.
+
+**+ Conformal-like behavior**
+Angle-preserving tendencies (not exactly conformal, but close).
+
+**– Not optimal for area distortion**
+But usually much better than Tutte / springs.
+
+Your professor might have said:
+
+> “MVC behaves like a discrete harmonic map but without negative weights.”
+
+---
+
+## **8. Boundary conditions**
+
+Barycentric coordinate systems typically require:
+
+* at least 3 non-collinear boundary points to anchor the mapping (triangle boundary), or
+* a fixed boundary polygon (arbitrary shape), or
+* circular boundary (for Floater’s MVC disk embedding)
+
+This is necessary to avoid the trivial solution (p_i = \text{constant}).
+
+---
+
+## **9. Most isometric parameterization (Lévy / Desbrun style)**
+
+
+```
+Most isometric Param
+- start with a guess (fixed boundary)
+- iteratively improve the "worst" point (intrinsic derivative)
+```
+
+This refers to **Most Isometric Parameterization (MIPS)** by Hormann & Greiner.
+
+Key idea:
+
+* Start with an initial mapping (e.g., MVC).
+* Measure distortion at every triangle using singular values ( \alpha_1, \alpha_2 ).
+* Improve the map by minimizing:
+
+[
+E = \frac{\alpha_1}{\alpha_2} + \frac{\alpha_2}{\alpha_1}
+]
+
+That is the “worst distortion” the professor refers to.
+
+The process:
+
+1. Fix the boundary (common choice).
+2. Compute Jacobian on each triangle.
+3. Compute singular values.
+4. Move vertices to reduce the energy.
+5. Iterate until distortion minimized.
+
+---
+
+## **10. Summary — what you should take away**
+
+Your professor wants you to understand:
+
+### **Cotangent weights**
+
+* Best differential properties
+* May become negative → dangerous in parametrization
+
+### **Wachspress coordinates**
+
+* Exact barycentric coordinates on convex polygons
+* No negative weights
+* Not general enough
+
+### **Mean Value Coordinates (MVC)**
+
+* General-purpose, always positive
+* Great for disk parameterization
+* Foundation for many modern methods (LSCM, MIPS)
+
+### **General principle**
+
+All these schemes boil down to:
+
+[
+p_i = \sum_j w_{ij} p_j,\qquad \sum_j w_{ij} = 1,\qquad w_{ij} \ge 0
+]
+
+The goal is to find weights that produce:
+
+* good angle behavior
+* no fold-overs
+* smooth interior
+* no negative weights
+* linear precision
+
+---
+
 
 # Laboratory Sessions
 ## Lab 1: Normal approximation
