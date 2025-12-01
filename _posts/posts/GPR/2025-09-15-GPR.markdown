@@ -1760,6 +1760,102 @@ The goal is to find weights that produce:
 
 ---
 
+# Session 10
+We spoke about Remeshing. Specifically Delauray Delta for 2 and 3D.
+
+There is a duality with Voronoi Diagram and Remeshing. 
+- Delaray Delta:
+  - 0 Dimensions: vertices
+  - 1 dimensions: edges
+  - 2 dimensions: triangles
+
+- Voronoi Diagram:
+  - 0 Dimensions: cells/regions 2D
+  - 1 dimensions: edges (derivative of regions )
+  - 2 dimensions: vertices of derivative of regions
+
+Example of tetrahedro with
+0 verts <-> cells 3 dim
+1 edges <-> facets 2 dim
+2 faces <-> edges of facets 1
+3 tetra <-> cones of facets
+
+
+## Delaunay and Voronoi (brief notes)
+
+This section summarizes the core definitions and properties you will see in
+remeshing and computational geometry. The presentation below uses classical
+terminology and short formal definitions — keep this as a quick reference.
+
+### Delaunay triangulation (2D)
+
+Definition. Let {% equation_inline V \subset \mathbb{R}^2 %} be a finite point set. A triangle
+{% equation_inline T %} with vertices in {% equation_inline V %} is a Delaunay triangle if the circumcircle of
+{% equation_inline T %} contains no point of {% equation_inline V %} in its interior. A Delaunay triangulation
+of {% equation_inline V %} is a triangulation of the convex hull of {% equation_inline V %} whose every triangle
+is Delaunay.
+
+Properties:
+
+1. The Delaunay triangulation maximizes the minimum angle among all
+   triangulations (it avoids skinny triangles whenever possible).
+2. It is unique when no four points of {% equation_inline V %} are cocircular (no four points
+   lie on the same circle).
+
+Duality. The dual graph of the Delaunay triangulation is the Voronoi diagram
+of {% equation_inline V %}. For a site {% equation_inline p \in V %} the Voronoi cell is defined as
+{% equation id="voronoi2d" %}
+\operatorname{cell}(p) = \{x\in\mathbb{R}^2:\; \|x-p\| \le \|x-q\|,\; \forall q\in V\}
+{% endequation %}
+
+The vertices of the Voronoi diagram are precisely the circumcenters of the
+triangles in the Delaunay triangulation.
+
+### Delaunay triangulation (3D)
+
+Definition. For a finite point set {% equation_inline V \subset \mathbb{R}^3 %} a tetrahedron
+{% equation_inline T %} with vertices in {% equation_inline V %} is Delaunay if its circumsphere has no points
+of {% equation_inline V %} in its interior. A Delaunay tetrahedralization is a tetrahedral mesh
+filling the convex hull of {% equation_inline V %} consisting only of Delaunay tetrahedra.
+
+Properties:
+
+1. Uniqueness holds when no five points of {% equation_inline V %} are cospherical.
+2. The dual structure is the 3D Voronoi diagram; Voronoi vertices are the
+   circumcenters of Delaunay tetrahedra.
+
+### Constrained and conforming Delaunay (3D)
+
+- Constrained Delaunay Triangulation (CDT): a CDT is defined with respect to a
+  geometric domain (polyhedron) {% equation_inline X %}. A tetrahedron is *constrained Delaunay* if
+  its circumsphere does not contain vertices of {% equation_inline X %} that are visible from the
+  interior of the tetrahedron. CDTs respect input geometry (edges/faces) but
+  may require additional Steiner points to exist.
+
+- Conforming Delaunay tetrahedralization: a tetrahedralization where every
+  tetrahedron is Delaunay; in practice this often requires adding Steiner
+  points so that the triangulation both respects the domain and remains Delaunay.
+
+### Delaunay restricted to a surface
+
+Given points {% equation_inline V \subset \mathbb{R}^3 %} and a surface {% equation_inline S %}, the Delaunay
+triangulation restricted to {% equation_inline S %} is the subset of Delaunay
+faces whose dual Voronoi edges intersect the surface. This is the foundation of
+restricted-Voronoi / restricted-Delaunay algorithms used for surface
+remeshing.
+
+### Performance notes
+
+- Many practical Delaunay algorithms are incremental: points are inserted one
+  at a time and local updates maintain the Delaunay property.
+- Worst-case running time can be quadratic, but average expected complexity is
+  typically {% equation_inline O(n\log n) %} in practice for well-behaved point distributions.
+
+---
+## Greedy Remeshing
+
+## Incremental remeshing
+
 
 # Laboratory Sessions
 ## Lab 1: Normal approximation
