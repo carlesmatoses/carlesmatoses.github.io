@@ -1856,6 +1856,42 @@ remeshing.
 
 ## Incremental remeshing
 
+# Session 11
+## Model repair
+Models that we handle in real life they will have defects such as holes. Depending on how was it geenrated it will have different errors and deformations.
+
+If we have a  non manifold meshes, we must turn them into manifold. Remember that manifold surfaces have:
+- does not have singular vertex
+- does not have complex edges
+- does not have intersections
+
+Other problems we may face are:
+- holes 
+- gaps
+- overlaps
+
+Those mentioned are geometric problems. Now we go to topological problems
+- Spurious handles: topological noise. Genus is not zero. This are called through holes
+- Inconsistent face orientation.
+
+Algorithms can be classified as:
+<!-- TODO: check power point and add missing info -->
+- Surface based
+- Volume based
+
+Volume Based algorithms can help with topological problems such as through-holes while surface based algorithms help more in broken meshes.
+
+This algorithms are meant to work on localized problems and try not to touch the rest of the model.
+
+Range scans: This method obtains surfaces from a scanned object. The problem is that this strategy produces lots of individual surfaces overlapped. We require either surface-based algorithms or volume based algoirthms capable of detecting overlaps and generate a single mesh.
+
+Once we fuse those range scans using a surface-based method, we will generate other problems such as holes and isles.
+
+### Triangle Soup
+<!-- TODO: what type of algorithms is this? what problem does it solve? what limitations does it have. -->
+Subdivision step into cells.
+
+### Hole filling problem
 
 # Laboratory Sessions
 ## Lab 1: Normal approximation
