@@ -51,7 +51,7 @@ But the **why do we care?** is still fuzzy. Let’s make it concrete with exampl
     That’s the raw math meaning. Now — what do we do with that?
 
 ## SVD
-Singular Value Decomposition (SVD) is a powerful matrix factorization technique that expresses any $m \times n$ matrix $A$ as the product $A = U \Sigma V^T$, where $U$ and $V$ are orthogonal matrices and $\Sigma$ is a diagonal matrix containing the singular values of $A$. SVD reveals the intrinsic geometric structure of the matrix, making it invaluable for applications such as dimensionality reduction, noise filtering, and solving linear systems, especially when $A$ is not square or is ill-conditioned. 
+Singular Value Decomposition (SVD) is a powerful matrix factorization technique that expresses any {% equation_inline m \times n %} matrix {% equation_inline A %} as the product {% equation_inline A = U \Sigma V^T %}, where {% equation_inline U %} and {% equation_inline V %} are orthogonal matrices and {% equation_inline \Sigma %} is a diagonal matrix containing the singular values of {% equation_inline A %}. SVD reveals the intrinsic geometric structure of the matrix, making it invaluable for applications such as dimensionality reduction, noise filtering, and solving linear systems, especially when {% equation_inline A %} is not square or is ill-conditioned. 
 
 To find the singular values of a matrix {% equation_inline A %}, you must compute the square roots of the positive eigenvalues of the matrix {% equation_inline A^{T}A %} (or {% equation_inline AA^{T} %}). The general process involves calculating {% equation_inline A^{T}A %}, determining its characteristic polynomial by setting the determinant of ({% equation_inline A^{T}A-\lambda I %}) to zero, solving for the eigenvalues ({% equation_inline \lambda %}), and then taking the square root of each positive eigenvalue to find the singular values of  A.
 
@@ -71,7 +71,7 @@ Linear algebra is a branch of mathematics that studies linear equations, linear 
 Linear algebra is essential in many fields, including science, engineering, computer graphics, and machine learning, as it allows for the efficient manipulation and understanding of multidimensional data and transformations.
 
 
-**Eigendecomposition** is a method of expressing a square matrix in terms of its eigenvalues and eigenvectors. For a matrix $A$, if it can be written as $A = V D V^{-1}$, where $V$ contains the eigenvectors and $D$ is a diagonal matrix of eigenvalues, then $A$ is said to be diagonalizable. This decomposition reveals the fundamental directions (eigenvectors) and scaling factors (eigenvalues) of the transformation represented by $A$. Eigendecomposition is useful in simplifying matrix operations and understanding the behavior of linear transformations in geometry processing, physics, and data analysis.
+**Eigendecomposition** is a method of expressing a square matrix in terms of its eigenvalues and eigenvectors. For a matrix {% equation_inline A %}, if it can be written as {% equation_inline A = V D V^{-1} %}, where {% equation_inline V %} contains the eigenvectors and {% equation_inline D %} is a diagonal matrix of eigenvalues, then {% equation_inline A %} is said to be diagonalizable. This decomposition reveals the fundamental directions (eigenvectors) and scaling factors (eigenvalues) of the transformation represented by {% equation_inline A %}. Eigendecomposition is useful in simplifying matrix operations and understanding the behavior of linear transformations in geometry processing, physics, and data analysis.
 
 {% equation id="energy" %}
 A \in R^{n \times n}
@@ -86,9 +86,9 @@ A = \begin{pmatrix}
 \end{pmatrix}
 {% endequation %}
 
-The formula $Av = \lambda v$ means that when you apply the matrix $A$ (a linear transformation) to the vector $v$ (an eigenvector), the result is just the same vector $v$ scaled by the number $\lambda$ (the eigenvalue). 
+The formula {% equation_inline Av = \lambda v %} means that when you apply the matrix {% equation_inline A %} (a linear transformation) to the vector {% equation_inline v %} (an eigenvector), the result is just the same vector {% equation_inline v %} scaled by the number {% equation_inline \lambda %} (the eigenvalue). 
 
-In other words, $v$ is a special direction for $A$: instead of changing direction, $A$ only stretches or shrinks $v$ by the factor $\lambda$. The matrix $A$ does not "store" the eigenvalues; rather, the eigenvalues and eigenvectors are special solutions to this equation for a given $A$.
+In other words, {% equation_inline v %} is a special direction for {% equation_inline A %}: instead of changing direction, {% equation_inline A %} only stretches or shrinks {% equation_inline v %} by the factor {% equation_inline \lambda %}. The matrix {% equation_inline A %} does not "store" the eigenvalues; rather, the eigenvalues and eigenvectors are special solutions to this equation for a given {% equation_inline A %}.
 
 <!-- eigenvector: 
     
@@ -114,11 +114,11 @@ Av - \lambda I v = 0 \\
 (A - \lambda I)v = 0
 {% endequation %}
 
-To have a nontrivial solution ($v \neq 0$), the matrix $(A - \lambda I)$ must be singular (not invertible). This happens only when its determinant is zero:
+To have a nontrivial solution ({% equation_inline v \neq 0 %}), the matrix {% equation_inline (A - \lambda I) %} must be singular (not invertible). This happens only when its determinant is zero:
 {% equation %}
 \det(A - \lambda I) = 0
 {% endequation %}
-This is called the characteristic equation. Solving it gives the eigenvalues $\lambda$ of $A$. For each eigenvalue, you can then find the corresponding eigenvectors $v$ by solving $(A - \lambda I)v = 0$.
+This is called the characteristic equation. Solving it gives the eigenvalues {% equation_inline \lambda %} of {% equation_inline A %}. For each eigenvalue, you can then find the corresponding eigenvectors {% equation_inline v %} by solving {% equation_inline (A - \lambda I)v = 0 %}.
 
 <!-- 
 A symetric -> lambda' s belongs to R
@@ -131,15 +131,15 @@ Characteristic equation of A
 characteristic polynomial of A 
 -->
 
-The **characteristic polynomial** of a matrix $A$ is the polynomial you get when you compute $\det(A - \lambda I)$, where $I$ is the identity matrix and $\lambda$ is a variable. It is called a polynomial because, for an $n \times n$ matrix, expanding the determinant gives a degree $n$ polynomial in $\lambda$. The roots of this polynomial are the eigenvalues of $A$. In summary:
+The **characteristic polynomial** of a matrix {% equation_inline A %} is the polynomial you get when you compute {% equation_inline \det(A - \lambda I) %}, where {% equation_inline I %} is the identity matrix and {% equation_inline \lambda %} is a variable. It is called a polynomial because, for an {% equation_inline n \times n %} matrix, expanding the determinant gives a degree {% equation_inline n %} polynomial in {% equation_inline \lambda %}. The roots of this polynomial are the eigenvalues of {% equation_inline A %}. In summary:
 
 {% equation %}
 	ext{Characteristic polynomial:}\quad p(\lambda) = \det(A - \lambda I)
 {% endequation %}
-Solving $p(\lambda) = 0$ gives all the eigenvalues of $A$.
+Solving {% equation_inline p(\lambda) = 0 %} gives all the eigenvalues of {% equation_inline A %}.
 
 
-#### 1. Subtract $\lambda$ from each diagonal entry to get $A - \lambda I$: 
+#### 1. Subtract {% equation_inline \lambda %} from each diagonal entry to get {% equation_inline A - \lambda I %}: 
   {% equation %}
   A - \lambda I = \begin{pmatrix}
   2 - \lambda & 1 & 0 \\
@@ -178,17 +178,17 @@ Solving $p(\lambda) = 0$ gives all the eigenvalues of $A$.
   {% endequation %}
 
 
-#### 4. Set this equal to zero and solve for $\lambda$:
+#### 4. Set this equal to zero and solve for {% equation_inline \lambda %}:
   {% equation %}
   (2-\lambda)\left[(2-\lambda)^2 - 2\right] = 0
   {% endequation %}
 
-So the eigenvalues are the solutions to {% equation_inline 2-\lambda = 0$ and $(2-\lambda)^2 - 2 = 0 %}.
+So the eigenvalues are the solutions to {% equation_inline 2-\lambda = 0 %} and {% equation_inline (2-\lambda)^2 - 2 = 0 %}.
 
-- $2-\lambda = 0 \implies \lambda_1 = 2$
-- $(2-\lambda)^2 - 2 = 0 \implies (2-\lambda)^2 = 2 \implies 2-\lambda = \pm\sqrt{2} \implies \lambda_2 = 2+\sqrt{2},\ \lambda_3 = 2-\sqrt{2}$
+- {% equation_inline 2-\lambda = 0 \implies \lambda_1 = 2 %}
+- {% equation_inline (2-\lambda)^2 - 2 = 0 \implies (2-\lambda)^2 = 2 \implies 2-\lambda = \pm\sqrt{2} \implies \lambda_2 = 2+\sqrt{2},\ \lambda_3 = 2-\sqrt{2} %}
 
-So the eigenvalues are $\boxed{2,\ 2+\sqrt{2},\ 2-\sqrt{2}}$.
+So the eigenvalues are {% equation_inline \boxed{2,\ 2+\sqrt{2},\ 2-\sqrt{2}} %}.
 
 
 ### Obtain Eigenvectors
@@ -214,17 +214,17 @@ Now let’s find the eigenvectors.
 
 #### 1. General method
 
-For each eigenvalue $\lambda$, solve
+For each eigenvalue {% equation_inline \lambda %}, solve
 
 {% equation %}
 (A - \lambda I) v = 0
 {% endequation %}
 
-for $v \neq 0$.
+for {% equation_inline v \neq 0 %}.
 
 ---
 
-#### 2. Eigenvector for $\lambda_1 = 2$
+#### 2. Eigenvector for {% equation_inline \lambda_1 = 2 %}
 
 {% equation %}
 A - 2I =
@@ -245,7 +245,7 @@ y = 0
 \end{cases}
 {% endequation %}
 
-That gives $y=0$, $z=-x$.
+That gives {% equation_inline y=0 %}, {% equation_inline z=-x %}.
 So an eigenvector is
 
 {% equation %}
@@ -254,7 +254,7 @@ v_1 = \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix}
 
 ---
 
-#### 3. Eigenvector for $\lambda_2 = 2+\sqrt{2}$
+#### 3. Eigenvector for {% equation_inline \lambda_2 = 2+\sqrt{2} %}
 
 {% equation %}
 A - (2+\sqrt{2})I =
@@ -275,8 +275,8 @@ y - \sqrt{2} z = 0
 \end{cases}
 {% endequation %}
 
-From the first: $y = \sqrt{2}x$.
-From the third: $z = y / \sqrt{2} = x$.
+From the first: {% equation_inline y = \sqrt{2}x %}.
+From the third: {% equation_inline z = y / \sqrt{2} = x %}.
 So eigenvector is
 
 {% equation %}
@@ -285,7 +285,7 @@ v_2 = \begin{bmatrix} 1 \\ \sqrt{2} \\ 1 \end{bmatrix}
 
 ---
 
-#### 4. Eigenvector for $\lambda_3 = 2-\sqrt{2}$
+#### 4. Eigenvector for {% equation_inline \lambda_3 = 2-\sqrt{2} %}
 
 {% equation %}
 A - (2-\sqrt{2})I =
@@ -306,8 +306,8 @@ y + \sqrt{2} z = 0
 \end{cases}
 {% endequation %}
 
-From the first: $y = -\sqrt{2}x$.
-From the third: $z = -y/\sqrt{2} = x$
+From the first: {% equation_inline y = -\sqrt{2}x %}.
+From the third: {% equation_inline z = -y/\sqrt{2} = x %}
 So eigenvector is
 
 {% equation %}
@@ -362,15 +362,46 @@ Solve λ, given the values of λ solve (A-λ_1*I)*v_1=0
 what happens when A is (1 4)
                        (3 2) -->
 ## Fitting a line (least squares)
-E(l_1,P_i)= y_i-ax_i-b
-E(P, l) = sumatory{n, i=i}(y_i-ax_i-b)^2
-?what is the derivative of this formula for? with derivative of "a" and "b" we can make a system of equations?   
 
-we can somehow extract the least square error with matrix operations
-E(x) = ||Ax-b||^2 = <Ax-b, Ax-b> = (Ax-b).T*(Ax-b) = (x.T*A.T-b.T) (Ax-b)... = x.T*A.T*A*x-2x.T*A.T*b+b.T*b
+Suppose you have data points {% equation_inline (x_i, y_i) %} and want to fit a line {% equation_inline y = a x + b %} by minimizing the squared error:
 
-we can now get the gradient of E -> ∇E=0
-∇E = 2A.T*Ax-2A.T*b=0 -> A.T*Ax = A.T*b
+{% equation %}
+E(a, b) = \sum_{i=1}^{n} (y_i - a x_i - b)^2
+{% endequation %}
+
+To find the best-fit parameters {% equation_inline a %} and {% equation_inline b %}, take derivatives of {% equation_inline E(a, b) %} with respect to {% equation_inline a %} and {% equation_inline b %}, set them to zero, and solve the resulting system:
+
+{% equation %}
+\frac{\partial E}{\partial a} = 0, \quad \frac{\partial E}{\partial b} = 0
+{% endequation %}
+
+This yields two linear equations for {% equation_inline a %} and {% equation_inline b %}.
+
+Alternatively, in matrix form, for general least squares problems:
+
+{% equation %}
+E(x) = \|A x - b\|^2 = (A x - b)^T (A x - b)
+{% endequation %}
+
+Expanding:
+
+{% equation %}
+E(x) = x^T A^T A x - 2 x^T A^T b + b^T b
+{% endequation %}
+
+Setting the gradient to zero:
+
+{% equation %}
+\nabla E = 2 A^T A x - 2 A^T b = 0
+{% endequation %}
+
+So the least squares solution satisfies:
+
+{% equation %}
+A^T A x = A^T b
+{% endequation %}
+
+This is the normal equation for least squares.
 
 
 ## Analysis (curvatures)
@@ -380,7 +411,7 @@ we can now get the gradient of E -> ∇E=0
 
   Lagrange multipliers and Lagrange functions are mathematical tools used to find the maximum or minimum of a function subject to one or more constraints. Instead of searching for extrema in the whole space, they allow us to optimize a function while ensuring that certain conditions (constraints) are always satisfied. The method introduces new variables (the multipliers) and combines the original function and the constraints into a single function, called the Lagrangian. By finding the critical points of this Lagrangian, we can solve constrained optimization problems efficiently.
 
-  To simplify the process we can eve use matrix notation. You want to minimize a quadratic error function $E(n,d)$ with n = normal vector and d=distance from the origin of an hyperplane.
+  To simplify the process we can eve use matrix notation. You want to minimize a quadratic error function {% equation_inline E(n,d) %} with n = normal vector and d=distance from the origin of an hyperplane.
 
 {% equation %}
   E(n,d)
@@ -390,7 +421,7 @@ we can now get the gradient of E -> ∇E=0
   * d = scalar shift.
 
 Given points 
-$p_i$, the signed distance from a point to the plane is:
+{% equation_inline p_i %}, the signed distance from a point to the plane is:
 {% equation %}
   dist(p_i,n,d) = n \cdot p_i + d
 {% endequation %}
@@ -419,24 +450,24 @@ L(n,d,λ)=E(n,d)−λ(∥n∥^2−1)
 
 The derivatives are:
 
-* With respect to $n$:
+* With respect to {% equation_inline n %}:
 {% equation %}
 \frac{\partial L}{\partial n} = 2 C n + 2 d c - 2 \lambda n
 {% endequation %}
-  (where $C$ and $c$ are the covariance matrix and mean vector, depending on how $E(n,d)$ is written)
+  (where {% equation_inline C %} and {% equation_inline c %} are the covariance matrix and mean vector, depending on how {% equation_inline E(n,d) %} is written)
 
-* With respect to $d$:
+* With respect to {% equation_inline d %}:
 {% equation %}
 \frac{\partial L}{\partial d} = 2 c^T n + 2 d N
 {% endequation %}
-  (where $N$ is the number of points)
+  (where {% equation_inline N %} is the number of points)
 
-* With respect to $\lambda$:
+* With respect to {% equation_inline \lambda %}:
 {% equation %}
 \frac{\partial L}{\partial \lambda} = - (\|n\|^2 - 1)
 {% endequation %}
 
-Setting these derivatives to zero gives the system of equations whose solution yields the optimal $n$ and $d$.
+Setting these derivatives to zero gives the system of equations whose solution yields the optimal {% equation_inline n %} and {% equation_inline d %}.
 
 <!-- 
 the professor said "solutions to opt f(x) s.t g(x)=0
@@ -470,7 +501,7 @@ Having multiple point clouds knowing the camera position allows us to know the g
 
 ### Alignment (registration)
 
-Given two point clouds, {% equation_inline P = \{P_i\} \text{ for } 1 \leq i \leq n %} and {% equation_inline Q = \{Q_i\} \text{ for } 1 \leq i \leq n %}, we seek a transformation—typically a rotation and translation—that aligns $Q$ to $P$.
+Given two point clouds, {% equation_inline P = \{P_i\} \text{ for } 1 \leq i \leq n %} and {% equation_inline Q = \{Q_i\} \text{ for } 1 \leq i \leq n %}, we seek a transformation—typically a rotation and translation—that aligns {% equation_inline Q %} to {% equation_inline P %}.
 
 The goal is to find a rotation matrix {% equation_inline R %} and a translation vector {% equation_inline t %} such that:
 
@@ -549,8 +580,8 @@ Given two point clouds:
 - {% equation_inline Q = \{q_i\} \text{ for } 1 \leq i \leq n %}
 
 Assume:
-- Both sets have the same number of points ($n$).
-- Each $P_i$ corresponds to $q_i$.
+- Both sets have the same number of points ({% equation_inline n %}).
+- Each {% equation_inline P_i %} corresponds to {% equation_inline q_i %}.
 
 We seek a rotation matrix {% equation_inline R \in \mathbb{R}^{3 \times 3} %} and a translation vector {% equation_inline t \in \mathbb{R}^3 %} such that:
 
@@ -564,8 +595,8 @@ The alignment error function is:
 E(R, t) = \sum_{i=1}^{n} \| P_i - R q_i - t \|^2
 {% endequation %}
 
-To solve for $t$:
-- Compute the centroids of $P$ and $Q$:
+To solve for {% equation_inline t %}:
+- Compute the centroids of {% equation_inline P %} and {% equation_inline Q %}:
 
 {% equation %}
 P' = \frac{1}{n} \sum_{i=1}^{n} P_i
@@ -587,92 +618,105 @@ P' = R q' + t
 {% endequation %}
 
 ### Steps
-1. Compute centroids {p', q'}
-2. compute centroids adjusted
-    (p'=p_i-p') q`= q_i-q'
+1. Compute centroids {% equation_inline \{p', q'\} %}
+2. Compute centroids adjusted:
+    {% equation_inline p'_i = p_i - \bar{p} %}, {% equation_inline q'_i = q_i - \bar{q} %}
 
-3. S = QP.T = (q'1, q'2, ..., q'n) * ([p'1],[p'2],[...],[p'n])
-4. S = U*covariancematrixsymbol*V.T
-5. R=V*U.T
-6. t = p'-R*q'
+3. {% equation_inline S = Q'P'^T = (q'_1, q'_2, \ldots, q'_n) \cdot ([p'_1], [p'_2], \ldots, [p'_n]) %}
+4. {% equation_inline S = U \Sigma V^T %}
+5. {% equation_inline R = V U^T %}
+6. {% equation_inline t = \bar{p} - R \bar{q} %}
 
 ### Iterative closest point (ICP)
-1. compute correspondence
-  For every q_i fing closest p_k
+1. Compute correspondence
+   - For every {% equation_inline q_i %} find closest {% equation_inline p_k %}
 2. Use simpler alignment (SVD)
-   * Discard Points in P without correspondence
-   * Replicate points in P multiply selected.
-  From this points we get a P' that will be used temporarily
-  Get R,t 
-3. Apply R_it  [unknown symbol] -> Q q_i' <- Rq_1 + t
-4. Repear from 1
+   * Discard points in {% equation_inline P %} without correspondence
+   * Replicate points in {% equation_inline P %} multiply selected
+   - From these points we get a {% equation_inline P' %} that will be used temporarily
+   - Get {% equation_inline R, t %}
+3. Apply transformation to {% equation_inline Q %}: {% equation_inline q'_i \leftarrow R q_i + t %}
+4. Repeat from step 1
   
 
 ### Stop criteria
-1. norm(R-I)_f < epsilon where ||t||<e
-   1. Correspondance constant
-2. Maximum # iterations
-   1. need initial rough alignment (there are better alternatives in the literature)
+1. {% equation_inline \|R-I\|_F < \epsilon %} where {% equation_inline \|t\| < \epsilon %}
+   1. Correspondence constant
+2. Maximum number of iterations
+   1. Need initial rough alignment (there are better alternatives in the literature)
 
 ### Compute border point status
-One of the posible problems is that point clouds are apart and the closest point for each other is a single point from P for all Q points. 
+One of the possible problems is that point clouds are apart and the closest point for each other is a single point from {% equation_inline P %} for all {% equation_inline Q %} points.
 
-One solution could be to remove all overlapint points. The single point in P that corresponds to multiple Q points is called border point on P.
-1. how do we detect border points and overlapped points?
-  We will recognise border points by checking the size of the angle that does not posses any point.
+One solution could be to remove all overlapping points. The single point in {% equation_inline P %} that corresponds to multiple {% equation_inline Q %} points is called a border point on {% equation_inline P %}.
 
-For every point P_i:
-  1. compute K-NN(Nearest Neighbours) of P_i -> {Pij} 1<=j<=k
-  2. PCA -> Eigenvectors(v1,v2,v3==normal) + P_i == local frame (local coord system)
-  3. (xij, yij, zij) = ((Pij -Pi)*V1, (Pij-pi)*V2, (Pij-pi)*V3)
-  4. Discard Z'ij 
-  5. Compute direction by taking the angle alpha_{ij}=atan2(y'_ij, x'ij)
-  6. sort alpha_{ij}
-  7. Differenes of adjacent pairs
-     1. we call them deltaSymbol alpha_{ij}
-  8. max(delta alpha_{ij}) >=B <=> P_i border point
+**How do we detect border points and overlapped points?**
 
-(parameters -> K,B(Beta))
+We will recognize border points by checking the size of the angle that does not possess any point.
+
+For every point {% equation_inline P_i %}:
+  1. Compute K-NN (Nearest Neighbours) of {% equation_inline P_i %}: {% equation_inline \{P_{ij}\}_{j=1}^k %}
+  2. PCA → Eigenvectors {% equation_inline (v_1, v_2, v_3) %} (where {% equation_inline v_3 %} is normal) + {% equation_inline P_i %} = local frame (local coordinate system)
+  3. Compute local coordinates: {% equation_inline (x^\prime_{ij}, y^\prime_{ij}, z^\prime_{ij}) = ((P_{ij} - P_i) \cdot v_1, (P_{ij} - P_i) \cdot v_2, (P_{ij} - P_i) \cdot v_3) %}
+  4. Discard {% equation_inline z^\prime_{ij} %}
+  5. Compute direction by taking the angle: {% equation_inline \alpha_{ij} = \text{atan2}(y^\prime_{ij}, x^\prime_{ij}) %}
+  6. Sort {% equation_inline \alpha_{ij} %}
+  7. Compute differences of adjacent pairs:
+     - We call them {% equation_inline \Delta\alpha_{ij} %}
+  8. {% equation_inline \max(\Delta\alpha_{ij}) \geq \beta \iff P_i %} is a border point
+
+**Parameters:** {% equation_inline K, \beta %}
 
 ### Multiple Scans
-Overlap -> 1st step of ICP -> compute correspondence
-Overlap == Percentage of discarded points of Q
+Overlap → 1st step of ICP → compute correspondence
+
+Overlap = Percentage of discarded points of {% equation_inline Q %}
+
 1. Select 2 unaligned clouds
-2. Perform ICP on them result(successfull | fail)
-   1. successfull == ||R-I||_f means ||t||=0 -> fuse the 2 clouds
-   2. fail == success
+2. Perform ICP on them, result: (successful \| fail)
+   1. Successful: {% equation_inline \|R-I\|_F < \epsilon %} and {% equation_inline \|t\| \approx 0 %} → fuse the 2 clouds
+   2. Fail → try different initialization
 
 ### Solving linear systems
-Ax=b, A belongs R^{nxn}, xi b belongs to R^n
-Apply solvers
-* Direct Performs op's to solve exactly (except machine precision)
-* Iterative start with x0 estimation and then refine estimation.
+{% equation_inline Ax = b %}, {% equation_inline A \in \mathbb{R}^{n \times n} %}, {% equation_inline x, b \in \mathbb{R}^n %}
+
+Apply solvers:
+* **Direct**: Performs operations to solve exactly (except machine precision)
+* **Iterative**: Start with {% equation_inline x_0 %} estimation and then refine estimation
 
 ### Properties and requirements to how we want to resolve the system
 * Required performance
-* Reuqired accuracy
+* Required accuracy
 * Limits for storage
-* Problem: Dimensional n (A belongs to R^{nxn}), n > 10000 -> LARGE
-* Sparsity of A == Percentage of O's in A (sparse|dense)
-* symetry of A
-* Positive definiteness of A
-  * InvertedASymbol=/0 -> x.T * A * x > O <=> A is positive definite
+* Problem dimension: {% equation_inline n %} (where {% equation_inline A \in \mathbb{R}^{n \times n} %}), {% equation_inline n > 10000 %} → LARGE
+* Sparsity of {% equation_inline A %} = Percentage of zeros in {% equation_inline A %} (sparse \| dense)
+* Symmetry of {% equation_inline A %}
+* Positive definiteness of {% equation_inline A %}:
+  * {% equation_inline A %} is invertible ({% equation_inline \det(A) \neq 0 %}) and {% equation_inline x^T A x > 0 %} for all {% equation_inline x \neq 0 %} {% equation_inline \iff A %} is positive definite
 
-### decompositions
-* Direct LU decomposition -> A=LU 
-  * L== lower triangular
-  * U == Upper triangular
-  * Ax=b -> LUx = b -> L_z = b, V_x=z
-* QR decomposition A=QR -> R==Uper triangle, Q == Orthogonal
-  * Ax=b -> QRx=b <=> Rx=z
-  * z = Q.T*b == Qz=b 
-* Cholesky
-  * A is symetric and positive definite
-  * A = LL.T / L==lower triangular
+### Decompositions
 
-#### interactive
-* Conjugate gradient (CG) A symetric and positive definite
-* Biconjugate gradient (Bi-CG) 
+**Direct methods:**
+
+* **LU decomposition**: {% equation_inline A = LU %}
+  * {% equation_inline L %} = lower triangular
+  * {% equation_inline U %} = upper triangular
+  * {% equation_inline Ax = b \implies LUx = b \implies Lz = b, Ux = z %}
+  
+* **QR decomposition**: {% equation_inline A = QR %}
+  * {% equation_inline R %} = upper triangular
+  * {% equation_inline Q %} = orthogonal
+  * {% equation_inline Ax = b \implies QRx = b \iff Rx = z %}
+  * {% equation_inline z = Q^T b %} (i.e., {% equation_inline Qz = b %})
+  
+* **Cholesky decomposition**:
+  * {% equation_inline A %} is symmetric and positive definite
+  * {% equation_inline A = LL^T %} where {% equation_inline L %} is lower triangular
+
+**Iterative methods:**
+
+* **Conjugate Gradient (CG)**: {% equation_inline A %} symmetric and positive definite
+* **Biconjugate Gradient (Bi-CG)**: For non-symmetric systems 
 
 
 <!-- ## Smoothing (remove noise)
@@ -700,178 +744,403 @@ in general is more complex than this, but this works for most problems to choose
 
 ## reconstruction
 Reconstruction
-      {p1 belongs to real number R^3}1<=i<=n and {n_i belongs to real number R^3}1<=i<=n. -> reconstructor -> surface (triangle mesh). For all points that belong to the surface face, q belongs to U of size n, Sphere(pi,epsilon) =>Q={q_i} p-dense w.r.t. S
 
-      P={p_i}, pi=q_i+e_i, q_i belongs to S
+**Input:** We are given a set of sample points {% equation_inline \{p_i \in \mathbb{R}^3\}_{1 \leq i \leq n} %} together with their normal vectors {% equation_inline \{n_i \in \mathbb{R}^3\}_{1 \leq i \leq n} %}. Our goal is to use a reconstruction algorithm to produce a surface representation (typically a triangle mesh).
 
-      ||e_i||<& => P is delta-noisy
-      If P is delta-noisy w.r.t. Q set inside S set, Q is delta-dense w.r.t S
+**Sampling density:** The set {% equation_inline Q = \{q_i\} %} is called {% equation_inline \epsilon %}-dense with respect to the surface {% equation_inline S %} if every point on the surface has at least one sample point within distance {% equation_inline \epsilon %}. Formally, for all {% equation_inline q \in S %}, there exists some {% equation_inline p_i %} such that {% equation_inline q \in \text{Sphere}(p_i, \epsilon) %}.
 
-      Therefore P is epsilon-dense & delta-noisy w.r.t. S
+**Relationship between samples and surface:** Each input point {% equation_inline p_i %} can be expressed as {% equation_inline p_i = q_i + e_i %}, where {% equation_inline q_i \in S %} is the closest point on the true surface, and {% equation_inline e_i %} is the noise vector.
 
-What we usually do is:
-  - Ponit cloud -> reconstruct -> implicit function == f D->R where D intersects R^3 -> isosurface extraction -> triangle mesh
-    - f(p) = 0  -> P is S
-    - f(p)>0 -> P outside S
-    - f(p)<0 -> p inside S
+**Noise level:** When the magnitude of the noise is bounded by {% equation_inline \|e_i\| < \delta %}, we say that {% equation_inline P %} is {% equation_inline \delta %}-noisy.
+
+**Combined property:** If our point cloud {% equation_inline P %} is {% equation_inline \delta %}-noisy with respect to a set {% equation_inline Q %} that lies on the surface {% equation_inline S %}, and {% equation_inline Q %} itself is {% equation_inline \epsilon %}-dense with respect to {% equation_inline S %}, then we conclude that {% equation_inline P %} is both {% equation_inline \epsilon %}-dense and {% equation_inline \delta %}-noisy with respect to the surface {% equation_inline S %}.
+
+**Standard reconstruction pipeline:**
+  - Start with a point cloud
+  - Reconstruct an implicit function {% equation_inline f: D \to \mathbb{R} %} where {% equation_inline D \subset \mathbb{R}^3 %}
+  - Extract the zero-level isosurface to obtain a triangle mesh
+  
+  The implicit function {% equation_inline f %} assigns a signed distance value to each point, where:
+    - {% equation_inline f(p) = 0 %} means the point {% equation_inline p %} lies exactly on the surface {% equation_inline S %}
+    - {% equation_inline f(p) > 0 %} means the point {% equation_inline p %} is outside the surface {% equation_inline S %}
+    - {% equation_inline f(p) < 0 %} means the point {% equation_inline p %} is inside the surface {% equation_inline S %}
 
 ## algorithms for reconstructions
-- A_inverted_symbol _i where 1<=i<=n f(p_i)=0 -> interpolatory
 
-- A_inverted_symbol _i where 1<=i<=n f(p_i) close_to 0 -> approximative
+Reconstruction algorithms can be classified into two main categories:
 
-* Hoppe et al. qa
-  This is NOT a smooth function
+- **Interpolatory:** For all {% equation_inline i %} where {% equation_inline 1 \leq i \leq n %}, we have {% equation_inline f(p_i) = 0 %}. The reconstructed surface passes exactly through all sample points.
 
-  f(p)
-    i <- Index of p_i closest to p.
-    z <- p-((p-p_i)*n_i)*n_i
-    if distance (z_i,p_i)<= delta+f then f(p) <-(p-p_i)*n_i
-    else f(p) <- undefined
+- **Approximative:** For all {% equation_inline i %} where {% equation_inline 1 \leq i \leq n %}, we have {% equation_inline f(p_i) \approx 0 %}. The reconstructed surface passes close to, but not necessarily through, the sample points.
 
-  * problems:
-    * having f(p) undefined means we are going to get holes
-    * Discontinuities: all this algorithm is interpolatory, these methods are usually not desired
-* Moving least squares:
-  This is a smooth function. Approximative algorithm. No holes, no quality for empty space.
+### Hoppe et al. Method
 
-  f_i(p) = (p-p_i)*n_i == bump function
+**Properties:** This is NOT a smooth function. It is an interpolatory method.
 
-  f(p)=sum(n, i=1) W_i(p) f_i(p) / sum(n, i=1) W_i(p)
+**Algorithm:** For a query point {% equation_inline p %}:
 
-  for the weight function W_i(p) we can choose whatever we see fit. W_i(p) = exp(-||p-p_i||^2 / euro_symbol^2)/A_i where A_i is #points closest to p than euro_symbol
-    Asks for p to be euro_symbol-dense
+{% equation %}
+\begin{aligned}
+i &\leftarrow \text{Index of } p_i \text{ closest to } p \\
+z &\leftarrow p - ((p - p_i) \cdot n_i) n_i \\
+f(p) &\leftarrow \begin{cases}
+(p - p_i) \cdot n_i & \text{if } \|z - p_i\| \leq \delta \\
+\text{undefined} & \text{otherwise}
+\end{cases}
+\end{aligned}
+{% endequation %}
 
-* Radial Basis Functions
-  Prior information, usually smooth prior
-  The sumation of the "n" bump functions pases through some points but not necessarily over others. f(p)=c_1 * f_1(p) + c_2 * f_2(p) - c_3 f_3(p)
+**Problems:**
+  - Having {% equation_inline f(p) %} undefined in some regions means we get holes in the reconstruction
+  - Discontinuities arise because this is an interpolatory method, which is usually not desired
 
-  f(p_1)=f(p_2)=f(p_3) = 0
+### Moving Least Squares (MLS)
+
+**Properties:** This is a smooth function. Approximative algorithm. No holes, but no quality guarantees for empty space.
+
+**Notation:**
+- {% equation_inline p_i %} are the input sample points from our point cloud ({% equation_inline i = 1, \ldots, n %})
+- {% equation_inline n_i %} is the normal vector at sample point {% equation_inline p_i %}
+- {% equation_inline p %} is an arbitrary query point where we want to evaluate the implicit function
+
+**Algorithm:** We define local bump functions:
+
+{% equation %}
+f_i(p) = (p - p_i) \cdot n_i
+{% endequation %}
+
+The final implicit function is a weighted average:
+
+{% equation %}
+f(p) = \frac{\sum_{i=1}^{n} W_i(p) f_i(p)}{\sum_{i=1}^{n} W_i(p)}
+{% endequation %}
+
+**Weight function:** For the weight function {% equation_inline W_i(p) %} we can choose various forms. A common choice is:
+
+{% equation %}
+W_i(p) = \frac{\exp\left(-\frac{\|p - p_i\|^2}{\sigma^2}\right)}{A_i}
+{% endequation %}
+
+where {% equation_inline A_i %} is the number of points closer to {% equation_inline p %} than {% equation_inline \sigma %}.
+
+**Requirement:** This requires {% equation_inline p %} to be {% equation_inline \sigma %}-dense.
+
+### Radial Basis Functions (RBF)
+
+**Idea:** We incorporate prior information (usually a smoothness prior) by expressing the implicit function as a weighted sum of basis functions.
+
+The summation of {% equation_inline n %} bump functions passes through some points but not necessarily through others:
+
+{% equation %}
+f(p) = \sum_{i=1}^{n} c_i f_i(p)
+{% endequation %}
+
+**Basis functions:** We define:
+
+{% equation %}
+f_i(p) = \phi(\|p - p_i\|)
+{% endequation %}
+
+A common choice for {% equation_inline \phi %} is the Gaussian:
+
+{% equation %}
+\phi(r) = \exp\left(-\frac{r^2}{2\sigma^2}\right)
+{% endequation %}
+
+**Solving for coefficients:** Given data pairs {% equation_inline (p_i, v_i) %} for {% equation_inline 1 \leq i \leq n %}, we want {% equation_inline f(p_i) = v_i %}. This gives us:
+
+{% equation %}
+f(p_i) = v_i = \sum_{j=1}^{n} c_j \phi(\|p_i - p_j\|)
+{% endequation %}
+
+This results in a linear system with {% equation_inline n %} equations and {% equation_inline n %} unknowns (the coefficients {% equation_inline c_i %}):
+
+{% equation %}
+A \mathbf{c} = \mathbf{v}
+{% endequation %}
+
+where the matrix {% equation_inline A %} has entries {% equation_inline A_{ij} = \phi(\|p_i - p_j\|) %}.
+
+**Problems and Solutions:**
+
+1. **Trivial solution:** If we set all {% equation_inline v_i = 0 %}, then {% equation_inline \mathbf{c} = \mathbf{0} %} is a solution (not useful).
+   
+   **Solution:** Add synthetic points. For every point {% equation_inline p_i %}, generate:
+   - {% equation_inline p_i^+ = p_i + d \cdot n_i %} with {% equation_inline f(p_i^+) = d %}
+   - {% equation_inline p_i^- = p_i - d \cdot n_i %} with {% equation_inline f(p_i^-) = -d %}
+   
+   **New problem:** This triples the point set size (factor of 3), making the system much larger.
+
+2. **Numerical instability:** As {% equation_inline n %} increases, {% equation_inline A\mathbf{c} = \mathbf{v} %} becomes ill-conditioned.
+   
+   **Solution - Regularization:** Use {% equation_inline A' = A + \lambda I %} instead:
+   
+{% equation %}
+(A + \lambda I) \mathbf{c} = \mathbf{v}
+{% endequation %}
+   
+   This changes the method from interpolatory to approximative.
+
+3. **Large point sets:** For very large point clouds, triplicating the size is computationally prohibitive.
+   
+   **Solution - Compact support:** Use a basis function with compact support:
+   
+{% equation %}
+\phi(r) = \begin{cases}
+\exp\left(-\frac{r^2}{2\sigma^2}\right) & \text{if } r < 3\sigma \\
+0 & \text{otherwise}
+\end{cases}
+{% endequation %}
+   
+   This makes the matrix {% equation_inline A %} sparse, significantly reducing computational cost.
+
+### Poisson Surface Reconstruction
+
+**Idea:** Given a set of oriented points (positions and normals), this method solves for an indicator function that is 1 inside the surface and 0 outside.
+
+### SSD (Screened Poisson Surface Reconstruction)
 
 
-  (p_i,v_i) with   1<=i<=n
-    f(p_i)=v_i
-    f(p)=sum(n,i=1) C_i f_i(p)
-    f_i(p)=phi(||p-p_i||)
-    phi(r)=exp(-r^2/2c)
 
-    f(p_i)=v_i=sum() c_i phi(||p-p_i||)
+# Session 4: Curvature Analysis
 
-      n equations 
-      c_i = n variables
-    
-    A*c = v | A = [[phi(||p_1-p_1||), ..., phi(||p_n-p_n||)] [...] [phi(||p_1-p_n) ... phi(||p_n-p_n)]]
+Having completed the basic reconstruction pipeline and obtained normals and triangles, we now turn our attention to computing **curvature**, which we denote as {% equation_inline K %}. Curvature measures how much a surface bends at any given point.
 
-  * problems
-    * As we have defined v=0=> C=0
-      The solution to this:
-      We add syntetic points. For every point p_i we generate a p_i^+ equal to p_i+d*n_i
+## Introduction to Curvature
 
-      f(p_i^+) = d
-      f(p_i^-) = -d
+Curvature has several interesting properties that make it a fundamental concept in geometry processing:
 
-      now the problem is that we increase the size of the point sets 3 times on each direction, the result is 9 times bigger.
-
-      A*c=v becomes unstable as n increases.
-        Regularization A' = A+lambda*I
-        (A+lambda*I)*c=v
-
-      Interpolatory => Approximate
-
-    * In case we have a large point set we cant triplicate the size problem.
-      * compact support
-        * phi(r) = {exp(-r^2/2c^2),      r<3c}
-                   {0,              otherwise} 
-
-* Poisson Surface Reconstruction
-  It has a set of points and normals and tries to solve the indicator function where 0 is outside and 1 is inside
-
-* SSD
-
-
-
-# Session 4
-We have completed the basic reconstruction pipeline.
-We have the normals and triangles.
-
-
-Now we can compute the Curvature (curvature is refered as K).
-- How much something bends.
-- Interesting properties:
-  - Translation, Rotation invariant
-  - local surface characteristics => Geometric signature
-  - First definition
-    - Deviation from straighttaps?straightlines
-    - Osculating circle
-      - "oscular"->kiss
-      - we create osculating circles R == radious of curvature K=1/R
-    - Osculating circle center as intersection of perpendiculars
-    - Newton realised that there was a connection between f''(x)<->K. He's own formula gave an interesting result whenever we compute K at (0,0) and the derivative of f(0)=0. Then the curvature of K(0,0) is equal to f''(0)
-    - Others realised that Curvature == Rate of turning
-    - K= derivative gamma / derivative S
-  - So we have lots of definitions for a curve. But this is for curves, we now need it for surfaces
-- Surfaces
-  - curve == π in S -> K_{P,π}  
-  - S smooth (continous second derivative f''()) then K at p for S cam be defined. K_{min}, K_{max} == Min, Max K's
-  - V_{min}, V_{max} == Directions of K's
-  - This are principal Curvatures of S at P
-  - In a cylinder we should have a curvature where K_min=0 and K_max=1/R
-
-  - This is an example i dont really get: 
-    - y=ax^2; K=f''(x)=a>0; normal_direction = -y; This is convex
-    - f(x) == -ax^2; k=f''(x)=-a<0;normal_direction = -y; ; Concave
-  - I can have diferent combination of values for K_min and K_max; Kmin>0,Kmax>0 convex; Kmin<0, kmax<0 concave; kmin=0, kmax>0 parabolic convex; Kmin<0, kmax=0 Parabolic concave; Kmin <0, Kmax >0 Saddle. 
+- **Translation and rotation invariant:** The curvature of a surface doesn't change when we move or rotate it
+- **Local surface characteristic:** It provides a geometric signature based purely on local surface shape
   
-  - Computation of K in 2D: first move the curve to cross (0,0) in a point that its second derivative is also (0,0).We imagine that for a second curve fitting a segment of the original curve is just a collection of points. f(x) -> compute least squares; f(x) = ax^2+bx+c; compute K= f''(0) = 2a; f'(x)=2ax+b
+### Historical Definitions of Curvature
 
-That was the idea for 2D. We are going to have surfaces. We will assume surfaces are poits or triangle meshes so we will look for neighbours. In many cases we will do it restricting the neighbour points along the geometry.
+Several equivalent definitions of curvature have been developed throughout mathematical history:
 
-Following same steps as in 2D we must transform the geometry to cross the origin.
-What is the second derivative on a surface and how do we calculate it?
-- W(u,v) = au^2+buv+cv^2+du+ev + f
-- y = f(x)=ax^2+bx+c
-Something that uses multivalua calculus, there is an analogous quantity to the second derivative.
-- f(x)->f'(x) -> f''(x)
-- w(u,v) -> graphSymbol w = -> hessian value Hw=([integral²w/integral u^2,integral²w/integral u integral v ], [integral²w/integral vintegral u, integral^2w(integral y^2)]) -> Eigen decomposition -> lambda1 = kmin, lambda2 = Kmax; v1 , v2
-  - Input: Pi, {p_ij} 1<=j<=K K-NN of Pi
-  - Output: p_i Kmin, p_i Kmax
-            p_i Vmin, p_i Vmax
-  1- LOCAL FRAME -> V= -normal
-                    U= OX cross V (if they are parallel we can use other arbitrary vector | u=OYxV|,|U=OZxV|)
-                    W=U cross X
+**Osculating Circle Approach**
 
-  2- (U_ij, V_ij, W_ij) = ((p_ij-p_i)*U,(p_ij-pi)*V,(p_ij-pi)*W)
+The classical definition uses the concept of an **osculating circle** (from the Latin "oscular," meaning "to kiss"). The osculating circle is the circle that best approximates a curve at a given point. If this circle has radius {% equation_inline R %}, the curvature is defined as:
 
-    W = W(u,v) = au^2+buv+cv^2+du+ev+f = q^T S where Q= (u², uv, v²,u,v,1)^T and S=(a,b,c,d,e,f)^T
-    E(S) = sum(K,j=1)(W(u_ij,v_ij)-Wij)² = sum()(1_ij^T S- Wij)² = sum()(q^T_ij*S * q^T_ij*S)-2*Sum(W_ij*q^T_ij)*S + sum(W_ij^2) = ... = S^T*(Sum(q_ij q_ij^T)) S - 2 S^t*(sum(w_ij q_ij)) + sum(w_ij²)
+{% equation %}
+K = \frac{1}{R}
+{% endequation %}
 
-    MIN E(S) <=> delta E = 0 -> delta E = 2*(sum (q_ij, q_ij^T))*S -2(sum(W_ij, q_ij))=0
+The center of the osculating circle can be found as the intersection of perpendiculars to the curve.
 
-    (sum(q_ij q_ij^T))*S = sum w_ij  q_ij
+**Newton's Observation**
 
-    A*S = b
-    A belongs to R^{6x6}, b belongs to R⁶
+Newton discovered a connection between the second derivative of a function and its curvature. For a curve described by {% equation_inline y = f(x) %} at a point where {% equation_inline f'(0) = 0 %}, the curvature at {% equation_inline (0,0) %} equals {% equation_inline f''(0) %}.
 
-    q_ij*q_ij^T = [...].T * [....]
+**Rate of Turning Definition**
 
-    derivate W / derivate u = 2au+bv+d
-    derivative²w/derivative u = 2a
-    derivative² w / derivative v derivative u = derivative² w / derivative u derivative v = b
-    derivative² w/ derivative v² = 2C
-    Hw = (2a,b)(b, 2c) -> eigen decomposition kmin,kmax,vmin,vmax
+Later mathematicians realized that curvature can be understood as the rate of turning of the tangent vector:
 
-Gaussian Curvature
-- K_g = kmin*kmax=k
-  - Mean curvature -> K_m = (kmin+kmax)/2 = H
-  - K=0 ---> H=0 ->PLANAR
-        ---> H<0 -> Parab Concave
-        ---> H>0 -> Parab convex
+{% equation %}
+K = \frac{d\gamma}{dS}
+{% endequation %}
 
-  - Kmax,Kmmin = H+- sqrt(H²-K)
-    ---> K>0 
-          ---> H>0 Convex
-          ---> H<0 concave
-    ---> K<0 SADDLE 
+where {% equation_inline \gamma %} is the angle of the tangent vector and {% equation_inline S %} is arc length.
+
+## Curvature on Surfaces
+
+While the above definitions work well for curves, we need to extend the concept to surfaces.
+
+### Principal Curvatures
+
+For a surface {% equation_inline S %} at a point {% equation_inline p %}, we can consider the curvature along different directions. If we intersect the surface with a plane {% equation_inline \pi %} containing the surface normal at {% equation_inline p %}, we obtain a curve with curvature {% equation_inline K_{p,\pi} %}.
+
+For a smooth surface {% equation_inline S %} (with continuous second derivatives), we can define:
+
+- {% equation_inline K_{\min} %} and {% equation_inline K_{\max} %}: The minimum and maximum curvatures across all such planes
+- {% equation_inline v_{\min} %} and {% equation_inline v_{\max} %}: The directions (in the tangent plane) corresponding to these extremal curvatures
+
+These are called the **principal curvatures** and **principal directions** of {% equation_inline S %} at {% equation_inline p %}.
+
+**Example:** For a cylinder with radius {% equation_inline R %}:
+- {% equation_inline K_{\min} = 0 %} (along the axis direction - no bending)
+- {% equation_inline K_{\max} = \frac{1}{R} %} (in the circular direction)
+
+### Surface Classification by Curvature
+
+The sign and magnitude of the principal curvatures tell us about the local shape:
+
+- **Convex:** {% equation_inline K_{\min} > 0 %}, {% equation_inline K_{\max} > 0 %} (both principal curvatures positive, like a sphere)
+- **Concave:** {% equation_inline K_{\min} < 0 %}, {% equation_inline K_{\max} < 0 %} (both negative, like the inside of a bowl)
+- **Parabolic convex:** {% equation_inline K_{\min} = 0 %}, {% equation_inline K_{\max} > 0 %} (flat in one direction, curved in the other)
+- **Parabolic concave:** {% equation_inline K_{\min} < 0 %}, {% equation_inline K_{\max} = 0 %}
+- **Saddle:** {% equation_inline K_{\min} < 0 %}, {% equation_inline K_{\max} > 0 %} (curved up in one direction, down in another, like a horse saddle)
+
+**Sign Convention Example:**
+
+For a parabola {% equation_inline y = ax^2 %}:
+- Second derivative: {% equation_inline f''(x) = 2a %}
+- If {% equation_inline a > 0 %} and normal points in {% equation_inline -y %} direction: convex
+- For {% equation_inline y = -ax^2 %} with {% equation_inline a > 0 %}: {% equation_inline f''(x) = -2a < 0 %}, this is concave
+
+## Computing Curvature on Discrete Surfaces
+
+### Curvature in 2D: A Motivating Example
+
+In 2D, for a curve given as a set of points, we can compute curvature using the following approach:
+
+1. **Transform to local coordinates:** Move the curve so it crosses the origin {% equation_inline (0,0) %} at a point where the first derivative is also zero
+2. **Fit a quadratic:** Using least squares, fit {% equation_inline f(x) = ax^2 + bx + c %} to a neighborhood of points
+3. **Extract curvature:** Compute {% equation_inline K = f''(0) = 2a %}
+
+### Extension to Surfaces
+
+For triangle meshes, we extend this idea to surfaces. We work with local neighborhoods of vertices, often restricting neighbors along the mesh geometry (the 1-ring or K-nearest neighbors).
+
+**Steps:**
+
+1. **Transform to local frame** (analogous to centering in 2D)
+2. **Fit a quadratic surface**
+3. **Compute the surface's "second derivative"**
+
+### The Algorithm
+
+**Input:**
+- Point {% equation_inline p_i %}
+- {% equation_inline K %}-nearest neighbors {% equation_inline \{p_{ij}\}_{1 \leq j \leq K} %}
+
+**Output:**
+- Principal curvatures: {% equation_inline K_{\min}(p_i) %}, {% equation_inline K_{\max}(p_i) %}
+- Principal directions: {% equation_inline v_{\min}(p_i) %}, {% equation_inline v_{\max}(p_i) %}
+
+**Step 1: Construct Local Frame**
+
+We build an orthonormal coordinate system at {% equation_inline p_i %}:
+
+{% equation %}
+\begin{aligned}
+V &= -n_i \quad \text{(negative normal direction)} \\
+U &= \text{OX} \times V \quad \text{(if } V \parallel \text{OX, use OY or OZ instead)} \\
+W &= U \times V \quad \text{(complete the right-handed frame)}
+\end{aligned}
+{% endequation %}
+
+**Step 2: Express Neighbors in Local Coordinates**
+
+For each neighbor {% equation_inline p_{ij} %}, compute its coordinates in the local frame:
+
+{% equation %}
+\begin{aligned}
+u_{ij} &= (p_{ij} - p_i) \cdot U \\
+v_{ij} &= (p_{ij} - p_i) \cdot V \\
+w_{ij} &= (p_{ij} - p_i) \cdot W
+\end{aligned}
+{% endequation %}
+
+**Step 3: Fit Quadratic Surface**
+
+We fit a quadratic surface of the form:
+
+{% equation %}
+w(u, v) = au^2 + buv + cv^2 + du + ev + f
+{% endequation %}
+
+This can be written as {% equation_inline w = \mathbf{q}^T \mathbf{s} %} where:
+
+{% equation %}
+\mathbf{q} = \begin{pmatrix} u^2 \\ uv \\ v^2 \\ u \\ v \\ 1 \end{pmatrix}, \quad
+\mathbf{s} = \begin{pmatrix} a \\ b \\ c \\ d \\ e \\ f \end{pmatrix}
+{% endequation %}
+
+We minimize the least squares error:
+
+{% equation %}
+E(\mathbf{s}) = \sum_{j=1}^{K} (w(u_{ij}, v_{ij}) - w_{ij})^2 = \sum_{j=1}^{K} (\mathbf{q}_{ij}^T \mathbf{s} - w_{ij})^2
+{% endequation %}
+
+Expanding:
+
+{% equation %}
+E(\mathbf{s}) = \mathbf{s}^T \left(\sum_{j=1}^{K} \mathbf{q}_{ij} \mathbf{q}_{ij}^T\right) \mathbf{s} - 2\mathbf{s}^T \left(\sum_{j=1}^{K} w_{ij} \mathbf{q}_{ij}\right) + \sum_{j=1}^{K} w_{ij}^2
+{% endequation %}
+
+Setting {% equation_inline \nabla E = 0 %} gives the normal equations:
+
+{% equation %}
+\left(\sum_{j=1}^{K} \mathbf{q}_{ij} \mathbf{q}_{ij}^T\right) \mathbf{s} = \sum_{j=1}^{K} w_{ij} \mathbf{q}_{ij}
+{% endequation %}
+
+Or more compactly: {% equation_inline A\mathbf{s} = \mathbf{b} %} where {% equation_inline A \in \mathbb{R}^{6 \times 6} %} and {% equation_inline \mathbf{b} \in \mathbb{R}^6 %}.
+
+**Step 4: Compute the Hessian**
+
+The partial derivatives of {% equation_inline w(u,v) %} are:
+
+{% equation %}
+\begin{aligned}
+\frac{\partial w}{\partial u} &= 2au + bv + d \\
+\frac{\partial^2 w}{\partial u^2} &= 2a \\
+\frac{\partial^2 w}{\partial u \partial v} &= b \\
+\frac{\partial^2 w}{\partial v^2} &= 2c
+\end{aligned}
+{% endequation %}
+
+The Hessian matrix is:
+
+{% equation %}
+H_w = \begin{pmatrix}
+2a & b \\
+b & 2c
+\end{pmatrix}
+{% endequation %}
+
+**Step 5: Eigen-decomposition**
+
+Perform eigen-decomposition of {% equation_inline H_w %}:
+
+{% equation %}
+H_w = \lambda_1 v_1 v_1^T + \lambda_2 v_2 v_2^T
+{% endequation %}
+
+where:
+- {% equation_inline \lambda_1 = K_{\min} %}, {% equation_inline \lambda_2 = K_{\max} %} (the principal curvatures)
+- {% equation_inline v_1 = v_{\min} %}, {% equation_inline v_2 = v_{\max} %} (the principal directions)
+
+## Derived Curvature Measures
+
+### Gaussian Curvature
+
+The **Gaussian curvature** is the product of principal curvatures:
+
+{% equation %}
+K_G = K_{\min} \cdot K_{\max}
+{% endequation %}
+
+### Mean Curvature
+
+The **mean curvature** is the average of principal curvatures:
+
+{% equation %}
+H = \frac{K_{\min} + K_{\max}}{2}
+{% endequation %}
+
+### Surface Classification Using Gaussian and Mean Curvature
+
+The Gaussian and mean curvatures provide an alternative classification scheme:
+
+**When {% equation_inline K_G = 0 %}** (one principal curvature is zero):
+- {% equation_inline H = 0 %}: **Planar**
+- {% equation_inline H < 0 %}: **Parabolic concave**
+- {% equation_inline H > 0 %}: **Parabolic convex**
+
+**When {% equation_inline K_G > 0 %}** (principal curvatures have the same sign):
+- {% equation_inline H > 0 %}: **Convex** (elliptic)
+- {% equation_inline H < 0 %}: **Concave** (elliptic)
+
+**When {% equation_inline K_G < 0 %}** (principal curvatures have opposite signs):
+- **Saddle** (hyperbolic)
+
+### Recovering Principal Curvatures
+
+Given {% equation_inline H %} and {% equation_inline K_G %}, we can recover the principal curvatures:
+
+{% equation %}
+K_{\min}, K_{\max} = H \pm \sqrt{H^2 - K_G}
+{% endequation %} 
 
   
 # Session 5
