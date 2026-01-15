@@ -1143,185 +1143,422 @@ K_{\min}, K_{\max} = H \pm \sqrt{H^2 - K_G}
 {% endequation %} 
 
   
-# Session 5
+# Session 5: Mesh Smoothing and Denoising
 
-## Smoothing (denoising)
+## Introduction to Smoothing
 
-### Laplacian smoothing
-"Umbrella" operator. 
+Smoothing (or denoising) is a fundamental operation in geometry processing that reduces high-frequency noise while preserving the overall shape of a mesh.
 
-L(v_i)==Discrete Laplacian of v_i
+## Laplacian Smoothing
 
-### Mesh (triangle)
-This smethods work for any type of mesh
-M=(G,P)
-G=Mesh Graph: how vertex are connected
-P=Geometry || P belongs to R^{nx3} where n is the number of vertices
+The **Laplacian operator** is often called the "umbrella operator" because it averages a vertex's position with its neighbors in a way that resembles an umbrella.
 
-G=(V,E)
-V={i | 1<=i<=n}
-E is inside VxV
+We denote {% equation_inline L(v_i) %} as the discrete Laplacian of vertex {% equation_inline v_i %}.
 
-### 1-ring neighbourhood
-N(i)={j|(i,j) belong to E}
+### Mesh Representation
 
-L(v_i)=1/|N(i)| * sum(j belongs to N(i), v_j-v_i)
+These methods work for any type of mesh. A mesh is represented as {% equation_inline M = (G, P) %} where:
 
-### Laplacian iterative operator
-Update rule == Vi' <- v_i+lambda*L(v_i) where lambda belongs (0,1]
+- {% equation_inline G %} is the **mesh graph** describing how vertices are connected
+- {% equation_inline P \in \mathbb{R}^{n \times 3} %} is the **geometry**, where {% equation_inline n %} is the number of vertices
 
-Choosing lambda -> compromise
-* Large lambda -> larger steps, faster smoother
-* small lambdas -> Avoid vibration
+The graph {% equation_inline G = (V, E) %} consists of:
+- Vertex set: {% equation_inline V = \{i \mid 1 \leq i \leq n\} %}
+- Edge set: {% equation_inline E \subset V \times V %}
 
-If we look at the behavior, if we have a vertex v_i with normal_i, for a convex vertex we lose area/volume.
-On concave vertices we will gain area/volume
+### 1-Ring Neighborhood
 
-In closed shapes, convexity > Concavity
-Laplacian == Net lost volume
+The **1-ring neighborhood** of vertex {% equation_inline i %} is defined as:
+
+{% equation %}
+N(i) = \{j \mid (i, j) \in E\}
+{% endequation %}
+
+This is the set of all vertices directly connected to vertex {% equation_inline i %}.
+
+### The Discrete Laplacian
+
+The discrete Laplacian at vertex {% equation_inline v_i %} is:
+
+{% equation %}
+L(v_i) = \frac{1}{|N(i)|} \sum_{j \in N(i)} (v_j - v_i)
+{% endequation %}
+
+This computes the average displacement from {% equation_inline v_i %} to all its neighbors.
+
+## Iterative Laplacian Smoothing
+
+### Basic Update Rule
+
+The basic iterative update rule is:
+
+{% equation %}
+v_i' \leftarrow v_i + \lambda L(v_i) \quad \text{where } \lambda \in (0, 1]
+{% endequation %}
+
+**Choosing {% equation_inline \lambda %}:** There is a trade-off to consider:
+- **Large {% equation_inline \lambda %}:** Larger steps, faster smoothing, but risk of instability
+- **Small {% equation_inline \lambda %}:** Smaller steps, avoids oscillations, but slower convergence
+
+### Volume Loss Problem
+
+The basic Laplacian smoothing has a significant drawback: **volume loss**.
+
+- For **convex vertices**: The smoothing operation moves vertices inward, **losing area/volume**
+- For **concave vertices**: The operation moves vertices outward, **gaining area/volume**
+
+In closed shapes, there are typically more convex regions than concave ones, resulting in a **net volume loss**.
+
+### Improved Update Methods
+
+#### Bilaplacian Smoothing
+
+The bilaplacian method takes one step forward and one step backward:
+
+{% equation %}
+\begin{aligned}
+v_i' &\leftarrow v_i + \lambda L(v_i) \\
+v_i'' &\leftarrow v_i' - \lambda L(v_i')
+\end{aligned}
+{% endequation %}
+
+This method loses less volume than the basic Laplacian.
+
+#### Taubin's Lambda-Mu Method
+
+Taubin modified the bilaplacian approach by using different step sizes:
+
+{% equation %}
+\begin{aligned}
+v_i' &\leftarrow v_i + \lambda L(v_i) \\
+v_i'' &\leftarrow v_i' + \mu L(v_i')
+\end{aligned}
+{% endequation %}
+
+The parameters are chosen such that {% equation_inline \frac{1}{\lambda} + \frac{1}{\mu} \approx 0.1 %}.
+
+Solving for {% equation_inline \mu %}:
+
+{% equation %}
+\mu = \frac{-10\lambda}{10 - \lambda}
+{% endequation %}
+
+This formulation provides better volume preservation.
+
+## Matrix Form of Laplacian Smoothing
+
+We can express the Laplacian operator in matrix form, which opens the door to more sophisticated smoothing approaches.
+
+### Matrix Definition
+
+The Laplacian matrix is defined as:
+
+{% equation %}
+L = M^{-1} C
+{% endequation %}
+
+where:
+- {% equation_inline C %} is the **cotangent Laplacian matrix** (also called the "weak Laplacian")
+- {% equation_inline M %} is the **mass matrix**, which accounts for the local sampling density
+
+### Cotangent Laplacian Matrix
+
+The entries of {% equation_inline C %} are:
+
+{% equation %}
+(C)_{ij} = \begin{cases}
+W_{ij} & \text{if } i \neq j \text{ and } (i,j) \in E \\
+-\sum_{k \in N(i)} W_{ik} & \text{if } i = j \\
+0 & \text{otherwise}
+\end{cases}
+{% endequation %}
+
+**Weight choices:**
+
+1. **Uniform Laplacian:** {% equation_inline W_{ij} = 1 %}
+
+2. **Cotangent Laplacian:** {% equation_inline W_{ij} = \frac{1}{2}(\cot \alpha_{ij} + \cot \beta_{ij}) %}
+   
+   where {% equation_inline \alpha_{ij} %} and {% equation_inline \beta_{ij} %} are the angles opposite to edge {% equation_inline (i,j) %} in the two adjacent triangles.
+   
+   The cotangent weights try to preserve the distribution of the sampling and are more geometrically accurate.
+
+### Mass Matrix
+
+The mass matrix {% equation_inline M %} accounts for local vertex density:
+
+**For uniform Laplacian:**
+
+{% equation %}
+(M)_{ij} = \begin{cases}
+|N(i)| & \text{if } i = j \\
+0 & \text{otherwise}
+\end{cases}
+{% endequation %}
+
+**For cotangent Laplacian:**
+
+{% equation %}
+(M)_{ij} = \begin{cases}
+A_i & \text{if } i = j \\
+0 & \text{otherwise}
+\end{cases}
+{% endequation %}
+
+where {% equation_inline A_i = \frac{1}{3} \sum \text{(areas of triangles adjacent to } v_i\text{)} %}
+
+### Matrix Update Rule
+
+With the matrix formulation, the update becomes:
+
+{% equation %}
+P' = P + \lambda L P
+{% endequation %}
+
+where:
+- {% equation_inline P, P' \in \mathbb{R}^{n \times 3} %} (vertex positions before and after smoothing)
+- {% equation_inline L \in \mathbb{R}^{n \times n} %} (Laplacian matrix)
+- {% equation_inline \lambda \in (0, 1] %} (step size)
+
+This can be written as:
+
+{% equation %}
+P' = (I + \lambda L) P
+{% endequation %}
+
+### Bilaplacian in Matrix Form
+
+The bilaplacian smoothing becomes:
+
+{% equation %}
+\begin{aligned}
+P' &= P + \lambda L P \\
+P'' &= P' - \lambda L P' \\
+&= (P + \lambda L P) - \lambda L(P + \lambda L P) \\
+&= P + \lambda L P - \lambda L P - \lambda^2 L^2 P \\
+&= (I - \lambda^2 L^2) P
+\end{aligned}
+{% endequation %}
+
+## Global Smoothing Approach
+
+### Motivation
+
+The Laplacian {% equation_inline LP %} computes an update vector for each vertex. The magnitude of this vector is larger when vertices are farther from their neighbors.
+
+Ideally, for a perfectly smooth surface, we would have {% equation_inline LP' \approx 0 %}.
+
+However, {% equation_inline LP' = 0 %} has a trivial solution: {% equation_inline P' = 0 %} (all vertices collapse to the origin), which is not useful.
+
+**Goal:** Keep the update vectors as close to zero as possible while maintaining the overall shape.
+
+### Constrained Laplacian Smoothing
+
+We divide vertices into two groups:
+
+1. **Smooth vertices** {% equation_inline \{v_i \mid 1 \leq i \leq m\} %}: These can move freely
+2. **Constraint vertices** {% equation_inline \{v_i \mid m < i \leq n\} %}: These are fixed
+
+**Constraints:**
+
+{% equation %}
+\begin{aligned}
+L(v_i') &= 0 \quad \text{for } 1 \leq i \leq m \\
+v_i' &= v_i \quad \text{for } m < i \leq n
+\end{aligned}
+{% endequation %}
+
+This is an interpolatory approach: smooth the interior while keeping boundary vertices fixed.
+
+### Matrix Formulation
+
+Let {% equation_inline L_1 %} be the first {% equation_inline m %} rows of {% equation_inline L %} (corresponding to smooth vertices).
+
+We want to solve:
+
+{% equation %}
+\begin{pmatrix}
+L_1 \\
+I
+\end{pmatrix} P' = \begin{pmatrix}
+0 \\
+P_{\text{constrained}}
+\end{pmatrix}
+{% endequation %}
+
+This system has {% equation_inline n + m %} equations and {% equation_inline n %} unknowns.
+
+We can solve this as a least squares problem:
+
+{% equation %}
+\begin{pmatrix}
+L_1^T & I
+\end{pmatrix} \begin{pmatrix}
+L_1 \\
+I
+\end{pmatrix} P' = \begin{pmatrix}
+L_1^T & I
+\end{pmatrix} \begin{pmatrix}
+0 \\
+P_{\text{constrained}}
+\end{pmatrix}
+{% endequation %}
+
+### Weighted Smoothing vs. Constraints
+
+We can introduce a weight {% equation_inline \mu %} to balance smoothness and constraint satisfaction:
+
+{% equation %}
+\begin{pmatrix}
+\lambda L \\
+\mu I
+\end{pmatrix} P' = \begin{pmatrix}
+0 \\
+\mu P
+\end{pmatrix}
+{% endequation %}
+
+Larger {% equation_inline \mu %} emphasizes constraint satisfaction, while larger {% equation_inline \lambda %} emphasizes smoothness.
+
+## Detail-Preserving Smoothing
+
+We can decompose the mesh into low-frequency (smooth) and high-frequency (detail) components.
+
+### Multi-scale Decomposition
+
+Apply different numbers of smoothing iterations:
+
+{% equation %}
+\begin{aligned}
+P_{\text{smooth}} &= (I + \lambda L)^{k_1} P \quad \text{(fewer iterations)} \\
+P_{\text{low}} &= (I + \lambda L)^{k_2} P \quad \text{(more iterations, } k_2 > k_1\text{)}
+\end{aligned}
+{% endequation %}
+
+### Detail Transfer
+
+Reconstruct with controllable detail level:
+
+{% equation %}
+P' = P_{\text{low}} + \mu (P_{\text{smooth}} - P_{\text{low}})
+{% endequation %}
+
+**Effect of {% equation_inline \mu %}:**
+- {% equation_inline \mu = 1 %}: {% equation_inline P' = P_{\text{smooth}} %} (preserve medium-frequency details)
+- {% equation_inline \mu < 1 %}: Attenuate high-frequency details (more smoothing)
+- {% equation_inline \mu > 1 %}: Exaggerate high-frequency details (enhance features)
 
 
-There are other ways to do the update method.
-- Biplacian: takes one step forward and one backward
-    vi' = vi+lambda * L(vi)
-    vi'' <- vi' - lambda * L(vi')
-    
-    This method loses less volume.
+# Session 6: Mesh Parametrization
 
-- Taubin's lambda-mu
-    this guy Modified the biplacian 
-    vi' <- vi + lambda * L(vi)
-    vi'' <- vi' + mu*L(vi')
+## Introduction to Parametrization
 
-    1/lambda+1/mu =~ 0.1 -> 10mu +10lambda = lambda mu -> 10mu - 10lambda = -10lambda
+**Mesh parametrization** is the process of creating a mapping between a 3D surface and a 2D parameter domain. This is essential for many geometry processing tasks, such as texture mapping, detail transfer, and surface analysis.
 
-    mu = -10lambda/10-lambda
+### Motivation: Attaching Properties to Surfaces
 
-We can also implement matrix form. This will open the door to different smoothing approaches
-L=M^-1 * C
+How do we attach properties (like colors, textures, or other attributes) to a surface? The typical approach is to **unfold the mesh** into a 2D domain, which allows us to work in a simpler parameter space.
 
-C is known as the week laplacian
+### The Challenge: Distortion
 
-M is known as the mass matrix, takes into account how many neighbours each vertex has
+When we unfold a 3D mesh, we inevitably introduce **distortion**, except in special cases involving developable surfaces (geometric objects that can be unfolded without stretching, such as cylinders and cones).
 
-L laplacian matrix
+## Mathematical Framework
 
-         |
-(C)_ij = |W_ij                            , i != j where (i,j) belong to E
-         |-sum(k belongs to N(i), W_i*k)  , i=j 
-         | 0                              , otherwise
-         |
+### Parametric Representation
 
-W_ij = 1 -> Uniform Laplacian
+A mesh is a discrete approximation of a surface embedded in {% equation_inline \mathbb{R}^3 %}. A parametric surface can be represented as:
 
-Cotagent laplacian tryes to preserve the distribution of the sampling
+{% equation %}
+\mathbf{f}(u, v) = \begin{pmatrix} f_x(u, v) \\ f_y(u, v) \\ f_z(u, v) \end{pmatrix}
+{% endequation %}
 
-W_ij = 1/2 * (cotangent alpha_ij + cotangent Beta_ij )
+where {% equation_inline (u, v) %} are the 2D parameter coordinates, and {% equation_inline \mathbf{f}(u, v) %} gives the corresponding 3D position.
 
-This does not take into account that some vertex take into account more curvature and others less. 
+### Partial Derivatives
 
-now we should calculate the mass matrix mentioned before:
-- mass matrix for the uniform laplacian
-    (M)_ij = ||N(i)|         , i=j
-             |  0            , otherwise
-- Cotangent
-    (M)_ij = | A_i           , i=j
-             | 0             , otherwise
+The partial derivatives {% equation_inline \frac{\partial \mathbf{f}}{\partial u} %} and {% equation_inline \frac{\partial \mathbf{f}}{\partial v} %} represent:
 
-    A_i==1/3 sum(Areas of adjancent triangles to v1)
+- **Tangent vectors** along the {% equation_inline u %} and {% equation_inline v %} parameter directions
+- The local geometry and orientation of the surface
+- How the surface "stretches" in different directions
 
+**In CAD systems:** The function {% equation_inline \mathbf{f} %} is often composed of polynomials or rational functions (e.g., NURBS surfaces).
 
-Once we have the matrix definition of L=M^-1*C the update method is simpler
-P'=P+lambda L P'
-P,P' belongs to R^{nx3}
-L belongs to R^{nxm}
-lambda belongs to (0,1]
+## Output of Parametrization Algorithms
 
-I*P+lambda L P = (I + lambda * L) * P
+A mesh parametrization algorithm produces:
 
-P' = P+lambda L P 
-p'' = p' - lambda L P'
-p'' = (P + lambda L P )- lambda L (P + lambda L P) = 
-= P+ lambda L P - lambda L P - lambda^2 L^2 P =
-= (I-lambda^2 L^2) P 
+- **UV coordinates** for each vertex (or corner) of the mesh
+- A mapping from 3D mesh vertices to 2D parameter space
 
-### Global smoothing approach
-The main idea is that the laplacian times P is computing the update vector. FOr each of the points the vector is larger if they are further from the neighbours. 
+### Handling Discontinuities
 
-L*P' =~ 0 -> there is a simple solution -> P'=0; we dont want to turn everithing to 0
+**Challenge:** It is difficult to preserve continuity when flattening complex surfaces.
 
-keep the update vectors as close to 0 as posible. We will assume that the M 
+For example, when parametrizing a cube:
+- Vertices must be "flattened out" onto the 2D domain
+- Each triangle should map to a region in the UV space
+- It's often impossible to maintain a single continuous parametrization
 
-- Constraint laplacian:
-    n first v's -> smooth {v_i | 1 <= i <= n }
-    others -> constrain {v_i | m < i <= n }
+**Solution:** We introduce **discontinuities** (seams or cuts) and assign multiple UV coordinates to some vertices. This creates a **UV atlas** with potentially disconnected regions.
 
-    1<i <=n -> L(v'_i) = 0
-    n<i<=n -> v_i ' = v_i
-    
-    All this is trying to be interpolative.
+## Types of Bijectivity
 
-    L1 == First m rows of L
+A parametrization can be bijective at different levels:
 
-    A*P'=B , we can solve this with some matrix problem solver 
+### Global Bijectivity
 
-We want to create a matrix that contains: 
-| L |       | 0 |
-|---| P' =  |---|
-| I |       | P |
+The entire mapping {% equation_inline \mathbf{f}: D \to S %} is one-to-one and onto, where:
+- {% equation_inline D \subset \mathbb{R}^2 %} is the parameter domain
+- {% equation_inline S \subset \mathbb{R}^3 %} is the 3D surface
 
-This has 2n rows and n columns
+**Meaning:** Every point on the surface corresponds to exactly one point in the parameter domain, and vice versa.
 
-(L^T | I) = ( L ) * p' = (L^t|I)*( 0 )
-            (---)                (---)
-            ( I )                ( P )  
+### Local Bijectivity
 
-Weight smoothing vs constraints
-(lambda L / I ) P' = (O/P)
-mu*I*P'=mu*P
+The mapping is bijective in a small neighborhood around each point, but may not be globally bijective.
 
+**Meaning:** Locally, the parametrization doesn't fold or overlap, but the global structure might have multiple charts or seams.
 
-P smooth = (I+Lambda*L)^k1 * P; k1 iterations of laplacian
-P low    = (I+lambda*L)^k2 * P k2>k1
+## Topological Equivalence
 
-P' = Plow + mu (Psmooth- Plow)
-mu = 1 -> P'=Psmooth
-mu < 1  -> attenuating high frequency details
-mu > 1 -> Exaggeratig high frequency details
+For a continuous function {% equation_inline \mathbf{f}: S_1 \to S_2 %}:
 
+Two surfaces {% equation_inline S_1 %} and {% equation_inline S_2 %} are **topologically equivalent** (or homeomorphic) if there exists a mapping {% equation_inline \mathbf{f} %} such that:
 
-# Session 6
-Mesh parametrization
+1. {% equation_inline \mathbf{f} %} is **continuous**
+2. {% equation_inline \mathbf{f}^{-1} %} (the inverse mapping) is **continuous**
+3. {% equation_inline \mathbf{f} %} is a **bijection** (one-to-one and onto)
 
-Attaching properties to a surface, how do we do that?
-Unfold the mesh, we generate distortion wit few exceptions (geometrical objects like cube, cylinder)
+Such a mapping is called a **homeomorphism**.
 
-meshes are a subset of R³. We get [f_x(u,v),f_y(u,v),f_z(u,v)]
+**Key insight:** Topologically equivalent surfaces have the same fundamental structure (e.g., genus, number of holes), even if their geometric shapes differ.
 
-what does derivate of f respect to u and derivate of f respect to v represent?
+## Applications of Mesh Parametrization
 
-CAD: f's are polynomials or rsteral functions
+Parametrization is a fundamental technique used in many geometry processing applications:
 
+### Mesh Morphing
 
-Output of a mesh parametrization algorithm
-It should give the coordinates of each vertex or "Corner". If you give coordinates of a cube for example, vertices have to be flattened out on the domain so each point is inside an image. It is complex to preserve continuity. That is why we create discontinuityes and assign corners to the UV map.
+Create smooth transitions between two 3D shapes by:
+1. Parametrizing both meshes to a common 2D domain
+2. Interpolating between corresponding UV coordinates
+3. Reconstructing intermediate 3D shapes
 
-Bijectivity
-- global bijectivity
-- local bijectivity
+### Detail Transfer
 
+Transfer geometric or appearance details from one mesh to another:
+1. Parametrize both source and target meshes
+2. Use the UV mapping to establish correspondence
+3. Transfer normal maps, displacement maps, or texture information
 
-Topological equivalence
-f continuous:
-    S_i virtually equal S_b
+### Mesh Completion
 
-    When homeormophism, continuous | continuous inverse | (injection)
-
-
-Applications : 
-- Mesh morphing
-- Detail transfer
-- Mesh completion
+Fill holes or missing regions in a mesh:
+1. Parametrize the region around the hole
+2. Use the parametrization to guide surface interpolation
+3. Generate new geometry that smoothly fills the gap
 
 # Session 7 - Geometry Processing: Distortion, Isometries & Parametrization
 
