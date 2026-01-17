@@ -38,7 +38,6 @@ keywords: Computer Graphics, Programming, Python, Blender, Render, Rendering, Ga
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-my-custom-library
 
 toc:
   min_level: 1
