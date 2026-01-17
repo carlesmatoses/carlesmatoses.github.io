@@ -23,6 +23,12 @@ It is meant to help on writing computer graphics related posts.
 # What is it?
 SKCG is a custom gem that works with jekyll and provides useful liquid tags to create more academic posts. It is useful to create equations, images and references to them. Also provides bibliography funcitonalities.
 
+{% alert %}
+Download the gem in:
+
+https://github.com/carlesmatoses/jekyll-science-kit-computer-graphics
+{% endalert %}
+
 <!-- # Text:
 You can write the following code as follow  `code in line`, **bold letter**, *cursiva*. ´
 
@@ -142,16 +148,15 @@ A simple dark alert—check it out!
 
 ```liquid
 {% raw %}
+Multiple images in a single figure  {% ref figure:1:2:3 %}
 
-  Multiple images in a single figure  {% ref figure:multiple-figures %}:
-
-  {% figure id="multiple-figures" size="1.0" 
+{% figure id="1:2:3" size="1.0" 
   caption="Three images but only a max of two images per row"
   col="2" %}
-  /images/test.png
-  /images/youtube.png
-  /images/ambient_occlusion/comparing_spheres.png
-  {% endfigure %}
+  /images/image-not-found.png
+  /images/image-not-found-long.png
+  /images/image-not-found-long.png
+{% endfigure %}
 {% endraw %}
 ```
 
@@ -160,9 +165,11 @@ A simple dark alert—check it out!
 {% figure id="img" size="0.49" caption="square image" %}
 /images/image-not-found.png
 {% endfigure %}
+
 {% figure id="img3" size="0.49" caption="long image" %}
 /images/image-not-found-long.png
 {% endfigure %}
+
 {% figure id="img2" size="0.49" caption="long image" %}
 /images/image-not-found-long.png
 {% endfigure %}
@@ -200,6 +207,44 @@ E = mc^2
 {% endequation %}
 
 As shown in equation {% ref equation:energy %}, energy is proportional to mass. Also we can write in line equations as {% equation_inline E = mc^2 %}
+{% endraw %}
+```
+
+# 3D viewer
+I personally like to keep the code clean. For this reason I delegate the render properties to files like shaders and jsons that define Properties and render pipeline.
+
+Additionally, all models will be stored in a unique path (even though you can add subpaths) because they can be heavy and I like to reuse them. The same idea with materials. Textures should be placed wherever you think is best for the shaders.
+
+This is the structure I use:
+```
+assets/
+├── models/
+│   ├── model1.glb
+│   ├── model2.glb
+│   └── materials/
+│       ├── material1/
+│       │   ├── fragment.glsl
+│       │   ├── uniforms.json
+│       │   └── vertex.glsl
+│       └── material2/
+│           ├── fragment.glsl
+│           ├── uniforms.json
+│           └── vertex.glsl
+```
+
+{% glb_viewer 
+id        = 'viewer-1' 
+models    = 'suzane,    sphere' 
+materials = 'material1, enviorment' 
+%}
+
+```liquid
+{% raw %}
+{% glb_viewer 
+id        = 'viewer-1' 
+models    = 'suzane,    sphere' 
+materials = 'material1, enviorment' 
+%}
 {% endraw %}
 ```
 
@@ -249,4 +294,8 @@ The bibliography tag supports different citation styles (IEEE by default, APA av
 ## Complete Bibliography
 The bibliography displays all cited references in the order they appear in your document:
 
+### Default
 {% bibliography %}
+
+### apa
+{% bibliography apa %}
