@@ -1,13 +1,15 @@
 ---
 layout: post
-title:  "Science Kit Computer Graphics"
+title:  "SKCG, jekyll-scholar-graphics"
 date:   2025-08-08 18:17:51 +0200
 preview: "/images/pluggin.png"
 categories: project # post, project
 permalink: post/skcg
 ---
 
-This gem is used in the webpage to provide image, bibliography and some other liquid tags for faster formatting.
+SKCG is used in the webpage to provide image, bibliography and some other liquid tags for faster formatting. 
+
+It is meant to help on writing computer graphics related posts. 
 <!-- end-abstract -->
 
 
@@ -18,7 +20,10 @@ This gem is used in the webpage to provide image, bibliography and some other li
 <!-- Load all references -->
 {% bibliography_loader _bibliography/references.bib %}
 
-# Text:
+# What is it?
+SKCG is a custom gem that works with jekyll and provides useful liquid tags to create more academic posts. It is useful to create equations, images and references to them. Also provides bibliography funcitonalities.
+
+<!-- # Text:
 You can write the following code as follow  `code in line`, **bold letter**, *cursiva*. ´
 
 ```liquid
@@ -27,9 +32,9 @@ You can write the following code as follow  `code in line`, **bold letter**, *cu
 **bold letter**  
 *cursiva*
 {% endraw %}
-```
+``` -->
 
-## Code:
+<!-- ## Code:
 
 ```liquid
 {% raw %}
@@ -43,15 +48,24 @@ print_hi('Tom')
 {% endraw %}
 ```
 
+```liquid
+{% highlight ruby %}
+def print_hi(name)
+  puts "Hi, #{name}"
+end
+print_hi('Tom')
+#=> prints 'Hi, Tom' to STDOUT.
+{% endhighlight %}
+``` -->
 
 
-## Links
+<!-- ## Links
 This is an external link [jekyll-docs](https://jekyllrb.com/docs/home)  
 
 # Header 1
 ## Header 2
 ### Header 3
-#### Header 4
+#### Header 4 -->
 
 # Alerts & block content
 Alerts are just a wrapper div with background color. We use bootstrap styles in the background.
@@ -114,8 +128,7 @@ A simple dark alert—check it out!
 
 
 
-# Referenceable elements
-## Images:
+# Images:
 
 - Multiple images in a single figure  {% ref figure:1:2:3 %}:
 
