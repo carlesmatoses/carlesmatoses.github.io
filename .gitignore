@@ -3,3 +3,5 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+# Auto-generated gem assets (copied by jekyll-skcg AssetGenerator)
+assets/jekyll-skcg/

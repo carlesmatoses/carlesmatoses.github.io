@@ -207,13 +207,24 @@ r = v - 2(v \cdot n)n
 
 First, compute the reflection vector {% equation_inline r %} of the view direction {% equation_inline v %} (from the surface to the camera) against the normal {% equation_inline n %}  using the {% ref equation:reflection-vector %} formula.
 
-Now, define a visibility function along that reflection vector:
+Now, define the **Reflection Occlusion** at point {% equation_inline p %}:
+
 {% equation id="R-occlusion-function" %}
-RO(p)=V(p,r)
+RO(p) = \begin{cases} 
+0 & \text{if } d(p, r) < \epsilon \\
+1 & \text{otherwise}
+\end{cases}
 {% endequation %}
 
-{% equation_inline V(p,r) %} uses **ray tracing to detect whether the fragment is occluded or not**. We then can store the result on an image and darken the reflections in the final render.
+Where:
+- {% equation_inline r %}: Reflection vector computed from {% ref equation:reflection-vector %}.
+- {% equation_inline d(p, r) %}: Distance to the nearest surface intersection along ray {% equation_inline r %} from point {% equation_inline p %}.
+- {% equation_inline \epsilon %}: Maximum occlusion distance threshold.
 
+In other words, **we cast a ray from the surface point {% equation_inline p %} along the reflection direction {% equation_inline r %} and check if it hits any geometry within distance {% equation_inline \epsilon %}**. If it does, the reflection is considered occluded ({% equation_inline RO = 0 %}); otherwise, it's unoccluded ({% equation_inline RO = 1 %}).
+
+Other {% equation_inline RO %} functions are posible providing smoother results. We will use the boolean approach because it visualizes more clearly and shows the limitations.
+ 
 Remember, this technique is **view dependent** therefore we need to compute it each frame or bake it if we know the camera position and the scene will not be modified.
 
 ### Computation
@@ -237,11 +248,15 @@ Remember, this technique is **view dependent** therefore we need to compute it e
 
 The limitation of this technique is that, **instead of reflecting the collided surface, it  just darkens the fragment**. For general purposes this is enough. 
 
-One of the scenarios where this approach may fail is on the use of ``enviorment maps`` with ``IBL`` when there are objects in scene. If  {% equation_inline V(p,r) %} is pondered by distance as {% equation_inline  V(p,r)=max(0,1− \frac{d\(p,r\)​}{R} ) %} with a small R, we may end up with a reflection through a wall that does not make sense. Imagine being in a basement and you see the sky being reflected by a glass of water, that would be weird...
+<!-- One of the scenarios where this approach may fail is on the use of ``enviorment maps`` with ``IBL``. If  {% equation_inline RO(p) %} is pondered by distance as {% equation_inline  V(p,r)=max(0,1− \frac{d\(p,r\)​}{R} ) %} with a small R, we may end up with a reflection through a wall that does not make sense. Imagine being in a basement and you see the sky being reflected by a glass of water, that would be weird... -->
 
-{% alert secondary %}
-Here, R represents the radius where we are detecting collisions. If R is too small we may end up not detecting any collision and assuming the surface is exposed to the enviorment map even if it is on the inside of a house.
+This method generates abrupt changes on the boundary of function. The boundary can be expressed as {% equation_inline d(p, r) = \epsilon %}.
+
+{% alert warning %}
+Here, {% equation_inline \epsilon %} represents the radius where we are detecting collisions. If {% equation_inline \epsilon %} is too small we may end up not detecting any collision and assuming the surface is exposed to the enviorment map even if it is on the inside of a house.
+<!-- TODO: i need an image representing an epsilon too small and a correct epsilon. -->
 {% endalert %}
+
 
 In **path tracing renderers**, you are usually provided a **parameter to choose the bounces limit**. This is of course more realistic, but may take several minutes {% ref figure:reflect-bounces %}. We also avoid showing incorrect reflections when occluders are far since we dont use IBL techniques.
 
@@ -273,6 +288,25 @@ AO(p) = \frac{1}{\pi} \int_{\Omega} V(p, \omega) \, (n \cdot \omega) \, d\omega
 **Reminder:**
 
 Diffuse component is calculated by adding the incident light of all directions into the surface point. For this reason, occlusion can come from any of those directions.
+{% endalert %}
+
+{% alert warning %}
+**A note on material components:**
+
+In practice, materials often have **three light response components** rather than two:
+
+1. **Diffuse** — Light scattered in all directions by the surface
+2. **Specular** — Direct mirror-like reflections
+3. **Ambient** — A constant base illumination term (artistic addition)
+
+The **ambient component** doesn't exist in physically-based light transport — it's an artistic hack used in real-time rendering to prevent surfaces from going completely black in the absence of direct lighting.
+
+While **ambient occlusion is derived from diffuse light behavior** (hemisphere sampling based on Lambert's cosine law), the resulting AO factor can be applied to **both the diffuse and ambient components**. This is because both represent indirect, non-directional illumination, and both should be darkened in occluded areas.
+
+In summary:
+- **Diffuse + Specular** = physically-based components
+- **Ambient** = artistic enhancement (optional)
+- **AO** = applies to diffuse (physically) and ambient (artistically)
 {% endalert %}
 
 This formula computes the ambient occlusion factor at a point by **integrating the fraction of unblocked ambient light over the hemisphere above the surface**, simulating how much ambient light reaches that point.
