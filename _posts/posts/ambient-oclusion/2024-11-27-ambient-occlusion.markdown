@@ -194,7 +194,7 @@ materials = 'basic_brdf'
 
 
 # Reflection Occlusion
-We will start by explaining Reflection Occlusion. It corresponds to the {% equation_inline fr_{specular} %}  component of the light
+We will start by explaining Reflection Occlusion. It corresponds to the {% equation_inline fr_{specular} %}  component of the light.
 
 **Reflection Occlusion (RO)** is a rendering technique used to estimate how much ``reflected light`` reaches a surface point. In essence, it simulates how exposed each point is towards the reflection vector.
 {% equation id="camera-vector" %}
@@ -280,7 +280,7 @@ AO(p) = \frac{1}{\pi} \int_{\Omega} V(p, \omega) \, (n \cdot \omega) \, d\omega
 - {% equation_inline p %}: Surface point being evaluated.  
 - {% equation_inline n %}: Surface normal at {% equation_inline p %}.  
 - {% equation_inline \omega %}: Sampled direction within the hemisphere {% equation_inline \Omega %} centered around {% equation_inline n %}.  
-- {% equation_inline V(p, \omega) %}: Visibility function; returns 1 if the direction {% equation_inline \omega %} from {% equation_inline p %} is unoccluded, 0 if occluded by geometry.  
+- {% equation_inline V(p, \omega) %}: Visibility function; returns 1 if the direction {% equation_inline \omega %} from {% equation_inline p %} is unoccluded, 0 if occluded by geometry. There are other visibility functions that we can choose from. 
 - {% equation_inline n \cdot \omega %}: Lambertian cosine weighting, giving more influence to directions closer to the normal.  
 - The integral averages visibility over all directions in the hemisphere, weighted by the cosine of the angle to the normal. The result is normalized by {% equation_inline \frac{1}{\pi} %}.
 
@@ -327,25 +327,29 @@ That said, **ambient occlusion is not physically accurate**, but rather an *arti
 /images/ambient_occlusion/blender_ao_shader.png
 {% endfigure %}
 
-AO(p) will generate a value (usually between 0 and 1) on a surface point that represents how much light is reaching. This technique is agnostic to the scene lights and as long as geometry doesn't change, it can be baked.
+AO(p) is a scalar field with values usually between 0 and 1 over a surface. It encodes how much light is reaching at any point in the field. This technique is agnostic to the scene lights, therefore to calculate it we only need the geometry. As long as geometry doesn't change, it can be baked.
+
+<!-- TODO: generate scalar field image -->
 
 
 **Ambient occlusion will take care of the contact shadows**. It will not account for directional shadows cast by distant light sources like windows — it only simulates shadowing caused by nearby geometry. 
 
-Let's now compare the result with *``path tracing``* and *``global illumination+AO``*. The model **Suzanne should have a shadow under the hat and also occlude light to his right ear**. 
+Let's now compare the result with *``path tracing``* and *``Image Based Lightning+AO``*. The model **Suzanne should have a shadow under the hat and also occlude light to his right ear**. 
 
 {% alert secondary %}
 We will use an Image Based Lighting Global Illumination technique where we project an image into the geometry based on its normal direction (diffuse lightning).
 All darkened and lighted areas will be provided from an irradiance texture of the environment.
+
+For the path traicing, we assume the enviorment image are just millions of points irradiating light towards the object.
 {% endalert %}
 
-{% figure id="shadow-example" caption="Path Tracing Shadow Example" size="0.8" %}
+{% figure id="shadow-example" caption="LEFT: Path Tracing Shadow Example. RIGHT: IBL+AO" size="0.8" %}
 /images/ambient_occlusion/shadow_example.png
 /images/ambient_occlusion/ao_example .png
 {% endfigure %}
 
 The following interactive example offers three slides:
-- global_illumination: Image Based Lighting, projects an irradiance texture on the geometry based on surface normal direction.
+- global_illumination: Image Based Lighting approach where we project an irradiance texture on the geometry based on surface normal direction.
 - AO: Blocked light factor.
 - shadow: Physically based rendered shadow.
 
@@ -357,7 +361,6 @@ The following interactive example offers three slides:
 
 ### Computation
 AO is actually the same idea as Reflection Occlusion. The biggest difference is that we will use a hemisphere per fragment instead of one vector. To avoid millions of calculations, we will approximate the integral with montecarlo approximation.  
-
 
 
 {% equation id="ao-formula" %}
@@ -388,7 +391,7 @@ L_d = k_d \cdot I \cdot max(0,N \cdot L)
 /images/ambient_occlusion/ibl_hemisphere_sample.png
 {% endfigure %}
 
-Since in a complitelly diffuse surface, light hits a point from all directions {% ref figure:lambert-w %}, **we must check occlusion on all directions too!!**. 
+In Global Illumination, light hits a point from all directions {% ref figure:lambert-w %}, **we must check occlusion on all directions too!!**. 
 
 <!-- If there is no occlusion, the diffuse component will become the weighted average of all incident light.  -->
 
