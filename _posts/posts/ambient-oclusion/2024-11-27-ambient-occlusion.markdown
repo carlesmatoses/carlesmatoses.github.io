@@ -186,9 +186,15 @@ fr_{specular} = k_{specular} \cdot f_{cook-torrance}
 fr = fr_{diffuse} + fr_{specular}
 {% endequation %}
 
+{% glb_viewer 
+id        = 'BRDF' 
+models    = 'sphere' 
+materials = 'basic_brdf' 
+%}
+
 
 # Reflection Occlusion
-We will start by explaining Reflection Occlusion. 
+We will start by explaining Reflection Occlusion. It corresponds to the {% equation_inline fr_{specular} %}  component of the light
 
 **Reflection Occlusion (RO)** is a rendering technique used to estimate how much ``reflected light`` reaches a surface point. In essence, it simulates how exposed each point is towards the reflection vector.
 {% equation id="camera-vector" %}
