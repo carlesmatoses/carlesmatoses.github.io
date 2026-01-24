@@ -192,6 +192,9 @@ models    = 'sphere'
 materials = 'basic_brdf' 
 %}
 
+{% alert %}
+We will need to evaluate how much light reaches a point for both of this components.  
+{% endalert %}
 
 # Reflection Occlusion
 We will start by explaining Reflection Occlusion. It corresponds to the {% equation_inline fr_{specular} %}  component of the light.
@@ -207,24 +210,37 @@ r = v - 2(v \cdot n)n
 
 First, compute the reflection vector {% equation_inline r %} of the view direction {% equation_inline v %} (from the surface to the camera) against the normal {% equation_inline n %}  using the {% ref equation:reflection-vector %} formula.
 
-Now, define the **Reflection Occlusion** at point {% equation_inline p %}:
+Now, define the **Reflection Occlusion** at point {% equation_inline p %} using a visibility function:
 
 {% equation id="R-occlusion-function" %}
-RO(p) = \begin{cases} 
-0 & \text{if } d(p, r) < \epsilon \\
+RO(p) = V(p, r)
+{% endequation %}
+
+Where the visibility function {% equation_inline V(p, \omega) %} is defined as:
+
+{% equation id="visibility-function-RO" %}
+V(p, \omega) = \begin{cases} 
+0 & \text{if } d(p, \omega) < \epsilon \\
 1 & \text{otherwise}
 \end{cases}
 {% endequation %}
 
-Where:
+**Where:**
 - {% equation_inline r %}: Reflection vector computed from {% ref equation:reflection-vector %}.
-- {% equation_inline d(p, r) %}: Distance to the nearest surface intersection along ray {% equation_inline r %} from point {% equation_inline p %}.
+- {% equation_inline V(p, \omega) %}: Visibility function that returns 1 if direction {% equation_inline \omega %} from point {% equation_inline p %} is unoccluded, 0 if occluded.
+- {% equation_inline d(p, \omega) %}: Distance to the nearest surface intersection along direction {% equation_inline \omega %} from point {% equation_inline p %}.
 - {% equation_inline \epsilon %}: Maximum occlusion distance threshold.
 
-In other words, **we cast a ray from the surface point {% equation_inline p %} along the reflection direction {% equation_inline r %} and check if it hits any geometry within distance {% equation_inline \epsilon %}**. If it does, the reflection is considered occluded ({% equation_inline RO = 0 %}); otherwise, it's unoccluded ({% equation_inline RO = 1 %}).
+In other words, **we cast a ray from the surface point {% equation_inline p %} along the reflection direction {% equation_inline r %} and check if it hits any geometry within distance {% equation_inline \epsilon %}** using the visibility function. If it does, the reflection is considered occluded ({% equation_inline V(p,r) = 0 %}); otherwise, it's unoccluded ({% equation_inline V(p,r) = 1 %}).
 
-Other {% equation_inline RO %} functions are posible providing smoother results. We will use the boolean approach because it visualizes more clearly and shows the limitations.
- 
+Other visibility functions are possible, providing smoother results. We use the boolean approach because it visualizes the concept more clearly and shows the limitations.
+
+{% alert warning %}
+Here, {% equation_inline \epsilon %} represents the radius where we are detecting collisions. If {% equation_inline \epsilon %} is too small we may end up not detecting any collision and assuming the surface is exposed to the enviorment map even if it is enclosed in a room for example. The distance to the walls would be big, but still it should not be considered exposed to an environment map.
+<!-- TODO: i need an image representing an epsilon too small and a correct epsilon. -->
+{% endalert %}
+
+
 Remember, this technique is **view dependent** therefore we need to compute it each frame or bake it if we know the camera position and the scene will not be modified.
 
 ### Computation
@@ -245,17 +261,19 @@ Remember, this technique is **view dependent** therefore we need to compute it e
 /images/ambient_occlusion/ReflectionOcclusion_raytrace.png
 {% endfigure %}
 
+{% alert %}
+The arrows in this images are the reflection vectors computed with {% ref equation:reflection-vector %}
+{% endalert %}
 
 The limitation of this technique is that, **instead of reflecting the collided surface, it  just darkens the fragment**. For general purposes this is enough. 
 
 <!-- One of the scenarios where this approach may fail is on the use of ``enviorment maps`` with ``IBL``. If  {% equation_inline RO(p) %} is pondered by distance as {% equation_inline  V(p,r)=max(0,1− \frac{d\(p,r\)​}{R} ) %} with a small R, we may end up with a reflection through a wall that does not make sense. Imagine being in a basement and you see the sky being reflected by a glass of water, that would be weird... -->
 
-This method generates abrupt changes on the boundary of function. The boundary can be expressed as {% equation_inline d(p, r) = \epsilon %}.
+<!-- This method generates abrupt changes on the boundary of function. The boundary can be expressed as {% equation_inline d(p, r) = \epsilon %}. -->
 
-{% alert warning %}
+<!-- {% alert warning %}
 Here, {% equation_inline \epsilon %} represents the radius where we are detecting collisions. If {% equation_inline \epsilon %} is too small we may end up not detecting any collision and assuming the surface is exposed to the enviorment map even if it is on the inside of a house.
-<!-- TODO: i need an image representing an epsilon too small and a correct epsilon. -->
-{% endalert %}
+{% endalert %} -->
 
 
 In **path tracing renderers**, you are usually provided a **parameter to choose the bounces limit**. This is of course more realistic, but may take several minutes {% ref figure:reflect-bounces %}. We also avoid showing incorrect reflections when occluders are far since we dont use IBL techniques.
@@ -272,19 +290,49 @@ Finally!!, we get to point of the post. We are now on the ``Diffuse side of the 
 
 **Ambient Occlusion (AO)** is a rendering technique used to estimate how much ambient light reaches a surface point. In essence, **it simulates how exposed each point is to surrounding light**, based on nearby geometry.
 
-{% equation id="ao-formula" %}
+<!-- {% equation id="ao-formula" %}
 AO(p) = \frac{1}{\pi} \int_{\Omega} V(p, \omega) \, (n \cdot \omega) \, d\omega
 {% endequation %}
 
-**Explanation:**  
+**Where:**  
 - {% equation_inline p %}: Surface point being evaluated.  
 - {% equation_inline n %}: Surface normal at {% equation_inline p %}.  
 - {% equation_inline \omega %}: Sampled direction within the hemisphere {% equation_inline \Omega %} centered around {% equation_inline n %}.  
 - {% equation_inline V(p, \omega) %}: Visibility function; returns 1 if the direction {% equation_inline \omega %} from {% equation_inline p %} is unoccluded, 0 if occluded by geometry. There are other visibility functions that we can choose from. 
-- {% equation_inline n \cdot \omega %}: Lambertian cosine weighting, giving more influence to directions closer to the normal.  
-- The integral averages visibility over all directions in the hemisphere, weighted by the cosine of the angle to the normal. The result is normalized by {% equation_inline \frac{1}{\pi} %}.
+- {% equation_inline n \cdot \omega %}: Lambertian cosine weighting, giving more influence to directions closer to the normal.   -->
 
-{% alert secondary %}
+AO follows the same principle as Reflection Occlusion, but instead of checking a single reflection direction, **we must evaluate all directions from which light can reach the surface point**. 
+
+This difference stems from the fundamental behavior of diffuse materials: while specular reflections bounce light in a single direction (like a mirror), **Lambertian materials** (also known as perfectly diffuse surfaces) **absorb incoming light from any direction and scatter it uniformly in all directions**. Therefore, to accurately compute ambient occlusion, we need to sample the entire hemisphere of possible incoming light directions.
+
+{% alert %}
+At this point, you may be a bit confused on what exactly is "diffuse" or "specular" and what is the difference between this concepts and the irradiance of the surface point.
+
+I want to make the following very clear: In Bidirectional Reflectance Distribution Function (BRDF) we are describing how light reflects off a surface, detailing how incident light from one direction is reflecting into another, considering angles, material properties, wavelenghts and much more.
+
+We are using some concepts related to BRDF because there is a lot of relation between how BRDF behaves and how AO+RO behave BUT we are one step early on the pipeline.
+
+**We are evaluating the directions and quantity of light that we will feed to the BRDF to produce a rendeder.**
+{% endalert %}
+Since global light arrives from all directions in a hemisphere {% ref figure:lambert-w %}, we integrate the visibility function {% equation_inline V(p, \omega) %} over that hemisphere, weighted by Lambert's cosine law:
+
+{% equation id="ao-formula" %}
+AO(p) = \frac{1}{\pi} \int_{\Omega} V(p, \omega) \, (n \cdot \omega) \, d\omega
+{% endequation %}
+
+**Where:**  
+- {% equation_inline \Omega %}: Hemisphere centered around the surface normal {% equation_inline n %}.  
+- {% equation_inline V(p, \omega) %}: Same visibility function used in Reflection Occlusion.
+- {% equation_inline n \cdot \omega %}: Lambertian cosine weighting — directions aligned with the normal contribute more.
+
+This formula computes how much unblocked ambient light reaches point {% equation_inline p %} by averaging visibility across all incoming directions.
+
+In the real world, light rays are often blocked or "occluded" by objects. This effect happens naturally and gives surfaces subtle shadows in creases, corners, and areas where objects are close together. Recreating this effect adds a layer of realism to CGI scenes ({% ref figure:real-world-ao %}).
+
+<!-- we will use a hemisphere per fragment instead of one vector. To avoid millions of calculations, we will approximate the integral with montecarlo approximation.   -->
+
+
+<!-- {% alert secondary %}
 **Reminder:**
 
 Diffuse component is calculated by adding the incident light of all directions into the surface point. For this reason, occlusion can come from any of those directions.
@@ -307,11 +355,8 @@ In summary:
 - **Diffuse + Specular** = physically-based components
 - **Ambient** = artistic enhancement (optional)
 - **AO** = applies to diffuse (physically) and ambient (artistically)
-{% endalert %}
+{% endalert %} -->
 
-This formula computes the ambient occlusion factor at a point by **integrating the fraction of unblocked ambient light over the hemisphere above the surface**, simulating how much ambient light reaches that point.
-
-In the real world, light rays are often blocked or "occluded" by objects. This effect happens naturally and gives surfaces subtle shadows in creases, corners, and areas where objects are close together. Recreating this effect adds a layer of realism to CGI scenes ({% ref figure:real-world-ao %}).
 
 {% figure 
 id="real-world-ao" 
@@ -332,7 +377,7 @@ AO(p) is a scalar field with values usually between 0 and 1 over a surface. It e
 <!-- TODO: generate scalar field image -->
 
 
-**Ambient occlusion will take care of the contact shadows**. It will not account for directional shadows cast by distant light sources like windows — it only simulates shadowing caused by nearby geometry. 
+**Ambient occlusion will take care of the contact shadows**. It will not account for directional shadows cast by distant light sources like a window — it only simulates shadowing caused by nearby geometry. 
 
 Let's now compare the result with *``path tracing``* and *``Image Based Lightning+AO``*. The model **Suzanne should have a shadow under the hat and also occlude light to his right ear**. 
 
@@ -343,7 +388,7 @@ All darkened and lighted areas will be provided from an irradiance texture of th
 For the path traicing, we assume the enviorment image are just millions of points irradiating light towards the object.
 {% endalert %}
 
-{% figure id="shadow-example" caption="LEFT: Path Tracing Shadow Example. RIGHT: IBL+AO" size="0.8" %}
+{% figure id="shadow-example" caption="LEFT: Path Tracing. RIGHT: IBL+AO" size="0.8" %}
 /images/ambient_occlusion/shadow_example.png
 /images/ambient_occlusion/ao_example .png
 {% endfigure %}
@@ -353,33 +398,33 @@ The following interactive example offers three slides:
 - AO: Blocked light factor.
 - shadow: Physically based rendered shadow.
 
+We need all this three components to recreate what we would obtain with path or ray tracing. We are just simplifying the computation at the cost of visual quality.
 
 {% glb_viewer id='viewer-1' models='suzane,sphere' materials='material1,enviorment' %}
 
 
 
-
 ### Computation
-AO is actually the same idea as Reflection Occlusion. The biggest difference is that we will use a hemisphere per fragment instead of one vector. To avoid millions of calculations, we will approximate the integral with montecarlo approximation.  
 
+You may have noticed that if Reflection Occlusion was already expensive on computation terms, calculating all rays in a hemisphere for each surface point would be prohibitive in real world applications. We will use a monte carlo simplification to only calculate a few rays for each point {% ref equation:ao-monte %}.
 
-{% equation id="ao-formula" %}
+{% equation id="ao-monte" %}
 AO(p) \approx \frac{1}{N} \sum_{i=1}^{N} V(p, w_i) \cdot (n \cdot w_i)
 {% endequation %}
 
-``The diffuse light Concept:`` Mirrors bounce light from exactly one point (at least in a perfect mirror). There are cases where the mirror may be a bit dirty and it reflects light from closer directions generating a blurred image. Diffuse light works under the premise that  ``light will hit the surface from all directions``. This is due at the nature of photons that penetrates on the first layers of the object and bounce back to the observator.
+<!-- ``The diffuse light Concept:`` Mirrors bounce light from exactly one point (at least in a perfect mirror). There are cases where the mirror may be a bit dirty and it reflects light from closer directions generating a blurred image. Diffuse light works under the premise that  ``light will hit the surface from all directions``. This is due at the nature of photons that penetrates on the first layers of the object and bounce back to the observator. -->
 
-{% figure id="diffuse-variable" caption="Three spheres with different diffuse component" %}
+<!-- {% figure id="diffuse-variable" caption="Three spheres with different diffuse component" %}
 /images/ambient_occlusion/comparing_spheres.png
-{% endfigure %}
+{% endfigure %} -->
 
-{% alert warning %}
+<!-- {% alert warning %}
 This is only for illustration purposes. 
 **Concepts like Specular, Diffuse, microfacet model, Roughness, Metalness, Fresnel, Physically Based Rendering and scattering light deserve a post for themselves.** 
 
 I will try to explain in the future the physical principles behind  diffuse and specular lights. For the moment lets just assume the ``diffuse component represents the absorbed light inside the surface and radiated back in random directions``.
 
-{% endalert %}
+{% endalert %} -->
 
 
 For more context we can look at the lambertian formula. You can also look at {% cite learnopengl_diffuse_irradiance %}:
@@ -424,11 +469,12 @@ AO(p) = \frac{1}{N} \sum_{i=1}^{N} V(p, w_i) \cdot (n \cdot w_i)
 /images/ambient_occlusion/ambient occlusion dot.png
 {% endfigure %}
 
-**This technique is view independent** therefore we can bake it and use it in any context.
+**This technique is view independent** therefore we can bake it and use it in any context as long as geometry does not change. In case the floating disk moved dynamically over time, we would have to recompute ambient occlusion for all geometry. This makes the technique invalid for real time applications with dinamic geometry.
 
 <!-- With the above implementations, hemisphere rays weighted by aligment with normal direction, would be enough to make a correct implementation.  -->
 <!-- Further improvements would involve keeping track of the bounce color and weight it on the angle. In case the predominant direction is occluded, we will not use the main color but the surrounding ones. This is particularly usefull to avoid the sky illumination for example when there is a roof.   A simplification of this method is to store a vector that is not the normal but it represents better the final color we look for -->
 
+#### Optional enhancements 
 We can go even further and register the mean direction of no-occlusion to later on color that fragment based on the bended normal direction of not occluded vectors. We can also detect the distance of the occluding object to weight length collision.
 
 {% equation id="ao-bent-normal" %}
@@ -443,7 +489,7 @@ Where:
 
 This formula averages all incident directions that are not occluded, resulting in the mean direction of unblocked ambient light.
 
-{% figure caption="Ambient occlusion with dot product weight" id="ao-result"  size="0.5" col="1" %}
+{% figure caption="Plot of Bent Normals affected by two occluders (red and yellow elipsoides)" id="ao-result"  size="0.5" col="1" %}
 /images/ambient_occlusion/normal collision direction.png
 {% endfigure %}
 
@@ -455,12 +501,13 @@ imatge de ambient occlusion applicat
 imatge guardant el vector mes representatiu de la geometria
 imatge de ambient occlusion amb nou vector applicat
 -->
-
+{% alert %}
 Lets review what we got until this point and put names to this techineques:
-- Ray traced AO: Realistic but requires Ray tracing only avalible on some GPU's and of limited capacity (maybe a 100 rays for a hole sceene), too little resolution unless multiple passes.
+- Ray traced AO: Realistic but requires Ray tracing only avalible on some GPU's and of limited capacity (maybe a 100 rays for a hole sceene), too little resolution unless multiple passes. This technique can be used to bake textures but not for dynamic and real time applications.
 - Hemispherical sampling: with some path traycing or ray tracing technique we check the occlusion on each surface point taking into account all directions on a hemisphere oriented in the normal direction.
 - Bent normals/irradiance volume: we store the less occluded direction and use it to calculate the surface color.
 - Baked AO maps in textures: once the above calculations are done, we proceed to store the result.
+{% endalert %}
 
 <!-- Ambient Occlusion map: Once we have the scene geometry, we iterate over all points in the surface and generate an hemisphere oriented in the surface normal direction. Now we can check for colisions of the rays being casted in those directions and store the result plus the angle. Based on the lambertian formula, we know that incident light has more effect when the angle is close to 0º and it starts to reflect more light the closer it gets to 90º degrees.
 
