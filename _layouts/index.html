@@ -110,32 +110,21 @@
 
     {% include navbar.html %}
 
-    <div class="container about-me" >
+    <div class="container about-me">
         <!-- About me section -->
-        <div class="row justify-content-center">
-            <!-- Row 1: About me title -->
-            <!-- Row 2: Image and text -->
-            <div class="row">
-                <div class="col-lg-4 col-md-5 col-12 mb-3 d-flex justify-content-center">
-                    <img src="/images/logogriscuadrado.png" alt="Logo" class="img-fluid img-fluid-hero">
-                </div>
-                <div class="col-lg-8 col-md-7 col-12 d-flex flex-column justify-content-center">
-                    <div class="fw-light">
-                        I have a <span class="fw-bolder">master degree in computer graphics</span> by the Polytechnic
-                        University of Catalonya
-                        and a <span class="fw-bolder">bachelor's degree in Digital Technologies and Multimedia</span> by the
-                        Polytechnic University of Valencia.
-                    </div>
-                    <div class="my-3">
-                        I like photography, Visual Effects, CGI and developing multimedia apps.
-                    </div>
-                </div>
+        <div class="row justify-content-center align-items-stretch">
+            <div class="col col-auto">
+                <img src="/images/logogriscuadrado.png" alt="Logo" class="img-fluid img-fluid-hero">
             </div>
-
-            <div class="row justify-content-center">
-                <div class="col-auto">
+            <div class="col d-flex flex-column justify-content-between">
+                <span style="white-space: pre-line;">
+                    Hi, I'm Carles! 
+                    I create content about computer graphics, VFX, and CGI.
+                    Explore my posts and projects, or visit my YouTube channel for more.
+                </span>
+                <span class="mt-auto">
                     {% include media.html %}
-                </div>
+                </span>
             </div>
         </div>
     </div>
@@ -146,7 +135,7 @@
         <div class="row mt-4 list">
             <ul class="nav nav-pills p-0 nav-fill" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="projects-tab" data-bs-toggle="pill" data-bs-target="#projects"
+                    <bubordertton class="nav-link active" id="projects-tab" data-bs-toggle="pill" data-bs-target="#projects"
                         type="button" role="tab" aria-controls="projects" aria-selected="true">Projects</button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -166,27 +155,8 @@
                     {% include post_list.html category='post' %}
                 </div>
                 <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    <div class="container mt-4">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8 col-md-10 col-12">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-5 col-12 mb-3 d-flex justify-content-center">
-                                        <img src="/images/logogriscuadrado.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
-                                    </div>
-                                    <div class="col-lg-8 col-md-7 col-12 d-flex flex-column justify-content-center">
-                                        <div class="fw-light">
-                                            I have a <span class="fw-bolder">master degree in computer graphics</span> by the Polytechnic
-                                            University of Catalonya
-                                            and a <span class="fw-bolder">bachelor's degree in Digital Technologies and Multimedia</span> by the
-                                            Polytechnic University of Valencia.
-                                        </div>
-                                        <div class="my-3">
-                                            I like photography, Visual Effects, CGI and developing multimedia apps.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="justify-content-center p-3">
+                        {% include cv.html %}
                     </div>
                 </div>
             </div>
