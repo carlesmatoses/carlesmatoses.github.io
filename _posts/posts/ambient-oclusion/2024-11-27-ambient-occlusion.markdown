@@ -74,6 +74,13 @@ GIDE FOR WRITING THIS POST
 
 -->
 
+<p style="margin-top:30px;margin-bottom:-20px;color:#888;font-size:1.05em;">
+Check my video (˶ᵔ ᵕ ᵔ˶)
+</p>
+
+{% figure id="youtube" size="1.0" caption="Oclusion ambiental" col="1" %}
+https://www.youtube.com/watch?v=lFb3bZGwnyQ
+{% endfigure %}
 
 # Introduction
 <!-- Representing reality has been an impactful research field for centuries. It exists across various artistic techniques such as painting and sculpture.  -->
@@ -374,6 +381,8 @@ That said, **ambient occlusion is not physically accurate**, but rather an *arti
 
 AO(p) is a scalar field with values usually between 0 and 1 over a surface. It encodes how much light is reaching at any point in the field. This technique is agnostic to the scene lights, therefore to calculate it we only need the geometry. As long as geometry doesn't change, it can be baked.
 
+In the world of games and other real time applications, it is common to only bake **local ambient occlusion**, meaning that only the self geometry of the object is used to calculate AO. If the object moves around the scene, the AO map does not need to change but there will not be any darkening on near by surfaces.
+
 <!-- TODO: generate scalar field image -->
 
 
@@ -385,7 +394,7 @@ Let's now compare the result with *``path tracing``* and *``Image Based Lightnin
 We will use an Image Based Lighting Global Illumination technique where we project an image into the geometry based on its normal direction (diffuse lightning).
 All darkened and lighted areas will be provided from an irradiance texture of the environment.
 
-For the path traicing, we assume the enviorment image are just millions of points irradiating light towards the object.
+For the path tracing, we assume the enviorment image are just millions of points irradiating light towards the object.
 {% endalert %}
 
 {% figure id="shadow-example" caption="LEFT: Path Tracing. RIGHT: IBL+AO" size="0.8" %}
@@ -525,7 +534,7 @@ Lets review what we got until this point and put names to this techineques:
 This is the basic idea behind Ambient occlusion. The combination of AO and RO on the different sides of PBR rendering provides a good starting point that can be improved further artistically.
 
 {% equation id="eq:PBR" %}
-fr = (fr_{diffuse} \cdot AO_{map}) \\ \hspace{0.8cm} + \\ \hspace{0.8cm} (fr_{specular} \cdot RO_{map})
+fr = (fr_{diffuse} \cdot AO_{map})  + (fr_{specular} \cdot RO_{map})
 {% endequation %}
 
 As mentioned, there is a big computation requirement for this technique that prevents it's use in real time. To solve this problem, a new set of techniques called Real Time Ambient Occlusion emerged. In exchange for accuracy, they archieve real time rendering on dynamic scenes that can not be backed. Usually they do not implement the reflection occlusion component since it requires too much computations that can not be avoided if we want a good result on the RO map.  
