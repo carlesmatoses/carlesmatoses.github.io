@@ -1,7 +1,7 @@
 PATH
   remote: _plugins/jekyll-science-kit-computer-graphics
   specs:
-    jekyll-science-kit-computer-graphics (0.1.10)
+    jekyll-science-kit-computer-graphics (0.1.20)
       bibtex-ruby
       jekyll (>= 3.0)
 
