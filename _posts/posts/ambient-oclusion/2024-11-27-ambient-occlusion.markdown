@@ -79,8 +79,8 @@ GIDE FOR WRITING THIS POST
 Check my video (˶ᵔ ᵕ ᵔ˶)
 </p>
 
-{% figure id="youtube" size="1.0" caption="Oclusion ambiental" col="1" %}
-https://www.youtube.com/watch?v=lFb3bZGwnyQ
+{% figure id="youtube" width="100%" caption="Oclusion ambiental" %}
+  {% fig_img src="https://www.youtube.com/watch?v=lFb3bZGwnyQ" width="100%" %}
 {% endfigure %}
 
 # Introduction
@@ -94,17 +94,17 @@ In recent years we have seen an increasing graphical improvement on computer gen
 
 <!-- We all like Games, Films, cartoons and other media contents. In recent years we have seen an increasing graphical improvement trying to get closer to reality. This pursuit has existed for centuries across various artistic fields such as paintings and sculpture. On the impressionist movement, they tried to capture a scene without shapes or form, just representing the light and letting it define the elements.  -->
 
-{% figure id="paintings" size="1.0" caption="Paintings trying to represent light in an appealing way" col="2" %}
-https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/960px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg
-/images/ambient_occlusion/toystory.jpg
+{% figure id="paintings" width="100%" caption="Paintings trying to represent light in an appealing way" %}
+  {% fig_img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/960px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg" width="49%" %}
+  {% fig_img src="/images/ambient_occlusion/toystory.jpg" width="49%" %}
 {% endfigure %}
 
 Computer generated films such as Toy story, illustrates the evolution of phisically based rendering techniques (PBR). Even high stylized games are not free of this requirement of respecting **light behavior** since it **directly impacts the viewers inmersion into the story**. 
 
 That is why some rules are constant for good looking media such as **light propertyes** (color, intensity, spectrum, ...) and **light interaction** (global illumination, ambient occlusion, transparency, caustics, ... ). 
 
-{% figure id="Ambient-Occlusion-Skyrim" size="1.0" caption="https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg" %}
-https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg
+{% figure id="Ambient-Occlusion-Skyrim" width="100%" caption="https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg" %}
+  {% fig_img src="https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg" width="100%" %}
 {% endfigure %}
 
 
@@ -116,8 +116,8 @@ These concepts are out of scope but I will summarize them.
 
 One of the characteristics of light is that it bounces from one surface to another. Calculating all bounces of light reaching each surface point is expensive but provides good results. For this calculations we use path tracing and ray tracing algorithms.
 
-{% figure id="lumen" size="0.66" caption="Unreal Engine: Lumen technology." %}
-https://cdn2.unrealengine.com/feed-ue5-early-access-livestream-lumen-1920x1080-a4d78e37fd8e.jpg
+{% figure id="lumen" width="66%" caption="Unreal Engine: Lumen technology." %}
+  {% fig_img src="https://cdn2.unrealengine.com/feed-ue5-early-access-livestream-lumen-1920x1080-a4d78e37fd8e.jpg" width="100%" %}
 {% endfigure %}
 
 Algorithms like **ray tracing** and **path tracing** simulate full ``global illumination``, but they require significant processing power. In exchange, they provide **close to real light occlusion** and **do not need to use ambient occlusion techniques**. AO can still be used for enhancing some effects.
@@ -133,36 +133,36 @@ Cycles, for example, is a path tracing renderer integrated in Blender that simul
 
 To simplify or "fake" global illumination **we could place lights from all directions** by "gessing" how the surface should look. Whith this strategy we avoid computing ``global illumination`` and we only use a single bounce from each light.
 
-{% figure id="global-illumination" size="1.0" caption="Global Illumination using virtual lights." %}
-    /images/ambient_occlusion/global_ilumination.png
-    /images/ambient_occlusion/global_ilumination_back.png
+{% figure id="global-illumination" width="100%" caption="Global Illumination using virtual lights." %}
+  {% fig_img src="/images/ambient_occlusion/global_ilumination.png" width="49%" %}
+  {% fig_img src="/images/ambient_occlusion/global_ilumination_back.png" width="49%" %}
 {% endfigure %}
 
 
 ### Image Base Lighting
 Instead of placing hundreds of lights in the scene, we can **group them into an image**. This images are called: environment texture, cube map, HDRI, spherical map... Each one with its own characteristics. 
 
-{% figure id="global_enviorment" size="0.66" caption="HDRI image of a house" %}
-    /images/ambient_occlusion/photo_studio_loft_hall_2k.jpg
+{% figure id="global_enviorment" width="66%" caption="HDRI image of a house" %}
+  {% fig_img src="/images/ambient_occlusion/photo_studio_loft_hall_2k.jpg" width="100%" %}
 {% endfigure %}
 
-{% figure id="gi_cycles" size="0.5" caption="Global Illumination using environment image and path trace engine (cycles)." %}
-    /images/ambient_occlusion/global_ilumination_cycles.png
+{% figure id="gi_cycles" width="50%" caption="Global Illumination using environment image and path trace engine (cycles)." %}
+  {% fig_img src="/images/ambient_occlusion/global_ilumination_cycles.png" width="100%" %}
 {% endfigure %}
 
-{% figure id="ibl" size="0.5" caption="Global Illumination using environment image and Image Based Lighting (IBL)." %}
-    /images/ambient_occlusion/global_ilumination_eevee.png
+{% figure id="ibl" width="50%" caption="Global Illumination using environment image and Image Based Lighting (IBL)." %}
+  {% fig_img src="/images/ambient_occlusion/global_ilumination_eevee.png" width="100%" %}
 {% endfigure %}
 
 For ``global illumination`` we will calculate light and bounces assuming the environment image are virtual light placed really far. 
 
 For ``Image Based Lightning`` we will use it as a projected texture on the surface making the calculation almost instant compared to Ray Tracing or Path Tracing. One limitation of ``IBL`` is that **we do not take into account occlusion**, buuuuut... we are trying to overcome that.
 
-{% figure id="IBL-no-shadows" size="0.49" caption="Suzanne with Image Based Lighting shows light under the hat and is not casting shadows from the windows" %}
-/images/ambient_occlusion/ao_without_shadows.png
+{% figure id="IBL-no-shadows" width="49%" caption="Suzanne with Image Based Lighting shows light under the hat and is not casting shadows from the windows" %}
+  {% fig_img src="/images/ambient_occlusion/ao_without_shadows.png" width="100%" %}
 {% endfigure %}
-{% figure id="global-illumination-path-tracing" size="0.49" caption="Suzanne rendered with path tracing shows how light is blocked by near geometry as well as blocking lights from the windows" %}
-/images/ambient_occlusion/ao_with_shadows.png
+{% figure id="global-illumination-path-tracing" width="49%" caption="Suzanne rendered with path tracing shows how light is blocked by near geometry as well as blocking lights from the windows" %}
+  {% fig_img src="/images/ambient_occlusion/ao_with_shadows.png" width="100%" %}
 {% endfigure %}
 
 {% alert  %}
@@ -172,8 +172,8 @@ RESUME: **The most physically accurate approach for rendering is by ray trancing
 # Birth of a new technique
 Ambient Occlusion was first used in "Pearl harbour" to store the quantity of ambient light that reaches the surface of an airplane {% ref figure:pearl-harbor %}. This same technique was used in Cruise Control a few years before to determine the reflection intensity of each window. Find more information on  {% cite history-background %}.
 
-{% figure id="pearl-harbor" caption="Pearl Harbor Reflection Occlusion." %}
-https://www.fxguide.com/wp-content/uploads/2011/01/ocllusion.jpg
+{% figure id="pearl-harbor" width="100%" caption="Pearl Harbor Reflection Occlusion." %}
+  {% fig_img src="https://www.fxguide.com/wp-content/uploads/2011/01/ocllusion.jpg" width="100%" %}
 {% endfigure %}
 
 
@@ -261,12 +261,12 @@ Remember, this technique is **view dependent** therefore we need to compute it e
 6. Use it to darken the Reflection Map with a shader.
 
 
-{% figure id="reflect-vectors" caption="Generate reflect vectors" size="0.5" %}
-/images/ambient_occlusion/ReflectionOcclusion.png
+{% figure id="reflect-vectors" width="50%" caption="Generate reflect vectors" %}
+  {% fig_img src="/images/ambient_occlusion/ReflectionOcclusion.png" width="100%" %}
 {% endfigure %}
 
-{% figure id="reflection-occlusion-image" caption="Detect reflect vectors occlusions" size="0.5" %}
-/images/ambient_occlusion/ReflectionOcclusion_raytrace.png
+{% figure id="reflection-occlusion-image" width="50%" caption="Detect reflect vectors occlusions" %}
+  {% fig_img src="/images/ambient_occlusion/ReflectionOcclusion_raytrace.png" width="100%" %}
 {% endfigure %}
 
 {% alert %}
@@ -286,8 +286,8 @@ Here, {% equation_inline \epsilon %} represents the radius where we are detectin
 
 In **path tracing renderers**, you are usually provided a **parameter to choose the bounces limit**. This is of course more realistic, but may take several minutes {% ref figure:reflect-bounces %}. We also avoid showing incorrect reflections when occluders are far since we dont use IBL techniques.
 
-{% figure id="reflect-bounces" caption="Cycles Reflections with 0, 1 and 2 bounces respectively." %}
-/images/ambient_occlusion/cyclesReflections.png
+{% figure id="reflect-bounces" width="100%" caption="Cycles Reflections with 0, 1 and 2 bounces respectively." %}
+  {% fig_img src="/images/ambient_occlusion/cyclesReflections.png" width="100%" %}
 {% endfigure %}
 
 As easy and powerful this method may seem, it is not used because of the processing time it takes for each frame to calculate collision. New techniques like Ray Tracing may be able to provide real time Reflection Maps in the future.
@@ -366,18 +366,15 @@ In summary:
 {% endalert %} -->
 
 
-{% figure 
-id="real-world-ao" 
-size="0.49"
-caption="Ambient occlusion visible in real-world objects." %}
-/images/ambient_occlusion/real_ao.jpg
+{% figure id="real-world-ao" width="49%" caption="Ambient occlusion visible in real-world objects." %}
+  {% fig_img src="/images/ambient_occlusion/real_ao.jpg" width="100%" %}
 {% endfigure %}
 
 That said, **ambient occlusion is not physically accurate**, but rather an *artistic approximation* of a real-world phenomenon. It's designed to enhance depth perception and spatial relationships in rendered images without simulating full global illumination {% ref figure:ao-example %}.
 
-{% figure id="ao-example" caption="Wave grid before and after applying Ambient Occlusion" %}
-/images/ambient_occlusion/blender_ao_shader_off.png
-/images/ambient_occlusion/blender_ao_shader.png
+{% figure id="ao-example" width="100%" caption="Wave grid before and after applying Ambient Occlusion" %}
+  {% fig_img src="/images/ambient_occlusion/blender_ao_shader_off.png" width="49%" %}
+  {% fig_img src="/images/ambient_occlusion/blender_ao_shader.png" width="49%" %}
 {% endfigure %}
 
 AO(p) is a scalar field with values usually between 0 and 1 over a surface. It encodes how much light is reaching at any point in the field. This technique is agnostic to the scene lights, therefore to calculate it we only need the geometry. As long as geometry doesn't change, it can be baked.
@@ -398,9 +395,9 @@ All darkened and lighted areas will be provided from an irradiance texture of th
 For the path tracing, we assume the enviorment image are just millions of points irradiating light towards the object.
 {% endalert %}
 
-{% figure id="shadow-example" caption="LEFT: Path Tracing. RIGHT: IBL+AO" size="0.8" %}
-/images/ambient_occlusion/shadow_example.png
-/images/ambient_occlusion/ao_example .png
+{% figure id="shadow-example" width="80%" caption="LEFT: Path Tracing. RIGHT: IBL+AO" %}
+  {% fig_img src="/images/ambient_occlusion/shadow_example.png" width="49%" %}
+  {% fig_img src="/images/ambient_occlusion/ao_example .png" width="49%" %}
 {% endfigure %}
 
 The following interactive example offers three slides:
@@ -442,8 +439,8 @@ For more context we can look at the lambertian formula. You can also look at {% 
 L_d = k_d \cdot I \cdot max(0,N \cdot L)
 {% endequation %}
 
-{% figure caption="Lambert. Image extracted from ``learnopengl``." id="lambert-w"  size="0.5" col="1" %}
-/images/ambient_occlusion/ibl_hemisphere_sample.png
+{% figure id="lambert-w" width="50%" caption="Lambert. Image extracted from ``learnopengl``." %}
+  {% fig_img src="/images/ambient_occlusion/ibl_hemisphere_sample.png" width="100%" %}
 {% endfigure %}
 
 In Global Illumination, light hits a point from all directions {% ref figure:lambert-w %}, **we must check occlusion on all directions too!!**. 
@@ -456,16 +453,16 @@ A basic algorithm to calculate Ambient Occlusion is to **generate random vectors
 AO(p) = \frac{1}{N} \sum_{i=1}^{N} V(p, w_i)
 {% endequation %}
 
-{% figure caption="Generate random vectors in a hemisphere oriented with the fragment normal" id="ao-basic"  size="0.5" col="1" %}
-/images/ambient_occlusion/ambient occlusion example2.png
+{% figure id="ao-basic" width="50%" caption="Generate random vectors in a hemisphere oriented with the fragment normal" %}
+  {% fig_img src="/images/ambient_occlusion/ambient occlusion example2.png" width="100%" %}
 {% endfigure %}
 
-{% figure caption="Average the number of collisions for each fragment" id="ao-average"  size="0.5" col="1" %}
-/images/ambient_occlusion/ambient occlusion example.png
+{% figure id="ao-average" width="50%" caption="Average the number of collisions for each fragment" %}
+  {% fig_img src="/images/ambient_occlusion/ambient occlusion example.png" width="100%" %}
 {% endfigure %}
 
-{% figure caption="Ambient occlusion Basic implementation" id="ao-result"  size="0.5" col="1" %}
-/images/ambient_occlusion/ambient occlusion example1.png
+{% figure id="ao-result" width="50%" caption="Ambient occlusion Basic implementation" %}
+  {% fig_img src="/images/ambient_occlusion/ambient occlusion example1.png" width="100%" %}
 {% endfigure %}
 
 An additional layer of realism would be to integrate lambert's rule that states: **the more aligned incident rays are with the fragment's normal, the more they contribute to the final result**.
@@ -475,8 +472,8 @@ AO(p) = \frac{1}{N} \sum_{i=1}^{N} V(p, w_i) \cdot (n \cdot w_i)
 {% endequation %}
 
 
-{% figure caption="Ambient occlusion with dot product weight" id="ao-result"  size="0.5" col="1" %}
-/images/ambient_occlusion/ambient occlusion dot.png
+{% figure id="ao-result" width="50%" caption="Ambient occlusion with dot product weight" %}
+  {% fig_img src="/images/ambient_occlusion/ambient occlusion dot.png" width="100%" %}
 {% endfigure %}
 
 **This technique is view independent** therefore we can bake it and use it in any context as long as geometry does not change. In case the floating disk moved dynamically over time, we would have to recompute ambient occlusion for all geometry. This makes the technique invalid for real time applications with dinamic geometry.
@@ -499,8 +496,8 @@ Where:
 
 This formula averages all incident directions that are not occluded, resulting in the mean direction of unblocked ambient light.
 
-{% figure caption="Plot of Bent Normals affected by two occluders (red and yellow elipsoides)" id="ao-result"  size="0.5" col="1" %}
-/images/ambient_occlusion/normal collision direction.png
+{% figure id="ao-result" width="50%" caption="Plot of Bent Normals affected by two occluders (red and yellow elipsoides)" %}
+  {% fig_img src="/images/ambient_occlusion/normal collision direction.png" width="100%" %}
 {% endfigure %}
 
 
@@ -526,10 +523,10 @@ Lets review what we got until this point and put names to this techineques:
 
 
 # Conclusion
-{% figure caption="Image Based Lightning implementation with AO+RO" id="imb-result"  size="1.0" col="3" %}
-/images/ambient_occlusion/IMB1.png
-/images/ambient_occlusion/IMB2.png
-/images/ambient_occlusion/IMB3.png
+{% figure id="imb-result" width="100%" caption="Image Based Lightning implementation with AO+RO" %}
+  {% fig_img src="/images/ambient_occlusion/IMB1.png" width="32%" %}
+  {% fig_img src="/images/ambient_occlusion/IMB2.png" width="32%" %}
+  {% fig_img src="/images/ambient_occlusion/IMB3.png" width="32%" %}
 {% endfigure %}
 
 This is the basic idea behind Ambient occlusion. The combination of AO and RO on the different sides of PBR rendering provides a good starting point that can be improved further artistically.

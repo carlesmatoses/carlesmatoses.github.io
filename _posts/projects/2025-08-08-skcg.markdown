@@ -136,14 +136,14 @@ A simple dark alert—check it out!
 
 # Images:
 
-- Multiple images in a single figure  {% ref figure:1:2:3 %}:
+- Multiple images in a single figure  {% ref figure:1-2-3 %}:
 
-{% figure id="1:2:3" size="1.0" 
+{% figure id="1-2-3" width="100%" 
   caption="Three images but only a max of two images per row"
-  col="2" %}
-  /images/image-not-found.png
-  /images/image-not-found-long.png
-  /images/image-not-found-long.png
+%}
+  {% fig_img src="/images/image-not-found.png" width="49%" %}
+  {% fig_img src="/images/image-not-found-long.png" width="49%" %}
+  {% fig_img src="/images/image-not-found-long.png" width="49%" %}
 {% endfigure %}
 
 ```liquid
@@ -151,44 +151,80 @@ A simple dark alert—check it out!
 Multiple images in a single figure  {% ref figure:1:2:3 %}
 
 {% figure id="1:2:3" size="1.0" 
-  caption="Three images but only a max of two images per row"
-  col="2" %}
-  /images/image-not-found.png
-  /images/image-not-found-long.png
-  /images/image-not-found-long.png
+  caption="Three images but only a max of two images per row 48%"
+%}
+  {% fig_img src="/images/image-not-found.png" width="29%" %}
+  {% fig_img src="/images/image-not-found-long.png" width="49%" %}
+  {% fig_img src="/images/image-not-found-long.png" width="49%" %}
 {% endfigure %}
 {% endraw %}
 ```
 
 - multiple figures in the same line {% ref figure:img %} {% ref figure:img3 %} {% ref figure:img2 %}: 
 
-{% figure id="img" size="0.49" caption="square image" %}
-/images/image-not-found.png
+{% figure id="img" width="49%" caption="square image" %}
+  {% fig_img src="/images/image-not-found.png" width="100%" %}
 {% endfigure %}
 
-{% figure id="img3" size="0.49" caption="long image" %}
-/images/image-not-found-long.png
+{% figure id="img3" width="49%" caption="long image" %}
+  {% fig_img src="/images/image-not-found-long.png" width="100%" %}
 {% endfigure %}
 
-{% figure id="img2" size="0.49" caption="long image" %}
-/images/image-not-found-long.png
+{% figure id="img2" width="49%" caption="long image" %}
+  {% fig_img src="/images/image-not-found-long.png" width="100%" %}
 {% endfigure %}
 
 ```liquid
 {% raw %}
 
-multiple figures in the same line {% ref figure:img %} {% ref figure:img3 %} {% ref figure:img2 %}: 
+Multiple figures in the same line {% ref figure:img %} {% ref figure:img3 %} {% ref figure:img2 %}: 
 
-{% figure id="img" size="0.49" caption="square image" %}
-/images/image-not-found.png
+{% figure id="img" width="49%" caption="square image" %}
+  {% fig_img src="/images/image-not-found.png" width="100%" %}
 {% endfigure %}
 
-{% figure id="img3" size="0.49" caption="long image" %}
-/images/image-not-found-long.png
+{% figure id="img3" width="49%" caption="long image" %}
+  {% fig_img src="/images/image-not-found-long.png" width="100%" %}
 {% endfigure %}
 
-{% figure id="img2" size="0.49" caption="long image" %}
-/images/image-not-found-long.png
+{% figure id="img2" width="49%" caption="long image" %}
+  {% fig_img src="/images/image-not-found-long.png" width="100%" %}
+{% endfigure %}
+
+{% endraw %}
+```
+
+# Graphs
+We can add mermaid graphs inside a figure the same way we do images:
+
+{% figure id="fig-graph" caption="Dependency graph" width="100%" %}
+  {% fig_mermaid width="100%" caption="optional caption" %}
+sequenceDiagram
+    Alice ->> Bob: Hello Bob, how are you?
+    Bob-->>John: How about you John?
+    Bob--x Alice: I am good thanks!
+    Bob-x John: I am good thanks!
+    Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
+
+    Bob-->Alice: Checking with John...
+    Alice->John: Yes... John, how are you?
+  {% endfig_mermaid %}
+{% endfigure %}
+
+```liquid
+{% raw %}
+{% figure id="fig-graph" caption="Dependency graph" width="100%" %}
+  {% fig_mermaid width="100%" caption="optional caption" %}
+sequenceDiagram
+    Alice ->> Bob: Hello Bob, how are you?
+    Bob-->>John: How about you John?
+    Bob--x Alice: I am good thanks!
+    Bob-x John: I am good thanks!
+    Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
+
+    Bob-->Alice: Checking with John...
+    Alice->John: Yes... John, how are you?
+  {% endfig_mermaid %}
 {% endfigure %}
 {% endraw %}
 ```
