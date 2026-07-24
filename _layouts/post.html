@@ -63,7 +63,15 @@
             </div>
         </div>
 
+        {% if page.header_video %}
+        <video class="headerIMG" autoplay loop muted playsinline preload="metadata"
+               {% if page.header_poster %}poster="{{ page.header_poster }}"{% endif %}>
+            <source src="{{ page.header_video }}" type="video/mp4">
+            <img src="{{ page.preview }}" alt="Couldn't load header video :\" class="headerIMG">
+        </video>
+        {% else %}
         <img src="{{page.preview}}" alt="Couldn't load preview image :\" class="headerIMG">
+        {% endif %}
 
 
         <div class="row justify-content-center">

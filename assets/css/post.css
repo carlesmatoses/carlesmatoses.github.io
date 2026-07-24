@@ -5,8 +5,10 @@
 }
 
 .headerIMG{
+    display: block;
     object-fit: cover;
-    /* overflow: hidden; */
+    object-position: center center;
+    overflow: hidden;
     height: 250px;
     width: 100%;
     margin: 0px;

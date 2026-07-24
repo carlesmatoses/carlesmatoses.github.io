@@ -16,7 +16,15 @@
     <div class="row post-preview">
         {% comment %} If screen is extra small (xs) or small (sm), display as one row {% endcomment %}
         <div class="col-12 col-sm-6 context-image">
+            {% if post.card_video %}
+            <video autoplay loop muted playsinline preload="metadata"
+                   {% if post.header_poster %}poster="{{ post.header_poster }}"{% endif %}>
+                <source src="{{ post.card_video }}" type="video/mp4">
+                <img src="{{ post.preview }}" alt="..." class="img-fluid">
+            </video>
+            {% else %}
             <img src="{{post.preview}}" alt="..." class="img-fluid">
+            {% endif %}
         </div>
         <div class="col-12 col-sm-6 context-text">
             <div class="text-content">
