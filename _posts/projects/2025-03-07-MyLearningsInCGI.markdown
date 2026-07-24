@@ -45,8 +45,8 @@ I spent my following years recreating tutorials and studying the bases of CGI.
 {% figure id="bombilla2.jpg" width="100%" caption="Light Bulb" %}
   {% fig_img src="/images/my_learning_path_cgi/bombilla2.jpg" width="100%" %}
 {% endfigure %}
-{% figure id="toalla 2.jpg" width="100%" caption="Towel" %}
-  {% fig_img src="/images/my_learning_path_cgi/toalla 2.jpg" width="100%" %}
+{% figure id="toalla-2" width="100%" caption="Towel" %}
+  {% fig_img src="/images/my_learning_path_cgi/toalla%202.jpg" width="100%" %}
 {% endfigure %}
 {% figure id="foc2.jpg" width="100%" caption="Fire Simulation" %}
   {% fig_img src="/images/my_learning_path_cgi/foc2.jpg" width="100%" %}
@@ -60,8 +60,8 @@ I spent my following years recreating tutorials and studying the bases of CGI.
 {% figure id="basquet2.jpg" width="100%" caption="Basketball Scene" %}
   {% fig_img src="/images/my_learning_path_cgi/basquet2.jpg" width="100%" %}
 {% endfigure %}
-{% figure id="pendul mono.jpg" width="100%" caption="Simulación Físicas" %}
-  {% fig_img src="/images/my_learning_path_cgi/pendul mono.jpg" width="100%" %}
+{% figure id="pendul-mono" width="100%" caption="Simulación Físicas" %}
+  {% fig_img src="/images/my_learning_path_cgi/pendul%20mono.jpg" width="100%" %}
 {% endfigure %}
 {% figure id="cup_2.jpg" width="100%" caption="Cup with normal maps" %}
   {% fig_img src="/images/my_learning_path_cgi/cup_2.jpg" width="100%" %}
