@@ -60,7 +60,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 0.25rem;
     padding: 0;
 }
 
@@ -73,9 +74,35 @@
 }
 
 .abstract-content {
-    flex-grow: 1;
-    overflow: hidden;
     color: #736e6e;
+    line-height: 1.5;
+}
+
+/* The abstract keeps its inline formatting (bold, italic, code). It is clamped
+   to 4 lines by height (plain overflow:hidden, so block children like <p>/<ol>
+   lay out normally rather than overlapping); a separate "…" line is shown below
+   only when the text overflows (clamp-abstract.js toggles .is-truncated). */
+.abstract-text {
+    max-height: 6em; /* 4 lines × 1.5 line-height */
+    overflow: hidden;
+}
+
+/* Trim outer margins of the abstract's block children so the height clamp
+   lands cleanly on the text rather than on paragraph/list spacing. */
+.abstract-text > :first-child {
+    margin-top: 0;
+}
+.abstract-text > :last-child {
+    margin-bottom: 0;
+}
+
+.abstract-ellipsis {
+    display: none;
+    line-height: 1;
+}
+
+.abstract-content.is-truncated .abstract-ellipsis {
+    display: block;
 }
 
 
