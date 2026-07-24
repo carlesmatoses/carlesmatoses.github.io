@@ -12,7 +12,9 @@
     transition: all 0.3s;
     transform: scale(1.0);
     /* background-color: #f5f7f8; */
-    padding: 10px;
+    padding: 0;
+    /* Zero the Bootstrap column gutter so image/text reach the card edges */
+    --bs-gutter-x: 0;
     /* Remove fixed width and margins that cause spacing issues */
     width: 100%;
     margin-left: 0;
@@ -59,7 +61,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 5px;
+    padding: 0;
+}
+
+/* Keep a gap between image and text without padding the outer card edges.
+   Side-by-side (sm+): horizontal gap to the right of the image. */
+@media (min-width: 576px) {
+    .context-image {
+        padding-right: 15px;
+    }
 }
 
 .abstract-content {
@@ -80,6 +90,11 @@
     .post-preview img {
         width: 100%;
         height: 200px;
+    }
+
+    /* Stacked layout: vertical gap between image and the text below it */
+    .context-image {
+        padding-bottom: 12px;
     }
 }
 
