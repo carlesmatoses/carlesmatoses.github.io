@@ -7,9 +7,8 @@ categories: project # post, project
 permalink: post/skcg
 ---
 
-SKCG is used in the webpage to provide image, bibliography and some other liquid tags for faster formatting. 
+SKCG is used in the webpage to provide image, bibliography and some other liquid tags for faster formatting.
 
-It is meant to help on writing computer graphics related posts. 
 <!-- end-abstract -->
 
 
