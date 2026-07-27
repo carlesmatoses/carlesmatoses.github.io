@@ -173,7 +173,7 @@ RESUME: **The most physically accurate approach for rendering is by ray trancing
 Ambient Occlusion was first used in "Pearl harbour" to store the quantity of ambient light that reaches the surface of an airplane {% ref figure:pearl-harbor %}. This same technique was used in Cruise Control a few years before to determine the reflection intensity of each window. Find more information on  {% cite history-background %}.
 
 {% figure id="pearl-harbor" width="100%" caption="Pearl Harbor Reflection Occlusion." %}
-  {% fig_img src="https://www.fxguide.com/wp-content/uploads/2011/01/ocllusion.jpg" width="100%" %}
+  {% fig_img src="/images/ambient_occlusion/ocllusionpearlharbor.jpg" width="100%" %}
 {% endfigure %}
 
 
