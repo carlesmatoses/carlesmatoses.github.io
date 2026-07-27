@@ -112,22 +112,26 @@
 
     <div class="container about-me">
         <!-- About me section -->
-        <div class="row justify-content-center align-items-stretch">
-            <div class="col col-auto">
+        <!-- Phone: image, text, media stacked & centered. md+: image left, content right, horizontal. -->
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+            <!-- Image -->
+            <div class="text-center">
                 <img src="/images/logogriscuadrado.png" alt="Logo" class="img-fluid img-fluid-hero">
             </div>
-            <div class="col d-flex flex-column justify-content-center align-items-start text-start">
-                <span class="fw-semibold fs-4 mb-2">
+            <!-- Content: text + media. On md+, stretch to the image height and space the blocks out. -->
+            <div class="flex-grow-1 text-center text-md-start d-flex flex-column justify-content-md-between align-self-md-stretch">
+                <!-- Text -->
+                <div class="fw-semibold fs-4 mb-2">
                     Hi, I'm Carles.
-                </span>
-                <span class="text-muted" style="font-size: 1.05em;">
+                </div>
+                <div class="text-muted" style="font-size: 1.05em;">
                     I share insights on <span class="text-primary">computer graphics</span>, <span class="text-primary">VFX</span>, and <span class="text-primary">CGI</span>.
                     Discover my <a href="?posts" class="link-secondary text-decoration-none">posts</a>, <a href="?projects" class="link-secondary text-decoration-none">projects</a>,
                     or visit my <a href="https://www.youtube.com/@selrak14" class="link-danger text-decoration-none" target="_blank" rel="noopener">YouTube channel</a>.
-                </span>
-                <!-- Social links as a continuation of the text, left-aligned -->
+                </div>
+                <!-- Media: centered on phone, left-aligned on md+ -->
                 <div class="mt-2 pt-2">
-                    {% include media.html size="fa-2x" align="text-start" %}
+                    {% include media.html size="fa-2x" align="text-center text-md-start" %}
                 </div>
             </div>
         </div>
