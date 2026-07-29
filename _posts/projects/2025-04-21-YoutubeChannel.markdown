@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Youtube Channel"
-date:   2025-09-21 18:17:51 +0200
+date:   2026-07-27 12:00:00 +0200
 categories: project
 
 e_permalink: https://www.youtube.com/@selrak14

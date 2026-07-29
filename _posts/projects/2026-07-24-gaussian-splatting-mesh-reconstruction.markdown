@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Gaussian Splatting and Mesh Reconstruction"
-date:   2026-07-24 12:00:00 +0200
+date:   2026-07-29 12:00:00 +0200
 preview: "/images/gaussian-splatting-mesh/hero_mesh_reconstruction.jpg"
 header_video: "/images/gaussian-splatting-mesh/header_loop.mp4"
 card_video: "/images/gaussian-splatting-mesh/card_loop.mp4"

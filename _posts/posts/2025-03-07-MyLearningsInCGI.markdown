@@ -2,8 +2,8 @@
 layout: post
 title:  "My Learning Path on CGI"
 date:   2025-03-07 11:17:51 +0200
-categories: project
-permalink: projects/MyLearningPathCGI
+categories: post
+permalink: post/MyLearningPathCGI
 preview: "/images/my_learning_path_cgi/header.jpg"
 
 ---
