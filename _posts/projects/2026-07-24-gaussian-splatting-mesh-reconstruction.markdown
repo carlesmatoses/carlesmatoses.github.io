@@ -10,7 +10,7 @@ categories: project # post, project
 permalink: project/gaussian-splatting-mesh-reconstruction
 ---
 
-This is the digital version of my **thesis**, *Geometric Mesh Reconstruction and Differentiable Smoothing for Gaussian Splatting*. It walks through how a scene captured with photos becomes a clean, low-polygon 3D mesh, and describes my two contributions:
+This post is a summary of my thesis. It walks through how a scene captured with photos becomes a clean, low-polygon 3D mesh, and describes my two contributions:
 
 1. **Meshfacto** — porting the state-of-the-art *Mesh-In-the-Loop* (MILo) method into the **Nerfstudio** library, cutting the polygon count of the extracted meshes dramatically.
 2. **Differentiable smoothers** — extra training losses that regularize the mesh and stabilize the optimization.
@@ -27,7 +27,7 @@ This is the digital version of my **thesis**, *Geometric Mesh Reconstruction and
 
 # Introduction
 
-{% figure id="hero" width="100%" caption="The same surface reconstructed by MILo (left, red) and by Meshfacto (right, green). Both trace the geometry faithfully, but the wireframe insets reveal the difference this thesis is about: Meshfacto reaches the same surface with a far leaner, more regular tessellation." %}
+{% figure id="hero" width="100%" caption="The same surface reconstructed by MILo (left, red) and by Meshfacto (right, green). Both trace the geometry faithfully, but the wireframe insets reveal the difference this post is about: Meshfacto reaches the same surface with a far leaner, more regular tessellation." %}
   {% fig_img src="/images/gaussian-splatting-mesh/hero_mesh_reconstruction.jpg" width="100%" %}
 {% endfigure %}
 
@@ -40,7 +40,7 @@ Long before computers, the *pointillists* had already discovered that a whole sc
 
 **Gaussian Splatting** {% cite kerbl20233dgs %} is the 3D version of the same idea. A scene is represented by millions of small, semi-transparent 3D blobs (``Gaussians``). Each one carries a position, a shape, a color and an opacity, and when they are blended together from a given viewpoint they reproduce a photograph of the scene. Because the whole representation is differentiable, the blobs can be *optimized* directly against a set of input images until the rendering matches reality.
 
-Gaussian Splatting is excellent at **novel view synthesis** — generating photorealistic images from new camera positions — but the cloud of blobs is not a *surface*. For games, VFX, simulation or 3D printing we usually want a **mesh**: a connected set of triangles. Extracting one from a splat cloud is the core problem this thesis works on.
+Gaussian Splatting is excellent at **novel view synthesis** — generating photorealistic images from new camera positions — but the cloud of blobs is not a *surface*. For games, VFX, simulation or 3D printing we usually want a **mesh**: a connected set of triangles. Extracting one from a splat cloud is the core problem this post works through.
 
 A crucial distinction runs through the whole project:
 
@@ -131,7 +131,7 @@ Getting there required filling gaps in the stock gsplat backend:
 - **Densification / reinitialization.** Instead of relying only on the original adaptive density control, Meshfacto can reinitialize the splats with the depth-based strategy from **Mini-Splatting2** {% cite fang2026efficientscenemodelingstructureaware %} {% cite fang2024minisplattingrepresentingscenesconstrained %}, which redistributes Gaussians onto surfaces far more economically.
 
 {% alert secondary %}
-**An honest caveat, kept from the thesis.** The large drop in polygon count reported below comes **mostly from the densification / reinitialization strategy, not from the smoothing losses** of Contribution 2. The smoothers improve *tessellation regularity*; low-poly *and* high-quality meshes need the two together.
+**A caveat.** The large drop in polygon count reported below comes **mostly from the densification / reinitialization strategy, not from the smoothing losses** of Contribution 2. The smoothers improve *tessellation regularity*; low-poly *and* high-quality meshes need the two together.
 {% endalert %}
 
 
@@ -246,7 +246,7 @@ Before any splatting happens, we need to know where each photo was taken from. *
 
 ## Mesh-quality metrics
 
-To evaluate tessellation quality objectively, the thesis uses local shape metrics such as the **mean-ratio** {% equation_inline S_3 %} (how close a triangle or tetrahedron is to equilateral), the fraction of **degenerate faces**, and a global **gradation** metric measuring how smoothly element sizes vary across the mesh. Two triangles can share the same edge-length ratio yet differ wildly in angles — {% ref figure:mesh-quality %} illustrates why a single ratio is not enough and multiple indicators are needed.
+To evaluate tessellation quality objectively, I use local shape metrics such as the **mean-ratio** {% equation_inline S_3 %} (how close a triangle or tetrahedron is to equilateral), the fraction of **degenerate faces**, and a global **gradation** metric measuring how smoothly element sizes vary across the mesh. Two triangles can share the same edge-length ratio yet differ wildly in angles — {% ref figure:mesh-quality %} illustrates why a single ratio is not enough and multiple indicators are needed.
 
 {% figure id="mesh-quality" width="55%" caption="Two triangles with a similar edge-length ratio but very different angles — a reminder that mesh quality needs more than one indicator." %}
   {% fig_img src="/images/gaussian-splatting-mesh/triangles.png" width="100%" %}
