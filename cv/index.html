@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="description" content="Curriculum vitae of Carles Matoses Gimenez.">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <title>Carles Matoses Gimenez — CV</title>
+
+    <style>
+        :root {
+            --accent: #0d6efd;
+            --text: #212529;
+            --muted: #6c757d;
+            --rule: #dee2e6;
+            --bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 2.5rem 1.25rem 4rem;
+            background: #f4f5f7;
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+        }
+
+        .sheet {
+            max-width: 780px;
+            margin: 0 auto;
+            background: var(--bg);
+            padding: 3rem 3.25rem;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .top-bar {
+            max-width: 780px;
+            margin: 0 auto 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent);
+        }
+
+        .print-btn {
+            border: 1px solid var(--rule);
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            background: #fff;
+            cursor: pointer;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .print-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        header.cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.75rem;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin: 0 0 0.15rem;
+            letter-spacing: -0.01em;
+        }
+
+        .role {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .contact {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .contact li {
+            margin-bottom: 0.3rem;
+        }
+
+        .contact a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .contact i {
+            width: 1.1rem;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .profile {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 1.75rem;
+        }
+
+        .profile a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .profile a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 1.6rem;
+        }
+
+        h2 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            border-bottom: 2px solid var(--rule);
+            padding-bottom: 0.35rem;
+            margin: 0 0 0.9rem;
+        }
+
+        .entry {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-date {
+            color: var(--muted);
+            font-size: 0.85rem;
+            padding-top: 0.1rem;
+        }
+
+        .entry-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .entry-sub {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .entry-body {
+            font-size: 0.9rem;
+        }
+
+        .entry-body p {
+            margin: 0 0 0.4rem;
+        }
+
+        .entry-body ul {
+            margin: 0.3rem 0 0;
+            padding-left: 1.1rem;
+        }
+
+        .entry-body li {
+            margin-bottom: 0.25rem;
+        }
+
+        .entry-body a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .entry-body a:hover {
+            text-decoration: underline;
+        }
+
+        .simple-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 0.9rem;
+        }
+
+        .simple-list li {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .simple-list .label {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .tools {
+            font-size: 0.9rem;
+        }
+
+        .tools div {
+            margin-bottom: 0.4rem;
+        }
+
+        .tools strong {
+            display: inline-block;
+            min-width: 140px;
+        }
+
+        @media (max-width: 620px) {
+            .sheet {
+                padding: 2rem 1.25rem;
+            }
+
+            .entry,
+            .simple-list li {
+                grid-template-columns: 1fr;
+                gap: 0.15rem;
+            }
+
+            .tools strong {
+                display: block;
+                min-width: 0;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .top-bar {
+                display: none;
+            }
+
+            .sheet {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <a href="/?about">&larr; Back to site</a>
+        <button class="print-btn" onclick="window.print()"><i class="fa fa-print"></i>&nbsp; Save / Print PDF</button>
+    </div>
+
+    <div class="sheet">
+
+        <header class="cv-header">
+            <div>
+                <h1>Carles Matoses Gimenez</h1>
+                <div class="role">Computer Graphics &amp; VFX</div>
+            </div>
+            <ul class="contact">
+                <li><i class="fa fa-map-marker"></i>&nbsp; Valencia, Spain</li>
+                <li><i class="fa fa-envelope"></i>&nbsp; <a href="mailto:carlesmatosesg@gmail.com">carlesmatosesg@gmail.com</a></li>
+                <li><i class="fa fa-github"></i>&nbsp; <a href="https://github.com/carlesmatoses" target="_blank" rel="noopener">carlesmatoses</a></li>
+                <li><i class="fa fa-globe"></i>&nbsp; <a href="https://carlesmatoses.github.io" target="_blank" rel="noopener">carlesmatoses.github.io</a></li>
+            </ul>
+        </header>
+
+        <div class="profile">
+            I'm interested in the frontier between technical and artistic computer graphics and how it shapes VFX, animation and games. I like working on open-source tools like Blender. As a hobby, I enjoy sharing what I learn about computer graphics through posts on my <a href="https://carlesmatoses.github.io" target="_blank" rel="noopener">website</a> and videos on my <a href="https://www.youtube.com/channel/UC6aWlHNMv-VGU7LRBeZaj7w" target="_blank" rel="noopener">YouTube channel</a>.
+        </div>
+
+        <section>
+            <h2>Education</h2>
+
+            <div class="entry">
+                <div class="entry-date">2023–2025</div>
+                <div>
+                    <div class="entry-title">Universitat Politècnica de Catalunya (UPC)</div>
+                    <div class="entry-sub">MSc in CS — Computer Graphics and Virtual Reality · Barcelona, Spain</div>
+                    <div class="entry-body">
+                        <p>Specialization in real-time rendering, GPU programming and geometric processing for interactive 3D graphics and virtual reality.</p>
+                        <ul>
+                            <li>Coursework: GPU Programming &amp; Real-Time Rendering (OpenGL/GLSL, CUDA, OpenCL), Geometry Processing &amp; 3D Modelling, Computer Animation, Machine Learning, Scientific/Data Visualisation, Concurrent &amp; Distributed Systems.</li>
+                            <li><strong>Thesis:</strong> <em>Geometric Mesh Reconstruction and Differentiable Smoothing for Gaussian Splatting.</em> Developed Meshfacto, extracting clean low-polygon meshes from Gaussian Splatting scenes — a study on transforming volumetric point cloud representations into meshes. <a href="https://carlesmatoses.github.io/project/gaussian-splatting-mesh-reconstruction" target="_blank" rel="noopener">Thesis page &rarr;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-date">2019–2023</div>
+                <div>
+                    <div class="entry-title">Universitat Politècnica de València</div>
+                    <div class="entry-sub">BSc in Digital and Multimedia Technology · Valencia, Spain</div>
+                    <div class="entry-body">
+                        <p>Bachelor based on the different stages of digital content: creation (graphic design, interaction and machine learning), distribution (technologies and codification) and real application (IoT and project management).</p>
+                        <ul>
+                            <li>Frameworks for the complete development of web applications.</li>
+                            <li>Machine learning in telecommunication applications.</li>
+                            <li><strong>Thesis:</strong> Color management and tool development for small workspaces — Python tools for color science applied to open-source software (Blender/OCIO).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Experience &amp; Projects</h2>
+
+            <div class="entry">
+                <div class="entry-date">2019–2023</div>
+                <div>
+                    <div class="entry-title">CGI and Postproduction Supervisor</div>
+                    <div class="entry-sub">Toma Uno · Valencia, Spain</div>
+                    <div class="entry-body">
+                        <p>Entrepreneur student group of multimedia content creation such as interviews, short films and advertisement.</p>
+                        <ul>
+                            <li>3D rendering and animation for the hyperloop prototype. <a href="https://www.youtube.com/watch?v=ejYym_XfMzg" target="_blank" rel="noopener">Watch &rarr;</a></li>
+                            <li>Participation in short film competitions. Achieved 2nd and 3rd place.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-date">2022–2023</div>
+                <div>
+                    <div class="entry-title">Company Internship for Students</div>
+                    <div class="entry-sub">Kimera Technologies · Valencia, Spain</div>
+                    <div class="entry-body">
+                        <p>Start-up focused on software to understand visual content (images and videos), extract its useful data and transform it into accessible information.</p>
+                        <ul>
+                            <li>Image processing and semantic segmentation with neural networks.</li>
+                            <li>Prompt augmentation and translation for web search engines.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-date">2022–2023</div>
+                <div>
+                    <div class="entry-title">Part-time Summer Internship</div>
+                    <div class="entry-sub">Persinas Raser · Valencia, Spain</div>
+                    <div class="entry-body">
+                        <p>Company focused on the manufacture and installation of blinds and windows.</p>
+                        <ul>
+                            <li>Web design and web development for business. Product visualisation with 3D software.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Online Learning &amp; Workshops</h2>
+            <ul class="simple-list">
+                <li>
+                    <span class="label">2021</span>
+                    <span><em>Blender</em> — Advanced use of Blender for animation, rigging, product visualization and VFX. Animated short films, animated characters and marketing campaigns.</span>
+                </li>
+                <li>
+                    <span class="label">2022</span>
+                    <span><em>Unity</em> — Programming in C#, database management and small games.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Languages</h2>
+            <p class="entry-body" style="margin:0;"><strong>Spanish:</strong> Native &nbsp;/&nbsp; <strong>Catalan:</strong> Native &nbsp;/&nbsp; <strong>English:</strong> C1, TOEFL 100/120</p>
+        </section>
+
+        <section>
+            <h2>Software &amp; Tools</h2>
+            <div class="tools">
+                <div><strong>Programming</strong> C/C++, C#, Python, JavaScript, GLSL, CUDA</div>
+                <div><strong>Productivity</strong> Microsoft Office, LaTeX, Git</div>
+                <div><strong>Video &amp; 3D</strong> Unity, Blender, DaVinci Resolve, Nuke</div>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>
