@@ -1,0 +1,11632 @@
+Header: BLENDER17-01v0502
+
+Code: REND
+SDNA: 0
+Old: 16
+Length: 264
+NR: 1
+Start frame: 1
+Final frame: 511
+Scene name: Scene.001
+Accumulated bytes: 313
+
+Code: TEST
+SDNA: 0
+Old: 8918696635957482208
+Length: 59912
+NR: 1
+Thumbnail width: 117
+Thumbnail height: 128
+Accumulated bytes: 60257
+
+Code: GLOB
+SDNA: 171
+Old: 8918696635957482224
+Length: 1216
+NR: 1
+Subversion string:   44
+Subversion: 44
+Min version: 405
+Min subversion: 85
+Current screen (old ptr): 0x1e42868e10d0f740
+Current scene (old ptr): 0x3806a2bdd0a32bb0
+Current view layer (old ptr): 0x7bc593564db79300
+File flags: 0x2001000
+Global flags: 0x0
+Build commit timestamp: 1783956011
+Build hash: fbe6228777e7
+Color space: Linear Rec.709
+Accumulated bytes: 61505
+
+Code: WM
+SDNA: 972
+Old: 5746685826338512976
+Length: 1496
+NR: 1
+Accumulated bytes: 63033
+
+Code: DATA
+SDNA: 973
+Old: 1677542049005415184
+Length: 248
+NR: 1
+Accumulated bytes: 63313
+
+Code: DATA
+SDNA: 985
+Old: 1677542049005415216
+Length: 32
+NR: 1
+Accumulated bytes: 63377
+
+Code: DATA
+SDNA: 729
+Old: 1677542049005415328
+Length: 8
+NR: 1
+Accumulated bytes: 63417
+
+Code: DATA
+SDNA: 769
+Old: 1677542049005415232
+Length: 32
+NR: 1
+Accumulated bytes: 63481
+
+Code: DATA
+SDNA: 769
+Old: 1677542049005415376
+Length: 32
+NR: 1
+Accumulated bytes: 63545
+
+Code: DATA
+SDNA: 769
+Old: 1677542049005415392
+Length: 32
+NR: 1
+Accumulated bytes: 63609
+
+Code: DATA
+SDNA: 769
+Old: 1677542049005415408
+Length: 32
+NR: 1
+Accumulated bytes: 63673
+
+Code: DATA
+SDNA: 769
+Old: 1677542049005415424
+Length: 32
+NR: 1
+Accumulated bytes: 63737
+
+Code: DATA
+SDNA: 769
+Old: 1677542049005415440
+Length: 32
+NR: 1
+Accumulated bytes: 63801
+
+Code: DATA
+SDNA: 769
+Old: 1677542049005415456
+Length: 32
+NR: 1
+Accumulated bytes: 63865
+
+Code: DATA
+SDNA: 769
+Old: 1677542049005415248
+Length: 32
+NR: 1
+Accumulated bytes: 63929
+
+Code: DATA
+SDNA: 770
+Old: 1677542049005415264
+Length: 40
+NR: 1
+Accumulated bytes: 64001
+
+Code: DATA
+SDNA: 770
+Old: 1677542049005415472
+Length: 40
+NR: 1
+Accumulated bytes: 64073
+
+Code: DATA
+SDNA: 770
+Old: 1677542049005415488
+Length: 40
+NR: 1
+Accumulated bytes: 64145
+
+Code: DATA
+SDNA: 770
+Old: 1677542049005415504
+Length: 40
+NR: 1
+Accumulated bytes: 64217
+
+Code: DATA
+SDNA: 770
+Old: 1677542049005415520
+Length: 40
+NR: 1
+Accumulated bytes: 64289
+
+Code: DATA
+SDNA: 770
+Old: 1677542049005415536
+Length: 40
+NR: 1
+Accumulated bytes: 64361
+
+Code: DATA
+SDNA: 770
+Old: 1677542049005415552
+Length: 40
+NR: 1
+Accumulated bytes: 64433
+
+Code: DATA
+SDNA: 770
+Old: 1677542049005415280
+Length: 40
+NR: 1
+Accumulated bytes: 64505
+
+Code: DATA
+SDNA: 784
+Old: 1677542049005415296
+Length: 192
+NR: 1
+Accumulated bytes: 64729
+
+Code: DATA
+SDNA: 782
+Old: 1677542049005415584
+Length: 12
+NR: 1
+Accumulated bytes: 64773
+
+Code: DATA
+SDNA: 785
+Old: 1677542049005415616
+Length: 320
+NR: 1
+Accumulated bytes: 65125
+
+Code: DATA
+SDNA: 785
+Old: 1677542049005415648
+Length: 320
+NR: 1
+Accumulated bytes: 65477
+
+Code: DATA
+SDNA: 785
+Old: 1677542049005415632
+Length: 320
+NR: 1
+Accumulated bytes: 65829
+
+Code: DATA
+SDNA: 866
+Old: 1677542049005415600
+Length: 40
+NR: 1
+Accumulated bytes: 65901
+
+Code: DATA
+SDNA: 784
+Old: 1677542049005415312
+Length: 192
+NR: 1
+Accumulated bytes: 66125
+
+Code: DATA
+SDNA: 782
+Old: 1677542049005415680
+Length: 12
+NR: 1
+Accumulated bytes: 66169
+
+Code: DATA
+SDNA: 785
+Old: 1677542049005415712
+Length: 320
+NR: 1
+Accumulated bytes: 66521
+
+Code: DATA
+SDNA: 867
+Old: 1677542049005415696
+Length: 40
+NR: 1
+Accumulated bytes: 66593
+
+Code: WS
+SDNA: 983
+Old: 7140046049232452144
+Length: 536
+NR: 1
+Accumulated bytes: 67161
+
+Code: DATA
+SDNA: 981
+Old: 6252679043919673232
+Length: 88
+NR: 1
+Accumulated bytes: 67281
+
+Code: DATA
+SDNA: 984
+Old: 6252679043919673248
+Length: 40
+NR: 1
+Accumulated bytes: 67353
+
+Code: WS
+SDNA: 983
+Old: 7863039793601989120
+Length: 536
+NR: 1
+Accumulated bytes: 67921
+
+Code: DATA
+SDNA: 981
+Old: 7259635131045553344
+Length: 88
+NR: 1
+Accumulated bytes: 68041
+
+Code: DATA
+SDNA: 984
+Old: 7259635131045553360
+Length: 40
+NR: 1
+Accumulated bytes: 68113
+
+Code: WS
+SDNA: 983
+Old: 5101390049500979552
+Length: 536
+NR: 1
+Accumulated bytes: 68681
+
+Code: DATA
+SDNA: 981
+Old: 8706188800602142096
+Length: 88
+NR: 1
+Accumulated bytes: 68801
+
+Code: DATA
+SDNA: 984
+Old: 8706188800602142112
+Length: 40
+NR: 1
+Accumulated bytes: 68873
+
+Code: WS
+SDNA: 983
+Old: 8930717012915300816
+Length: 536
+NR: 1
+Accumulated bytes: 69441
+
+Code: DATA
+SDNA: 981
+Old: 1677542049005415360
+Length: 88
+NR: 1
+Accumulated bytes: 69561
+
+Code: DATA
+SDNA: 984
+Old: 170054901428115472
+Length: 40
+NR: 1
+Accumulated bytes: 69633
+
+Code: DATA
+SDNA: 980
+Old: 170054901428115488
+Length: 232
+NR: 1
+Accumulated bytes: 69897
+
+Code: DATA
+SDNA: 980
+Old: 170054901428115504
+Length: 232
+NR: 1
+Accumulated bytes: 70161
+
+Code: DATA
+SDNA: 9
+Old: 170054901428115536
+Length: 144
+NR: 1
+Accumulated bytes: 70337
+
+Code: DATA
+SDNA: 9
+Old: 170054901428115584
+Length: 144
+NR: 1
+Accumulated bytes: 70513
+
+Code: DATA
+SDNA: 9
+Old: 170054901428115616
+Length: 144
+NR: 1
+Accumulated bytes: 70689
+
+Code: DATA
+SDNA: 9
+Old: 170054901428115552
+Length: 144
+NR: 1
+Accumulated bytes: 70865
+
+Code: DATA
+SDNA: 9
+Old: 170054901428115648
+Length: 144
+NR: 1
+Accumulated bytes: 71041
+
+Code: DATA
+SDNA: 9
+Old: 170054901428115680
+Length: 144
+NR: 1
+Accumulated bytes: 71217
+
+Code: WS
+SDNA: 983
+Old: 2861684761636518528
+Length: 536
+NR: 1
+Accumulated bytes: 71785
+
+Code: DATA
+SDNA: 981
+Old: 4121718773121027904
+Length: 88
+NR: 1
+Accumulated bytes: 71905
+
+Code: DATA
+SDNA: 984
+Old: 4121718773121027920
+Length: 40
+NR: 1
+Accumulated bytes: 71977
+
+Code: WS
+SDNA: 983
+Old: 6239594670512970976
+Length: 536
+NR: 1
+Accumulated bytes: 72545
+
+Code: DATA
+SDNA: 981
+Old: 1796619557214658656
+Length: 88
+NR: 1
+Accumulated bytes: 72665
+
+Code: DATA
+SDNA: 984
+Old: 1796619557214658672
+Length: 40
+NR: 1
+Accumulated bytes: 72737
+
+Code: WS
+SDNA: 983
+Old: 4443993631687998256
+Length: 536
+NR: 1
+Accumulated bytes: 73305
+
+Code: DATA
+SDNA: 981
+Old: 999990825095492960
+Length: 88
+NR: 1
+Accumulated bytes: 73425
+
+Code: DATA
+SDNA: 984
+Old: 999990825095492976
+Length: 40
+NR: 1
+Accumulated bytes: 73497
+
+Code: DATA
+SDNA: 980
+Old: 999990825095492992
+Length: 232
+NR: 1
+Accumulated bytes: 73761
+
+Code: DATA
+SDNA: 9
+Old: 999990825095493024
+Length: 144
+NR: 1
+Accumulated bytes: 73937
+
+Code: DATA
+SDNA: 9
+Old: 999990825095493040
+Length: 144
+NR: 1
+Accumulated bytes: 74113
+
+Code: DATA
+SDNA: 9
+Old: 999990825095493072
+Length: 144
+NR: 1
+Accumulated bytes: 74289
+
+Code: WS
+SDNA: 983
+Old: 2447817128957195520
+Length: 536
+NR: 1
+Accumulated bytes: 74857
+
+Code: DATA
+SDNA: 981
+Old: 3724673011289956544
+Length: 88
+NR: 1
+Accumulated bytes: 74977
+
+Code: DATA
+SDNA: 984
+Old: 3724673011289956560
+Length: 40
+NR: 1
+Accumulated bytes: 75049
+
+Code: WS
+SDNA: 983
+Old: 5652565351543012416
+Length: 536
+NR: 1
+Accumulated bytes: 75617
+
+Code: DATA
+SDNA: 981
+Old: 2332690578475079568
+Length: 88
+NR: 1
+Accumulated bytes: 75737
+
+Code: DATA
+SDNA: 984
+Old: 2332690578475079584
+Length: 40
+NR: 1
+Accumulated bytes: 75809
+
+Code: WS
+SDNA: 983
+Old: 7298188897801655664
+Length: 536
+NR: 1
+Accumulated bytes: 76377
+
+Code: DATA
+SDNA: 981
+Old: 2493920433114778304
+Length: 88
+NR: 1
+Accumulated bytes: 76497
+
+Code: DATA
+SDNA: 984
+Old: 2493920433114778320
+Length: 40
+NR: 1
+Accumulated bytes: 76569
+
+Code: WS
+SDNA: 983
+Old: 7065918462706481408
+Length: 536
+NR: 1
+Accumulated bytes: 77137
+
+Code: DATA
+SDNA: 981
+Old: 5616514622474261216
+Length: 88
+NR: 1
+Accumulated bytes: 77257
+
+Code: DATA
+SDNA: 984
+Old: 5616514622474261232
+Length: 40
+NR: 1
+Accumulated bytes: 77329
+
+Code: WS
+SDNA: 983
+Old: 8625291297324724224
+Length: 536
+NR: 1
+Accumulated bytes: 77897
+
+Code: DATA
+SDNA: 981
+Old: 4033634494477953264
+Length: 88
+NR: 1
+Accumulated bytes: 78017
+
+Code: DATA
+SDNA: 981
+Old: 4033634494477953280
+Length: 88
+NR: 1
+Accumulated bytes: 78137
+
+Code: DATA
+SDNA: 984
+Old: 4033634494477953296
+Length: 40
+NR: 1
+Accumulated bytes: 78209
+
+Code: DATA
+SDNA: 980
+Old: 4033634494477953312
+Length: 232
+NR: 1
+Accumulated bytes: 78473
+
+Code: DATA
+SDNA: 980
+Old: 4033634494477953328
+Length: 232
+NR: 1
+Accumulated bytes: 78737
+
+Code: SN
+SDNA: 768
+Old: 1637094099074581728
+Length: 544
+NR: 1
+Accumulated bytes: 79313
+
+Code: DATA
+SDNA: 769
+Old: 259211153470133792
+Length: 32
+NR: 1
+Accumulated bytes: 79377
+
+Code: DATA
+SDNA: 769
+Old: 259211153470133888
+Length: 32
+NR: 1
+Accumulated bytes: 79441
+
+Code: DATA
+SDNA: 769
+Old: 259211153470133904
+Length: 32
+NR: 1
+Accumulated bytes: 79505
+
+Code: DATA
+SDNA: 769
+Old: 259211153470133920
+Length: 32
+NR: 1
+Accumulated bytes: 79569
+
+Code: DATA
+SDNA: 769
+Old: 259211153470133936
+Length: 32
+NR: 1
+Accumulated bytes: 79633
+
+Code: DATA
+SDNA: 769
+Old: 259211153470133952
+Length: 32
+NR: 1
+Accumulated bytes: 79697
+
+Code: DATA
+SDNA: 769
+Old: 259211153470133968
+Length: 32
+NR: 1
+Accumulated bytes: 79761
+
+Code: DATA
+SDNA: 769
+Old: 259211153470133984
+Length: 32
+NR: 1
+Accumulated bytes: 79825
+
+Code: DATA
+SDNA: 769
+Old: 259211153470134000
+Length: 32
+NR: 1
+Accumulated bytes: 79889
+
+Code: DATA
+SDNA: 769
+Old: 259211153470134016
+Length: 32
+NR: 1
+Accumulated bytes: 79953
+
+Code: DATA
+SDNA: 769
+Old: 259211153470134032
+Length: 32
+NR: 1
+Accumulated bytes: 80017
+
+Code: DATA
+SDNA: 769
+Old: 259211153470134048
+Length: 32
+NR: 1
+Accumulated bytes: 80081
+
+Code: DATA
+SDNA: 769
+Old: 259211153470134064
+Length: 32
+NR: 1
+Accumulated bytes: 80145
+
+Code: DATA
+SDNA: 769
+Old: 259211153470134080
+Length: 32
+NR: 1
+Accumulated bytes: 80209
+
+Code: DATA
+SDNA: 769
+Old: 259211153470134096
+Length: 32
+NR: 1
+Accumulated bytes: 80273
+
+Code: DATA
+SDNA: 769
+Old: 259211153470133808
+Length: 32
+NR: 1
+Accumulated bytes: 80337
+
+Code: DATA
+SDNA: 770
+Old: 259211153470133824
+Length: 40
+NR: 1
+Accumulated bytes: 80409
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134112
+Length: 40
+NR: 1
+Accumulated bytes: 80481
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134128
+Length: 40
+NR: 1
+Accumulated bytes: 80553
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134144
+Length: 40
+NR: 1
+Accumulated bytes: 80625
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134160
+Length: 40
+NR: 1
+Accumulated bytes: 80697
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134176
+Length: 40
+NR: 1
+Accumulated bytes: 80769
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134192
+Length: 40
+NR: 1
+Accumulated bytes: 80841
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134208
+Length: 40
+NR: 1
+Accumulated bytes: 80913
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134224
+Length: 40
+NR: 1
+Accumulated bytes: 80985
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134240
+Length: 40
+NR: 1
+Accumulated bytes: 81057
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134256
+Length: 40
+NR: 1
+Accumulated bytes: 81129
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134272
+Length: 40
+NR: 1
+Accumulated bytes: 81201
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134288
+Length: 40
+NR: 1
+Accumulated bytes: 81273
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134304
+Length: 40
+NR: 1
+Accumulated bytes: 81345
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134320
+Length: 40
+NR: 1
+Accumulated bytes: 81417
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134336
+Length: 40
+NR: 1
+Accumulated bytes: 81489
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134352
+Length: 40
+NR: 1
+Accumulated bytes: 81561
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134368
+Length: 40
+NR: 1
+Accumulated bytes: 81633
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134384
+Length: 40
+NR: 1
+Accumulated bytes: 81705
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134400
+Length: 40
+NR: 1
+Accumulated bytes: 81777
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134416
+Length: 40
+NR: 1
+Accumulated bytes: 81849
+
+Code: DATA
+SDNA: 770
+Old: 259211153470134432
+Length: 40
+NR: 1
+Accumulated bytes: 81921
+
+Code: DATA
+SDNA: 770
+Old: 259211153470133840
+Length: 40
+NR: 1
+Accumulated bytes: 81993
+
+Code: DATA
+SDNA: 784
+Old: 259211153470133856
+Length: 192
+NR: 1
+Accumulated bytes: 82217
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134480
+Length: 320
+NR: 1
+Accumulated bytes: 82569
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134512
+Length: 320
+NR: 1
+Accumulated bytes: 82921
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134496
+Length: 320
+NR: 1
+Accumulated bytes: 83273
+
+Code: DATA
+SDNA: 839
+Old: 259211153470134464
+Length: 248
+NR: 1
+Accumulated bytes: 83553
+
+Code: DATA
+SDNA: 784
+Old: 259211153470134448
+Length: 192
+NR: 1
+Accumulated bytes: 83777
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134576
+Length: 320
+NR: 1
+Accumulated bytes: 84129
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134592
+Length: 320
+NR: 1
+Accumulated bytes: 84481
+
+Code: DATA
+SDNA: 840
+Old: 259211153470134560
+Length: 296
+NR: 1
+Accumulated bytes: 84809
+
+Code: DATA
+SDNA: 784
+Old: 259211153470134544
+Length: 192
+NR: 1
+Accumulated bytes: 85033
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134656
+Length: 320
+NR: 1
+Accumulated bytes: 85385
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134688
+Length: 320
+NR: 1
+Accumulated bytes: 85737
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134704
+Length: 320
+NR: 1
+Accumulated bytes: 86089
+
+Code: DATA
+SDNA: 788
+Old: 259211153470134736
+Length: 24
+NR: 1
+Accumulated bytes: 86145
+
+Code: DATA
+SDNA: 787
+Old: 259211153470134752
+Length: 200
+NR: 1
+Accumulated bytes: 86377
+
+Code: DATA
+SDNA: 786
+Old: 259211153470134768
+Length: 104
+NR: 1
+Accumulated bytes: 86513
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134720
+Length: 320
+NR: 1
+Accumulated bytes: 86865
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134784
+Length: 320
+NR: 1
+Accumulated bytes: 87217
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134800
+Length: 320
+NR: 1
+Accumulated bytes: 87569
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134672
+Length: 320
+NR: 1
+Accumulated bytes: 87921
+
+Code: DATA
+SDNA: 952
+Old: 259211153470134816
+Length: 944
+NR: 1
+Accumulated bytes: 88897
+
+Code: DATA
+SDNA: 957
+Old: 259211153470134640
+Length: 1416
+NR: 1
+Accumulated bytes: 90345
+
+Code: DATA
+SDNA: 784
+Old: 259211153470134624
+Length: 192
+NR: 1
+Accumulated bytes: 90569
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134848
+Length: 320
+NR: 1
+Accumulated bytes: 90921
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134880
+Length: 320
+NR: 1
+Accumulated bytes: 91273
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134896
+Length: 320
+NR: 1
+Accumulated bytes: 91625
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134912
+Length: 320
+NR: 1
+Accumulated bytes: 91977
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134864
+Length: 320
+NR: 1
+Accumulated bytes: 92329
+
+Code: DATA
+SDNA: 32
+Old: 259211153470134832
+Length: 344
+NR: 1
+Accumulated bytes: 92705
+
+Code: DATA
+SDNA: 784
+Old: 259211153470133872
+Length: 192
+NR: 1
+Accumulated bytes: 92929
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134944
+Length: 320
+NR: 1
+Accumulated bytes: 93281
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134976
+Length: 320
+NR: 1
+Accumulated bytes: 93633
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134992
+Length: 320
+NR: 1
+Accumulated bytes: 93985
+
+Code: DATA
+SDNA: 788
+Old: 259211153470135024
+Length: 24
+NR: 1
+Accumulated bytes: 94041
+
+Code: DATA
+SDNA: 787
+Old: 259211153470135040
+Length: 200
+NR: 1
+Accumulated bytes: 94273
+
+Code: DATA
+SDNA: 786
+Old: 259211153470135056
+Length: 104
+NR: 1
+Accumulated bytes: 94409
+
+Code: DATA
+SDNA: 785
+Old: 259211153470135008
+Length: 320
+NR: 1
+Accumulated bytes: 94761
+
+Code: DATA
+SDNA: 785
+Old: 259211153470135072
+Length: 320
+NR: 1
+Accumulated bytes: 95113
+
+Code: DATA
+SDNA: 785
+Old: 259211153470135088
+Length: 320
+NR: 1
+Accumulated bytes: 95465
+
+Code: DATA
+SDNA: 785
+Old: 259211153470134960
+Length: 320
+NR: 1
+Accumulated bytes: 95817
+
+Code: DATA
+SDNA: 952
+Old: 259211153470135104
+Length: 944
+NR: 1
+Accumulated bytes: 96793
+
+Code: DATA
+SDNA: 957
+Old: 259211153470134928
+Length: 1416
+NR: 1
+Accumulated bytes: 98241
+
+Code: SN
+SDNA: 768
+Old: 4849130844871688032
+Length: 544
+NR: 1
+Accumulated bytes: 98817
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860048880
+Length: 32
+NR: 1
+Accumulated bytes: 98881
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860048976
+Length: 32
+NR: 1
+Accumulated bytes: 98945
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860048992
+Length: 32
+NR: 1
+Accumulated bytes: 99009
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860049008
+Length: 32
+NR: 1
+Accumulated bytes: 99073
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860049024
+Length: 32
+NR: 1
+Accumulated bytes: 99137
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860049040
+Length: 32
+NR: 1
+Accumulated bytes: 99201
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860049056
+Length: 32
+NR: 1
+Accumulated bytes: 99265
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860049072
+Length: 32
+NR: 1
+Accumulated bytes: 99329
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860049088
+Length: 32
+NR: 1
+Accumulated bytes: 99393
+
+Code: DATA
+SDNA: 769
+Old: 5692132659860048896
+Length: 32
+NR: 1
+Accumulated bytes: 99457
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860048912
+Length: 40
+NR: 1
+Accumulated bytes: 99529
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049104
+Length: 40
+NR: 1
+Accumulated bytes: 99601
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049120
+Length: 40
+NR: 1
+Accumulated bytes: 99673
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049136
+Length: 40
+NR: 1
+Accumulated bytes: 99745
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049152
+Length: 40
+NR: 1
+Accumulated bytes: 99817
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049168
+Length: 40
+NR: 1
+Accumulated bytes: 99889
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049184
+Length: 40
+NR: 1
+Accumulated bytes: 99961
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049200
+Length: 40
+NR: 1
+Accumulated bytes: 100033
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049216
+Length: 40
+NR: 1
+Accumulated bytes: 100105
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049232
+Length: 40
+NR: 1
+Accumulated bytes: 100177
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049248
+Length: 40
+NR: 1
+Accumulated bytes: 100249
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049264
+Length: 40
+NR: 1
+Accumulated bytes: 100321
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860049280
+Length: 40
+NR: 1
+Accumulated bytes: 100393
+
+Code: DATA
+SDNA: 770
+Old: 5692132659860048928
+Length: 40
+NR: 1
+Accumulated bytes: 100465
+
+Code: DATA
+SDNA: 784
+Old: 5692132659860048944
+Length: 192
+NR: 1
+Accumulated bytes: 100689
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049328
+Length: 320
+NR: 1
+Accumulated bytes: 101041
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049360
+Length: 320
+NR: 1
+Accumulated bytes: 101393
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049344
+Length: 320
+NR: 1
+Accumulated bytes: 101745
+
+Code: DATA
+SDNA: 839
+Old: 5692132659860049312
+Length: 248
+NR: 1
+Accumulated bytes: 102025
+
+Code: DATA
+SDNA: 784
+Old: 5692132659860049296
+Length: 192
+NR: 1
+Accumulated bytes: 102249
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049440
+Length: 320
+NR: 1
+Accumulated bytes: 102601
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049472
+Length: 320
+NR: 1
+Accumulated bytes: 102953
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049488
+Length: 320
+NR: 1
+Accumulated bytes: 103305
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049504
+Length: 320
+NR: 1
+Accumulated bytes: 103657
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049520
+Length: 320
+NR: 1
+Accumulated bytes: 104009
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049536
+Length: 320
+NR: 1
+Accumulated bytes: 104361
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049456
+Length: 320
+NR: 1
+Accumulated bytes: 104713
+
+Code: DATA
+SDNA: 854
+Old: 5692132659860049408
+Length: 10632
+NR: 1
+Accumulated bytes: 115377
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049552
+Length: 320
+NR: 1
+Accumulated bytes: 115729
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049568
+Length: 320
+NR: 1
+Accumulated bytes: 116081
+
+Code: DATA
+SDNA: 788
+Old: 5692132659860049600
+Length: 24
+NR: 1
+Accumulated bytes: 116137
+
+Code: DATA
+SDNA: 787
+Old: 5692132659860049616
+Length: 200
+NR: 1
+Accumulated bytes: 116369
+
+Code: DATA
+SDNA: 786
+Old: 5692132659860049632
+Length: 104
+NR: 1
+Accumulated bytes: 116505
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049584
+Length: 320
+NR: 1
+Accumulated bytes: 116857
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049648
+Length: 320
+NR: 1
+Accumulated bytes: 117209
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049664
+Length: 320
+NR: 1
+Accumulated bytes: 117561
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049680
+Length: 320
+NR: 1
+Accumulated bytes: 117913
+
+Code: DATA
+SDNA: 860
+Old: 5692132659860049424
+Length: 376
+NR: 1
+Accumulated bytes: 118321
+
+Code: DATA
+SDNA: 784
+Old: 5692132659860049392
+Length: 192
+NR: 1
+Accumulated bytes: 118545
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049728
+Length: 320
+NR: 1
+Accumulated bytes: 118897
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049760
+Length: 320
+NR: 1
+Accumulated bytes: 119249
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049776
+Length: 320
+NR: 1
+Accumulated bytes: 119601
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049792
+Length: 320
+NR: 1
+Accumulated bytes: 119953
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049744
+Length: 320
+NR: 1
+Accumulated bytes: 120305
+
+Code: DATA
+SDNA: 32
+Old: 5692132659860049712
+Length: 344
+NR: 1
+Accumulated bytes: 120681
+
+Code: DATA
+SDNA: 784
+Old: 5692132659860048960
+Length: 192
+NR: 1
+Accumulated bytes: 120905
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049824
+Length: 320
+NR: 1
+Accumulated bytes: 121257
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049856
+Length: 320
+NR: 1
+Accumulated bytes: 121609
+
+Code: DATA
+SDNA: 788
+Old: 5692132659860049888
+Length: 24
+NR: 1
+Accumulated bytes: 121665
+
+Code: DATA
+SDNA: 787
+Old: 5692132659860049904
+Length: 200
+NR: 1
+Accumulated bytes: 121897
+
+Code: DATA
+SDNA: 786
+Old: 5692132659860049920
+Length: 104
+NR: 1
+Accumulated bytes: 122033
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049872
+Length: 320
+NR: 1
+Accumulated bytes: 122385
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049936
+Length: 320
+NR: 1
+Accumulated bytes: 122737
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049952
+Length: 320
+NR: 1
+Accumulated bytes: 123089
+
+Code: DATA
+SDNA: 785
+Old: 5692132659860049840
+Length: 320
+NR: 1
+Accumulated bytes: 123441
+
+Code: DATA
+SDNA: 860
+Old: 5692132659860049808
+Length: 376
+NR: 1
+Accumulated bytes: 123849
+
+Code: SN
+SDNA: 768
+Old: 7600177361773360464
+Length: 544
+NR: 1
+Accumulated bytes: 124425
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673514944
+Length: 32
+NR: 1
+Accumulated bytes: 124489
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515040
+Length: 32
+NR: 1
+Accumulated bytes: 124553
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515056
+Length: 32
+NR: 1
+Accumulated bytes: 124617
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515072
+Length: 32
+NR: 1
+Accumulated bytes: 124681
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515088
+Length: 32
+NR: 1
+Accumulated bytes: 124745
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515104
+Length: 32
+NR: 1
+Accumulated bytes: 124809
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515120
+Length: 32
+NR: 1
+Accumulated bytes: 124873
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515136
+Length: 32
+NR: 1
+Accumulated bytes: 124937
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515152
+Length: 32
+NR: 1
+Accumulated bytes: 125001
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515168
+Length: 32
+NR: 1
+Accumulated bytes: 125065
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515184
+Length: 32
+NR: 1
+Accumulated bytes: 125129
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515200
+Length: 32
+NR: 1
+Accumulated bytes: 125193
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515216
+Length: 32
+NR: 1
+Accumulated bytes: 125257
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515232
+Length: 32
+NR: 1
+Accumulated bytes: 125321
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673515248
+Length: 32
+NR: 1
+Accumulated bytes: 125385
+
+Code: DATA
+SDNA: 769
+Old: 2279425889673514960
+Length: 32
+NR: 1
+Accumulated bytes: 125449
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673514976
+Length: 40
+NR: 1
+Accumulated bytes: 125521
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515264
+Length: 40
+NR: 1
+Accumulated bytes: 125593
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515280
+Length: 40
+NR: 1
+Accumulated bytes: 125665
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515296
+Length: 40
+NR: 1
+Accumulated bytes: 125737
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515312
+Length: 40
+NR: 1
+Accumulated bytes: 125809
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515328
+Length: 40
+NR: 1
+Accumulated bytes: 125881
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515344
+Length: 40
+NR: 1
+Accumulated bytes: 125953
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515360
+Length: 40
+NR: 1
+Accumulated bytes: 126025
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515376
+Length: 40
+NR: 1
+Accumulated bytes: 126097
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515392
+Length: 40
+NR: 1
+Accumulated bytes: 126169
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515408
+Length: 40
+NR: 1
+Accumulated bytes: 126241
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515424
+Length: 40
+NR: 1
+Accumulated bytes: 126313
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515440
+Length: 40
+NR: 1
+Accumulated bytes: 126385
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515456
+Length: 40
+NR: 1
+Accumulated bytes: 126457
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515472
+Length: 40
+NR: 1
+Accumulated bytes: 126529
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515488
+Length: 40
+NR: 1
+Accumulated bytes: 126601
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515504
+Length: 40
+NR: 1
+Accumulated bytes: 126673
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515520
+Length: 40
+NR: 1
+Accumulated bytes: 126745
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515536
+Length: 40
+NR: 1
+Accumulated bytes: 126817
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673515552
+Length: 40
+NR: 1
+Accumulated bytes: 126889
+
+Code: DATA
+SDNA: 770
+Old: 2279425889673514992
+Length: 40
+NR: 1
+Accumulated bytes: 126961
+
+Code: DATA
+SDNA: 784
+Old: 2279425889673515008
+Length: 192
+NR: 1
+Accumulated bytes: 127185
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515600
+Length: 320
+NR: 1
+Accumulated bytes: 127537
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515632
+Length: 320
+NR: 1
+Accumulated bytes: 127889
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515616
+Length: 320
+NR: 1
+Accumulated bytes: 128241
+
+Code: DATA
+SDNA: 839
+Old: 2279425889673515584
+Length: 248
+NR: 1
+Accumulated bytes: 128521
+
+Code: DATA
+SDNA: 784
+Old: 2279425889673515568
+Length: 192
+NR: 1
+Accumulated bytes: 128745
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515696
+Length: 320
+NR: 1
+Accumulated bytes: 129097
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515712
+Length: 320
+NR: 1
+Accumulated bytes: 129449
+
+Code: DATA
+SDNA: 840
+Old: 2279425889673515680
+Length: 296
+NR: 1
+Accumulated bytes: 129777
+
+Code: DATA
+SDNA: 784
+Old: 2279425889673515664
+Length: 192
+NR: 1
+Accumulated bytes: 130001
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515776
+Length: 320
+NR: 1
+Accumulated bytes: 130353
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515808
+Length: 320
+NR: 1
+Accumulated bytes: 130705
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515824
+Length: 320
+NR: 1
+Accumulated bytes: 131057
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515840
+Length: 320
+NR: 1
+Accumulated bytes: 131409
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515856
+Length: 320
+NR: 1
+Accumulated bytes: 131761
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515872
+Length: 320
+NR: 1
+Accumulated bytes: 132113
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515792
+Length: 320
+NR: 1
+Accumulated bytes: 132465
+
+Code: DATA
+SDNA: 952
+Old: 2279425889673515888
+Length: 944
+NR: 1
+Accumulated bytes: 133441
+
+Code: DATA
+SDNA: 957
+Old: 2279425889673515760
+Length: 1416
+NR: 1
+Accumulated bytes: 134889
+
+Code: DATA
+SDNA: 784
+Old: 2279425889673515744
+Length: 192
+NR: 1
+Accumulated bytes: 135113
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515936
+Length: 320
+NR: 1
+Accumulated bytes: 135465
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515968
+Length: 320
+NR: 1
+Accumulated bytes: 135817
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515984
+Length: 320
+NR: 1
+Accumulated bytes: 136169
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516000
+Length: 320
+NR: 1
+Accumulated bytes: 136521
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673515952
+Length: 320
+NR: 1
+Accumulated bytes: 136873
+
+Code: DATA
+SDNA: 32
+Old: 2279425889673515920
+Length: 344
+NR: 1
+Accumulated bytes: 137249
+
+Code: DATA
+SDNA: 784
+Old: 2279425889673515904
+Length: 192
+NR: 1
+Accumulated bytes: 137473
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516032
+Length: 320
+NR: 1
+Accumulated bytes: 137825
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516064
+Length: 320
+NR: 1
+Accumulated bytes: 138177
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516080
+Length: 320
+NR: 1
+Accumulated bytes: 138529
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516096
+Length: 320
+NR: 1
+Accumulated bytes: 138881
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516048
+Length: 320
+NR: 1
+Accumulated bytes: 139233
+
+Code: DATA
+SDNA: 32
+Old: 2279425889673516016
+Length: 344
+NR: 1
+Accumulated bytes: 139609
+
+Code: DATA
+SDNA: 784
+Old: 2279425889673515024
+Length: 192
+NR: 1
+Accumulated bytes: 139833
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516128
+Length: 320
+NR: 1
+Accumulated bytes: 140185
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516160
+Length: 320
+NR: 1
+Accumulated bytes: 140537
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516176
+Length: 320
+NR: 1
+Accumulated bytes: 140889
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516192
+Length: 320
+NR: 1
+Accumulated bytes: 141241
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516208
+Length: 320
+NR: 1
+Accumulated bytes: 141593
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516224
+Length: 320
+NR: 1
+Accumulated bytes: 141945
+
+Code: DATA
+SDNA: 785
+Old: 2279425889673516144
+Length: 320
+NR: 1
+Accumulated bytes: 142297
+
+Code: DATA
+SDNA: 952
+Old: 2279425889673516240
+Length: 944
+NR: 1
+Accumulated bytes: 143273
+
+Code: DATA
+SDNA: 957
+Old: 2279425889673516112
+Length: 1416
+NR: 1
+Accumulated bytes: 144721
+
+Code: SN
+SDNA: 768
+Old: 3548547904644320768
+Length: 544
+NR: 1
+Accumulated bytes: 145297
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580579808
+Length: 32
+NR: 1
+Accumulated bytes: 145361
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580579904
+Length: 32
+NR: 1
+Accumulated bytes: 145425
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580579920
+Length: 32
+NR: 1
+Accumulated bytes: 145489
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580579936
+Length: 32
+NR: 1
+Accumulated bytes: 145553
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580579952
+Length: 32
+NR: 1
+Accumulated bytes: 145617
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580579968
+Length: 32
+NR: 1
+Accumulated bytes: 145681
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580579984
+Length: 32
+NR: 1
+Accumulated bytes: 145745
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580580000
+Length: 32
+NR: 1
+Accumulated bytes: 145809
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580580016
+Length: 32
+NR: 1
+Accumulated bytes: 145873
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580580032
+Length: 32
+NR: 1
+Accumulated bytes: 145937
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580580048
+Length: 32
+NR: 1
+Accumulated bytes: 146001
+
+Code: DATA
+SDNA: 769
+Old: 5095911364580579824
+Length: 32
+NR: 1
+Accumulated bytes: 146065
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580579840
+Length: 40
+NR: 1
+Accumulated bytes: 146137
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580064
+Length: 40
+NR: 1
+Accumulated bytes: 146209
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580080
+Length: 40
+NR: 1
+Accumulated bytes: 146281
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580096
+Length: 40
+NR: 1
+Accumulated bytes: 146353
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580112
+Length: 40
+NR: 1
+Accumulated bytes: 146425
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580128
+Length: 40
+NR: 1
+Accumulated bytes: 146497
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580144
+Length: 40
+NR: 1
+Accumulated bytes: 146569
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580160
+Length: 40
+NR: 1
+Accumulated bytes: 146641
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580176
+Length: 40
+NR: 1
+Accumulated bytes: 146713
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580192
+Length: 40
+NR: 1
+Accumulated bytes: 146785
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580208
+Length: 40
+NR: 1
+Accumulated bytes: 146857
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580224
+Length: 40
+NR: 1
+Accumulated bytes: 146929
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580240
+Length: 40
+NR: 1
+Accumulated bytes: 147001
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580256
+Length: 40
+NR: 1
+Accumulated bytes: 147073
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580272
+Length: 40
+NR: 1
+Accumulated bytes: 147145
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580288
+Length: 40
+NR: 1
+Accumulated bytes: 147217
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580304
+Length: 40
+NR: 1
+Accumulated bytes: 147289
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580580320
+Length: 40
+NR: 1
+Accumulated bytes: 147361
+
+Code: DATA
+SDNA: 770
+Old: 5095911364580579856
+Length: 40
+NR: 1
+Accumulated bytes: 147433
+
+Code: DATA
+SDNA: 784
+Old: 5095911364580579872
+Length: 192
+NR: 1
+Accumulated bytes: 147657
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580368
+Length: 320
+NR: 1
+Accumulated bytes: 148009
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580400
+Length: 320
+NR: 1
+Accumulated bytes: 148361
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580416
+Length: 320
+NR: 1
+Accumulated bytes: 148713
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580448
+Length: 200
+NR: 1
+Accumulated bytes: 148945
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580432
+Length: 320
+NR: 1
+Accumulated bytes: 149297
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580464
+Length: 320
+NR: 1
+Accumulated bytes: 149649
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580384
+Length: 320
+NR: 1
+Accumulated bytes: 150001
+
+Code: DATA
+SDNA: 852
+Old: 5095911364580580352
+Length: 160
+NR: 1
+Accumulated bytes: 150193
+
+Code: DATA
+SDNA: 849
+Old: 5095911364580580480
+Length: 2280
+NR: 1
+Accumulated bytes: 152505
+
+Code: DATA
+SDNA: 784
+Old: 5095911364580580336
+Length: 192
+NR: 1
+Accumulated bytes: 152729
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580528
+Length: 320
+NR: 1
+Accumulated bytes: 153081
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580560
+Length: 320
+NR: 1
+Accumulated bytes: 153433
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580576
+Length: 320
+NR: 1
+Accumulated bytes: 153785
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580592
+Length: 320
+NR: 1
+Accumulated bytes: 154137
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580608
+Length: 320
+NR: 1
+Accumulated bytes: 154489
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580640
+Length: 200
+NR: 1
+Accumulated bytes: 154721
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580624
+Length: 320
+NR: 1
+Accumulated bytes: 155073
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580656
+Length: 320
+NR: 1
+Accumulated bytes: 155425
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580672
+Length: 320
+NR: 1
+Accumulated bytes: 155777
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580544
+Length: 320
+NR: 1
+Accumulated bytes: 156129
+
+Code: DATA
+SDNA: 847
+Old: 5095911364580580512
+Length: 296
+NR: 1
+Accumulated bytes: 156457
+
+Code: DATA
+SDNA: 784
+Old: 5095911364580580496
+Length: 192
+NR: 1
+Accumulated bytes: 156681
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580720
+Length: 320
+NR: 1
+Accumulated bytes: 157033
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580752
+Length: 320
+NR: 1
+Accumulated bytes: 157385
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580768
+Length: 200
+NR: 1
+Accumulated bytes: 157617
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580580736
+Length: 320
+NR: 1
+Accumulated bytes: 157969
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580784
+Length: 200
+NR: 1
+Accumulated bytes: 158201
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580848
+Length: 200
+NR: 1
+Accumulated bytes: 158433
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580864
+Length: 200
+NR: 1
+Accumulated bytes: 158665
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580880
+Length: 200
+NR: 1
+Accumulated bytes: 158897
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580896
+Length: 200
+NR: 1
+Accumulated bytes: 159129
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580912
+Length: 200
+NR: 1
+Accumulated bytes: 159361
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580928
+Length: 200
+NR: 1
+Accumulated bytes: 159593
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580944
+Length: 200
+NR: 1
+Accumulated bytes: 159825
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580960
+Length: 200
+NR: 1
+Accumulated bytes: 160057
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580976
+Length: 200
+NR: 1
+Accumulated bytes: 160289
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580992
+Length: 200
+NR: 1
+Accumulated bytes: 160521
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580580800
+Length: 200
+NR: 1
+Accumulated bytes: 160753
+
+Code: DATA
+SDNA: 775
+Old: 5095911364580580816
+Length: 584
+NR: 1
+Accumulated bytes: 161369
+
+Code: DATA
+SDNA: 775
+Old: 5095911364580580832
+Length: 584
+NR: 1
+Accumulated bytes: 161985
+
+Code: DATA
+SDNA: 839
+Old: 5095911364580580704
+Length: 248
+NR: 1
+Accumulated bytes: 162265
+
+Code: DATA
+SDNA: 784
+Old: 5095911364580579888
+Length: 192
+NR: 1
+Accumulated bytes: 162489
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580581040
+Length: 320
+NR: 1
+Accumulated bytes: 162841
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580581072
+Length: 320
+NR: 1
+Accumulated bytes: 163193
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580581088
+Length: 320
+NR: 1
+Accumulated bytes: 163545
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580581104
+Length: 320
+NR: 1
+Accumulated bytes: 163897
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580581120
+Length: 320
+NR: 1
+Accumulated bytes: 164249
+
+Code: DATA
+SDNA: 773
+Old: 5095911364580581152
+Length: 200
+NR: 1
+Accumulated bytes: 164481
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580581136
+Length: 320
+NR: 1
+Accumulated bytes: 164833
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580581168
+Length: 320
+NR: 1
+Accumulated bytes: 165185
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580581184
+Length: 320
+NR: 1
+Accumulated bytes: 165537
+
+Code: DATA
+SDNA: 785
+Old: 5095911364580581056
+Length: 320
+NR: 1
+Accumulated bytes: 165889
+
+Code: DATA
+SDNA: 847
+Old: 5095911364580581024
+Length: 296
+NR: 1
+Accumulated bytes: 166217
+
+Code: SN
+SDNA: 768
+Old: 4518286451080596528
+Length: 544
+NR: 1
+Accumulated bytes: 166793
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021504
+Length: 32
+NR: 1
+Accumulated bytes: 166857
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021600
+Length: 32
+NR: 1
+Accumulated bytes: 166921
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021616
+Length: 32
+NR: 1
+Accumulated bytes: 166985
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021632
+Length: 32
+NR: 1
+Accumulated bytes: 167049
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021648
+Length: 32
+NR: 1
+Accumulated bytes: 167113
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021664
+Length: 32
+NR: 1
+Accumulated bytes: 167177
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021680
+Length: 32
+NR: 1
+Accumulated bytes: 167241
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021696
+Length: 32
+NR: 1
+Accumulated bytes: 167305
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021712
+Length: 32
+NR: 1
+Accumulated bytes: 167369
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021728
+Length: 32
+NR: 1
+Accumulated bytes: 167433
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021744
+Length: 32
+NR: 1
+Accumulated bytes: 167497
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021760
+Length: 32
+NR: 1
+Accumulated bytes: 167561
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021776
+Length: 32
+NR: 1
+Accumulated bytes: 167625
+
+Code: DATA
+SDNA: 769
+Old: 2816416883261021520
+Length: 32
+NR: 1
+Accumulated bytes: 167689
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021536
+Length: 40
+NR: 1
+Accumulated bytes: 167761
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021792
+Length: 40
+NR: 1
+Accumulated bytes: 167833
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021808
+Length: 40
+NR: 1
+Accumulated bytes: 167905
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021824
+Length: 40
+NR: 1
+Accumulated bytes: 167977
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021840
+Length: 40
+NR: 1
+Accumulated bytes: 168049
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021856
+Length: 40
+NR: 1
+Accumulated bytes: 168121
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021872
+Length: 40
+NR: 1
+Accumulated bytes: 168193
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021888
+Length: 40
+NR: 1
+Accumulated bytes: 168265
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021904
+Length: 40
+NR: 1
+Accumulated bytes: 168337
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021920
+Length: 40
+NR: 1
+Accumulated bytes: 168409
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021936
+Length: 40
+NR: 1
+Accumulated bytes: 168481
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021952
+Length: 40
+NR: 1
+Accumulated bytes: 168553
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021968
+Length: 40
+NR: 1
+Accumulated bytes: 168625
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021984
+Length: 40
+NR: 1
+Accumulated bytes: 168697
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261022000
+Length: 40
+NR: 1
+Accumulated bytes: 168769
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261022016
+Length: 40
+NR: 1
+Accumulated bytes: 168841
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261022032
+Length: 40
+NR: 1
+Accumulated bytes: 168913
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261022048
+Length: 40
+NR: 1
+Accumulated bytes: 168985
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261022064
+Length: 40
+NR: 1
+Accumulated bytes: 169057
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261022080
+Length: 40
+NR: 1
+Accumulated bytes: 169129
+
+Code: DATA
+SDNA: 770
+Old: 2816416883261021552
+Length: 40
+NR: 1
+Accumulated bytes: 169201
+
+Code: DATA
+SDNA: 784
+Old: 2816416883261021568
+Length: 192
+NR: 1
+Accumulated bytes: 169425
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022128
+Length: 320
+NR: 1
+Accumulated bytes: 169777
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022160
+Length: 320
+NR: 1
+Accumulated bytes: 170129
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022144
+Length: 320
+NR: 1
+Accumulated bytes: 170481
+
+Code: DATA
+SDNA: 775
+Old: 2816416883261022176
+Length: 584
+NR: 1
+Accumulated bytes: 171097
+
+Code: DATA
+SDNA: 775
+Old: 2816416883261022192
+Length: 584
+NR: 1
+Accumulated bytes: 171713
+
+Code: DATA
+SDNA: 839
+Old: 2816416883261022112
+Length: 248
+NR: 1
+Accumulated bytes: 171993
+
+Code: DATA
+SDNA: 784
+Old: 2816416883261022096
+Length: 192
+NR: 1
+Accumulated bytes: 172217
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022256
+Length: 320
+NR: 1
+Accumulated bytes: 172569
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022288
+Length: 320
+NR: 1
+Accumulated bytes: 172921
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022304
+Length: 320
+NR: 1
+Accumulated bytes: 173273
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022320
+Length: 320
+NR: 1
+Accumulated bytes: 173625
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022336
+Length: 320
+NR: 1
+Accumulated bytes: 173977
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022272
+Length: 320
+NR: 1
+Accumulated bytes: 174329
+
+Code: DATA
+SDNA: 860
+Old: 2816416883261022240
+Length: 376
+NR: 1
+Accumulated bytes: 174737
+
+Code: DATA
+SDNA: 784
+Old: 2816416883261022224
+Length: 192
+NR: 1
+Accumulated bytes: 174961
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022400
+Length: 320
+NR: 1
+Accumulated bytes: 175313
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022432
+Length: 320
+NR: 1
+Accumulated bytes: 175665
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022448
+Length: 320
+NR: 1
+Accumulated bytes: 176017
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022464
+Length: 320
+NR: 1
+Accumulated bytes: 176369
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022480
+Length: 320
+NR: 1
+Accumulated bytes: 176721
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022496
+Length: 320
+NR: 1
+Accumulated bytes: 177073
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022416
+Length: 320
+NR: 1
+Accumulated bytes: 177425
+
+Code: DATA
+SDNA: 952
+Old: 2816416883261022512
+Length: 944
+NR: 1
+Accumulated bytes: 178401
+
+Code: DATA
+SDNA: 957
+Old: 2816416883261022384
+Length: 1416
+NR: 1
+Accumulated bytes: 179849
+
+Code: DATA
+SDNA: 784
+Old: 2816416883261022368
+Length: 192
+NR: 1
+Accumulated bytes: 180073
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022560
+Length: 320
+NR: 1
+Accumulated bytes: 180425
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022592
+Length: 320
+NR: 1
+Accumulated bytes: 180777
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022608
+Length: 320
+NR: 1
+Accumulated bytes: 181129
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022624
+Length: 320
+NR: 1
+Accumulated bytes: 181481
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022576
+Length: 320
+NR: 1
+Accumulated bytes: 181833
+
+Code: DATA
+SDNA: 876
+Old: 2816416883261022544
+Length: 184
+NR: 1
+Accumulated bytes: 182049
+
+Code: DATA
+SDNA: 0
+Old: 2816416883261022640
+Length: 8
+NR: 1
+Accumulated bytes: 182089
+
+Code: DATA
+SDNA: 875
+Old: 2816416883261022688
+Length: 32
+NR: 1
+Accumulated bytes: 182153
+
+Code: DATA
+SDNA: 874
+Old: 2816416883261022704
+Length: 88
+NR: 1
+Accumulated bytes: 182273
+
+Code: DATA
+SDNA: 959
+Old: 2816416883261022736
+Length: 40
+NR: 1
+Accumulated bytes: 182345
+
+Code: DATA
+SDNA: 0
+Old: 2816416883261022720
+Length: 8
+NR: 1
+Accumulated bytes: 182385
+
+Code: DATA
+SDNA: 869
+Old: 2816416883261022752
+Length: 40
+NR: 1
+Accumulated bytes: 182457
+
+Code: DATA
+SDNA: 868
+Old: 2816416883261022768
+Length: 8
+NR: 1
+Accumulated bytes: 182497
+
+Code: DATA
+SDNA: 0
+Old: 2816416883261022816
+Length: 9
+NR: 1
+Accumulated bytes: 182538
+
+Code: DATA
+SDNA: 0
+Old: 2816416883261022784
+Length: 9
+NR: 1
+Accumulated bytes: 182579
+
+Code: DATA
+SDNA: 959
+Old: 2816416883261022656
+Length: 40
+NR: 1
+Accumulated bytes: 182651
+
+Code: DATA
+SDNA: 784
+Old: 2816416883261022528
+Length: 192
+NR: 1
+Accumulated bytes: 182875
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022848
+Length: 320
+NR: 1
+Accumulated bytes: 183227
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022864
+Length: 320
+NR: 1
+Accumulated bytes: 183579
+
+Code: DATA
+SDNA: 840
+Old: 2816416883261022832
+Length: 296
+NR: 1
+Accumulated bytes: 183907
+
+Code: DATA
+SDNA: 784
+Old: 2816416883261021584
+Length: 192
+NR: 1
+Accumulated bytes: 184131
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022912
+Length: 320
+NR: 1
+Accumulated bytes: 184483
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022944
+Length: 320
+NR: 1
+Accumulated bytes: 184835
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022960
+Length: 320
+NR: 1
+Accumulated bytes: 185187
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022976
+Length: 320
+NR: 1
+Accumulated bytes: 185539
+
+Code: DATA
+SDNA: 785
+Old: 2816416883261022928
+Length: 320
+NR: 1
+Accumulated bytes: 185891
+
+Code: DATA
+SDNA: 32
+Old: 2816416883261022896
+Length: 344
+NR: 1
+Accumulated bytes: 186267
+
+Code: SN
+SDNA: 768
+Old: 2180453114326349632
+Length: 544
+NR: 1
+Accumulated bytes: 186843
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089360
+Length: 32
+NR: 1
+Accumulated bytes: 186907
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089488
+Length: 32
+NR: 1
+Accumulated bytes: 186971
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089504
+Length: 32
+NR: 1
+Accumulated bytes: 187035
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089520
+Length: 32
+NR: 1
+Accumulated bytes: 187099
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089536
+Length: 32
+NR: 1
+Accumulated bytes: 187163
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089552
+Length: 32
+NR: 1
+Accumulated bytes: 187227
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089568
+Length: 32
+NR: 1
+Accumulated bytes: 187291
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089584
+Length: 32
+NR: 1
+Accumulated bytes: 187355
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089600
+Length: 32
+NR: 1
+Accumulated bytes: 187419
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089616
+Length: 32
+NR: 1
+Accumulated bytes: 187483
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089632
+Length: 32
+NR: 1
+Accumulated bytes: 187547
+
+Code: DATA
+SDNA: 769
+Old: 8405657444412089376
+Length: 32
+NR: 1
+Accumulated bytes: 187611
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089392
+Length: 40
+NR: 1
+Accumulated bytes: 187683
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089648
+Length: 40
+NR: 1
+Accumulated bytes: 187755
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089664
+Length: 40
+NR: 1
+Accumulated bytes: 187827
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089680
+Length: 40
+NR: 1
+Accumulated bytes: 187899
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089696
+Length: 40
+NR: 1
+Accumulated bytes: 187971
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089712
+Length: 40
+NR: 1
+Accumulated bytes: 188043
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089728
+Length: 40
+NR: 1
+Accumulated bytes: 188115
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089744
+Length: 40
+NR: 1
+Accumulated bytes: 188187
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089760
+Length: 40
+NR: 1
+Accumulated bytes: 188259
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089776
+Length: 40
+NR: 1
+Accumulated bytes: 188331
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089792
+Length: 40
+NR: 1
+Accumulated bytes: 188403
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089808
+Length: 40
+NR: 1
+Accumulated bytes: 188475
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089824
+Length: 40
+NR: 1
+Accumulated bytes: 188547
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089840
+Length: 40
+NR: 1
+Accumulated bytes: 188619
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089856
+Length: 40
+NR: 1
+Accumulated bytes: 188691
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089872
+Length: 40
+NR: 1
+Accumulated bytes: 188763
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089888
+Length: 40
+NR: 1
+Accumulated bytes: 188835
+
+Code: DATA
+SDNA: 770
+Old: 8405657444412089408
+Length: 40
+NR: 1
+Accumulated bytes: 188907
+
+Code: DATA
+SDNA: 784
+Old: 8405657444412089424
+Length: 192
+NR: 1
+Accumulated bytes: 189131
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412089952
+Length: 320
+NR: 1
+Accumulated bytes: 189483
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412090016
+Length: 320
+NR: 1
+Accumulated bytes: 189835
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090032
+Length: 200
+NR: 1
+Accumulated bytes: 190067
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412089968
+Length: 320
+NR: 1
+Accumulated bytes: 190419
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090080
+Length: 200
+NR: 1
+Accumulated bytes: 190651
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090144
+Length: 200
+NR: 1
+Accumulated bytes: 190883
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090192
+Length: 200
+NR: 1
+Accumulated bytes: 191115
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090240
+Length: 200
+NR: 1
+Accumulated bytes: 191347
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090288
+Length: 200
+NR: 1
+Accumulated bytes: 191579
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090336
+Length: 200
+NR: 1
+Accumulated bytes: 191811
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090384
+Length: 200
+NR: 1
+Accumulated bytes: 192043
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090432
+Length: 200
+NR: 1
+Accumulated bytes: 192275
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090480
+Length: 200
+NR: 1
+Accumulated bytes: 192507
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090528
+Length: 200
+NR: 1
+Accumulated bytes: 192739
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090576
+Length: 200
+NR: 1
+Accumulated bytes: 192971
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090624
+Length: 200
+NR: 1
+Accumulated bytes: 193203
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090672
+Length: 200
+NR: 1
+Accumulated bytes: 193435
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090688
+Length: 200
+NR: 1
+Accumulated bytes: 193667
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090704
+Length: 200
+NR: 1
+Accumulated bytes: 193899
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090720
+Length: 200
+NR: 1
+Accumulated bytes: 194131
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090736
+Length: 200
+NR: 1
+Accumulated bytes: 194363
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090752
+Length: 200
+NR: 1
+Accumulated bytes: 194595
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090768
+Length: 200
+NR: 1
+Accumulated bytes: 194827
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090784
+Length: 200
+NR: 1
+Accumulated bytes: 195059
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090800
+Length: 200
+NR: 1
+Accumulated bytes: 195291
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090816
+Length: 200
+NR: 1
+Accumulated bytes: 195523
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090832
+Length: 200
+NR: 1
+Accumulated bytes: 195755
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090848
+Length: 200
+NR: 1
+Accumulated bytes: 195987
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090864
+Length: 200
+NR: 1
+Accumulated bytes: 196219
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090880
+Length: 200
+NR: 1
+Accumulated bytes: 196451
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090896
+Length: 200
+NR: 1
+Accumulated bytes: 196683
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090928
+Length: 200
+NR: 1
+Accumulated bytes: 196915
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090912
+Length: 200
+NR: 1
+Accumulated bytes: 197147
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090944
+Length: 200
+NR: 1
+Accumulated bytes: 197379
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090960
+Length: 200
+NR: 1
+Accumulated bytes: 197611
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090976
+Length: 200
+NR: 1
+Accumulated bytes: 197843
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090992
+Length: 200
+NR: 1
+Accumulated bytes: 198075
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412091008
+Length: 200
+NR: 1
+Accumulated bytes: 198307
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412091024
+Length: 200
+NR: 1
+Accumulated bytes: 198539
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412091040
+Length: 200
+NR: 1
+Accumulated bytes: 198771
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412091056
+Length: 200
+NR: 1
+Accumulated bytes: 199003
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412090096
+Length: 200
+NR: 1
+Accumulated bytes: 199235
+
+Code: DATA
+SDNA: 775
+Old: 8405657444412090112
+Length: 584
+NR: 1
+Accumulated bytes: 199851
+
+Code: DATA
+SDNA: 775
+Old: 8405657444412090128
+Length: 584
+NR: 1
+Accumulated bytes: 200467
+
+Code: DATA
+SDNA: 839
+Old: 8405657444412089936
+Length: 248
+NR: 1
+Accumulated bytes: 200747
+
+Code: DATA
+SDNA: 784
+Old: 8405657444412089904
+Length: 192
+NR: 1
+Accumulated bytes: 200971
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091168
+Length: 320
+NR: 1
+Accumulated bytes: 201323
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091184
+Length: 320
+NR: 1
+Accumulated bytes: 201675
+
+Code: DATA
+SDNA: 840
+Old: 8405657444412091152
+Length: 296
+NR: 1
+Accumulated bytes: 202003
+
+Code: DATA
+SDNA: 704
+Old: 8405657444412091232
+Length: 16
+NR: 1
+Accumulated bytes: 202051
+
+Code: DATA
+SDNA: 703
+Old: 8405657444412091264
+Length: 3744
+NR: 234
+Accumulated bytes: 205827
+
+Code: DATA
+SDNA: 784
+Old: 8405657444412091120
+Length: 192
+NR: 1
+Accumulated bytes: 206051
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091344
+Length: 320
+NR: 1
+Accumulated bytes: 206403
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091408
+Length: 320
+NR: 1
+Accumulated bytes: 206755
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091424
+Length: 320
+NR: 1
+Accumulated bytes: 207107
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091440
+Length: 320
+NR: 1
+Accumulated bytes: 207459
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091360
+Length: 320
+NR: 1
+Accumulated bytes: 207811
+
+Code: DATA
+SDNA: 32
+Old: 8405657444412091328
+Length: 344
+NR: 1
+Accumulated bytes: 208187
+
+Code: DATA
+SDNA: 784
+Old: 8405657444412091296
+Length: 192
+NR: 1
+Accumulated bytes: 208411
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091488
+Length: 320
+NR: 1
+Accumulated bytes: 208763
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091536
+Length: 320
+NR: 1
+Accumulated bytes: 209115
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091552
+Length: 320
+NR: 1
+Accumulated bytes: 209467
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091568
+Length: 320
+NR: 1
+Accumulated bytes: 209819
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091584
+Length: 320
+NR: 1
+Accumulated bytes: 210171
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412091616
+Length: 200
+NR: 1
+Accumulated bytes: 210403
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091600
+Length: 320
+NR: 1
+Accumulated bytes: 210755
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091664
+Length: 320
+NR: 1
+Accumulated bytes: 211107
+
+Code: DATA
+SDNA: 773
+Old: 8405657444412091680
+Length: 200
+NR: 1
+Accumulated bytes: 211339
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412089456
+Length: 320
+NR: 1
+Accumulated bytes: 211691
+
+Code: DATA
+SDNA: 952
+Old: 8405657444412091696
+Length: 944
+NR: 1
+Accumulated bytes: 212667
+
+Code: DATA
+SDNA: 957
+Old: 8405657444412091472
+Length: 1416
+NR: 1
+Accumulated bytes: 214115
+
+Code: DATA
+SDNA: 784
+Old: 8405657444412089440
+Length: 192
+NR: 1
+Accumulated bytes: 214339
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091728
+Length: 320
+NR: 1
+Accumulated bytes: 214691
+
+Code: DATA
+SDNA: 785
+Old: 8405657444412091744
+Length: 320
+NR: 1
+Accumulated bytes: 215043
+
+Code: DATA
+SDNA: 840
+Old: 8405657444412091712
+Length: 296
+NR: 1
+Accumulated bytes: 215371
+
+Code: DATA
+SDNA: 704
+Old: 8405657444412091792
+Length: 16
+NR: 1
+Accumulated bytes: 215419
+
+Code: DATA
+SDNA: 703
+Old: 8405657444412091824
+Length: 3648
+NR: 228
+Accumulated bytes: 219099
+
+Code: SN
+SDNA: 768
+Old: 4655398151649618176
+Length: 544
+NR: 1
+Accumulated bytes: 219675
+
+Code: DATA
+SDNA: 769
+Old: 33711928473258640
+Length: 32
+NR: 1
+Accumulated bytes: 219739
+
+Code: DATA
+SDNA: 769
+Old: 33711928473258736
+Length: 32
+NR: 1
+Accumulated bytes: 219803
+
+Code: DATA
+SDNA: 769
+Old: 33711928473258752
+Length: 32
+NR: 1
+Accumulated bytes: 219867
+
+Code: DATA
+SDNA: 769
+Old: 33711928473258768
+Length: 32
+NR: 1
+Accumulated bytes: 219931
+
+Code: DATA
+SDNA: 769
+Old: 33711928473258784
+Length: 32
+NR: 1
+Accumulated bytes: 219995
+
+Code: DATA
+SDNA: 769
+Old: 33711928473258800
+Length: 32
+NR: 1
+Accumulated bytes: 220059
+
+Code: DATA
+SDNA: 769
+Old: 33711928473258816
+Length: 32
+NR: 1
+Accumulated bytes: 220123
+
+Code: DATA
+SDNA: 769
+Old: 33711928473258656
+Length: 32
+NR: 1
+Accumulated bytes: 220187
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258672
+Length: 40
+NR: 1
+Accumulated bytes: 220259
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258832
+Length: 40
+NR: 1
+Accumulated bytes: 220331
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258848
+Length: 40
+NR: 1
+Accumulated bytes: 220403
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258864
+Length: 40
+NR: 1
+Accumulated bytes: 220475
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258880
+Length: 40
+NR: 1
+Accumulated bytes: 220547
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258896
+Length: 40
+NR: 1
+Accumulated bytes: 220619
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258912
+Length: 40
+NR: 1
+Accumulated bytes: 220691
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258928
+Length: 40
+NR: 1
+Accumulated bytes: 220763
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258944
+Length: 40
+NR: 1
+Accumulated bytes: 220835
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258960
+Length: 40
+NR: 1
+Accumulated bytes: 220907
+
+Code: DATA
+SDNA: 770
+Old: 33711928473258688
+Length: 40
+NR: 1
+Accumulated bytes: 220979
+
+Code: DATA
+SDNA: 784
+Old: 33711928473258704
+Length: 192
+NR: 1
+Accumulated bytes: 221203
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259008
+Length: 320
+NR: 1
+Accumulated bytes: 221555
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259040
+Length: 320
+NR: 1
+Accumulated bytes: 221907
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259024
+Length: 320
+NR: 1
+Accumulated bytes: 222259
+
+Code: DATA
+SDNA: 839
+Old: 33711928473258992
+Length: 248
+NR: 1
+Accumulated bytes: 222539
+
+Code: DATA
+SDNA: 784
+Old: 33711928473258976
+Length: 192
+NR: 1
+Accumulated bytes: 222763
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259088
+Length: 320
+NR: 1
+Accumulated bytes: 223115
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259104
+Length: 320
+NR: 1
+Accumulated bytes: 223467
+
+Code: DATA
+SDNA: 840
+Old: 33711928473259072
+Length: 296
+NR: 1
+Accumulated bytes: 223795
+
+Code: DATA
+SDNA: 784
+Old: 33711928473258720
+Length: 192
+NR: 1
+Accumulated bytes: 224019
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259152
+Length: 320
+NR: 1
+Accumulated bytes: 224371
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259184
+Length: 320
+NR: 1
+Accumulated bytes: 224723
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259200
+Length: 320
+NR: 1
+Accumulated bytes: 225075
+
+Code: DATA
+SDNA: 788
+Old: 33711928473259232
+Length: 24
+NR: 1
+Accumulated bytes: 225131
+
+Code: DATA
+SDNA: 787
+Old: 33711928473259248
+Length: 200
+NR: 1
+Accumulated bytes: 225363
+
+Code: DATA
+SDNA: 786
+Old: 33711928473259264
+Length: 104
+NR: 1
+Accumulated bytes: 225499
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259216
+Length: 320
+NR: 1
+Accumulated bytes: 225851
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259280
+Length: 320
+NR: 1
+Accumulated bytes: 226203
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259296
+Length: 320
+NR: 1
+Accumulated bytes: 226555
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259312
+Length: 320
+NR: 1
+Accumulated bytes: 226907
+
+Code: DATA
+SDNA: 785
+Old: 33711928473259168
+Length: 320
+NR: 1
+Accumulated bytes: 227259
+
+Code: DATA
+SDNA: 952
+Old: 33711928473259328
+Length: 944
+NR: 1
+Accumulated bytes: 228235
+
+Code: DATA
+SDNA: 957
+Old: 33711928473259136
+Length: 1416
+NR: 1
+Accumulated bytes: 229683
+
+Code: SN
+SDNA: 768
+Old: 301582846989385184
+Length: 544
+NR: 1
+Accumulated bytes: 230259
+
+Code: DATA
+SDNA: 769
+Old: 4349680387683380656
+Length: 32
+NR: 1
+Accumulated bytes: 230323
+
+Code: DATA
+SDNA: 769
+Old: 4349680387683380752
+Length: 32
+NR: 1
+Accumulated bytes: 230387
+
+Code: DATA
+SDNA: 769
+Old: 4349680387683380768
+Length: 32
+NR: 1
+Accumulated bytes: 230451
+
+Code: DATA
+SDNA: 769
+Old: 4349680387683380784
+Length: 32
+NR: 1
+Accumulated bytes: 230515
+
+Code: DATA
+SDNA: 769
+Old: 4349680387683380800
+Length: 32
+NR: 1
+Accumulated bytes: 230579
+
+Code: DATA
+SDNA: 769
+Old: 4349680387683380816
+Length: 32
+NR: 1
+Accumulated bytes: 230643
+
+Code: DATA
+SDNA: 769
+Old: 4349680387683380832
+Length: 32
+NR: 1
+Accumulated bytes: 230707
+
+Code: DATA
+SDNA: 769
+Old: 4349680387683380672
+Length: 32
+NR: 1
+Accumulated bytes: 230771
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380688
+Length: 40
+NR: 1
+Accumulated bytes: 230843
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380848
+Length: 40
+NR: 1
+Accumulated bytes: 230915
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380864
+Length: 40
+NR: 1
+Accumulated bytes: 230987
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380880
+Length: 40
+NR: 1
+Accumulated bytes: 231059
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380896
+Length: 40
+NR: 1
+Accumulated bytes: 231131
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380912
+Length: 40
+NR: 1
+Accumulated bytes: 231203
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380928
+Length: 40
+NR: 1
+Accumulated bytes: 231275
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380944
+Length: 40
+NR: 1
+Accumulated bytes: 231347
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380960
+Length: 40
+NR: 1
+Accumulated bytes: 231419
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380976
+Length: 40
+NR: 1
+Accumulated bytes: 231491
+
+Code: DATA
+SDNA: 770
+Old: 4349680387683380704
+Length: 40
+NR: 1
+Accumulated bytes: 231563
+
+Code: DATA
+SDNA: 784
+Old: 4349680387683380720
+Length: 192
+NR: 1
+Accumulated bytes: 231787
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381024
+Length: 320
+NR: 1
+Accumulated bytes: 232139
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381056
+Length: 320
+NR: 1
+Accumulated bytes: 232491
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381040
+Length: 320
+NR: 1
+Accumulated bytes: 232843
+
+Code: DATA
+SDNA: 839
+Old: 4349680387683381008
+Length: 248
+NR: 1
+Accumulated bytes: 233123
+
+Code: DATA
+SDNA: 784
+Old: 4349680387683380992
+Length: 192
+NR: 1
+Accumulated bytes: 233347
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381104
+Length: 320
+NR: 1
+Accumulated bytes: 233699
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381136
+Length: 320
+NR: 1
+Accumulated bytes: 234051
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381152
+Length: 320
+NR: 1
+Accumulated bytes: 234403
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381168
+Length: 320
+NR: 1
+Accumulated bytes: 234755
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381120
+Length: 320
+NR: 1
+Accumulated bytes: 235107
+
+Code: DATA
+SDNA: 32
+Old: 4349680387683381088
+Length: 344
+NR: 1
+Accumulated bytes: 235483
+
+Code: DATA
+SDNA: 784
+Old: 4349680387683380736
+Length: 192
+NR: 1
+Accumulated bytes: 235707
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381200
+Length: 320
+NR: 1
+Accumulated bytes: 236059
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381232
+Length: 320
+NR: 1
+Accumulated bytes: 236411
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381248
+Length: 320
+NR: 1
+Accumulated bytes: 236763
+
+Code: DATA
+SDNA: 788
+Old: 4349680387683381280
+Length: 24
+NR: 1
+Accumulated bytes: 236819
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381264
+Length: 320
+NR: 1
+Accumulated bytes: 237171
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381296
+Length: 320
+NR: 1
+Accumulated bytes: 237523
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381312
+Length: 320
+NR: 1
+Accumulated bytes: 237875
+
+Code: DATA
+SDNA: 785
+Old: 4349680387683381216
+Length: 320
+NR: 1
+Accumulated bytes: 238227
+
+Code: DATA
+SDNA: 854
+Old: 4349680387683381184
+Length: 10632
+NR: 1
+Accumulated bytes: 248891
+
+Code: SN
+SDNA: 768
+Old: 8281645482102400608
+Length: 544
+NR: 1
+Accumulated bytes: 249467
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925232
+Length: 32
+NR: 1
+Accumulated bytes: 249531
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925328
+Length: 32
+NR: 1
+Accumulated bytes: 249595
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925344
+Length: 32
+NR: 1
+Accumulated bytes: 249659
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925360
+Length: 32
+NR: 1
+Accumulated bytes: 249723
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925376
+Length: 32
+NR: 1
+Accumulated bytes: 249787
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925392
+Length: 32
+NR: 1
+Accumulated bytes: 249851
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925408
+Length: 32
+NR: 1
+Accumulated bytes: 249915
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925424
+Length: 32
+NR: 1
+Accumulated bytes: 249979
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925440
+Length: 32
+NR: 1
+Accumulated bytes: 250043
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925456
+Length: 32
+NR: 1
+Accumulated bytes: 250107
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925472
+Length: 32
+NR: 1
+Accumulated bytes: 250171
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925488
+Length: 32
+NR: 1
+Accumulated bytes: 250235
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925504
+Length: 32
+NR: 1
+Accumulated bytes: 250299
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925520
+Length: 32
+NR: 1
+Accumulated bytes: 250363
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925536
+Length: 32
+NR: 1
+Accumulated bytes: 250427
+
+Code: DATA
+SDNA: 769
+Old: 4310664186034925248
+Length: 32
+NR: 1
+Accumulated bytes: 250491
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925264
+Length: 40
+NR: 1
+Accumulated bytes: 250563
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925552
+Length: 40
+NR: 1
+Accumulated bytes: 250635
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925568
+Length: 40
+NR: 1
+Accumulated bytes: 250707
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925584
+Length: 40
+NR: 1
+Accumulated bytes: 250779
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925600
+Length: 40
+NR: 1
+Accumulated bytes: 250851
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925616
+Length: 40
+NR: 1
+Accumulated bytes: 250923
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925632
+Length: 40
+NR: 1
+Accumulated bytes: 250995
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925648
+Length: 40
+NR: 1
+Accumulated bytes: 251067
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925664
+Length: 40
+NR: 1
+Accumulated bytes: 251139
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925680
+Length: 40
+NR: 1
+Accumulated bytes: 251211
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925696
+Length: 40
+NR: 1
+Accumulated bytes: 251283
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925712
+Length: 40
+NR: 1
+Accumulated bytes: 251355
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925728
+Length: 40
+NR: 1
+Accumulated bytes: 251427
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925744
+Length: 40
+NR: 1
+Accumulated bytes: 251499
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925760
+Length: 40
+NR: 1
+Accumulated bytes: 251571
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925776
+Length: 40
+NR: 1
+Accumulated bytes: 251643
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925792
+Length: 40
+NR: 1
+Accumulated bytes: 251715
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925808
+Length: 40
+NR: 1
+Accumulated bytes: 251787
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925824
+Length: 40
+NR: 1
+Accumulated bytes: 251859
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925840
+Length: 40
+NR: 1
+Accumulated bytes: 251931
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925856
+Length: 40
+NR: 1
+Accumulated bytes: 252003
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925872
+Length: 40
+NR: 1
+Accumulated bytes: 252075
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925888
+Length: 40
+NR: 1
+Accumulated bytes: 252147
+
+Code: DATA
+SDNA: 770
+Old: 4310664186034925280
+Length: 40
+NR: 1
+Accumulated bytes: 252219
+
+Code: DATA
+SDNA: 784
+Old: 4310664186034925296
+Length: 192
+NR: 1
+Accumulated bytes: 252443
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034925936
+Length: 320
+NR: 1
+Accumulated bytes: 252795
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034925968
+Length: 320
+NR: 1
+Accumulated bytes: 253147
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034925984
+Length: 200
+NR: 1
+Accumulated bytes: 253379
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034925952
+Length: 320
+NR: 1
+Accumulated bytes: 253731
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926000
+Length: 200
+NR: 1
+Accumulated bytes: 253963
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926032
+Length: 200
+NR: 1
+Accumulated bytes: 254195
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926048
+Length: 200
+NR: 1
+Accumulated bytes: 254427
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926080
+Length: 200
+NR: 1
+Accumulated bytes: 254659
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926112
+Length: 200
+NR: 1
+Accumulated bytes: 254891
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926128
+Length: 200
+NR: 1
+Accumulated bytes: 255123
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926096
+Length: 200
+NR: 1
+Accumulated bytes: 255355
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926064
+Length: 200
+NR: 1
+Accumulated bytes: 255587
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926144
+Length: 200
+NR: 1
+Accumulated bytes: 255819
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926160
+Length: 200
+NR: 1
+Accumulated bytes: 256051
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926176
+Length: 200
+NR: 1
+Accumulated bytes: 256283
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926192
+Length: 200
+NR: 1
+Accumulated bytes: 256515
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926208
+Length: 200
+NR: 1
+Accumulated bytes: 256747
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926224
+Length: 200
+NR: 1
+Accumulated bytes: 256979
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926240
+Length: 200
+NR: 1
+Accumulated bytes: 257211
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926256
+Length: 200
+NR: 1
+Accumulated bytes: 257443
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926272
+Length: 200
+NR: 1
+Accumulated bytes: 257675
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926288
+Length: 200
+NR: 1
+Accumulated bytes: 257907
+
+Code: DATA
+SDNA: 773
+Old: 4310664186034926016
+Length: 200
+NR: 1
+Accumulated bytes: 258139
+
+Code: DATA
+SDNA: 839
+Old: 4310664186034925920
+Length: 248
+NR: 1
+Accumulated bytes: 258419
+
+Code: DATA
+SDNA: 784
+Old: 4310664186034925904
+Length: 192
+NR: 1
+Accumulated bytes: 258643
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926352
+Length: 320
+NR: 1
+Accumulated bytes: 258995
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926368
+Length: 320
+NR: 1
+Accumulated bytes: 259347
+
+Code: DATA
+SDNA: 840
+Old: 4310664186034926336
+Length: 296
+NR: 1
+Accumulated bytes: 259675
+
+Code: DATA
+SDNA: 704
+Old: 4310664186034926384
+Length: 16
+NR: 1
+Accumulated bytes: 259723
+
+Code: DATA
+SDNA: 703
+Old: 4310664186034926416
+Length: 144
+NR: 9
+Accumulated bytes: 259899
+
+Code: DATA
+SDNA: 784
+Old: 4310664186034926320
+Length: 192
+NR: 1
+Accumulated bytes: 260123
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926464
+Length: 320
+NR: 1
+Accumulated bytes: 260475
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926480
+Length: 320
+NR: 1
+Accumulated bytes: 260827
+
+Code: DATA
+SDNA: 838
+Old: 4310664186034926448
+Length: 48
+NR: 1
+Accumulated bytes: 260907
+
+Code: DATA
+SDNA: 784
+Old: 4310664186034926432
+Length: 192
+NR: 1
+Accumulated bytes: 261131
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926528
+Length: 320
+NR: 1
+Accumulated bytes: 261483
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926544
+Length: 320
+NR: 1
+Accumulated bytes: 261835
+
+Code: DATA
+SDNA: 840
+Old: 4310664186034926512
+Length: 296
+NR: 1
+Accumulated bytes: 262163
+
+Code: DATA
+SDNA: 704
+Old: 4310664186034926560
+Length: 16
+NR: 1
+Accumulated bytes: 262211
+
+Code: DATA
+SDNA: 703
+Old: 4310664186034926592
+Length: 1168
+NR: 73
+Accumulated bytes: 263411
+
+Code: DATA
+SDNA: 784
+Old: 4310664186034926496
+Length: 192
+NR: 1
+Accumulated bytes: 263635
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926640
+Length: 320
+NR: 1
+Accumulated bytes: 263987
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926672
+Length: 320
+NR: 1
+Accumulated bytes: 264339
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926688
+Length: 320
+NR: 1
+Accumulated bytes: 264691
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926656
+Length: 320
+NR: 1
+Accumulated bytes: 265043
+
+Code: DATA
+SDNA: 855
+Old: 4310664186034926624
+Length: 600
+NR: 1
+Accumulated bytes: 265675
+
+Code: DATA
+SDNA: 784
+Old: 4310664186034926608
+Length: 192
+NR: 1
+Accumulated bytes: 265899
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926736
+Length: 320
+NR: 1
+Accumulated bytes: 266251
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926768
+Length: 320
+NR: 1
+Accumulated bytes: 266603
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926784
+Length: 320
+NR: 1
+Accumulated bytes: 266955
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926800
+Length: 320
+NR: 1
+Accumulated bytes: 267307
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926816
+Length: 320
+NR: 1
+Accumulated bytes: 267659
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926832
+Length: 320
+NR: 1
+Accumulated bytes: 268011
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926752
+Length: 320
+NR: 1
+Accumulated bytes: 268363
+
+Code: DATA
+SDNA: 952
+Old: 4310664186034926848
+Length: 944
+NR: 1
+Accumulated bytes: 269339
+
+Code: DATA
+SDNA: 957
+Old: 4310664186034926720
+Length: 1416
+NR: 1
+Accumulated bytes: 270787
+
+Code: DATA
+SDNA: 784
+Old: 4310664186034925312
+Length: 192
+NR: 1
+Accumulated bytes: 271011
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926880
+Length: 320
+NR: 1
+Accumulated bytes: 271363
+
+Code: DATA
+SDNA: 785
+Old: 4310664186034926896
+Length: 320
+NR: 1
+Accumulated bytes: 271715
+
+Code: DATA
+SDNA: 861
+Old: 4310664186034926912
+Length: 40
+NR: 1
+Accumulated bytes: 271787
+
+Code: DATA
+SDNA: 0
+Old: 4310664186034926928
+Length: 1
+NR: 1
+Accumulated bytes: 271820
+
+Code: DATA
+SDNA: 862
+Old: 4310664186034926864
+Length: 376
+NR: 1
+Accumulated bytes: 272228
+
+Code: SN
+SDNA: 768
+Old: 2167493704788508832
+Length: 544
+NR: 1
+Accumulated bytes: 272804
+
+Code: DATA
+SDNA: 769
+Old: 2437645744386666368
+Length: 32
+NR: 1
+Accumulated bytes: 272868
+
+Code: DATA
+SDNA: 769
+Old: 2437645744386666464
+Length: 32
+NR: 1
+Accumulated bytes: 272932
+
+Code: DATA
+SDNA: 769
+Old: 2437645744386666480
+Length: 32
+NR: 1
+Accumulated bytes: 272996
+
+Code: DATA
+SDNA: 769
+Old: 2437645744386666496
+Length: 32
+NR: 1
+Accumulated bytes: 273060
+
+Code: DATA
+SDNA: 769
+Old: 2437645744386666512
+Length: 32
+NR: 1
+Accumulated bytes: 273124
+
+Code: DATA
+SDNA: 769
+Old: 2437645744386666528
+Length: 32
+NR: 1
+Accumulated bytes: 273188
+
+Code: DATA
+SDNA: 769
+Old: 2437645744386666544
+Length: 32
+NR: 1
+Accumulated bytes: 273252
+
+Code: DATA
+SDNA: 769
+Old: 2437645744386666384
+Length: 32
+NR: 1
+Accumulated bytes: 273316
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666400
+Length: 40
+NR: 1
+Accumulated bytes: 273388
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666560
+Length: 40
+NR: 1
+Accumulated bytes: 273460
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666576
+Length: 40
+NR: 1
+Accumulated bytes: 273532
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666592
+Length: 40
+NR: 1
+Accumulated bytes: 273604
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666608
+Length: 40
+NR: 1
+Accumulated bytes: 273676
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666624
+Length: 40
+NR: 1
+Accumulated bytes: 273748
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666640
+Length: 40
+NR: 1
+Accumulated bytes: 273820
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666656
+Length: 40
+NR: 1
+Accumulated bytes: 273892
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666672
+Length: 40
+NR: 1
+Accumulated bytes: 273964
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666688
+Length: 40
+NR: 1
+Accumulated bytes: 274036
+
+Code: DATA
+SDNA: 770
+Old: 2437645744386666416
+Length: 40
+NR: 1
+Accumulated bytes: 274108
+
+Code: DATA
+SDNA: 784
+Old: 2437645744386666432
+Length: 192
+NR: 1
+Accumulated bytes: 274332
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666736
+Length: 320
+NR: 1
+Accumulated bytes: 274684
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666768
+Length: 320
+NR: 1
+Accumulated bytes: 275036
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666752
+Length: 320
+NR: 1
+Accumulated bytes: 275388
+
+Code: DATA
+SDNA: 839
+Old: 2437645744386666720
+Length: 248
+NR: 1
+Accumulated bytes: 275668
+
+Code: DATA
+SDNA: 784
+Old: 2437645744386666704
+Length: 192
+NR: 1
+Accumulated bytes: 275892
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666816
+Length: 320
+NR: 1
+Accumulated bytes: 276244
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666832
+Length: 320
+NR: 1
+Accumulated bytes: 276596
+
+Code: DATA
+SDNA: 840
+Old: 2437645744386666800
+Length: 296
+NR: 1
+Accumulated bytes: 276924
+
+Code: DATA
+SDNA: 784
+Old: 2437645744386666448
+Length: 192
+NR: 1
+Accumulated bytes: 277148
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666880
+Length: 320
+NR: 1
+Accumulated bytes: 277500
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666912
+Length: 320
+NR: 1
+Accumulated bytes: 277852
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666928
+Length: 320
+NR: 1
+Accumulated bytes: 278204
+
+Code: DATA
+SDNA: 788
+Old: 2437645744386666960
+Length: 24
+NR: 1
+Accumulated bytes: 278260
+
+Code: DATA
+SDNA: 787
+Old: 2437645744386666976
+Length: 200
+NR: 1
+Accumulated bytes: 278492
+
+Code: DATA
+SDNA: 786
+Old: 2437645744386666992
+Length: 104
+NR: 1
+Accumulated bytes: 278628
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666944
+Length: 320
+NR: 1
+Accumulated bytes: 278980
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386667008
+Length: 320
+NR: 1
+Accumulated bytes: 279332
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386667024
+Length: 320
+NR: 1
+Accumulated bytes: 279684
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386667040
+Length: 320
+NR: 1
+Accumulated bytes: 280036
+
+Code: DATA
+SDNA: 785
+Old: 2437645744386666896
+Length: 320
+NR: 1
+Accumulated bytes: 280388
+
+Code: DATA
+SDNA: 952
+Old: 2437645744386667056
+Length: 944
+NR: 1
+Accumulated bytes: 281364
+
+Code: DATA
+SDNA: 957
+Old: 2437645744386666864
+Length: 1416
+NR: 1
+Accumulated bytes: 282812
+
+Code: SN
+SDNA: 768
+Old: 3260076945748141440
+Length: 544
+NR: 1
+Accumulated bytes: 283388
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293712
+Length: 32
+NR: 1
+Accumulated bytes: 283452
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293808
+Length: 32
+NR: 1
+Accumulated bytes: 283516
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293824
+Length: 32
+NR: 1
+Accumulated bytes: 283580
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293840
+Length: 32
+NR: 1
+Accumulated bytes: 283644
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293856
+Length: 32
+NR: 1
+Accumulated bytes: 283708
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293872
+Length: 32
+NR: 1
+Accumulated bytes: 283772
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293888
+Length: 32
+NR: 1
+Accumulated bytes: 283836
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293904
+Length: 32
+NR: 1
+Accumulated bytes: 283900
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293920
+Length: 32
+NR: 1
+Accumulated bytes: 283964
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293936
+Length: 32
+NR: 1
+Accumulated bytes: 284028
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293952
+Length: 32
+NR: 1
+Accumulated bytes: 284092
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293968
+Length: 32
+NR: 1
+Accumulated bytes: 284156
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293984
+Length: 32
+NR: 1
+Accumulated bytes: 284220
+
+Code: DATA
+SDNA: 769
+Old: 4903783852690293728
+Length: 32
+NR: 1
+Accumulated bytes: 284284
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690293744
+Length: 40
+NR: 1
+Accumulated bytes: 284356
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294000
+Length: 40
+NR: 1
+Accumulated bytes: 284428
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294016
+Length: 40
+NR: 1
+Accumulated bytes: 284500
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294032
+Length: 40
+NR: 1
+Accumulated bytes: 284572
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294048
+Length: 40
+NR: 1
+Accumulated bytes: 284644
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294064
+Length: 40
+NR: 1
+Accumulated bytes: 284716
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294080
+Length: 40
+NR: 1
+Accumulated bytes: 284788
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294096
+Length: 40
+NR: 1
+Accumulated bytes: 284860
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294112
+Length: 40
+NR: 1
+Accumulated bytes: 284932
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294128
+Length: 40
+NR: 1
+Accumulated bytes: 285004
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294144
+Length: 40
+NR: 1
+Accumulated bytes: 285076
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294160
+Length: 40
+NR: 1
+Accumulated bytes: 285148
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294176
+Length: 40
+NR: 1
+Accumulated bytes: 285220
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294192
+Length: 40
+NR: 1
+Accumulated bytes: 285292
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294208
+Length: 40
+NR: 1
+Accumulated bytes: 285364
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294224
+Length: 40
+NR: 1
+Accumulated bytes: 285436
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294240
+Length: 40
+NR: 1
+Accumulated bytes: 285508
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690294256
+Length: 40
+NR: 1
+Accumulated bytes: 285580
+
+Code: DATA
+SDNA: 770
+Old: 4903783852690293760
+Length: 40
+NR: 1
+Accumulated bytes: 285652
+
+Code: DATA
+SDNA: 784
+Old: 4903783852690293776
+Length: 192
+NR: 1
+Accumulated bytes: 285876
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294304
+Length: 320
+NR: 1
+Accumulated bytes: 286228
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294336
+Length: 320
+NR: 1
+Accumulated bytes: 286580
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294320
+Length: 320
+NR: 1
+Accumulated bytes: 286932
+
+Code: DATA
+SDNA: 839
+Old: 4903783852690294288
+Length: 248
+NR: 1
+Accumulated bytes: 287212
+
+Code: DATA
+SDNA: 784
+Old: 4903783852690294272
+Length: 192
+NR: 1
+Accumulated bytes: 287436
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294400
+Length: 320
+NR: 1
+Accumulated bytes: 287788
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294416
+Length: 320
+NR: 1
+Accumulated bytes: 288140
+
+Code: DATA
+SDNA: 840
+Old: 4903783852690294384
+Length: 296
+NR: 1
+Accumulated bytes: 288468
+
+Code: DATA
+SDNA: 784
+Old: 4903783852690294368
+Length: 192
+NR: 1
+Accumulated bytes: 288692
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294480
+Length: 320
+NR: 1
+Accumulated bytes: 289044
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294512
+Length: 320
+NR: 1
+Accumulated bytes: 289396
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294528
+Length: 320
+NR: 1
+Accumulated bytes: 289748
+
+Code: DATA
+SDNA: 788
+Old: 4903783852690294560
+Length: 24
+NR: 1
+Accumulated bytes: 289804
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294544
+Length: 320
+NR: 1
+Accumulated bytes: 290156
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294576
+Length: 320
+NR: 1
+Accumulated bytes: 290508
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294592
+Length: 320
+NR: 1
+Accumulated bytes: 290860
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294496
+Length: 320
+NR: 1
+Accumulated bytes: 291212
+
+Code: DATA
+SDNA: 854
+Old: 4903783852690294464
+Length: 10632
+NR: 1
+Accumulated bytes: 301876
+
+Code: DATA
+SDNA: 784
+Old: 4903783852690294448
+Length: 192
+NR: 1
+Accumulated bytes: 302100
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294640
+Length: 320
+NR: 1
+Accumulated bytes: 302452
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294672
+Length: 320
+NR: 1
+Accumulated bytes: 302804
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294688
+Length: 320
+NR: 1
+Accumulated bytes: 303156
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294704
+Length: 320
+NR: 1
+Accumulated bytes: 303508
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294720
+Length: 320
+NR: 1
+Accumulated bytes: 303860
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294656
+Length: 320
+NR: 1
+Accumulated bytes: 304212
+
+Code: DATA
+SDNA: 860
+Old: 4903783852690294624
+Length: 376
+NR: 1
+Accumulated bytes: 304620
+
+Code: DATA
+SDNA: 858
+Old: 4903783852690294736
+Length: 168
+NR: 1
+Accumulated bytes: 304820
+
+Code: DATA
+SDNA: 784
+Old: 4903783852690294608
+Length: 192
+NR: 1
+Accumulated bytes: 305044
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294784
+Length: 320
+NR: 1
+Accumulated bytes: 305396
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294816
+Length: 320
+NR: 1
+Accumulated bytes: 305748
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294832
+Length: 320
+NR: 1
+Accumulated bytes: 306100
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294848
+Length: 320
+NR: 1
+Accumulated bytes: 306452
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294864
+Length: 320
+NR: 1
+Accumulated bytes: 306804
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294800
+Length: 320
+NR: 1
+Accumulated bytes: 307156
+
+Code: DATA
+SDNA: 852
+Old: 4903783852690294768
+Length: 160
+NR: 1
+Accumulated bytes: 307348
+
+Code: DATA
+SDNA: 849
+Old: 4903783852690294880
+Length: 2280
+NR: 1
+Accumulated bytes: 309660
+
+Code: DATA
+SDNA: 784
+Old: 4903783852690293792
+Length: 192
+NR: 1
+Accumulated bytes: 309884
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294912
+Length: 320
+NR: 1
+Accumulated bytes: 310236
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294944
+Length: 320
+NR: 1
+Accumulated bytes: 310588
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294960
+Length: 320
+NR: 1
+Accumulated bytes: 310940
+
+Code: DATA
+SDNA: 788
+Old: 4903783852690294992
+Length: 24
+NR: 1
+Accumulated bytes: 310996
+
+Code: DATA
+SDNA: 787
+Old: 4903783852690295008
+Length: 200
+NR: 1
+Accumulated bytes: 311228
+
+Code: DATA
+SDNA: 786
+Old: 4903783852690295024
+Length: 104
+NR: 1
+Accumulated bytes: 311364
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294976
+Length: 320
+NR: 1
+Accumulated bytes: 311716
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690295040
+Length: 320
+NR: 1
+Accumulated bytes: 312068
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690295056
+Length: 320
+NR: 1
+Accumulated bytes: 312420
+
+Code: DATA
+SDNA: 785
+Old: 4903783852690294928
+Length: 320
+NR: 1
+Accumulated bytes: 312772
+
+Code: DATA
+SDNA: 952
+Old: 4903783852690295072
+Length: 944
+NR: 1
+Accumulated bytes: 313748
+
+Code: DATA
+SDNA: 957
+Old: 4903783852690294896
+Length: 1416
+NR: 1
+Accumulated bytes: 315196
+
+Code: SN
+SDNA: 768
+Old: 2771788326217307200
+Length: 544
+NR: 1
+Accumulated bytes: 315772
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148147792
+Length: 32
+NR: 1
+Accumulated bytes: 315836
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148147888
+Length: 32
+NR: 1
+Accumulated bytes: 315900
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148147904
+Length: 32
+NR: 1
+Accumulated bytes: 315964
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148147920
+Length: 32
+NR: 1
+Accumulated bytes: 316028
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148147936
+Length: 32
+NR: 1
+Accumulated bytes: 316092
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148147952
+Length: 32
+NR: 1
+Accumulated bytes: 316156
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148147968
+Length: 32
+NR: 1
+Accumulated bytes: 316220
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148147984
+Length: 32
+NR: 1
+Accumulated bytes: 316284
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148148000
+Length: 32
+NR: 1
+Accumulated bytes: 316348
+
+Code: DATA
+SDNA: 769
+Old: 8420711329148147808
+Length: 32
+NR: 1
+Accumulated bytes: 316412
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148147824
+Length: 40
+NR: 1
+Accumulated bytes: 316484
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148016
+Length: 40
+NR: 1
+Accumulated bytes: 316556
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148032
+Length: 40
+NR: 1
+Accumulated bytes: 316628
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148048
+Length: 40
+NR: 1
+Accumulated bytes: 316700
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148064
+Length: 40
+NR: 1
+Accumulated bytes: 316772
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148080
+Length: 40
+NR: 1
+Accumulated bytes: 316844
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148096
+Length: 40
+NR: 1
+Accumulated bytes: 316916
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148112
+Length: 40
+NR: 1
+Accumulated bytes: 316988
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148128
+Length: 40
+NR: 1
+Accumulated bytes: 317060
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148144
+Length: 40
+NR: 1
+Accumulated bytes: 317132
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148160
+Length: 40
+NR: 1
+Accumulated bytes: 317204
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148176
+Length: 40
+NR: 1
+Accumulated bytes: 317276
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148148192
+Length: 40
+NR: 1
+Accumulated bytes: 317348
+
+Code: DATA
+SDNA: 770
+Old: 8420711329148147840
+Length: 40
+NR: 1
+Accumulated bytes: 317420
+
+Code: DATA
+SDNA: 784
+Old: 8420711329148147856
+Length: 192
+NR: 1
+Accumulated bytes: 317644
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148240
+Length: 320
+NR: 1
+Accumulated bytes: 317996
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148272
+Length: 320
+NR: 1
+Accumulated bytes: 318348
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148256
+Length: 320
+NR: 1
+Accumulated bytes: 318700
+
+Code: DATA
+SDNA: 839
+Old: 8420711329148148224
+Length: 248
+NR: 1
+Accumulated bytes: 318980
+
+Code: DATA
+SDNA: 784
+Old: 8420711329148148208
+Length: 192
+NR: 1
+Accumulated bytes: 319204
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148336
+Length: 320
+NR: 1
+Accumulated bytes: 319556
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148352
+Length: 320
+NR: 1
+Accumulated bytes: 319908
+
+Code: DATA
+SDNA: 840
+Old: 8420711329148148320
+Length: 296
+NR: 1
+Accumulated bytes: 320236
+
+Code: DATA
+SDNA: 784
+Old: 8420711329148148304
+Length: 192
+NR: 1
+Accumulated bytes: 320460
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148400
+Length: 320
+NR: 1
+Accumulated bytes: 320812
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148432
+Length: 320
+NR: 1
+Accumulated bytes: 321164
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148448
+Length: 320
+NR: 1
+Accumulated bytes: 321516
+
+Code: DATA
+SDNA: 788
+Old: 8420711329148148480
+Length: 24
+NR: 1
+Accumulated bytes: 321572
+
+Code: DATA
+SDNA: 787
+Old: 8420711329148148496
+Length: 200
+NR: 1
+Accumulated bytes: 321804
+
+Code: DATA
+SDNA: 786
+Old: 8420711329148148512
+Length: 104
+NR: 1
+Accumulated bytes: 321940
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148464
+Length: 320
+NR: 1
+Accumulated bytes: 322292
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148528
+Length: 320
+NR: 1
+Accumulated bytes: 322644
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148544
+Length: 320
+NR: 1
+Accumulated bytes: 322996
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148416
+Length: 320
+NR: 1
+Accumulated bytes: 323348
+
+Code: DATA
+SDNA: 854
+Old: 8420711329148148384
+Length: 10632
+NR: 1
+Accumulated bytes: 334012
+
+Code: DATA
+SDNA: 784
+Old: 8420711329148147872
+Length: 192
+NR: 1
+Accumulated bytes: 334236
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148576
+Length: 320
+NR: 1
+Accumulated bytes: 334588
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148608
+Length: 320
+NR: 1
+Accumulated bytes: 334940
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148624
+Length: 320
+NR: 1
+Accumulated bytes: 335292
+
+Code: DATA
+SDNA: 788
+Old: 8420711329148148656
+Length: 24
+NR: 1
+Accumulated bytes: 335348
+
+Code: DATA
+SDNA: 787
+Old: 8420711329148148672
+Length: 200
+NR: 1
+Accumulated bytes: 335580
+
+Code: DATA
+SDNA: 786
+Old: 8420711329148148688
+Length: 104
+NR: 1
+Accumulated bytes: 335716
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148640
+Length: 320
+NR: 1
+Accumulated bytes: 336068
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148704
+Length: 320
+NR: 1
+Accumulated bytes: 336420
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148720
+Length: 320
+NR: 1
+Accumulated bytes: 336772
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148736
+Length: 320
+NR: 1
+Accumulated bytes: 337124
+
+Code: DATA
+SDNA: 785
+Old: 8420711329148148592
+Length: 320
+NR: 1
+Accumulated bytes: 337476
+
+Code: DATA
+SDNA: 952
+Old: 8420711329148148752
+Length: 944
+NR: 1
+Accumulated bytes: 338452
+
+Code: DATA
+SDNA: 957
+Old: 8420711329148148560
+Length: 1416
+NR: 1
+Accumulated bytes: 339900
+
+Code: SN
+SDNA: 768
+Old: 2359223896097289568
+Length: 544
+NR: 1
+Accumulated bytes: 340476
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675216
+Length: 32
+NR: 1
+Accumulated bytes: 340540
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675312
+Length: 32
+NR: 1
+Accumulated bytes: 340604
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675328
+Length: 32
+NR: 1
+Accumulated bytes: 340668
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675344
+Length: 32
+NR: 1
+Accumulated bytes: 340732
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675360
+Length: 32
+NR: 1
+Accumulated bytes: 340796
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675376
+Length: 32
+NR: 1
+Accumulated bytes: 340860
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675392
+Length: 32
+NR: 1
+Accumulated bytes: 340924
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675408
+Length: 32
+NR: 1
+Accumulated bytes: 340988
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675424
+Length: 32
+NR: 1
+Accumulated bytes: 341052
+
+Code: DATA
+SDNA: 769
+Old: 2755387742214675232
+Length: 32
+NR: 1
+Accumulated bytes: 341116
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675248
+Length: 40
+NR: 1
+Accumulated bytes: 341188
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675440
+Length: 40
+NR: 1
+Accumulated bytes: 341260
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675456
+Length: 40
+NR: 1
+Accumulated bytes: 341332
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675472
+Length: 40
+NR: 1
+Accumulated bytes: 341404
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675488
+Length: 40
+NR: 1
+Accumulated bytes: 341476
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675504
+Length: 40
+NR: 1
+Accumulated bytes: 341548
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675520
+Length: 40
+NR: 1
+Accumulated bytes: 341620
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675536
+Length: 40
+NR: 1
+Accumulated bytes: 341692
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675552
+Length: 40
+NR: 1
+Accumulated bytes: 341764
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675568
+Length: 40
+NR: 1
+Accumulated bytes: 341836
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675584
+Length: 40
+NR: 1
+Accumulated bytes: 341908
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675600
+Length: 40
+NR: 1
+Accumulated bytes: 341980
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675616
+Length: 40
+NR: 1
+Accumulated bytes: 342052
+
+Code: DATA
+SDNA: 770
+Old: 2755387742214675264
+Length: 40
+NR: 1
+Accumulated bytes: 342124
+
+Code: DATA
+SDNA: 784
+Old: 2755387742214675280
+Length: 192
+NR: 1
+Accumulated bytes: 342348
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675664
+Length: 320
+NR: 1
+Accumulated bytes: 342700
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675696
+Length: 320
+NR: 1
+Accumulated bytes: 343052
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675680
+Length: 320
+NR: 1
+Accumulated bytes: 343404
+
+Code: DATA
+SDNA: 775
+Old: 2755387742214675712
+Length: 584
+NR: 1
+Accumulated bytes: 344020
+
+Code: DATA
+SDNA: 775
+Old: 2755387742214675728
+Length: 584
+NR: 1
+Accumulated bytes: 344636
+
+Code: DATA
+SDNA: 777
+Old: 2755387742214675744
+Length: 352
+NR: 1
+Accumulated bytes: 345020
+
+Code: DATA
+SDNA: 839
+Old: 2755387742214675648
+Length: 248
+NR: 1
+Accumulated bytes: 345300
+
+Code: DATA
+SDNA: 784
+Old: 2755387742214675632
+Length: 192
+NR: 1
+Accumulated bytes: 345524
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675808
+Length: 320
+NR: 1
+Accumulated bytes: 345876
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675824
+Length: 320
+NR: 1
+Accumulated bytes: 346228
+
+Code: DATA
+SDNA: 840
+Old: 2755387742214675792
+Length: 296
+NR: 1
+Accumulated bytes: 346556
+
+Code: DATA
+SDNA: 784
+Old: 2755387742214675776
+Length: 192
+NR: 1
+Accumulated bytes: 346780
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675872
+Length: 320
+NR: 1
+Accumulated bytes: 347132
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675904
+Length: 320
+NR: 1
+Accumulated bytes: 347484
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675920
+Length: 320
+NR: 1
+Accumulated bytes: 347836
+
+Code: DATA
+SDNA: 788
+Old: 2755387742214675952
+Length: 24
+NR: 1
+Accumulated bytes: 347892
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675936
+Length: 320
+NR: 1
+Accumulated bytes: 348244
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675968
+Length: 320
+NR: 1
+Accumulated bytes: 348596
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675984
+Length: 320
+NR: 1
+Accumulated bytes: 348948
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214675888
+Length: 320
+NR: 1
+Accumulated bytes: 349300
+
+Code: DATA
+SDNA: 854
+Old: 2755387742214675856
+Length: 10632
+NR: 1
+Accumulated bytes: 359964
+
+Code: DATA
+SDNA: 784
+Old: 2755387742214675296
+Length: 192
+NR: 1
+Accumulated bytes: 360188
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214676016
+Length: 320
+NR: 1
+Accumulated bytes: 360540
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214676048
+Length: 320
+NR: 1
+Accumulated bytes: 360892
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214676064
+Length: 320
+NR: 1
+Accumulated bytes: 361244
+
+Code: DATA
+SDNA: 788
+Old: 2755387742214676096
+Length: 24
+NR: 1
+Accumulated bytes: 361300
+
+Code: DATA
+SDNA: 787
+Old: 2755387742214676112
+Length: 200
+NR: 1
+Accumulated bytes: 361532
+
+Code: DATA
+SDNA: 786
+Old: 2755387742214676144
+Length: 104
+NR: 1
+Accumulated bytes: 361668
+
+Code: DATA
+SDNA: 787
+Old: 2755387742214676128
+Length: 200
+NR: 1
+Accumulated bytes: 361900
+
+Code: DATA
+SDNA: 786
+Old: 2755387742214676160
+Length: 104
+NR: 1
+Accumulated bytes: 362036
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214676080
+Length: 320
+NR: 1
+Accumulated bytes: 362388
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214676176
+Length: 320
+NR: 1
+Accumulated bytes: 362740
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214676192
+Length: 320
+NR: 1
+Accumulated bytes: 363092
+
+Code: DATA
+SDNA: 785
+Old: 2755387742214676032
+Length: 320
+NR: 1
+Accumulated bytes: 363444
+
+Code: DATA
+SDNA: 952
+Old: 2755387742214676208
+Length: 944
+NR: 1
+Accumulated bytes: 364420
+
+Code: DATA
+SDNA: 957
+Old: 2755387742214676000
+Length: 1416
+NR: 1
+Accumulated bytes: 365868
+
+Code: SC
+SDNA: 767
+Old: 3421705132671723216
+Length: 6928
+NR: 1
+Accumulated bytes: 372828
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558098832
+Length: 144
+NR: 1
+Accumulated bytes: 373004
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558098848
+Length: 144
+NR: 1
+Accumulated bytes: 373180
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558099008
+Length: 144
+NR: 1
+Accumulated bytes: 373356
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558099040
+Length: 144
+NR: 1
+Accumulated bytes: 373532
+
+Code: DATA
+SDNA: 757
+Old: 6577225063558098880
+Length: 1248
+NR: 1
+Accumulated bytes: 374812
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099344
+Length: 424
+NR: 1
+Accumulated bytes: 375268
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099424
+Length: 24
+NR: 2
+Accumulated bytes: 375324
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099360
+Length: 424
+NR: 1
+Accumulated bytes: 375780
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099456
+Length: 24
+NR: 2
+Accumulated bytes: 375836
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099376
+Length: 424
+NR: 1
+Accumulated bytes: 376292
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099488
+Length: 24
+NR: 2
+Accumulated bytes: 376348
+
+Code: DATA
+SDNA: 750
+Old: 6577225063558099072
+Length: 224
+NR: 1
+Accumulated bytes: 376604
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099536
+Length: 424
+NR: 1
+Accumulated bytes: 377060
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099616
+Length: 24
+NR: 2
+Accumulated bytes: 377116
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558099520
+Length: 24
+NR: 1
+Accumulated bytes: 377172
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558099632
+Length: 62
+NR: 1
+Accumulated bytes: 377266
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099552
+Length: 424
+NR: 1
+Accumulated bytes: 377722
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099648
+Length: 24
+NR: 2
+Accumulated bytes: 377778
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099568
+Length: 424
+NR: 1
+Accumulated bytes: 378234
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099680
+Length: 24
+NR: 2
+Accumulated bytes: 378290
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099584
+Length: 424
+NR: 1
+Accumulated bytes: 378746
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099712
+Length: 24
+NR: 2
+Accumulated bytes: 378802
+
+Code: DATA
+SDNA: 750
+Old: 6577225063558099088
+Length: 224
+NR: 1
+Accumulated bytes: 379058
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099760
+Length: 424
+NR: 1
+Accumulated bytes: 379514
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099840
+Length: 24
+NR: 2
+Accumulated bytes: 379570
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558099744
+Length: 24
+NR: 1
+Accumulated bytes: 379626
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558099856
+Length: 57
+NR: 1
+Accumulated bytes: 379715
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099776
+Length: 424
+NR: 1
+Accumulated bytes: 380171
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099872
+Length: 24
+NR: 2
+Accumulated bytes: 380227
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099792
+Length: 424
+NR: 1
+Accumulated bytes: 380683
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099904
+Length: 24
+NR: 2
+Accumulated bytes: 380739
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099808
+Length: 424
+NR: 1
+Accumulated bytes: 381195
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558099936
+Length: 24
+NR: 2
+Accumulated bytes: 381251
+
+Code: DATA
+SDNA: 743
+Old: 6577225063558099104
+Length: 312
+NR: 1
+Accumulated bytes: 381595
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100096
+Length: 424
+NR: 1
+Accumulated bytes: 382051
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100128
+Length: 24
+NR: 2
+Accumulated bytes: 382107
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100112
+Length: 424
+NR: 1
+Accumulated bytes: 382563
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100160
+Length: 24
+NR: 2
+Accumulated bytes: 382619
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100000
+Length: 424
+NR: 1
+Accumulated bytes: 383075
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100192
+Length: 24
+NR: 2
+Accumulated bytes: 383131
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558099968
+Length: 24
+NR: 1
+Accumulated bytes: 383187
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558100208
+Length: 56
+NR: 1
+Accumulated bytes: 383275
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558099984
+Length: 24
+NR: 1
+Accumulated bytes: 383331
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558100224
+Length: 56
+NR: 1
+Accumulated bytes: 383419
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100016
+Length: 424
+NR: 1
+Accumulated bytes: 383875
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100240
+Length: 24
+NR: 2
+Accumulated bytes: 383931
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100032
+Length: 424
+NR: 1
+Accumulated bytes: 384387
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100272
+Length: 24
+NR: 2
+Accumulated bytes: 384443
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100048
+Length: 424
+NR: 1
+Accumulated bytes: 384899
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100304
+Length: 24
+NR: 2
+Accumulated bytes: 384955
+
+Code: DATA
+SDNA: 737
+Old: 6577225063558100064
+Length: 48
+NR: 1
+Accumulated bytes: 385035
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100336
+Length: 424
+NR: 1
+Accumulated bytes: 385491
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100368
+Length: 24
+NR: 2
+Accumulated bytes: 385547
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100352
+Length: 424
+NR: 1
+Accumulated bytes: 386003
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100400
+Length: 24
+NR: 2
+Accumulated bytes: 386059
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099120
+Length: 424
+NR: 1
+Accumulated bytes: 386515
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100432
+Length: 24
+NR: 2
+Accumulated bytes: 386571
+
+Code: DATA
+SDNA: 746
+Old: 6577225063558099136
+Length: 224
+NR: 1
+Accumulated bytes: 386827
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100480
+Length: 424
+NR: 1
+Accumulated bytes: 387283
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100560
+Length: 24
+NR: 2
+Accumulated bytes: 387339
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558100464
+Length: 24
+NR: 1
+Accumulated bytes: 387395
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558100576
+Length: 54
+NR: 1
+Accumulated bytes: 387481
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100496
+Length: 424
+NR: 1
+Accumulated bytes: 387937
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100592
+Length: 24
+NR: 2
+Accumulated bytes: 387993
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100512
+Length: 424
+NR: 1
+Accumulated bytes: 388449
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100624
+Length: 24
+NR: 2
+Accumulated bytes: 388505
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100528
+Length: 424
+NR: 1
+Accumulated bytes: 388961
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100656
+Length: 24
+NR: 2
+Accumulated bytes: 389017
+
+Code: DATA
+SDNA: 747
+Old: 6577225063558099152
+Length: 224
+NR: 1
+Accumulated bytes: 389273
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100704
+Length: 424
+NR: 1
+Accumulated bytes: 389729
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100784
+Length: 24
+NR: 2
+Accumulated bytes: 389785
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558100688
+Length: 24
+NR: 1
+Accumulated bytes: 389841
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558100800
+Length: 55
+NR: 1
+Accumulated bytes: 389928
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100720
+Length: 424
+NR: 1
+Accumulated bytes: 390384
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100816
+Length: 24
+NR: 2
+Accumulated bytes: 390440
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100736
+Length: 424
+NR: 1
+Accumulated bytes: 390896
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100848
+Length: 24
+NR: 2
+Accumulated bytes: 390952
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100752
+Length: 424
+NR: 1
+Accumulated bytes: 391408
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558100880
+Length: 24
+NR: 2
+Accumulated bytes: 391464
+
+Code: DATA
+SDNA: 748
+Old: 6577225063558099168
+Length: 224
+NR: 1
+Accumulated bytes: 391720
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100928
+Length: 424
+NR: 1
+Accumulated bytes: 392176
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101008
+Length: 24
+NR: 2
+Accumulated bytes: 392232
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558100912
+Length: 24
+NR: 1
+Accumulated bytes: 392288
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558101024
+Length: 56
+NR: 1
+Accumulated bytes: 392376
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100944
+Length: 424
+NR: 1
+Accumulated bytes: 392832
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101040
+Length: 24
+NR: 2
+Accumulated bytes: 392888
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100960
+Length: 424
+NR: 1
+Accumulated bytes: 393344
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101072
+Length: 24
+NR: 2
+Accumulated bytes: 393400
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558100976
+Length: 424
+NR: 1
+Accumulated bytes: 393856
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101104
+Length: 24
+NR: 2
+Accumulated bytes: 393912
+
+Code: DATA
+SDNA: 749
+Old: 6577225063558099184
+Length: 224
+NR: 1
+Accumulated bytes: 394168
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558101152
+Length: 424
+NR: 1
+Accumulated bytes: 394624
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101184
+Length: 24
+NR: 2
+Accumulated bytes: 394680
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558101136
+Length: 24
+NR: 1
+Accumulated bytes: 394736
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558101200
+Length: 55
+NR: 1
+Accumulated bytes: 394823
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099200
+Length: 424
+NR: 1
+Accumulated bytes: 395279
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101216
+Length: 84
+NR: 7
+Accumulated bytes: 395395
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099216
+Length: 424
+NR: 1
+Accumulated bytes: 395851
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101232
+Length: 36
+NR: 3
+Accumulated bytes: 395919
+
+Code: DATA
+SDNA: 157
+Old: 6577225063558099392
+Length: 72
+NR: 1
+Accumulated bytes: 396023
+
+Code: DATA
+SDNA: 156
+Old: 6577225063558101248
+Length: 80
+NR: 2
+Accumulated bytes: 396135
+
+Code: DATA
+SDNA: 756
+Old: 6577225063558099408
+Length: 20
+NR: 1
+Accumulated bytes: 396187
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099264
+Length: 424
+NR: 1
+Accumulated bytes: 396643
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101280
+Length: 24
+NR: 2
+Accumulated bytes: 396699
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558099232
+Length: 24
+NR: 1
+Accumulated bytes: 396755
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558101296
+Length: 63
+NR: 1
+Accumulated bytes: 396850
+
+Code: DATA
+SDNA: 70
+Old: 6577225063558099248
+Length: 24
+NR: 1
+Accumulated bytes: 396906
+
+Code: DATA
+SDNA: 0
+Old: 6577225063558101312
+Length: 63
+NR: 1
+Accumulated bytes: 397001
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099280
+Length: 424
+NR: 1
+Accumulated bytes: 397457
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101328
+Length: 24
+NR: 2
+Accumulated bytes: 397513
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099296
+Length: 424
+NR: 1
+Accumulated bytes: 397969
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101360
+Length: 24
+NR: 2
+Accumulated bytes: 398025
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558099312
+Length: 424
+NR: 1
+Accumulated bytes: 398481
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558101392
+Length: 24
+NR: 2
+Accumulated bytes: 398537
+
+Code: DATA
+SDNA: 801
+Old: 6577225063558098864
+Length: 1136
+NR: 1
+Accumulated bytes: 399705
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101424
+Length: 88
+NR: 1
+Accumulated bytes: 399825
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101472
+Length: 88
+NR: 1
+Accumulated bytes: 399945
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101488
+Length: 88
+NR: 1
+Accumulated bytes: 400065
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101504
+Length: 88
+NR: 1
+Accumulated bytes: 400185
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101520
+Length: 88
+NR: 1
+Accumulated bytes: 400305
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101536
+Length: 88
+NR: 1
+Accumulated bytes: 400425
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101552
+Length: 88
+NR: 1
+Accumulated bytes: 400545
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101568
+Length: 88
+NR: 1
+Accumulated bytes: 400665
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101584
+Length: 88
+NR: 1
+Accumulated bytes: 400785
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101600
+Length: 88
+NR: 1
+Accumulated bytes: 400905
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101616
+Length: 88
+NR: 1
+Accumulated bytes: 401025
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101632
+Length: 88
+NR: 1
+Accumulated bytes: 401145
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101648
+Length: 88
+NR: 1
+Accumulated bytes: 401265
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101664
+Length: 88
+NR: 1
+Accumulated bytes: 401385
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101680
+Length: 88
+NR: 1
+Accumulated bytes: 401505
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101696
+Length: 88
+NR: 1
+Accumulated bytes: 401625
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101712
+Length: 88
+NR: 1
+Accumulated bytes: 401745
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101728
+Length: 88
+NR: 1
+Accumulated bytes: 401865
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101744
+Length: 88
+NR: 1
+Accumulated bytes: 401985
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101760
+Length: 88
+NR: 1
+Accumulated bytes: 402105
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101776
+Length: 88
+NR: 1
+Accumulated bytes: 402225
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101792
+Length: 88
+NR: 1
+Accumulated bytes: 402345
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101808
+Length: 88
+NR: 1
+Accumulated bytes: 402465
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101824
+Length: 88
+NR: 1
+Accumulated bytes: 402585
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101840
+Length: 88
+NR: 1
+Accumulated bytes: 402705
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101856
+Length: 88
+NR: 1
+Accumulated bytes: 402825
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101872
+Length: 88
+NR: 1
+Accumulated bytes: 402945
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101888
+Length: 88
+NR: 1
+Accumulated bytes: 403065
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101904
+Length: 88
+NR: 1
+Accumulated bytes: 403185
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101920
+Length: 88
+NR: 1
+Accumulated bytes: 403305
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101936
+Length: 88
+NR: 1
+Accumulated bytes: 403425
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101952
+Length: 88
+NR: 1
+Accumulated bytes: 403545
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101968
+Length: 88
+NR: 1
+Accumulated bytes: 403665
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101984
+Length: 88
+NR: 1
+Accumulated bytes: 403785
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102000
+Length: 88
+NR: 1
+Accumulated bytes: 403905
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102016
+Length: 88
+NR: 1
+Accumulated bytes: 404025
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102032
+Length: 88
+NR: 1
+Accumulated bytes: 404145
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102048
+Length: 88
+NR: 1
+Accumulated bytes: 404265
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102064
+Length: 88
+NR: 1
+Accumulated bytes: 404385
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102080
+Length: 88
+NR: 1
+Accumulated bytes: 404505
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102096
+Length: 88
+NR: 1
+Accumulated bytes: 404625
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102112
+Length: 88
+NR: 1
+Accumulated bytes: 404745
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102128
+Length: 88
+NR: 1
+Accumulated bytes: 404865
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102144
+Length: 88
+NR: 1
+Accumulated bytes: 404985
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102160
+Length: 88
+NR: 1
+Accumulated bytes: 405105
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102176
+Length: 88
+NR: 1
+Accumulated bytes: 405225
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102192
+Length: 88
+NR: 1
+Accumulated bytes: 405345
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102208
+Length: 88
+NR: 1
+Accumulated bytes: 405465
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102224
+Length: 88
+NR: 1
+Accumulated bytes: 405585
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102240
+Length: 88
+NR: 1
+Accumulated bytes: 405705
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102256
+Length: 88
+NR: 1
+Accumulated bytes: 405825
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102272
+Length: 88
+NR: 1
+Accumulated bytes: 405945
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102288
+Length: 88
+NR: 1
+Accumulated bytes: 406065
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102304
+Length: 88
+NR: 1
+Accumulated bytes: 406185
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102320
+Length: 88
+NR: 1
+Accumulated bytes: 406305
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102336
+Length: 88
+NR: 1
+Accumulated bytes: 406425
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102352
+Length: 88
+NR: 1
+Accumulated bytes: 406545
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102368
+Length: 88
+NR: 1
+Accumulated bytes: 406665
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102384
+Length: 88
+NR: 1
+Accumulated bytes: 406785
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102400
+Length: 88
+NR: 1
+Accumulated bytes: 406905
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102416
+Length: 88
+NR: 1
+Accumulated bytes: 407025
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102432
+Length: 88
+NR: 1
+Accumulated bytes: 407145
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102448
+Length: 88
+NR: 1
+Accumulated bytes: 407265
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102464
+Length: 88
+NR: 1
+Accumulated bytes: 407385
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102480
+Length: 88
+NR: 1
+Accumulated bytes: 407505
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102496
+Length: 88
+NR: 1
+Accumulated bytes: 407625
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102512
+Length: 88
+NR: 1
+Accumulated bytes: 407745
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102528
+Length: 88
+NR: 1
+Accumulated bytes: 407865
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102544
+Length: 88
+NR: 1
+Accumulated bytes: 407985
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102560
+Length: 88
+NR: 1
+Accumulated bytes: 408105
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102576
+Length: 88
+NR: 1
+Accumulated bytes: 408225
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102592
+Length: 88
+NR: 1
+Accumulated bytes: 408345
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102608
+Length: 88
+NR: 1
+Accumulated bytes: 408465
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102624
+Length: 88
+NR: 1
+Accumulated bytes: 408585
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102640
+Length: 88
+NR: 1
+Accumulated bytes: 408705
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102656
+Length: 88
+NR: 1
+Accumulated bytes: 408825
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102672
+Length: 88
+NR: 1
+Accumulated bytes: 408945
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102688
+Length: 88
+NR: 1
+Accumulated bytes: 409065
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102704
+Length: 88
+NR: 1
+Accumulated bytes: 409185
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102720
+Length: 88
+NR: 1
+Accumulated bytes: 409305
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102736
+Length: 88
+NR: 1
+Accumulated bytes: 409425
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102752
+Length: 88
+NR: 1
+Accumulated bytes: 409545
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102768
+Length: 88
+NR: 1
+Accumulated bytes: 409665
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102784
+Length: 88
+NR: 1
+Accumulated bytes: 409785
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102800
+Length: 88
+NR: 1
+Accumulated bytes: 409905
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102816
+Length: 88
+NR: 1
+Accumulated bytes: 410025
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102832
+Length: 88
+NR: 1
+Accumulated bytes: 410145
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102848
+Length: 88
+NR: 1
+Accumulated bytes: 410265
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102864
+Length: 88
+NR: 1
+Accumulated bytes: 410385
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102880
+Length: 88
+NR: 1
+Accumulated bytes: 410505
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102896
+Length: 88
+NR: 1
+Accumulated bytes: 410625
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102912
+Length: 88
+NR: 1
+Accumulated bytes: 410745
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102928
+Length: 88
+NR: 1
+Accumulated bytes: 410865
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102944
+Length: 88
+NR: 1
+Accumulated bytes: 410985
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102960
+Length: 88
+NR: 1
+Accumulated bytes: 411105
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102976
+Length: 88
+NR: 1
+Accumulated bytes: 411225
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558102992
+Length: 88
+NR: 1
+Accumulated bytes: 411345
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103008
+Length: 88
+NR: 1
+Accumulated bytes: 411465
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103024
+Length: 88
+NR: 1
+Accumulated bytes: 411585
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103040
+Length: 88
+NR: 1
+Accumulated bytes: 411705
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103056
+Length: 88
+NR: 1
+Accumulated bytes: 411825
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103072
+Length: 88
+NR: 1
+Accumulated bytes: 411945
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103088
+Length: 88
+NR: 1
+Accumulated bytes: 412065
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103104
+Length: 88
+NR: 1
+Accumulated bytes: 412185
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103120
+Length: 88
+NR: 1
+Accumulated bytes: 412305
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103136
+Length: 88
+NR: 1
+Accumulated bytes: 412425
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103152
+Length: 88
+NR: 1
+Accumulated bytes: 412545
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103168
+Length: 88
+NR: 1
+Accumulated bytes: 412665
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103184
+Length: 88
+NR: 1
+Accumulated bytes: 412785
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103200
+Length: 88
+NR: 1
+Accumulated bytes: 412905
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103216
+Length: 88
+NR: 1
+Accumulated bytes: 413025
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103232
+Length: 88
+NR: 1
+Accumulated bytes: 413145
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103248
+Length: 88
+NR: 1
+Accumulated bytes: 413265
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103264
+Length: 88
+NR: 1
+Accumulated bytes: 413385
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103280
+Length: 88
+NR: 1
+Accumulated bytes: 413505
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103296
+Length: 88
+NR: 1
+Accumulated bytes: 413625
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103312
+Length: 88
+NR: 1
+Accumulated bytes: 413745
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103328
+Length: 88
+NR: 1
+Accumulated bytes: 413865
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103344
+Length: 88
+NR: 1
+Accumulated bytes: 413985
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103360
+Length: 88
+NR: 1
+Accumulated bytes: 414105
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103376
+Length: 88
+NR: 1
+Accumulated bytes: 414225
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103392
+Length: 88
+NR: 1
+Accumulated bytes: 414345
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103408
+Length: 88
+NR: 1
+Accumulated bytes: 414465
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103424
+Length: 88
+NR: 1
+Accumulated bytes: 414585
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103440
+Length: 88
+NR: 1
+Accumulated bytes: 414705
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103456
+Length: 88
+NR: 1
+Accumulated bytes: 414825
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103472
+Length: 88
+NR: 1
+Accumulated bytes: 414945
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558103488
+Length: 88
+NR: 1
+Accumulated bytes: 415065
+
+Code: DATA
+SDNA: 799
+Old: 6577225063558101440
+Length: 88
+NR: 1
+Accumulated bytes: 415185
+
+Code: DATA
+SDNA: 728
+Old: 6577225063558098896
+Length: 152
+NR: 1
+Accumulated bytes: 415369
+
+Code: DATA
+SDNA: 728
+Old: 6577225063558098912
+Length: 152
+NR: 1
+Accumulated bytes: 415553
+
+Code: DATA
+SDNA: 110
+Old: 6577225063558098944
+Length: 424
+NR: 1
+Accumulated bytes: 416009
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558103504
+Length: 24
+NR: 2
+Accumulated bytes: 416065
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558103520
+Length: 24
+NR: 2
+Accumulated bytes: 416121
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558103536
+Length: 24
+NR: 2
+Accumulated bytes: 416177
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558103552
+Length: 24
+NR: 2
+Accumulated bytes: 416233
+
+Code: DATA
+SDNA: 108
+Old: 6577225063558098928
+Length: 36
+NR: 3
+Accumulated bytes: 416301
+
+Code: DATA
+SDNA: 252
+Old: 6577225063558098960
+Length: 328
+NR: 1
+Accumulated bytes: 416661
+
+Code: DATA
+SDNA: 246
+Old: 6577225063558103568
+Length: 48
+NR: 1
+Accumulated bytes: 416741
+
+Code: DATA
+SDNA: 246
+Old: 6577225063558103696
+Length: 48
+NR: 1
+Accumulated bytes: 416821
+
+Code: DATA
+SDNA: 246
+Old: 6577225063558103584
+Length: 48
+NR: 1
+Accumulated bytes: 416901
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558103632
+Length: 144
+NR: 1
+Accumulated bytes: 417077
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558103712
+Length: 144
+NR: 1
+Accumulated bytes: 417253
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558103744
+Length: 144
+NR: 1
+Accumulated bytes: 417429
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558103648
+Length: 144
+NR: 1
+Accumulated bytes: 417605
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558103776
+Length: 144
+NR: 1
+Accumulated bytes: 417781
+
+Code: DATA
+SDNA: 9
+Old: 6577225063558103808
+Length: 144
+NR: 1
+Accumulated bytes: 417957
+
+Code: DATA
+SDNA: 175
+Old: 6577225063558103664
+Length: 128
+NR: 1
+Accumulated bytes: 418117
+
+Code: DATA
+SDNA: 247
+Old: 6577225063558103600
+Length: 64
+NR: 1
+Accumulated bytes: 418213
+
+Code: DATA
+SDNA: 247
+Old: 6577225063558103616
+Length: 64
+NR: 1
+Accumulated bytes: 418309
+
+Code: DATA
+SDNA: 107
+Old: 6577225063558098976
+Length: 528
+NR: 1
+Accumulated bytes: 418869
+
+Code: DATA
+SDNA: 104
+Old: 6577225063558103840
+Length: 32
+NR: 1
+Accumulated bytes: 418933
+
+Code: SC
+SDNA: 767
+Old: 4037093052117101488
+Length: 6928
+NR: 1
+Accumulated bytes: 425893
+
+Code: DATA
+SDNA: 9
+Old: 2857717661225596768
+Length: 144
+NR: 1
+Accumulated bytes: 426069
+
+Code: DATA
+SDNA: 9
+Old: 2857717661225596896
+Length: 144
+NR: 1
+Accumulated bytes: 426245
+
+Code: DATA
+SDNA: 9
+Old: 2857717661225596928
+Length: 144
+NR: 1
+Accumulated bytes: 426421
+
+Code: DATA
+SDNA: 757
+Old: 2857717661225596784
+Length: 1248
+NR: 1
+Accumulated bytes: 427701
+
+Code: DATA
+SDNA: 110
+Old: 2857717661225597024
+Length: 424
+NR: 1
+Accumulated bytes: 428157
+
+Code: DATA
+SDNA: 108
+Old: 2857717661225597104
+Length: 24
+NR: 2
+Accumulated bytes: 428213
+
+Code: DATA
+SDNA: 110
+Old: 2857717661225597040
+Length: 424
+NR: 1
+Accumulated bytes: 428669
+
+Code: DATA
+SDNA: 108
+Old: 2857717661225597136
+Length: 24
+NR: 2
+Accumulated bytes: 428725
+
+Code: DATA
+SDNA: 110
+Old: 2857717661225597056
+Length: 424
+NR: 1
+Accumulated bytes: 429181
+
+Code: DATA
+SDNA: 108
+Old: 2857717661225597168
+Length: 24
+NR: 2
+Accumulated bytes: 429237
+
+Code: DATA
+SDNA: 110
+Old: 2857717661225596960
+Length: 424
+NR: 1
+Accumulated bytes: 429693
+
+Code: DATA
+SDNA: 108
+Old: 2857717661225597200
+Length: 84
+NR: 7
+Accumulated bytes: 429809
+
+Code: DATA
+SDNA: 110
+Old: 2857717661225596976
+Length: 424
+NR: 1
+Accumulated bytes: 430265
+
+Code: DATA
+SDNA: 108
+Old: 2857717661225597216
+Length: 36
+NR: 3
+Accumulated bytes: 430333
+
+Code: DATA
+SDNA: 157
+Old: 2857717661225597072
+Length: 72
+NR: 1
+Accumulated bytes: 430437
+
+Code: DATA
+SDNA: 156
+Old: 2857717661225597232
+Length: 80
+NR: 2
+Accumulated bytes: 430549
+
+Code: DATA
+SDNA: 756
+Old: 2857717661225597088
+Length: 20
+NR: 1
+Accumulated bytes: 430601
+
+Code: DATA
+SDNA: 110
+Old: 2857717661225596992
+Length: 424
+NR: 1
+Accumulated bytes: 431057
+
+Code: DATA
+SDNA: 108
+Old: 2857717661225597264
+Length: 24
+NR: 2
+Accumulated bytes: 431113
+
+Code: DATA
+SDNA: 728
+Old: 2857717661225596800
+Length: 152
+NR: 1
+Accumulated bytes: 431297
+
+Code: DATA
+SDNA: 728
+Old: 2857717661225596816
+Length: 152
+NR: 1
+Accumulated bytes: 431481
+
+Code: DATA
+SDNA: 108
+Old: 2857717661225596832
+Length: 36
+NR: 3
+Accumulated bytes: 431549
+
+Code: DATA
+SDNA: 252
+Old: 8918696635957482240
+Length: 328
+NR: 1
+Accumulated bytes: 431909
+
+Code: DATA
+SDNA: 246
+Old: 2857717661225597280
+Length: 48
+NR: 1
+Accumulated bytes: 431989
+
+Code: DATA
+SDNA: 246
+Old: 2857717661225597360
+Length: 48
+NR: 1
+Accumulated bytes: 432069
+
+Code: DATA
+SDNA: 246
+Old: 2857717661225597296
+Length: 48
+NR: 1
+Accumulated bytes: 432149
+
+Code: DATA
+SDNA: 247
+Old: 2857717661225597328
+Length: 64
+NR: 1
+Accumulated bytes: 432245
+
+Code: DATA
+SDNA: 107
+Old: 2857717661225596864
+Length: 528
+NR: 1
+Accumulated bytes: 432805
+
+Code: DATA
+SDNA: 103
+Old: 2857717661225597376
+Length: 32
+NR: 1
+Accumulated bytes: 432869
+
+Code: DATA
+SDNA: 103
+Old: 2857717661225597408
+Length: 32
+NR: 1
+Accumulated bytes: 432933
+
+Code: DATA
+SDNA: 103
+Old: 2857717661225597392
+Length: 32
+NR: 1
+Accumulated bytes: 432997
+
+Code: PL
+SDNA: 89
+Old: 7462026759479429216
+Length: 432
+NR: 1
+Accumulated bytes: 433461
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241824
+Length: 48
+NR: 1
+Accumulated bytes: 433541
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241856
+Length: 48
+NR: 1
+Accumulated bytes: 433621
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241872
+Length: 48
+NR: 1
+Accumulated bytes: 433701
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241888
+Length: 48
+NR: 1
+Accumulated bytes: 433781
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241904
+Length: 48
+NR: 1
+Accumulated bytes: 433861
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241920
+Length: 48
+NR: 1
+Accumulated bytes: 433941
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241936
+Length: 48
+NR: 1
+Accumulated bytes: 434021
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241952
+Length: 48
+NR: 1
+Accumulated bytes: 434101
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241968
+Length: 48
+NR: 1
+Accumulated bytes: 434181
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241984
+Length: 48
+NR: 1
+Accumulated bytes: 434261
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242000
+Length: 48
+NR: 1
+Accumulated bytes: 434341
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242016
+Length: 48
+NR: 1
+Accumulated bytes: 434421
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242032
+Length: 48
+NR: 1
+Accumulated bytes: 434501
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242048
+Length: 48
+NR: 1
+Accumulated bytes: 434581
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242064
+Length: 48
+NR: 1
+Accumulated bytes: 434661
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242080
+Length: 48
+NR: 1
+Accumulated bytes: 434741
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242096
+Length: 48
+NR: 1
+Accumulated bytes: 434821
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242112
+Length: 48
+NR: 1
+Accumulated bytes: 434901
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242128
+Length: 48
+NR: 1
+Accumulated bytes: 434981
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242144
+Length: 48
+NR: 1
+Accumulated bytes: 435061
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242160
+Length: 48
+NR: 1
+Accumulated bytes: 435141
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242176
+Length: 48
+NR: 1
+Accumulated bytes: 435221
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242192
+Length: 48
+NR: 1
+Accumulated bytes: 435301
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242208
+Length: 48
+NR: 1
+Accumulated bytes: 435381
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242224
+Length: 48
+NR: 1
+Accumulated bytes: 435461
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242240
+Length: 48
+NR: 1
+Accumulated bytes: 435541
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242256
+Length: 48
+NR: 1
+Accumulated bytes: 435621
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242272
+Length: 48
+NR: 1
+Accumulated bytes: 435701
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242288
+Length: 48
+NR: 1
+Accumulated bytes: 435781
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242304
+Length: 48
+NR: 1
+Accumulated bytes: 435861
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242320
+Length: 48
+NR: 1
+Accumulated bytes: 435941
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242336
+Length: 48
+NR: 1
+Accumulated bytes: 436021
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242352
+Length: 48
+NR: 1
+Accumulated bytes: 436101
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242368
+Length: 48
+NR: 1
+Accumulated bytes: 436181
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242384
+Length: 48
+NR: 1
+Accumulated bytes: 436261
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242400
+Length: 48
+NR: 1
+Accumulated bytes: 436341
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242416
+Length: 48
+NR: 1
+Accumulated bytes: 436421
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242432
+Length: 48
+NR: 1
+Accumulated bytes: 436501
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242448
+Length: 48
+NR: 1
+Accumulated bytes: 436581
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242464
+Length: 48
+NR: 1
+Accumulated bytes: 436661
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242480
+Length: 48
+NR: 1
+Accumulated bytes: 436741
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242496
+Length: 48
+NR: 1
+Accumulated bytes: 436821
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242512
+Length: 48
+NR: 1
+Accumulated bytes: 436901
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242528
+Length: 48
+NR: 1
+Accumulated bytes: 436981
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242544
+Length: 48
+NR: 1
+Accumulated bytes: 437061
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242560
+Length: 48
+NR: 1
+Accumulated bytes: 437141
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242576
+Length: 48
+NR: 1
+Accumulated bytes: 437221
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242592
+Length: 48
+NR: 1
+Accumulated bytes: 437301
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242608
+Length: 48
+NR: 1
+Accumulated bytes: 437381
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242624
+Length: 48
+NR: 1
+Accumulated bytes: 437461
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242640
+Length: 48
+NR: 1
+Accumulated bytes: 437541
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242656
+Length: 48
+NR: 1
+Accumulated bytes: 437621
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242672
+Length: 48
+NR: 1
+Accumulated bytes: 437701
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242688
+Length: 48
+NR: 1
+Accumulated bytes: 437781
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242704
+Length: 48
+NR: 1
+Accumulated bytes: 437861
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242720
+Length: 48
+NR: 1
+Accumulated bytes: 437941
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242736
+Length: 48
+NR: 1
+Accumulated bytes: 438021
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242752
+Length: 48
+NR: 1
+Accumulated bytes: 438101
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242768
+Length: 48
+NR: 1
+Accumulated bytes: 438181
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242784
+Length: 48
+NR: 1
+Accumulated bytes: 438261
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242800
+Length: 48
+NR: 1
+Accumulated bytes: 438341
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242816
+Length: 48
+NR: 1
+Accumulated bytes: 438421
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242832
+Length: 48
+NR: 1
+Accumulated bytes: 438501
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242848
+Length: 48
+NR: 1
+Accumulated bytes: 438581
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242864
+Length: 48
+NR: 1
+Accumulated bytes: 438661
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242880
+Length: 48
+NR: 1
+Accumulated bytes: 438741
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242896
+Length: 48
+NR: 1
+Accumulated bytes: 438821
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242912
+Length: 48
+NR: 1
+Accumulated bytes: 438901
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242928
+Length: 48
+NR: 1
+Accumulated bytes: 438981
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242944
+Length: 48
+NR: 1
+Accumulated bytes: 439061
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242960
+Length: 48
+NR: 1
+Accumulated bytes: 439141
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242976
+Length: 48
+NR: 1
+Accumulated bytes: 439221
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156242992
+Length: 48
+NR: 1
+Accumulated bytes: 439301
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243008
+Length: 48
+NR: 1
+Accumulated bytes: 439381
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243024
+Length: 48
+NR: 1
+Accumulated bytes: 439461
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243040
+Length: 48
+NR: 1
+Accumulated bytes: 439541
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243056
+Length: 48
+NR: 1
+Accumulated bytes: 439621
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243072
+Length: 48
+NR: 1
+Accumulated bytes: 439701
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243088
+Length: 48
+NR: 1
+Accumulated bytes: 439781
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243104
+Length: 48
+NR: 1
+Accumulated bytes: 439861
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243120
+Length: 48
+NR: 1
+Accumulated bytes: 439941
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243136
+Length: 48
+NR: 1
+Accumulated bytes: 440021
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243152
+Length: 48
+NR: 1
+Accumulated bytes: 440101
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243168
+Length: 48
+NR: 1
+Accumulated bytes: 440181
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243184
+Length: 48
+NR: 1
+Accumulated bytes: 440261
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243200
+Length: 48
+NR: 1
+Accumulated bytes: 440341
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243216
+Length: 48
+NR: 1
+Accumulated bytes: 440421
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243232
+Length: 48
+NR: 1
+Accumulated bytes: 440501
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243248
+Length: 48
+NR: 1
+Accumulated bytes: 440581
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243264
+Length: 48
+NR: 1
+Accumulated bytes: 440661
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243280
+Length: 48
+NR: 1
+Accumulated bytes: 440741
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243296
+Length: 48
+NR: 1
+Accumulated bytes: 440821
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243312
+Length: 48
+NR: 1
+Accumulated bytes: 440901
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243328
+Length: 48
+NR: 1
+Accumulated bytes: 440981
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243344
+Length: 48
+NR: 1
+Accumulated bytes: 441061
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243360
+Length: 48
+NR: 1
+Accumulated bytes: 441141
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243376
+Length: 48
+NR: 1
+Accumulated bytes: 441221
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243392
+Length: 48
+NR: 1
+Accumulated bytes: 441301
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243408
+Length: 48
+NR: 1
+Accumulated bytes: 441381
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243424
+Length: 48
+NR: 1
+Accumulated bytes: 441461
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243440
+Length: 48
+NR: 1
+Accumulated bytes: 441541
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243456
+Length: 48
+NR: 1
+Accumulated bytes: 441621
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243472
+Length: 48
+NR: 1
+Accumulated bytes: 441701
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243488
+Length: 48
+NR: 1
+Accumulated bytes: 441781
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243504
+Length: 48
+NR: 1
+Accumulated bytes: 441861
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243520
+Length: 48
+NR: 1
+Accumulated bytes: 441941
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243536
+Length: 48
+NR: 1
+Accumulated bytes: 442021
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243552
+Length: 48
+NR: 1
+Accumulated bytes: 442101
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243568
+Length: 48
+NR: 1
+Accumulated bytes: 442181
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243584
+Length: 48
+NR: 1
+Accumulated bytes: 442261
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243600
+Length: 48
+NR: 1
+Accumulated bytes: 442341
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243616
+Length: 48
+NR: 1
+Accumulated bytes: 442421
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243632
+Length: 48
+NR: 1
+Accumulated bytes: 442501
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243648
+Length: 48
+NR: 1
+Accumulated bytes: 442581
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243664
+Length: 48
+NR: 1
+Accumulated bytes: 442661
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243680
+Length: 48
+NR: 1
+Accumulated bytes: 442741
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243696
+Length: 48
+NR: 1
+Accumulated bytes: 442821
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243712
+Length: 48
+NR: 1
+Accumulated bytes: 442901
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156243728
+Length: 48
+NR: 1
+Accumulated bytes: 442981
+
+Code: DATA
+SDNA: 88
+Old: 2507703069156241840
+Length: 48
+NR: 1
+Accumulated bytes: 443061
+
+Code: GR
+SDNA: 107
+Old: 6579606043637928224
+Length: 528
+NR: 1
+Accumulated bytes: 443621
+
+Code: DATA
+SDNA: 103
+Old: 7819683919974131312
+Length: 32
+NR: 1
+Accumulated bytes: 443685
+
+Code: DATA
+SDNA: 103
+Old: 7819683919974131344
+Length: 32
+NR: 1
+Accumulated bytes: 443749
+
+Code: DATA
+SDNA: 103
+Old: 7819683919974131328
+Length: 32
+NR: 1
+Accumulated bytes: 443813
+
+Code: OB
+SDNA: 701
+Old: 6677598759938100624
+Length: 1296
+NR: 1
+Accumulated bytes: 445141
+
+Code: OB
+SDNA: 701
+Old: 4547709520495657456
+Length: 1296
+NR: 1
+Accumulated bytes: 446469
+
+Code: OB
+SDNA: 701
+Old: 8424794859435800480
+Length: 1296
+NR: 1
+Accumulated bytes: 447797
+
+Code: OB
+SDNA: 701
+Old: 1247870943194677168
+Length: 1296
+NR: 1
+Accumulated bytes: 449125
+
+Code: OB
+SDNA: 701
+Old: 1725690183997396160
+Length: 1296
+NR: 1
+Accumulated bytes: 450453
+
+Code: DATA
+SDNA: 0
+Old: 5402656599860938064
+Length: 8
+NR: 1
+Accumulated bytes: 450493
+
+Code: DATA
+SDNA: 0
+Old: 5402656599860938080
+Length: 1
+NR: 1
+Accumulated bytes: 450526
+
+Code: DATA
+SDNA: 397
+Old: 5402656599860938048
+Length: 136
+NR: 1
+Accumulated bytes: 450694
+
+Code: OB
+SDNA: 701
+Old: 530285699404675040
+Length: 1296
+NR: 1
+Accumulated bytes: 452022
+
+Code: DATA
+SDNA: 0
+Old: 6580183397862832288
+Length: 8
+NR: 1
+Accumulated bytes: 452062
+
+Code: DATA
+SDNA: 0
+Old: 6580183397862832304
+Length: 1
+NR: 1
+Accumulated bytes: 452095
+
+Code: DATA
+SDNA: 397
+Old: 6580183397862832272
+Length: 136
+NR: 1
+Accumulated bytes: 452263
+
+Code: ME
+SDNA: 322
+Old: 5580837042410601600
+Length: 1960
+NR: 1
+Accumulated bytes: 454255
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761926848
+Length: 6
+NR: 1
+Accumulated bytes: 454293
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761926864
+Length: 6
+NR: 1
+Accumulated bytes: 454331
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761926800
+Length: 8
+NR: 1
+Accumulated bytes: 454371
+
+Code: DATA
+SDNA: 332
+Old: 1868815990761926880
+Length: 2064
+NR: 129
+Accumulated bytes: 456467
+
+Code: DATA
+SDNA: 160
+Old: 1868815990761926832
+Length: 112
+NR: 1
+Accumulated bytes: 456611
+
+Code: DATA
+SDNA: 74
+Old: 1868815990761926816
+Length: 288
+NR: 12
+Accumulated bytes: 456931
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761926912
+Length: 15
+NR: 1
+Accumulated bytes: 456978
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927296
+Length: 516
+NR: 1
+Accumulated bytes: 457526
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761926928
+Length: 32
+NR: 1
+Accumulated bytes: 457590
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761926944
+Length: 16
+NR: 1
+Accumulated bytes: 457638
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927328
+Length: 1548
+NR: 1
+Accumulated bytes: 459218
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761926960
+Length: 32
+NR: 1
+Accumulated bytes: 459282
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761926976
+Length: 6
+NR: 1
+Accumulated bytes: 459320
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761926992
+Length: 32
+NR: 1
+Accumulated bytes: 459384
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927008
+Length: 13
+NR: 1
+Accumulated bytes: 459429
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927360
+Length: 1
+NR: 1
+Accumulated bytes: 459462
+
+Code: DATA
+SDNA: 73
+Old: 1868815990761927024
+Length: 16
+NR: 1
+Accumulated bytes: 459510
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927040
+Length: 13
+NR: 1
+Accumulated bytes: 459555
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927392
+Length: 1
+NR: 1
+Accumulated bytes: 459588
+
+Code: DATA
+SDNA: 73
+Old: 1868815990761927056
+Length: 16
+NR: 1
+Accumulated bytes: 459636
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927072
+Length: 16
+NR: 1
+Accumulated bytes: 459684
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927088
+Length: 32
+NR: 1
+Accumulated bytes: 459748
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927104
+Length: 16
+NR: 1
+Accumulated bytes: 459796
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927120
+Length: 32
+NR: 1
+Accumulated bytes: 459860
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927136
+Length: 16
+NR: 1
+Accumulated bytes: 459908
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927152
+Length: 32
+NR: 1
+Accumulated bytes: 459972
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927168
+Length: 9
+NR: 1
+Accumulated bytes: 460013
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927424
+Length: 1548
+NR: 1
+Accumulated bytes: 461593
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927184
+Length: 32
+NR: 1
+Accumulated bytes: 461657
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927200
+Length: 12
+NR: 1
+Accumulated bytes: 461701
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927456
+Length: 1024
+NR: 1
+Accumulated bytes: 462757
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927216
+Length: 32
+NR: 1
+Accumulated bytes: 462821
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927232
+Length: 13
+NR: 1
+Accumulated bytes: 462866
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927248
+Length: 32
+NR: 1
+Accumulated bytes: 462930
+
+Code: DATA
+SDNA: 0
+Old: 1868815990761927264
+Length: 13
+NR: 1
+Accumulated bytes: 462975
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927280
+Length: 32
+NR: 1
+Accumulated bytes: 463039
+
+Code: ME
+SDNA: 322
+Old: 8271320939690566928
+Length: 1960
+NR: 1
+Accumulated bytes: 465031
+
+Code: DATA
+SDNA: 16
+Old: 7322861151751561808
+Length: 1284
+NR: 1
+Accumulated bytes: 466347
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751561856
+Length: 6
+NR: 1
+Accumulated bytes: 466385
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751561872
+Length: 6
+NR: 1
+Accumulated bytes: 466423
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751561824
+Length: 8
+NR: 1
+Accumulated bytes: 466463
+
+Code: DATA
+SDNA: 332
+Old: 7322861151751561888
+Length: 2064
+NR: 129
+Accumulated bytes: 468559
+
+Code: DATA
+SDNA: 160
+Old: 7322861151751561840
+Length: 112
+NR: 1
+Accumulated bytes: 468703
+
+Code: DATA
+SDNA: 74
+Old: 1868815990761926816
+Length: 288
+NR: 12
+Accumulated bytes: 469023
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751561920
+Length: 15
+NR: 1
+Accumulated bytes: 469070
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562192
+Length: 516
+NR: 1
+Accumulated bytes: 469618
+
+Code: DATA
+SDNA: 72
+Old: 7322861151751561936
+Length: 32
+NR: 1
+Accumulated bytes: 469682
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751561952
+Length: 16
+NR: 1
+Accumulated bytes: 469730
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562224
+Length: 1548
+NR: 1
+Accumulated bytes: 471310
+
+Code: DATA
+SDNA: 72
+Old: 7322861151751561968
+Length: 32
+NR: 1
+Accumulated bytes: 471374
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751561984
+Length: 6
+NR: 1
+Accumulated bytes: 471412
+
+Code: DATA
+SDNA: 72
+Old: 7322861151751562000
+Length: 32
+NR: 1
+Accumulated bytes: 471476
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562016
+Length: 13
+NR: 1
+Accumulated bytes: 471521
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562256
+Length: 1
+NR: 1
+Accumulated bytes: 471554
+
+Code: DATA
+SDNA: 73
+Old: 7322861151751562032
+Length: 16
+NR: 1
+Accumulated bytes: 471602
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562048
+Length: 13
+NR: 1
+Accumulated bytes: 471647
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562288
+Length: 1
+NR: 1
+Accumulated bytes: 471680
+
+Code: DATA
+SDNA: 73
+Old: 7322861151751562064
+Length: 16
+NR: 1
+Accumulated bytes: 471728
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562080
+Length: 16
+NR: 1
+Accumulated bytes: 471776
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927088
+Length: 32
+NR: 1
+Accumulated bytes: 471840
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562096
+Length: 16
+NR: 1
+Accumulated bytes: 471888
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927120
+Length: 32
+NR: 1
+Accumulated bytes: 471952
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562112
+Length: 16
+NR: 1
+Accumulated bytes: 472000
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927152
+Length: 32
+NR: 1
+Accumulated bytes: 472064
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562128
+Length: 9
+NR: 1
+Accumulated bytes: 472105
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562320
+Length: 1548
+NR: 1
+Accumulated bytes: 473685
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927184
+Length: 32
+NR: 1
+Accumulated bytes: 473749
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562144
+Length: 12
+NR: 1
+Accumulated bytes: 473793
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562352
+Length: 1024
+NR: 1
+Accumulated bytes: 474849
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927216
+Length: 32
+NR: 1
+Accumulated bytes: 474913
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562160
+Length: 13
+NR: 1
+Accumulated bytes: 474958
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927248
+Length: 32
+NR: 1
+Accumulated bytes: 475022
+
+Code: DATA
+SDNA: 0
+Old: 7322861151751562176
+Length: 13
+NR: 1
+Accumulated bytes: 475067
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927280
+Length: 32
+NR: 1
+Accumulated bytes: 475131
+
+Code: ME
+SDNA: 322
+Old: 7488228925688833376
+Length: 1960
+NR: 1
+Accumulated bytes: 477123
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396512
+Length: 6
+NR: 1
+Accumulated bytes: 477161
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396528
+Length: 6
+NR: 1
+Accumulated bytes: 477199
+
+Code: DATA
+SDNA: 324
+Old: 7240082569374396496
+Length: 8
+NR: 1
+Accumulated bytes: 477239
+
+Code: DATA
+SDNA: 74
+Old: 1868815990761926816
+Length: 240
+NR: 10
+Accumulated bytes: 477511
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396544
+Length: 6
+NR: 1
+Accumulated bytes: 477549
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396720
+Length: 15744
+NR: 1
+Accumulated bytes: 493325
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761926928
+Length: 32
+NR: 1
+Accumulated bytes: 493389
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396560
+Length: 13
+NR: 1
+Accumulated bytes: 493434
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396752
+Length: 507
+NR: 1
+Accumulated bytes: 493973
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761926960
+Length: 32
+NR: 1
+Accumulated bytes: 494037
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396576
+Length: 11
+NR: 1
+Accumulated bytes: 494080
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396784
+Length: 1
+NR: 1
+Accumulated bytes: 494113
+
+Code: DATA
+SDNA: 73
+Old: 1868815990761926992
+Length: 16
+NR: 1
+Accumulated bytes: 494161
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396592
+Length: 16
+NR: 1
+Accumulated bytes: 494209
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396816
+Length: 1
+NR: 1
+Accumulated bytes: 494242
+
+Code: DATA
+SDNA: 73
+Old: 7240082569374396608
+Length: 16
+NR: 1
+Accumulated bytes: 494290
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396624
+Length: 16
+NR: 1
+Accumulated bytes: 494338
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396848
+Length: 1
+NR: 1
+Accumulated bytes: 494371
+
+Code: DATA
+SDNA: 73
+Old: 1868815990761927024
+Length: 16
+NR: 1
+Accumulated bytes: 494419
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396640
+Length: 16
+NR: 1
+Accumulated bytes: 494467
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396880
+Length: 1
+NR: 1
+Accumulated bytes: 494500
+
+Code: DATA
+SDNA: 73
+Old: 1868815990761927056
+Length: 16
+NR: 1
+Accumulated bytes: 494548
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396656
+Length: 9
+NR: 1
+Accumulated bytes: 494589
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396912
+Length: 6084
+NR: 1
+Accumulated bytes: 500705
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927088
+Length: 32
+NR: 1
+Accumulated bytes: 500769
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396672
+Length: 12
+NR: 1
+Accumulated bytes: 500813
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396944
+Length: 8040
+NR: 1
+Accumulated bytes: 508885
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927120
+Length: 32
+NR: 1
+Accumulated bytes: 508949
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396688
+Length: 13
+NR: 1
+Accumulated bytes: 508994
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396976
+Length: 7872
+NR: 1
+Accumulated bytes: 516898
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927152
+Length: 32
+NR: 1
+Accumulated bytes: 516962
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396704
+Length: 13
+NR: 1
+Accumulated bytes: 517007
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374397008
+Length: 7872
+NR: 1
+Accumulated bytes: 524911
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761927184
+Length: 32
+NR: 1
+Accumulated bytes: 524975
+
+Code: DATA
+SDNA: 0
+Old: 7240082569374396480
+Length: 2004
+NR: 1
+Accumulated bytes: 527011
+
+Code: ME
+SDNA: 322
+Old: 1825885242297737888
+Length: 1960
+NR: 1
+Accumulated bytes: 529003
+
+Code: DATA
+SDNA: 16
+Old: 5063489170520659792
+Length: 1284
+NR: 1
+Accumulated bytes: 530319
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659840
+Length: 6
+NR: 1
+Accumulated bytes: 530357
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659856
+Length: 6
+NR: 1
+Accumulated bytes: 530395
+
+Code: DATA
+SDNA: 324
+Old: 5063489170520659824
+Length: 8
+NR: 1
+Accumulated bytes: 530435
+
+Code: DATA
+SDNA: 74
+Old: 1868815990761926816
+Length: 240
+NR: 10
+Accumulated bytes: 530707
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659872
+Length: 6
+NR: 1
+Accumulated bytes: 530745
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660096
+Length: 15744
+NR: 1
+Accumulated bytes: 546521
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761926928
+Length: 32
+NR: 1
+Accumulated bytes: 546585
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659888
+Length: 13
+NR: 1
+Accumulated bytes: 546630
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660128
+Length: 507
+NR: 1
+Accumulated bytes: 547169
+
+Code: DATA
+SDNA: 72
+Old: 1868815990761926960
+Length: 32
+NR: 1
+Accumulated bytes: 547233
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659904
+Length: 11
+NR: 1
+Accumulated bytes: 547276
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660160
+Length: 1
+NR: 1
+Accumulated bytes: 547309
+
+Code: DATA
+SDNA: 73
+Old: 1868815990761926992
+Length: 16
+NR: 1
+Accumulated bytes: 547357
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659920
+Length: 16
+NR: 1
+Accumulated bytes: 547405
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660192
+Length: 1
+NR: 1
+Accumulated bytes: 547438
+
+Code: DATA
+SDNA: 73
+Old: 7240082569374396608
+Length: 16
+NR: 1
+Accumulated bytes: 547486
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659936
+Length: 16
+NR: 1
+Accumulated bytes: 547534
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660224
+Length: 1
+NR: 1
+Accumulated bytes: 547567
+
+Code: DATA
+SDNA: 73
+Old: 1868815990761927024
+Length: 16
+NR: 1
+Accumulated bytes: 547615
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659952
+Length: 16
+NR: 1
+Accumulated bytes: 547663
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660256
+Length: 1
+NR: 1
+Accumulated bytes: 547696
+
+Code: DATA
+SDNA: 73
+Old: 1868815990761927056
+Length: 16
+NR: 1
+Accumulated bytes: 547744
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659968
+Length: 9
+NR: 1
+Accumulated bytes: 547785
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660288
+Length: 6084
+NR: 1
+Accumulated bytes: 553901
+
+Code: DATA
+SDNA: 72
+Old: 5063489170520659984
+Length: 32
+NR: 1
+Accumulated bytes: 553965
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660000
+Length: 12
+NR: 1
+Accumulated bytes: 554009
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660320
+Length: 8040
+NR: 1
+Accumulated bytes: 562081
+
+Code: DATA
+SDNA: 72
+Old: 5063489170520660016
+Length: 32
+NR: 1
+Accumulated bytes: 562145
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660032
+Length: 13
+NR: 1
+Accumulated bytes: 562190
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660352
+Length: 7872
+NR: 1
+Accumulated bytes: 570094
+
+Code: DATA
+SDNA: 72
+Old: 5063489170520660048
+Length: 32
+NR: 1
+Accumulated bytes: 570158
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660064
+Length: 13
+NR: 1
+Accumulated bytes: 570203
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520660384
+Length: 7872
+NR: 1
+Accumulated bytes: 578107
+
+Code: DATA
+SDNA: 72
+Old: 5063489170520660080
+Length: 32
+NR: 1
+Accumulated bytes: 578171
+
+Code: DATA
+SDNA: 0
+Old: 5063489170520659808
+Length: 2004
+NR: 1
+Accumulated bytes: 580207
+
+Code: WO
+SDNA: 986
+Old: 8771252837499260064
+Length: 560
+NR: 1
+Accumulated bytes: 580799
+
+Code: DATA
+SDNA: 473
+Old: 1675496435412630864
+Length: 752
+NR: 1
+Accumulated bytes: 581583
+
+Code: DATA
+SDNA: 468
+Old: 1675496435412630896
+Length: 384
+NR: 1
+Accumulated bytes: 581999
+
+Code: DATA
+SDNA: 466
+Old: 1675496435412630976
+Length: 464
+NR: 1
+Accumulated bytes: 582495
+
+Code: DATA
+SDNA: 466
+Old: 1675496435412630992
+Length: 464
+NR: 1
+Accumulated bytes: 582991
+
+Code: DATA
+SDNA: 468
+Old: 1675496435412630912
+Length: 384
+NR: 1
+Accumulated bytes: 583407
+
+Code: DATA
+SDNA: 466
+Old: 1675496435412631088
+Length: 464
+NR: 1
+Accumulated bytes: 583903
+
+Code: DATA
+SDNA: 480
+Old: 1675496435412631200
+Length: 16
+NR: 1
+Accumulated bytes: 583951
+
+Code: DATA
+SDNA: 466
+Old: 1675496435412631168
+Length: 464
+NR: 1
+Accumulated bytes: 584447
+
+Code: DATA
+SDNA: 475
+Old: 1675496435412631248
+Length: 16
+NR: 1
+Accumulated bytes: 584495
+
+Code: DATA
+SDNA: 466
+Old: 1675496435412631104
+Length: 464
+NR: 1
+Accumulated bytes: 584991
+
+Code: DATA
+SDNA: 475
+Old: 1675496435412631280
+Length: 16
+NR: 1
+Accumulated bytes: 585039
+
+Code: DATA
+SDNA: 466
+Old: 1675496435412631120
+Length: 464
+NR: 1
+Accumulated bytes: 585535
+
+Code: DATA
+SDNA: 470
+Old: 1675496435412630928
+Length: 56
+NR: 1
+Accumulated bytes: 585623
+
+Code: DATA
+SDNA: 17
+Old: 1675496435412630848
+Length: 48
+NR: 1
+Accumulated bytes: 585703
+
+Code: LS
+SDNA: 306
+Old: 3958071854265205088
+Length: 752
+NR: 1
+Accumulated bytes: 586487
+
+Code: DATA
+SDNA: 291
+Old: 3819771787526868512
+Length: 104
+NR: 1
+Accumulated bytes: 586623
+
+Code: IM
+SDNA: 242
+Old: 410290488664088768
+Length: 1712
+NR: 1
+Accumulated bytes: 588367
+
+Code: DATA
+SDNA: 17
+Old: 543781850290315776
+Length: 48
+NR: 1
+Accumulated bytes: 588447
+
+Code: DATA
+SDNA: 0
+Old: 543781850290315824
+Length: 4096
+NR: 1
+Accumulated bytes: 592575
+
+Code: DATA
+SDNA: 729
+Old: 543781850290315808
+Length: 8
+NR: 1
+Accumulated bytes: 592615
+
+Code: DATA
+SDNA: 241
+Old: 543781850290315792
+Length: 136
+NR: 1
+Accumulated bytes: 592783
+
+Code: DATA
+SDNA: 239
+Old: 543781850290315744
+Length: 88
+NR: 1
+Accumulated bytes: 592903
+
+Code: DATA
+SDNA: 239
+Old: 543781850290315840
+Length: 88
+NR: 1
+Accumulated bytes: 593023
+
+Code: DATA
+SDNA: 239
+Old: 543781850290315856
+Length: 88
+NR: 1
+Accumulated bytes: 593143
+
+Code: DATA
+SDNA: 239
+Old: 543781850290315872
+Length: 88
+NR: 1
+Accumulated bytes: 593263
+
+Code: DATA
+SDNA: 239
+Old: 543781850290315888
+Length: 88
+NR: 1
+Accumulated bytes: 593383
+
+Code: DATA
+SDNA: 239
+Old: 543781850290315904
+Length: 88
+NR: 1
+Accumulated bytes: 593503
+
+Code: DATA
+SDNA: 239
+Old: 543781850290315920
+Length: 88
+NR: 1
+Accumulated bytes: 593623
+
+Code: DATA
+SDNA: 239
+Old: 543781850290315760
+Length: 88
+NR: 1
+Accumulated bytes: 593743
+
+Code: IM
+SDNA: 242
+Old: 8412997914866527200
+Length: 1712
+NR: 1
+Accumulated bytes: 595487
+
+Code: DATA
+SDNA: 17
+Old: 9125901570790257792
+Length: 48
+NR: 1
+Accumulated bytes: 595567
+
+Code: DATA
+SDNA: 0
+Old: 9125901570790257856
+Length: 4096
+NR: 1
+Accumulated bytes: 599695
+
+Code: DATA
+SDNA: 237
+Old: 9125901570790257824
+Length: 1104
+NR: 1
+Accumulated bytes: 600831
+
+Code: DATA
+SDNA: 729
+Old: 9125901570790257840
+Length: 8
+NR: 1
+Accumulated bytes: 600871
+
+Code: DATA
+SDNA: 241
+Old: 9125901570790257808
+Length: 136
+NR: 1
+Accumulated bytes: 601039
+
+Code: DNA1
+SDNA: 0
+Old: 9125901570790257872
+Length: 134616
+NR: 1
+Accumulated bytes: 735687
+
+Code: ENDB
+SDNA: 0
+Old: 0
+Length: 0
+NR: 0
+Accumulated bytes: 735719
+
