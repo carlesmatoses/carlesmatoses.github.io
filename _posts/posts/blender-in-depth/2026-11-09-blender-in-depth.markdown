@@ -2,7 +2,7 @@
 layout: post
 title:  "Blender In Depth"
 date:   2026-11-09 12:00:00 +0100
-preview: "/images/blender-in-depth/images/camera_thumbnail.png"
+preview: "/images/blender-in-depth/images/thumbnail.jpg"
 categories: post
 permalink: post/blender-in-depth
 ---

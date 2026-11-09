@@ -6,3 +6,4 @@ vendor
 # Auto-generated gem assets (copied by jekyll-skcg AssetGenerator)
 assets/jekyll-skcg/
 .venv
+.deploy/
