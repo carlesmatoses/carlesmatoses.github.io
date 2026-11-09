@@ -4,6 +4,7 @@
 
 .highlight {
     background-color: #333333; /* Dark background */
+    color: #ffa94d; /* Default text colour, for {% highlight %} blocks without .highlighter-rouge */
     padding: 1em;
     margin-bottom: 2em;
     border-radius: 5px;

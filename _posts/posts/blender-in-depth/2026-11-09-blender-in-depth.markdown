@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Blender In Depth"
-date:   2024-04-21 18:17:51 +0200
-preview: "/images/test.png"
+date:   2026-11-09 12:00:00 +0100
+preview: "/images/blender-in-depth/images/camera_thumbnail.png"
 categories: post
 permalink: post/blender-in-depth
 ---
@@ -11,16 +11,16 @@ Lets deep dive into blender's DNA. What composes blender? What can be modified? 
 <!-- end-abstract -->
 
 
-Blender is a complex and big project managed by **blender studios** as the official orchestrator, many collaborators and volunteers. This combination makes blender a fast evolving application that needs lots of documentation. For this reason, there are many sources we can use to try answer **`What is blender?`**
+Blender is a complex and big project managed by **blender studios**, as the official orchestrator, many collaborators and volunteers. This combination makes blender a fast evolving application that needs lots of documentation. For this reason, there are many sources we can use to try answer **`What is blender?`**
 
 # What is Blender?
 
-In it's essence, blender is just a collection of Python, C++, C, GLSL and CMake scripts. But nothing explains better what this code does than the official page itself:
+In its essence, blender is just a collection of Python, C++, C, GLSL and CMake scripts. But nothing explains better what this code does than the official page itself:
 
 {% alert primary %}
   Blender is the free and open source 3D creation suite. It supports the entirety of the 3D pipeline: modeling, rigging, animation, simulation, rendering, compositing and motion tracking, even video editing.
 
-  Development of Blender happens at [projects.blender.org](projects.blender.org) and is [funded](https://fund.blender.org/) entirely by donations from entrepreneurs, companies, and users.
+  Development of Blender happens at [projects.blender.org](https://projects.blender.org/) and is [funded](https://fund.blender.org/) entirely by donations from entrepreneurs, companies, and users.
 
 {% endalert %}
 
@@ -45,7 +45,7 @@ This is ... in fact ... overwelming.
 Lets not get too ahead of ourselves. Blender is composed of modules and the combination of all them creates the project we know and love. For that reason we will explore each of them on depth in the future but for now we want to understand the machinery behind the nature of Blender.
 
 # Blender's code
-It can be found in two official places:
+Blender source code can be found in two official places, their web page and in a github mirror:
 - https://github.com/blender/blender
 - https://projects.blender.org/blender/blender
 
@@ -101,7 +101,7 @@ To prevent overcomplicating things too early, i will not expose the  underlying 
 
 Blender code is in charge of two things: Exposing the data structure and Exposing the functionality. This becomes clear when we split the Graphical user interface and the operators under those buttons against the .blend file that contains plain data like the vertex information. This two things are "independent".
 
-I find interesting to explore the data we are working on before studying how we operate on it. Inside blender code we find a few structures that we use virtually always: Mesh and Object.
+I find interesting to explore the data we are working on before studying how we operate on it. Inside blender code we find a few structures that we use virtually always: Mesh and Object. Remember that this is an example, the real structures are more complex.
 
 {% figure id="blender-data-structure-object" caption="Blender's Object & Mesh structure" width="100%" %}
   {% fig_mermaid width="49%" %}
@@ -138,8 +138,22 @@ I find interesting to explore the data we are working on before studying how we 
 Each object can point towards a mesh ID, which means a single mesh can be reused for many object. This is known as instance and it is used during rendering to lower memory usage and speed up rasterization.
 
 {% alert secondary %}
-Instances are widely explored in the literature so I will assume we already know what they are, otherwise I invite you to explore by yourselves how they work.
+Instances are widely explored in the literature so I will assume we already know them, otherwise I invite you to explore by yourselves how they work.
 {% endalert %}
+
+In this minimal example, `Mesh` structure takes 448 bytes independently of the mesh number of vertices. 
+```raw
+Mesh                                      size    offset
+├── ID id                                  408       0
+├── int verts_num                            4     408
+├── int edges_num                            4     412
+├── int faces_num                            4     416
+├── int corners_num                          4     420
+└── AttributeStorage attributes             24     424
+                                          ─────
+                                           448 bytes
+```
+To do so we follow the same strategy as Instances. We store the real geometry (verts, edges, faces) on a different structure. `Mesh` points to them through this AttributeStorage structure. Therefore, even if the number of verts changes at runtime, we dont need to update the Mesh structure itself unless we want to update the `verts_num` for example. 
 
 We will explore more about this in the future but for now just keep in mind that this conceptual elements called "object" and "mesh" exist as data in some kind of format blender can read.
 
@@ -206,7 +220,24 @@ The values on the left column are `00000000`, `00000010`, `00000020`, ..., but d
 Before proceeding any further, please become familiar with what a bit, byte and hexadecimal are. You can read the following annotations to develop a bit of intuition.
 
 {% alert %}
-Hexadecimal is just another set of symbols to represent up to 16 different values the same way decimal has 10 symbols and binary only 2.
+Memory is made up of bits. A bit is simply a value that can have one of two states: 0 or 1.
+
+In fact, we can combine multiple bits to represent larger numbers. Any decimal value can therefore become a sequence of binary values:
+
+```raw
+0  =   0       8 = 1000  
+1  =   1       9 = 1001
+2  =  10      10 = 1010
+3  =  11      11 = 1011 
+4  = 100      12 = 1100
+5  = 101      13 = 1101
+6  = 110      14 = 1110
+7  = 111      15 = 1111
+```
+
+I decided to represent the binary form of the sixteen first decimal values because they offer an interesting property for representation. It turns out that memory is divided in chunks of eight bits that we call a Byte. If we tried to represent a file grouping each byte we would simply see groups of eight binary values which is not really useful for humans. Instead, programmers came up with an idea to represent such values as two single characters. 
+
+The system consists on dividing a byte in two segments of four bits and replacing the four bits by a single hexadecimal value.
 
 ```raw
 | Binary has 2 digits:   0 1
@@ -214,7 +245,7 @@ Hexadecimal is just another set of symbols to represent up to 16 different value
 | Hex has 16 digits:     0 1 2 3 4 5 6 7 8 9 A B C D E F
 ```
 
-This can actually be quite confusing because, what is preventing us from representing hexadecimal with values 0,1,2,...,16? well, it is a convention that a "unique" value can only be represented with a single symbol. Having values like 11 would introduce ambiguity in our language. Do we need to use A,B,C,...? No, we could use any symbol or even make up new ones, it is just "intuitive" to use the first letters of the alphabet. 
+By convention, since our system only has 10 different symbols, we borrowed letters from the alphabet to represent the rest. This is a convention therefore we could use any set of symbols to represent hexadecimal, it is just that this was convenient because most languages already recognize those symbols.
 
 ```raw
 | Decimal: 0 1 2 ... 9 10 11 12 13 14 15 16 17 18 ... 24 25 26 27 28
@@ -231,38 +262,17 @@ What matters here is what each position means in the numerical system. In the de
 {% endalert %}
 
 
-Lets go back to the first line which is known as the header of `.blend`. A single line contains sixteen bytes. Dont get confused, this sixteen has nothing to do with hexadecimal, it is just how nvim decided to split the contents. It is better to imagine it as a single long line but for a screen this would become a headache. I know for a fact that the header of the blender file is 17 bytes long so i will show them below.
+
+
+Lets go back to the first line which is known as the header of `.blend`. When we open a file, we are usually presented with sixteen bytes for each line, or in other words, 32 hexadecimal values. The file has no lines, It is a single long line but for a screen this would become a headache. 
+
+I know for a fact that the header of the blender file is 17 bytes long so i will show them below.
 
 ```
 00000000: 42 4c 45 4e 44 45 52 31 37 2d 30 31 76 30 35 30
 00000010: 32
 ```
-
-{% alert %}
-Before proceeding on reading the line above i want to make something clear.
-
-Memory is written in `bits` which are a single value that can either *be or not be*. This is called binary and often represented as booleans (True, False) and integers (0,1) but in hardware it could be something like wether this cell has electromagnetic energy or not for example.
-
-Grouping many bits allows us to store more complex information like decimal or hexadecimal values. In case you are not familiar, we usually use binary to store decimal values as follows:
-
-```raw
-0  =   0       8 = 1000  
-1  =   1       9 = 1001
-2  =  10      10 = 1010
-3  =  11      11 = 1011 
-4  = 100      12 = 1100
-5  = 101      13 = 1101
-6  = 110      14 = 1110
-7  = 111      15 = 1111
-```
-
-As we can see in the above list, any hexadecimal value could potentially be stored in a set of four bits since that is all we need to store 16 unique values. A byte in memory contains eight bits "0000 0000" which allows us to store two hexadecimal values.
-
-So, in summary, as long as we know a chunk of bytes is in fact hexadecimal code, we can read and convert it to other writing systems like ASCII or decimal. 
-
-{% endalert %}
-
-Now lets introduce ASCII, a table containing a set of symbols:
+Now we can see more information than before, grouping data helps us recognize patterns. The problem is that unless we know what we are looking for, it still takes a long time to process the information on our heads. The solution to this is called ASCII, a table containing a set of human readable symbols:
 
 ```
     0 1 2 3 4 5 6 7 8 9 A B C D E F
@@ -273,6 +283,9 @@ Now lets introduce ASCII, a table containing a set of symbols:
 6x  ` a b c d e f g h i j k l m n o
 7x  p q r s t u v w x y z { | } ~
 ```
+
+If you notice, we have six rows and sixteen columns. This was designed to be encoded in a single byte, in other words two hexadecimal values.
+
 We know (by design) that blender's first 17 bytes are in fact ASCII characters therefore we can decode and read them.
 
 
@@ -321,9 +334,11 @@ Going back again to the first lines of the file, we have 17 bytes that contain t
 00000030: 0001 0000 00c3 ba00 0000 5363 656e 6500  ..........Scene.
 ```
 
-The first 7 bytes `424c 454e 4445 52` are translated as BLENDER. This is used by blender's program to make sure the file we are trying to open is in fact a blend file. If the first 7 bytes do not match BLENDER we can safely assume it is not the expected format and stop parsing even before we start reading the contents.
+The first 7 bytes `424c 454e 4445 52` are translated as `BLENDER`. If we ask blender to read a file and it does not start with those exact characters, we notify the user this file is not readable by blender. 
 
-The next two bytes (16 bits) are meant for storing the byte size of the header. In those 16 bits we could represent any value between 0 and 65535. If we had bits `00000000 00010001`, grouped them in bytes and represent them in hexadecimal, we would get `0011` successfully storing the size of the header. Funny enough, this is incorrect not because of the math but because blender's developers decided to store the values in ASCII instead of 16 bit integers. The real file has the hexadecimal values `31 37` that can be converted to ASCII as `17`.
+The next two bytes (16 bits) are meant for storing the byte size of the header. In those 16 bits we could represent any value between 0 and 65535. If we had bits `00000000 00010001`, grouped them in bytes and represent them in hexadecimal, we would get `0011` successfully storing the size of the header. 
+
+Funny enough, this is incorrect not because of the math but because blender's developers decided to store the values in ASCII instead of 16 bit integers. The real file has the hexadecimal values `31 37` that can be converted to ASCII as `17`. We will take this as a future lesson, unless we know what the underlying binary represents, we cant translate it properly. I know what all this bytes are meant to represent because I looked at the source code.
 
 The next byte is just a separator used in older files so the parser understands that we now have to interpret the rest of bits in a different way, for now we can ignore it.
 
@@ -341,7 +356,7 @@ The `v` byte in the header is for the endian type and the following four bytes a
 | 4     | `0502`    | Blender version: **5.2**                                              |
 
 \\
-Right after the header, at byte `0x11` (1*16 + 1), we find the main contents of the document. There is one issue, each group of data can have arbitrary lengths and we have no way of knowing when a chunk starts or ends. To solve that issue blender has declared the following function at `blender/source/blender/blenloader_core/BLO_core_bhead.hh`:
+Right after the header, at byte `0x11` (1*16 + 1), we find the main contents of the document. There is one issue, each group of data can have arbitrary lengths and we have no way of knowing when a chunk starts or ends. To solve that issue blender has declared the following structure at `blender/source/blender/blenloader_core/BLO_core_bhead.hh`. Now all headers will have this shape:
 
 ```c++
 struct LargeBHead8 {
@@ -375,7 +390,7 @@ At `blender/source/blender/blenloader_core/BLO_core_bhead.hh` we are shown the "
 
 We notice the first four bytes happens to be readable in ASCII (because it was designed that way). It says `REND` and it is stored at field `LargeBHead8.code`. In fact, this block does not appear in the documentation since it is not meant for "normal" users. To find its meaning we need to navigate back to `blender/source/blender/blenloader_core/BLO_core_bhead.hh`.
 
-```
+```c++
 /**
   * Used for #RenderInfo, basic Scene and frame range info,
   * can be easily read by other applications without writing 
@@ -419,7 +434,7 @@ What do this 264 bytes contain? The first eight bytes are two integers containin
 ```
 01 00 00 00 ff 01 00 00
 ```
-- `start` -> 0000001 -> $$1$$
+- `start` -> 00000001 -> $$1$$
 - `end` -> 000001ff -> $$1*16*16+15*16+15=511$$
 
 The rest of 256 bytes contain the ASCII for the scene name. In fact only the first 9 bytes are used and the others are left as zeros. The conversion returns `Scene.001`
@@ -443,7 +458,7 @@ The rest of 256 bytes contain the ASCII for the scene name. In fact only the fir
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 ```
 
-In the source code we have two codes from which we can inherit this information called `readfile.cc` and `writefile.cc`.
+In the source code we have two files from which we can inherit this information called `readfile.cc` and `writefile.cc`.
 
 ```c++
 // writefile.cc lines 1188 to 1221
@@ -542,11 +557,67 @@ I would have expected the preview image to be some kind of low resolution render
 
 # Blender Loading System
 
-With that out of the way, it is a good moment to introduce how blender actually loads the saved files instead of the naive "just read from top and separate each chunk when found". As we already stablish, blender starts reading a file through the method `BlendFileData *BLO_read_from_file(...)` that we can find at `BLO_readfile.hh` and its implementation `readbblenentry.cc`. 
+With that out of the way, it is a good moment to introduce how blender actually loads the saved files instead of the naive strategy: "read from top and separate each chunk when found".
 
-The first step is to make sure the path exists. After a successful check, it executes method `blo_filedata_from_file(filepath, reports)`. Here, reports is just an empty list where we will be appending any error or information while processing the file. 
+<!-- Remember, we are starting with a .blend file with a really specific format. It is composed of small memory blocks all of them defined by a header with the size and type of the block. -->
 
-Inside `blo_filedata_from_file`, we call `blo_filedata_from_file_open(filepath, reports)`, whose job is to open the file and prepare a reader for it. It calls BLI_open, which asks the operating system to open the file and returns a file descriptor: a small integer that identifies the open file in the process's table of open files. The operating system gives the lowest free number. Numbers 0, 1 and 2 are always taken by standard input, standard output and standard error, so in a fresh program the first file gets 3. If the file can't be opened (it doesn't exist, or we don't have permission), BLI_open returns -1, and a warning with the reason is added to the `reports` list. 
+Blender's strategy consists on a two step process to load a file from disk into memory.
+
+
+**The first step** consists on:
+1. Find the .blend file.
+1. Check it has the proper header.
+1. Create a wrapper around it so we can read it independendtly of the operating system.
+1. return a FileData c++ structure.
+
+**The second step** consists on:
+1. Parsing: read the file block by block
+2. Populate c++ structures with this information
+3. return BlendFileData c++ structure 
+
+
+Yea... its not that simple. In practice that is all we need to understand, we dont have to care about version managing, efficient file searching, or anything else really. But this post is about deep understanding so we will have to take a look in the deep waters of blender's version control and parsing methodology.
+
+
+<!-- I feel like we can start putting names to all this processes so we ilustrate how this logic was created. -->
+
+
+When we press *open file* or any other method that involves a .blend document, Blender executes a method called  `BlendFileData *BLO_read_from_file(...)` that we can find at header `BLO_readfile.hh` and its implementation at `readblenentry.cc`. Two things call our atention here: 
+- This method returns a `BlendFileData` structure, more about this structure on the next section.
+- It has the prefix `BLO_`, translated to plain english it means blender_loading library. It is a method defined in a specific library blender created to manage loading operations.
+
+This is stright forward, you want to load a .blend file? execute this method. Thats it really. But loading the file itself is not as stright forward, the method `BLO_read_from_file` has many nested methods before archieving its final structure.
+
+```c++
+BlendFileData *BLO_read_from_file(...)
+...
+```
+
+The first action of `BLO_read_from_file` is to makes sure the path exists. After a successful check, it executes method `FileData *blo_filedata_from_file(filepath, reports)`. Here, reports is just an empty list where we will be appending any error or information while processing the file.
+
+```c++
+BlendFileData *BLO_read_from_file(...)
+  BLI_assert(!BLI_path_is_rel(filepath));
+  BLI_assert(BLI_path_is_abs_from_cwd(filepath));
+  fd = blo_filedata_from_file(filepath, reports);
+  ...
+...
+```
+
+Inside `blo_filedata_from_file`, we call `FileData *blo_filedata_from_file_open(filepath, reports)`, whose job is to open the file and prepare a reader for it. It calls `BLI_open`, which asks the operating system to open the file and returns a file descriptor: a small integer that identifies the open file in the process's table of open files. The operating system gives the lowest free number. Numbers 0, 1 and 2 are always taken by standard input, standard output and standard error, so in a fresh program the first file gets 3. If the file can't be opened (it doesn't exist, or we don't have permission), `BLI_open` returns -1, and a warning with the reason is added to the `reports` list. 
+
+```c++
+BlendFileData *BLO_read_from_file(...)
+  BLI_assert(!BLI_path_is_rel(filepath));
+  BLI_assert(BLI_path_is_abs_from_cwd(filepath));
+  fd = blo_filedata_from_file(filepath, reports);
+    FileData *fd = blo_filedata_from_file_open(filepath, reports);
+      const int file = BLI_open(filepath, O_BINARY | O_RDONLY, 0);
+      ...
+    ...
+  ...
+...
+```
 
 {% alert secondary %}
 The way computers load and read files is out of the scope for this document but I want to clarify something.
@@ -592,7 +663,23 @@ fileops_c.cc
 
 {% endalert %}
 
-We then execute `blo_filedata_from_file_descriptor(filepath, reports, file)`. The purpose of this function is to wrap the reader in a generalized structure that can be reused anywhere in the code. This structure is called `FileReader` and provides methods to read, seek and close the file. Additionally we will use another wrapper called `FileData` containing references to the **reports**, `FileReader` and any other structure that may be required in the future.
+We then execute `blo_filedata_from_file_descriptor(filepath, reports, file)`. The purpose of this method is to wrap the reader in a generalized structure that can be reused anywhere in the code. This structure is called `FileReader` and provides methods to read, seek and close the file. Additionally we will use another wrapper called `FileData` containing references to the **reports**, `FileReader` and any other structure that may be required in the future.
+
+```c++
+BlendFileData *BLO_read_from_file(...)
+  BLI_assert(!BLI_path_is_rel(filepath));
+  BLI_assert(BLI_path_is_abs_from_cwd(filepath));
+  fd = blo_filedata_from_file(filepath, reports);
+    FileData *fd = blo_filedata_from_file_open(filepath, reports);
+      const int file = BLI_open(filepath, O_BINARY | O_RDONLY, 0);
+      return blo_filedata_from_file_descriptor(filepath, reports, file);
+        file_reader;
+        return FileData(file_reader)
+      ...
+    ...
+  ...
+...
+```
 
 ```c++
 struct FileData {
@@ -625,10 +712,21 @@ BlendFileData *BLO_read_from_file(...)
 {% endhighlight %}
 {% endfigure %}
 
+Dont worry about all this methods like `blo_decode_and_check`, `blo_read_file_internal` or `read_file_dna` and so on. They are important, don't get me wrong, but we will explore them better in the following sections.
+
+{% alert %}
+**As a conclusion of this section**
+
+I just want you to focus on the blender strategy for designing a loading system that is splitted in two parts. They have a .blend file configured in a really particualr way divided in many chunks, all of them with a header for easy identification.
+
+First, they created a series of methods that: find the .blend file, check it is correct, creates a wrapper around it, and finally waits for further instructions on when to read it. We can call this step `FileData`.
+
+The second step is to actually 'read the file and generate the ram memory objects'. They parse the file, get all the information while making sure it is correct and finally they fill the ram with all this structures so the program can retrieve it fast. Now we dont search an object by its bytes offsets, instead we call the pointers to the structures in ram memory (way faster 👍). We call this the `BlendFileData`.
+{% endalert %}
 
 # Blender Parsing
 
-As promised, lets take a look at the **BlendFileData** structure that is constructed using method `blo_read_file_internal` and providing the **FileData** as well as the path.
+<!-- As promised, lets take a look at the **BlendFileData** structure that is constructed using method `blo_read_file_internal` and providing the **FileData** as well as the path.
 
 ```c++
 blender/source/blender/blenloader/BLO_readfile.hh
@@ -658,13 +756,16 @@ struct BlendFileData : NonCopyable, NonMovable {
 };
 ```
 
-main (Main *): Main is Blender's database. It holds one list per data type (scenes, objects, meshes, materials, images, node trees, ...), and every ID block from the file ends up in one of those lists. Almost everything you think of as "the file" is here.
+`main (Main *)`: Main is Blender's database. It holds one list per data type (scenes, objects, meshes, materials, images, node trees, ...), and every ID block from the file ends up in one of those lists. Almost everything you think of as "the file" is here.
 
-user (UserDef *): These are the theme, keymaps, add-ons and so on. It's only filled when the file has a USER block, which normally means the startup file or the preferences file. A regular .blend has none, so this is usually empty.
+`user (UserDef *)`: These are the theme, keymaps, add-ons and so on. It's only filled when the file has a USER block, which normally means the startup file or the preferences file. A regular .blend has none, so this is usually empty.
 
-filepath (text, 1024 characters): where the file is. Normally the path you opened. When recovering an autosave, it's the path of the original file instead, so saving goes back to the right place. This is the same value as relabase in FileData.
+`filepath (text, 1024 characters)`: where the file is. Normally the path you opened. When recovering an autosave, it's the path of the original file instead, so saving goes back to the right place. This is the same value as relabase in FileData. -->
 
-There are other fields but for now we don't need to bother about them. What I find more interesting is blenders own reading function:
+<!-- TODO: is relabase a typo of realbase? -->
+
+<!-- There are other fields but for now we don't need to bother about them.  -->
+Lets go back to the wrapper function `BLO_read_from_file` that we saw in the previous section. This is how it looks in the blender repo:
 ```c++
 BlendFileData *BLO_read_from_file(const char *filepath,
                                   eBLOReadSkip skip_flags,
@@ -679,7 +780,7 @@ BlendFileData *BLO_read_from_file(const char *filepath,
   fd = blo_filedata_from_file(filepath, reports);
   if (fd) {
     fd->skip_flags = skip_flags;
-    bfd = blo_read_file_internal(fd, filepath);
+    bfd = blo_read_file_internal(fd, filepath); // <----
     blo_filedata_free(fd);
   }
 
@@ -687,14 +788,16 @@ BlendFileData *BLO_read_from_file(const char *filepath,
 }
 ```
 
-You may have noticed I ignored the methods `blo_decode_and_check`, `read_file_dna`, `DNA_sdna_from_data` and `init_structDNA` on the previous sections in figure {% ref figure:loading %}. This was deliberate. I consider this methods to be a separated issue. 
+<!-- You may have noticed I ignored the methods `blo_decode_and_check`, `read_file_dna`, `DNA_sdna_from_data` and `init_structDNA` on the previous sections in figure {% ref figure:loading %}. This was deliberate. I consider this methods to be a separated issue.  -->
 
-I want us to focus on function `blo_read_file_internal(...)`. Blender source code job is to read the file and separate each element in the appropriate way. This represents a really big issue on softwares that develop really fast with big changes almost every month. Blender named this solution `Structure DNA`. 
+Inside the if statement we find `blo_read_file_internal(fd, filepath)` which recieves the already generated `FileData` structure and turns it into a `BlenderFileData` structure.
 
-It is summarized as follows: The .blend file will contain a block called DNA1 at the end of the file which will store the size and fields of each structure a blender file is designed to contain.
+There is one issue though. Blender's source code changes. They get new structures, new functionalities and remodel already existing systems. This represents a big issue on softwares that develop really fast with big changes almost every month. Blender named this solution `Structure DNA`. 
 
-Lets say Blender 4.0 saves a material with this struct:
-```
+We can summarize it as: The .blend file will contain a block called `DNA1` at the end of the file which will store the size and fields of each structure a blender file is designed to contain.
+
+Lets say Blender 4.0 saves materials with this struct:
+```c++
 struct Material {        // 4.0
   ID id;
   float r, g, b;
@@ -702,8 +805,8 @@ struct Material {        // 4.0
 };
 ```
 
-In 4.1 a developer adds a field and makes "flag" larger:
-```
+In version 4.1, a developer adds a field and makes "flag" larger:
+```c++
 struct Material {        // 4.1
   ID id;
   float r, g, b;
@@ -712,20 +815,60 @@ struct Material {        // 4.1
 };
 ```
 
-When we open the old .blend file into the new version, The old file **DNA1** structure says `Material = id, r, g, b, flag (short)` while the compiled schema says `id, r, g, b, roughness, flag (int)`. There is a discrepancy between versions that prevents to load the old fields using a newer blender file parser. While reading the DNA1 structure, blender stores flags alerting of this incompatibility with `compflags[Material] = SDNA_CMP_NOT_EQUAL`. This is decided once per struct type, not once per material since all materials will have the old structure. 
+When we open the old *.blend* file into the new version, we first read this **`DNA1`** block. Inside the block we find that Material structure is stored as `Material = id, r, g, b, flag (short)` while the compiled schema *inside blender's installation* says `id, r, g, b, roughness, flag (int)`. There is a discrepancy between versions that prevents to load the old fields using a newer blender file parser. While reading the DNA1 structure, blender stores flags alerting of this incompatibility with `compflags[Material] = SDNA_CMP_NOT_EQUAL`.
+
+The method in charge of all this "cheking" compatibility is in fact `blo_read_file_internal(...)` which takes 454 lines, and that is without counting the functions it calls from inside. You are more than welcome to look at it at *source/blender/blenloader/intern/readfile.cc*. In this post we are simply summarizing it.
+
+```c++
+blo_read_file_internal                  readfile.cc:4446
+└─ read_libblock                        readfile.cc:4620 (call)
+   ├─ read_id_struct                    readfile.cc:3683 (reads the ID struct itself)
+   │  └─ read_struct                    readfile.cc:2015
+   │     └─ DNA_struct_reconstruct      readfile.cc:1952
+   └─ read_data_into_datamap            readfile.cc:3748 (reads the BLO_CODE_DATA blocks after the ID)
+      └─ read_struct                    readfile.cc:2986
+         └─ DNA_struct_reconstruct      readfile.cc:1952
+
+
+```
+
+<!-- The old file's **DNA1** structure says: Material structure is stored with `Material = id, r, g, b, flag (short)` fields. while the compiled schema says `id, r, g, b, roughness, flag (int)`. There is a discrepancy between versions that prevents to load the old fields using a newer blender file parser. While reading the DNA1 structure, blender stores flags alerting of this incompatibility with `compflags[Material] = SDNA_CMP_NOT_EQUAL`.  -->
+<!-- This is decided once per struct type, not once per material since all materials will have the old structure.  -->
 
 For every Material block in the .blend file, `DNA_struct_reconstruct` allocates a new zeroed 4.1 struct and fills it using the stored values if they exist.
 
-`id, r, g, b` are found by name and copied (RECONSTRUCT_STEP_MEMCPY). 
+```
+   4.0 block (file)                                 4.1 block (memory)
+                                                    zeroed    final
+┌───────────┬───────┐                      ┌───────────┬────────┬───────┐
+│ id        │ "Mat" │ ───── memcpy ──────> │ id        │   0    │ "Mat" │
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ r         │  0.8  │ ───── memcpy ──────> │ r         │   0    │  0.8  │
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ g         │  0.2  │ ───── memcpy ──────> │ g         │   0    │  0.2  │
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ b         │  0.1  │ ───── memcpy ──────> │ b         │   0    │  0.1  │
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ (absent)  │   -   │    no match in 4.0   │ roughness │   0    │   0   │ <- never written
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ flag      │   3   │ ─ cast short→int ──> │ flag      │   0    │   3   │
+│ (short)   │       │                      │ (int)     │        │       │
+└───────────┴───────┘                      └───────────┴────────┴───────┘
+```
+
+In the above diagram, `id, r, g, b` are found by name and copied (RECONSTRUCT_STEP_MEMCPY). 
 
 On the other hand, field `flag` has the same name but a different type, so it's converted from short to int (RECONSTRUCT_STEP_CAST_PRIMITIVE).
 
 On the third case, `roughness` isn't in the old file, so it stays 0 (RECONSTRUCT_STEP_INIT_ZERO).
 
-There is something more important to take into account.
+<!-- There is something more important to take into account. -->
 When a change is introduced in the code and we are aware that in the future there may be old files that need to be updated, they will need to populate non existen fields with a default value. That is what versioning is for. Versioning is a step on the file loading process that aims to check default values for fields that did not exist before. In the third step we simply populated roughness with value 0 which in most cases is not desired. A more standard approach is to asign value 0.5 so it is neither reflective or diffuse.
 
-To define a defalut value we need to modify the source code itself.
+
+{% alert secondary %}
+To define a default value we need to modify the source code itself.
+{% endalert %}
 
 ```c++
 if (!MAIN_VERSION_FILE_ATLEAST(bmain, 401, 3)) {
@@ -733,7 +876,7 @@ if (!MAIN_VERSION_FILE_ATLEAST(bmain, 401, 3)) {
 }
 ```
 
-I invite you to check any of the following files to see for yourself how blender manages versioning:
+This is just an example. The code above shows that if the .blend file was stored with a smaller version than 4.1.3, it will need in fact to update the already stored structures to match the new material structure. I invite you to check any of the following files to see for yourself how blender manages versioning:
 - [versioning_250.cc](https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_250.cc)
 - [versioning_260.cc](https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_260.cc)
 - [versioning_270.cc](https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_270.cc)
@@ -747,15 +890,15 @@ I invite you to check any of the following files to see for yourself how blender
 
 For forward compatibility (opening a modern file 4.1 in older blender versions 4.0) we make the same checks. `roughness` has no field to go into, so it's dropped. `flag` is converted from int to short. The file loads, but the roughness value is lost if you re-save it in version 4.0. 
 
-Renaming is a separate case. If `r` were renamed to `color_r`, name matching would fail. `dna_rename_defs.h` has a table of renames (DNA_STRUCT_RENAME_MEMBER, about 260 of them) so old names map to new ones.
+Renaming is a separate case, and it doesn't involve reconstruction. If `r` were renamed to color_r in the source, `dna_rename_defs.h` would get an entry: `DNA_STRUCT_RENAME_MEMBER(Material, r, color_r)`. There are about 260 of these member renames. At build time, makesdna uses the table to write the old name into the `DNA`, so files keep saying `r`, both old and new. C++ code uses `color_r`, while the name stored on disk never changes, so old files still match.
 
 {% alert %}
-Dont worry if all this feels too overwhelming .The idea is to be aware of the existence of multiple mechanics inside the code that manage the loading and understanding of a blend file. The more time we spend reading and analyzing code and its designing choices the more we assimilate it. 
+Dont worry if all this feels too overwhelming .The idea is to be aware of the existence of multiple mechanisms inside the code that manage the loading and understanding of a blend file. The more time we spend reading and analyzing code and its designing choices the more we assimilate it. 
 
-We will summarize all this in a bit.
+<!-- We will summarize all this in a bit. -->
 {% endalert %}
 
-On our example file we can in fact find the DNA1 struct by searching the string in the ASCII representation: 
+On our example file we can, in fact, find the DNA1 struct by searching the string in the ASCII representation: 
 ```
 0007a2f0: 00 00 00 00 00 00 44 4e 41 31 00 00 00 00 d0 f4  ......DNA1......
 0007a300: 21 a6 20 b7 a5 7e d8 0d 02 00 00 00 00 00 01 00  !. ..~..........
@@ -778,7 +921,7 @@ int64_t  len    -> d8 0d 02 00 00 00 00 00 -> 134616
 int64_t  nr     -> 01 00 00 00 00 00 00 00 -> 1
 ```
 
-We can see it is a really big chunk of information. It will take a while to digest but lets try our best. The important concept here is that `DNA1` is a wrapper of an independent structure called `SDNA` also found in the file itself as `53 44 4e 41 -> SDNA`. Look at the last line and you will see `SDNANAME`. They are two independent strings (SDNA, NAME)but because we are reading directly from the binary file they just apear one next to the other:
+We can see it is a really big chunk of information. It will take a while to digest but lets try our best. The important concept here is that `DNA1` is a wrapper of an independent structure called `SDNA` also found in the file itself as `53 44 4e 41 -> SDNA`. In the example below, look at the last line and you will see `SDNANAME`. They are two independent strings (SDNA, NAME)but because we are reading directly from the binary file they just apear one next to the other:
 
 ```
 0007a2f0: 00 00 00 00 00 00 44 4e 41 31 00 00 00 00 d0 f4  ......DNA1......
@@ -787,11 +930,12 @@ We can see it is a really big chunk of information. It will take a while to dige
 ```
 
 
-At `dna_genfile.cc:368-557` we see the parser `init_structDNA`. Its purpose is to skip all the file until reaching SDNA structure. Once it is loaded, it starts parsing it. It is divided in four sections called:
+At `dna_genfile.cc:368-557` we see the parser `init_structDNA(...)`. Its purpose is to skip all the file until reaching SDNA structure. Once it is loaded, it starts parsing it. It is divided in four sections called:
 - NAME: list of names
 - TYPE: list of types
 - TLEN: size of the types
 - STRC: list of structures
+
 In the pasted chunk of binary content we can only see `NAME` but I swear the rest are there too, just a little bit after.
 
 
@@ -918,14 +1062,16 @@ STRC:  for each struct:  [type index][member count][type, name][type, name]...
 
 ***It is time to make a technical stop***!!!
 
-This has been a heck of a journy and it starts to feel foggy and confusing. I definetly need to abstract many things away and that is why the previous sections were dense. I will now proceed on summarizing in plain text what just happend and why but introducing some of blender's code.
+This has been a heck of a journy and it starts to feel foggy and confusing. I definetly need to abstract many things away and that is why the previous sections were dense. I will now proceed on summarizing in plain text what just happend and why, instead I will introduce some of blender's code.
 
 
-First of all, the above explanation had the intetion of explaining how blender parses a file. It starts by makeing some general tests like the format and then it loads the stored SDNA. Before any of that happens, blender already has a SDNA loaded that was compiled into the source code.
+First of all, the above explanation had the intetion of explaining how blender parses a file. It starts by makeing some general tests like the format and then it loads the stored SDNA. Once loaded it is compared to Blender's compiled SDNA to make sure they match.
+
+<!-- Before any of that happens, blender already has a SDNA loaded that was compiled into the source code. -->
 
 Lets call them `host_SDNA` (as blenders compiled SDNA) and `remote_SDNA` (as an arbitrary SDNA of any procedence).
 
-On starting the program we store in memory the `host_SDNA` we create a method called `DNA_sdna_current_get()` that, at any place in the code, allows us to retrieve `host_SDNA`.
+On starting the program we store `host_SDNA` into memory. We do this through a method called `DNA_sdna_current_get()` that, at any place in the code, allows us to retrieve `host_SDNA`.
 
 At `readfile.cc:1162`, we store a pointer to `host_SDNA` calling `DNA_sdna_current_get()`. We then load the `remote_SDNA` by calling  `read_file_dna → DNA_sdna_from_data → init_structDNA`.
 
@@ -937,15 +1083,15 @@ The two are compared to create the apropaite flags:
 5. If a member is itself a struct (like ID id), compare that struct first. If it isn't equal, the parent isn't either.
 6. Otherwise → SDNA_CMP_EQUAL.
 
-the comparison is strict and positional. Moving a field changes nothing in the data, but the struct is still marked NOT_EQUAL. Matching by name only happens later, when building the conversion steps.
+The comparison is strict and positional: it checks each slot against the same slot in the other struct. If a field only moves, the struct still contains the same fields, but it's marked NOT_EQUAL because its bytes are no longer in the same place and a plain copy would put values in the wrong fields. Matching by name only happens later, when the conversion steps are built, and that's what lets each moved field keep its value.
 
 `DNA_reconstruct_info_create` then precomputes the conversion steps (MEMCPY, CAST_PRIMITIVE, INIT_ZERO, ...) for every struct marked NOT_EQUAL. Both results are stored in FileData.
 
-4. The flags are used per block. In `blo_read_file_internal`, every read_struct checks `fd->compflags[bh->SDNAnr]` and then copies, reconstructs or skips.
+<!-- 4. The flags are used per block. In `blo_read_file_internal`, every read_struct checks `fd->compflags[bh->SDNAnr]` and then copies, reconstructs or skips. -->
 
 The versioning hapens after this. It checks the prevoius version the file was stored from and the current version. The code exposes the value it has to use for populating new values.
 
-Thats it, this is blender parsing strategy. Of course the code has a bit more complexity, additional checks, pointers and structures and some other additional strategies of design but this is an introduction.
+Thats it, this is blender parsing strategy. Of course the code has a bit more complexity, additional checks, pointers, structures and some other additional design choices. I want to prioritize a mental model of the code so when reading the actual source it becames clear what each part is doing instead of explaining one by one each function from the start.
 
 As a gift I will be showing now all the blocks that exist in the .blend file and some of the sublocks we have seen so far.
 
@@ -1031,74 +1177,70 @@ As a gift I will be showing now all the blocks that exist in the .blend file and
 
 In the future we will study this components by themselves now that we understand where they live and how they are writend/readed. Not only that but we will also study the ID blocks parsing methodology and what the rest of blocks really mean.
 
-<!-- TODO: no se on posar este bloc -->
-<!-- Since my intention is to prove that this is no magic, just code ordering the machine what to do, i want to be precise and even verbose explaining certain details I see relevant to understanding how programming really works.
 
-One of the first functions declared in this file says as follows:
-```c++
-/** Make #BHead.code from 4 chars. */
-#ifdef __BIG_ENDIAN__
-/* Big Endian */
-#  define BLEND_MAKE_ID(a, b, c, d) (int(a) << 24 | int(b) << 16 | (c) << 8 | (d))
-#else
-/* Little Endian */
-#  define BLEND_MAKE_ID(a, b, c, d) (int(d) << 24 | int(c) << 16 | (b) << 8 | (a))
-#endif
-```
-To me this made no sense at first since I am not familiar with this low level programming style but it turns out that they are simply defining a function with four ASCII character inputs called a, b, c, d.  
-
-The operator `<<` shifts a value left by some number of bits, and `|` (bitwise OR) combines values. On a little-endian machine:
-
-```c++
-int(d) << 24 | int(c) << 16 | (b) << 8 | (a)
-```
-For 'R', 'E', 'N', 'D', the ASCII values are $R = 0x52,\space E = 0x45,\space N = 0x4E,\space D = 0x44$:
-
-```
-'D' << 24 → 0x44000000
-'N' << 16 → 0x004E0000
-'E' << 8 → 0x00004500
-'R' → 0x00000052
-```
-
-Each Combined with OR: 0x444E4552. Each shift moves a character into its own byte "slot," so they never overlap.
-
-At this point, I was wondering why the order of inputs was reversed. Notice that the inputs are in order a,b,c,d while the combined number is ordered as d,c,b,a. In summary, this is how computers store values that take more than one byte of memory (like big integers, 16 bit bloats, 32 bit floats and so on), in reversed importance order. For more information read the below note:
+And in case you are still unsure of understanding everything that happened in this sections, here is a summary:
 
 {% alert %}
-First of all, there are two types of machine memory processing called "little endian" and "big endian". 
-
-Lets take the 4-byte number 0x12345678 as an example. Memory is a long row of numbered slots, one byte each, and the number has to be laid out across four of them:
-
-| Address | +0 | +1 | +2 | +3 |
-| --- | ---: | ---: | ---: | ---: |
-| Big-endian | 12 | 34 | 56 | 78 |
-| Little-endian | 78 | 56 | 34 | 12 |
-
-Big-endian stores the most significant byte first, the same order we write numbers (ten thousand twenty three = 10023 ). Little-endian stores the least significant byte first (ten thousand twenty three = 32001 ). Neither is "right" or "wrong"; they're design choices made by processor makers decades ago, and each has minor technical advantages.
-
-{% endalert %} 
-
-The blender code we are looking at has a conditional operator to check which type of machine you are working on and make sure the resulting generated id (REND for example) is stored as expected.
-
-single bytes, like ASCII characters, are unaffected, since there's nothing to reorder. Endianness only matters when multi-byte data leaves one machine and is read by another, through files or networks. If a big-endian machine writes 0x12345678 to a file and a little-endian machine reads those bytes naively, it gets 0x78563412.
-
-That's why .blend files record their byte order in the header (v or V), and why Blender's reader can swap bytes when needed. You saw the header include BLI_endian_switch.hh for exactly that purpose.
-
-{% alert secondary %}
-The names come from Gulliver's Travels, where two nations go to war over whether to crack a boiled egg from the big end or the little end. A computer scientist borrowed the joke in 1980 because the debate seemed similarly arbitrary.
+1. User starts blender.
+1. User decides to load a .blend file.
+1. Blender executes method BLO_read_from_file.
+1. BLO_read_from_file reads the SDNA block from inside .blend.
+1. All blocks from the SDNA are checked against blenders internal SDNA.
+1. All missalignments between both SDNA are corrected in a list of "what should we do once we load the real data".
+1. The migration is applied to the .blend data.
+1. We return the BlendFileData containing all structures.
 {% endalert %}
--->
-<!-- 
-Once more we go back to the main issue, the files contents:
-```
-52 45 4E 44 = REND, the block code
-00 00 00 00 = SDNA index 0
-10 00 00 00 00 00 00 00 = old address 16
-08 01 00 00 00 00 00 00 = length 264 bytes
-01 00 00 00 00 00 00 00 = count 1
-``` -->
 
+
+and this is the final streucture that contains everithing blender owns:
+
+```c++
+blender/source/blender/blenloader/BLO_readfile.hh
+
+struct BlendFileData : NonCopyable, NonMovable {
+  Main *main = nullptr;
+  UserDef *user = nullptr;
+
+  int fileflags = 0;
+  int globalf = 0;
+  /**
+   * Typically the actual filepath of the read blend-file, except when recovering
+   * save-on-exit/autosave files. In the latter case, it will be the path of the file that
+   * generated the auto-saved one being recovered.
+   *
+   * NOTE: Currently expected to be the same path as #BlendFileData.filepath.
+   */
+  char filepath[/*FILE_MAX*/ 1024] = {};
+
+  /** TODO: think this isn't needed anymore? */
+  bScreen *curscreen = nullptr;
+  Scene *curscene = nullptr;
+  /** Layer to activate in workspaces when reading without UI. */
+  ViewLayer *cur_view_layer = nullptr;
+
+  eBlenFileType type = eBlenFileType(0);
+};
+```
+
+`main (Main *)`: Main is Blender's database. It holds one list per data type (scenes, objects, meshes, materials, images, node trees, ...), and every ID block from the file ends up in one of those lists. Almost everything you think of as "the file" is here.
+
+`user (UserDef *)`: These are the theme, keymaps, add-ons and so on. It's only filled when the file has a USER block, which normally means the startup file or the preferences file. A regular .blend has none, so this is usually empty.
+
+`filepath (text, 1024 characters)`: where the file is. Normally the path you opened. When recovering an autosave, it's the path of the original file instead, so saving goes back to the right place. This is the same value as relabase in FileData.
+
+
+# Structures inside Blender
+Well, now we understand how blender stores and retrieves the information from disk. But ... what information can be stored?
+
+Anyone that has used blender has used at least an "object" and a "mesh" structure. It is basically mandatory. Lets put for example the default cube. This cube lives.
+
+
+<!-- 
+show the mesh and object structures.
+show how multiple meshes are stored in a .blend file.
+show how they are loaded again.
+
+-->
 
 # Audaspace
 
