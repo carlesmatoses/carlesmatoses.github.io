@@ -1,0 +1,100 @@
+.fill{
+    width: 100%;
+    height: 100%;
+    text-align: start;
+}
+
+.headerIMG{
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    overflow: hidden;
+    height: 250px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+p a{
+    color: #3498db;
+}
+
+.post-title {
+    font-size: 2.5rem;
+    font-weight: 200;
+    margin-bottom: 1rem;
+    color: #333;
+    border-bottom: #333 1px solid;
+}
+
+
+.baseContainer h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    padding-top: 3rem;
+    color: #000000;
+}
+.baseContainer h2 {
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+    color: #333;
+}
+.baseContainer h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    padding-top: 1.5rem;
+    color: #333;
+}
+/* h1, h2, h3, h4, h5, h6 {
+    padding-top: 3rem;
+} */
+
+.baseContainer ol, .baseContainer ul {
+    padding-left: 2.2em; /* Reduce padding so numbers start closer to left */
+    margin-left: 0;
+}
+
+#markdown-toc {
+    list-style: decimal;
+    border-left: 3px solid #3498db;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+/* Using numbers instead of bullets for listing */
+#markdown-toc ul {
+    list-style: decimal;
+}
+
+.highlighter-rouge {
+    font-family: inherit;
+    font-weight: inherit;
+    color: #ffa94d;
+}
+
+/* Table formatting */
+.baseContainer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0;
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: nowrap;
+}
+.baseContainer th, .baseContainer td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+.baseContainer th {
+    background-color: #f4f4f4;
+}

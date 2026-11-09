@@ -1,31 +1,647 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en">
 
 <head>
-  <title>Carles Matoses Gimenez</title>
-  <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="https://carlesmatoses.github.io/assets/logogris-4c846364.png" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Carles Matoses Gimenez works as my portfolio where I upload relevant and recent works. 
-  I'm a computer graphics student with a degree in multimedia technologies. I'm interested in open source softwares, photography and visual effects. 
-  I spend some of my time studiying blender as well as game engines!!">
-  <meta name="keywords" content="Computer Graphics, Programming, Python, Blender, Render, Rendering, Game Engines, Real Time Rendering, Fast Realistic Rendering">
-  <meta name="author" content="Carles Matoses Gimenez">
-  <meta property="og:image"
-    content="https://github.com/carlesmatoses/carlesmatoses.github.io/blob/main/assets/logogris-4c846364.png" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <meta name="description" content="Carles Matoses Gimenez works as my portfolio where I upload relevant and recent works.  I'm a computer graphics student with a degree in multimedia technologies. I'm interested in open source softwares, photography and visual effects.  I spend some of my time studiying blender as well as game engines!!">
+    <meta name="keywords" content="Computer Graphics, Programming, Python, Blender, Render, Rendering, Game Engines, Real Time Rendering, Fast Realistic Rendering">
+    
+    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
 
-  <!-- SCRIPTS -->
-  
-  <script type="module" crossorigin src="/assets/index-1d0a10da.js"></script>
-  <link rel="stylesheet" href="/assets/index-42ddb818.css">
+    <style>
+        /* Custom styling for nav pills */
+        .nav-pills .nav-link:not(.active) {
+            background-color: #ffffff;
+            /* border: 1px solid #ffffff; */
+            color: #6c757d;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .nav-pills .nav-link:not(.active):hover {
+            background-color: #e9ecef;
+            border-color: #adb5bd;
+            color: #495057;
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: #0d6dfd00;
+            /* border: 1px solid #0d6efd; */
+            color: #0d6efd;
+        }
+
+        .nav-pills .nav-item {
+            border-bottom: 2px solid #bbbbbb;
+            width: auto;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to activate tab based on URL parameter
+        function activateTabFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Check for 'tab' parameter or direct parameter names
+            let activeTab = urlParams.get('tab') || '';
+            
+            // Check for direct parameter names (e.g., ?posts or ?projects)
+            if (urlParams.has('posts') || window.location.search.includes('posts')) {
+                activeTab = 'posts';
+            } else if (urlParams.has('projects') || window.location.search.includes('projects')) {
+                activeTab = 'projects';
+            } else if (urlParams.has('about') || window.location.search.includes('about')) {
+                activeTab = 'about';
+            }
+
+            if (activeTab) {
+                // Wait for DOM to be ready
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Deactivate all tabs
+                    document.querySelectorAll('.nav-link').forEach(tab => {
+                        tab.classList.remove('active');
+                        tab.setAttribute('aria-selected', 'false');
+                    });
+                    
+                    document.querySelectorAll('.tab-pane').forEach(pane => {
+                        pane.classList.remove('show', 'active');
+                    });
+
+                    // Activate the correct tab
+                    const targetTab = document.getElementById(activeTab + '-tab');
+                    const targetPane = document.getElementById(activeTab);
+                    
+                    if (targetTab && targetPane) {
+                        targetTab.classList.add('active');
+                        targetTab.setAttribute('aria-selected', 'true');
+                        targetPane.classList.add('show', 'active');
+                    }
+                });
+            }
+        }
+
+        // Run the function
+        activateTabFromUrl();
+    </script>
+
+    <title>Carles Matoses Gimenez</title>
+
+  <!-- Jekyll Science Kit Computer Graphics - Auto-injected dependencies -->
+  <link rel="stylesheet" type="text/css" href="/assets/jekyll-skcg/css/science-kit-computer-graphics.css">
+  <script src="/assets/jekyll-skcg/js/science-kit-computer-graphics.js"></script>
+  <!-- End Jekyll Science Kit Computer Graphics dependencies -->
 </head>
 
 <body>
-  <div id="root"></div>
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Carles Matoses Gimenez</a>
+        
+        <!-- Hamburger button for mobile -->
+        
+    </div>
+</nav>
+
+    <div class="container about-me">
+        <!-- About me section -->
+        <!-- Phone: image, text, media stacked & centered. md+: image left, content right, horizontal. -->
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+            <!-- Image -->
+            <div class="text-center">
+                <img src="/images/profile.jpg" alt="Profile photo" class="img-fluid img-fluid-hero">
+            </div>
+            <!-- Content: text + media. On md+, stretch to the image height and space the blocks out. -->
+            <div class="flex-grow-1 text-center text-md-start d-flex flex-column justify-content-md-between align-self-md-stretch">
+                <!-- Text -->
+                <div class="fw-semibold fs-4 mb-2">
+                    Hi, I'm Carles.
+                </div>
+                <div class="text-muted" style="font-size: 1.05em;">
+                    I share insights on <span class="text-primary">computer graphics</span>, <span class="text-primary">VFX</span>, and <span class="text-primary">CGI</span>.
+                    Discover my <a href="?posts" class="link-secondary text-decoration-none">posts</a>, <a href="?projects" class="link-secondary text-decoration-none">projects</a>,
+                    or visit my <a href="https://www.youtube.com/@selrak14" class="link-danger text-decoration-none" target="_blank" rel="noopener">YouTube channel</a>.
+                </div>
+                <!-- Media: centered on phone, left-aligned on md+ -->
+                <div class="mt-2 pt-2">
+                    <!-- _includes/social_links.html -->
+<link rel="stylesheet" href="/assets/css/media.css">
+
+
+
+<ul class="list-inline text-center text-md-start social-links">
+    
+    <li class="list-inline-item">
+        <a href="https://github.com/carlesmatoses">
+            <i class="fa fa-github fa-2x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="mailto:carlesmatosesg@gmail.com">
+            <i class="fa fa-envelope fa-2x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.youtube.com/channel/UC6aWlHNMv-VGU7LRBeZaj7w">
+            <i class="fa fa-youtube fa-2x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.linkedin.com/in/carles-matoses-b2b9a82b7">
+            <i class="fa fa-linkedin fa-2x"></i>
+        </a>
+    </li>
+    
+</ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container lists">
+        <div class="row mt-4 list">
+            <ul class="nav nav-pills p-0 nav-fill" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="projects-tab" data-bs-toggle="pill" data-bs-target="#projects"
+                        type="button" role="tab" aria-controls="projects" aria-selected="true">Projects</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="posts-tab" data-bs-toggle="pill" data-bs-target="#posts"
+                        type="button" role="tab" aria-controls="posts" aria-selected="false">Posts</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="about-tab" data-bs-toggle="pill" data-bs-target="#about"
+                        type="button" role="tab" aria-controls="about" aria-selected="false">About me</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
+                    
+
+
+<div class="justify-content-center post-list">
+    
+        
+    
+        
+                
+
+
+
+
+<link rel="stylesheet" href="/assets/css/post-preview.css">
+
+
+
+
+<a href="project/gaussian-splatting-mesh-reconstruction" class="post-preview-link">
+    <div class="row post-preview">
+        
+        <div class="col-12 col-sm-6 context-image">
+            
+            <video autoplay loop muted playsinline preload="metadata"
+                   poster="/images/gaussian-splatting-mesh/header_poster.jpg">
+                <source src="/images/gaussian-splatting-mesh/card_loop.mp4" type="video/mp4">
+                <img src="/images/gaussian-splatting-mesh/hero_mesh_reconstruction.jpg" alt="..." class="img-fluid">
+            </video>
+            
+        </div>
+        <div class="col-12 col-sm-6 context-text">
+            <div class="text-content">
+                <div class="h3">Gaussian Splatting and Mesh Reconstruction</div>
+                <div class="abstract-content">
+                    <div class="abstract-text"><p>This post is a summary of my thesis. It walks through how a scene captured with photos becomes a clean, low-polygon 3D mesh, and describes my two contributions:</p>
+
+<ol>
+  <li><strong>Meshfacto</strong> — porting the state-of-the-art <em>Mesh-In-the-Loop</em> (MILo) method into the <strong>Nerfstudio</strong> library, cutting the polygon count of the extracted meshes dramatically.</li>
+  <li><strong>Differentiable smoothers</strong> — extra training losses that regularize the mesh and stabilize the optimization.</li>
+</ol>
+
+</div>
+                    <div class="abstract-ellipsis" aria-hidden="true">…</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+        
+    
+        
+                
+
+
+
+
+<link rel="stylesheet" href="/assets/css/post-preview.css">
+
+
+
+
+<a href="project/color-management-thesis" class="post-preview-link">
+    <div class="row post-preview">
+        
+        <div class="col-12 col-sm-6 context-image">
+            
+            <img src="/images/color-management-thesis/header-comprobar-luz.png" alt="..." class="img-fluid">
+            
+        </div>
+        <div class="col-12 col-sm-6 context-text">
+            <div class="text-content">
+                <div class="h3">Color Management for Multimedia Applications</div>
+                <div class="abstract-content">
+                    <div class="abstract-text"><p>This is the digital version of my <strong>bachelor’s thesis</strong>, <em>Development of an Application for Color Management in Multimedia Environments</em>. It is a complete, from-scratch introduction to digital color science — how light becomes a photograph, how a photograph becomes a file, and how that file ends up looking right (or wrong) on a screen — paired with <strong>Study Image</strong>, a node-based Python application I built so every one of those steps can be seen and tested instead of taken on faith.</p>
+
+</div>
+                    <div class="abstract-ellipsis" aria-hidden="true">…</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+        
+    
+        
+                
+
+
+
+
+<link rel="stylesheet" href="/assets/css/post-preview.css">
+
+
+
+
+<a href="post/skcg" class="post-preview-link">
+    <div class="row post-preview">
+        
+        <div class="col-12 col-sm-6 context-image">
+            
+            <img src="/images/pluggin.png" alt="..." class="img-fluid">
+            
+        </div>
+        <div class="col-12 col-sm-6 context-text">
+            <div class="text-content">
+                <div class="h3">SKCG, jekyll-scholar-graphics</div>
+                <div class="abstract-content">
+                    <div class="abstract-text"><p>SKCG is used in the webpage to provide image, bibliography and some other liquid tags for faster formatting.</p>
+
+</div>
+                    <div class="abstract-ellipsis" aria-hidden="true">…</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+        
+    
+        
+                
+
+
+
+
+<link rel="stylesheet" href="/assets/css/post-preview.css">
+
+
+
+
+<a href="https://www.youtube.com/@selrak14" class="post-preview-link">
+    <div class="row post-preview">
+        
+        <div class="col-12 col-sm-6 context-image">
+            
+            <img src="/images/youtube.png" alt="..." class="img-fluid">
+            
+        </div>
+        <div class="col-12 col-sm-6 context-text">
+            <div class="text-content">
+                <div class="h3">Youtube Channel</div>
+                <div class="abstract-content">
+                    <div class="abstract-text"><p>I try to upload videos presenting subjects and exploring them in detail. You can find blender and graphics related content.
+</div>
+                    <div class="abstract-ellipsis" aria-hidden="true">…</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+        
+    
+        
+                
+
+
+
+
+<link rel="stylesheet" href="/assets/css/post-preview.css">
+
+
+
+
+<a href="project/ocrpeeker" class="post-preview-link">
+    <div class="row post-preview">
+        
+        <div class="col-12 col-sm-6 context-image">
+            
+            <img src="/images/ocrpeeker/index.png" alt="..." class="img-fluid">
+            
+        </div>
+        <div class="col-12 col-sm-6 context-text">
+            <div class="text-content">
+                <div class="h3">OCRPeeker</div>
+                <div class="abstract-content">
+                    <div class="abstract-text"><p>A Wayland-native screen OCR and translation tool for Hyprland. Select a region of your screen, OCR it, and display the result in a persistent popup with translation and romanisation support.</p>
+
+</div>
+                    <div class="abstract-ellipsis" aria-hidden="true">…</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+        
+    
+        
+    
+        
+    
+</div>
+
+                </div>
+                <div class="tab-pane fade" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                    
+
+
+<div class="justify-content-center post-list">
+    
+        
+                
+
+
+
+
+<link rel="stylesheet" href="/assets/css/post-preview.css">
+
+
+
+
+<a href="post/blender-in-depth" class="post-preview-link">
+    <div class="row post-preview">
+        
+        <div class="col-12 col-sm-6 context-image">
+            
+            <img src="/images/blender-in-depth/images/camera_thumbnail.png" alt="..." class="img-fluid">
+            
+        </div>
+        <div class="col-12 col-sm-6 context-text">
+            <div class="text-content">
+                <div class="h3">Blender In Depth</div>
+                <div class="abstract-content">
+                    <div class="abstract-text"><p>Lets deep dive into blender’s DNA. What composes blender? What can be modified? and what is the blender way?
+</div>
+                    <div class="abstract-ellipsis" aria-hidden="true">…</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+                
+
+
+
+
+<link rel="stylesheet" href="/assets/css/post-preview.css">
+
+
+
+
+<a href="post/MyLearningPathCGI" class="post-preview-link">
+    <div class="row post-preview">
+        
+        <div class="col-12 col-sm-6 context-image">
+            
+            <img src="/images/my_learning_path_cgi/header.jpg" alt="..." class="img-fluid">
+            
+        </div>
+        <div class="col-12 col-sm-6 context-text">
+            <div class="text-content">
+                <div class="h3">My Learning Path on CGI</div>
+                <div class="abstract-content">
+                    <div class="abstract-text"><p>Gallery | My path to learn CGI.
+</div>
+                    <div class="abstract-ellipsis" aria-hidden="true">…</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+        
+    
+        
+                
+
+
+
+
+<link rel="stylesheet" href="/assets/css/post-preview.css">
+
+
+
+
+<a href="post/ambient-occlusion" class="post-preview-link">
+    <div class="row post-preview">
+        
+        <div class="col-12 col-sm-6 context-image">
+            
+            <img src="/images/ambient_occlusion/ambient occlusion example.png" alt="..." class="img-fluid">
+            
+        </div>
+        <div class="col-12 col-sm-6 context-text">
+            <div class="text-content">
+                <div class="h3">Ambient Occlusion</div>
+                <div class="abstract-content">
+                    <div class="abstract-text"><ol>
+  <li>What is ambient occlusion?</li>
+  <li>Why is it used?</li>
+  <li>Current Techniques</li>
+  <li>Blender implementation
+</div>
+                    <div class="abstract-ellipsis" aria-hidden="true">…</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+        
+    
+</div>
+
+                </div>
+                <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+                    <div class="justify-content-center p-3">
+                        <div class="cv-summary">
+    <div class="text-center text-md-start mb-4">
+        <a href="/cv/" target="_blank" rel="noopener" class="btn btn-primary rounded-pill px-5 py-2">CV</a>
+    </div>
+
+    <h5 class="mb-3">Education</h5>
+    <div class="mb-3">
+        <div class="fw-bold">Master's Degree in Computer Graphics</div>
+        <div class="text-muted small">Polytechnic University of Catalonia (UPC)</div>
+    </div>
+    <div class="mb-4">
+        <div class="fw-bold">Bachelor's Degree in Digital Technologies and Multimedia</div>
+        <div class="text-muted small">Polytechnic University of Valencia (UPV)</div>
+    </div>
+
+    <h5 class="mb-3">Expertise</h5>
+    <div class="mb-4">
+        <ul class="list-unstyled">
+            <li class="mb-2"><strong>Computer Graphics</strong> — Real-time rendering, CGI, and visual effects</li>
+            <li class="mb-2"><strong>Multimedia Development</strong> — Interactive applications and tools</li>
+            <li class="mb-2"><strong>Content Creation</strong> — Technical tutorials and educational videos</li>
+            <li class="mb-2"><strong>Photography & VFX</strong> — Digital imaging and post-production</li>
+        </ul>
+    </div>
+
+    <h5 class="mb-3">Projects & Contributions</h5>
+    <div class="mb-3">
+        <p>I develop open-source tools for the computer graphics community and share knowledge through posts and video content. My work focuses on making advanced graphics techniques accessible to learners and practitioners.</p>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Update URL when pill is clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const pillButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
+            
+            pillButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-bs-target').replace('#', '');
+                    // Update URL without page refresh
+                    const newUrl = window.location.pathname + '?' + targetId;
+                    window.history.replaceState({}, '', newUrl);
+
+                    // Smooth scroll to the tab content area
+                    // Find the tab-content container
+                    const tabContent = document.getElementById('myTabContent');
+                    if (tabContent) {
+                        // Calculate offset to place the previews nicely (e.g., below nav)
+                        const yOffset = -100; // adjust as needed for spacing
+                        const y = tabContent.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/footer.css">
+
+<footer class="container-fluid bg-light border-top pt-4 mt-4">
+    <div class="container">
+
+        <div class="row">
+            <!-- _includes/social_links.html -->
+<link rel="stylesheet" href="/assets/css/media.css">
+
+
+
+<ul class="list-inline text-center social-links">
+    
+    <li class="list-inline-item">
+        <a href="https://github.com/carlesmatoses">
+            <i class="fa fa-github fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="mailto:carlesmatosesg@gmail.com">
+            <i class="fa fa-envelope fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.youtube.com/channel/UC6aWlHNMv-VGU7LRBeZaj7w">
+            <i class="fa fa-youtube fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.linkedin.com/in/carles-matoses-b2b9a82b7">
+            <i class="fa fa-linkedin fa-3x"></i>
+        </a>
+    </li>
+    
+</ul>
+
+        </div>
+
+        <hr>
+
+        <div class="row additional-info">
+            <div class="col">
+                <p><strong>Name</strong></p>
+                <p>Carles Matoses Gimenez</p>
+                <p><strong>Contanct</strong></p>
+                <p>carlesmatosesg@gmail.com</p>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="/assets/js/clamp-abstract.js"></script>
 
 </body>
+
 
 </html>

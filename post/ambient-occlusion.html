@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/assets/css/figure.css"> -->
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    
+    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Three.js, dat.GUI, and science-kit scripts are auto-injected by jekyll-skcg gem -->
+    
+  <!--KaTeX-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+          });
+      });
+  </script>
+
+  <!-- mermaid -->
+  <!-- <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script> -->
+  
+  <script type="module"> import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.15.0/+esm' </script>
+  
+  <!-- Title -->
+  <title> Ambient Occlusion </title>
+
+  <!-- Jekyll Science Kit Computer Graphics - Auto-injected dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/EXRLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.19"></script>
+  <link rel="stylesheet" type="text/css" href="/assets/jekyll-skcg/css/science-kit-computer-graphics.css">
+  <script src="/assets/jekyll-skcg/js/science-kit-computer-graphics.js"></script>
+  <!-- End Jekyll Science Kit Computer Graphics dependencies -->
+</head>
+
+
+
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Carles Matoses Gimenez</a>
+        
+        <!-- Hamburger button for mobile -->
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Breadcrumb Navigation - Desktop (horizontal) -->
+            <nav aria-label="breadcrumb" class="ms-auto d-none d-lg-block">
+                <ol class="breadcrumb mb-0">
+                    <!-- Home breadcrumb -->
+                    <li class="breadcrumb-item">
+                        <a href="/" class="breadcrumb-link">Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item">
+                                    
+                                        <a href="/?posts" class="breadcrumb-link">Posts</a>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    
+                                        <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                        
+                                        
+                                        
+                                            Ambient
+                                        
+                                            Occlusion
+                                        
+                                    
+                                </li>
+                            
+                        
+                    
+                </ol>
+            </nav>
+            
+            <!-- Breadcrumb Navigation - Mobile (vertical) -->
+            <nav aria-label="breadcrumb" class="d-lg-none mt-2">
+                <ul class="navbar-nav">
+                    <!-- Home breadcrumb -->
+                    <li class="nav-item">
+                        <a href="/" class="nav-link breadcrumb-link">🏠 Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    
+                                        <a href="/?posts" class="nav-link breadcrumb-link">📝 Posts</a>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    <span class="nav-link active breadcrumb-current">
+                                        📄 
+                                            <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                            
+                                            
+                                            
+                                                Ambient
+                                            
+                                                Occlusion
+                                            
+                                        
+                                    </span>
+                                </li>
+                            
+                        
+                    
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+</nav>
+
+    <div class="container baseContainer">
+        <div class="row">
+            <div class="col">
+                <p class="post-title"> Ambient Occlusion </p>
+            </div>
+        </div>
+
+        
+        <img src="/images/ambient_occlusion/ambient occlusion example.png" alt="Couldn't load preview image :\" class="headerIMG">
+        
+
+
+        <div class="row justify-content-center">
+            <div class="alert alert-secondary" role="alert"><ol>
+  <li>What is ambient occlusion?</li>
+  <li>Why is it used?</li>
+  <li>Current Techniques</li>
+  <li>Blender implementation
+</li></ol>
+</div>
+        </div>
+        <div class="row justify-content-center">
+            </li>
+</ol>
+
+<!-- index -->
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a>    <ul>
+      <li><a href="#global-illumination--image-base-lighting" id="markdown-toc-global-illumination--image-base-lighting">Global Illumination &amp; Image Base Lighting</a>        <ul>
+          <li><a href="#global-illumination" id="markdown-toc-global-illumination">Global Illumination</a></li>
+          <li><a href="#image-base-lighting" id="markdown-toc-image-base-lighting">Image Base Lighting</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#birth-of-a-new-technique" id="markdown-toc-birth-of-a-new-technique">Birth of a new technique</a></li>
+  <li><a href="#reflection-occlusion" id="markdown-toc-reflection-occlusion">Reflection Occlusion</a>    <ul>
+      <li><a href="#computation" id="markdown-toc-computation">Computation</a></li>
+    </ul>
+  </li>
+  <li><a href="#ambient-occlusion" id="markdown-toc-ambient-occlusion">Ambient Occlusion</a>    <ul>
+      <li><a href="#computation-1" id="markdown-toc-computation-1">Computation</a>        <ul>
+          <li><a href="#optional-enhancements" id="markdown-toc-optional-enhancements">Optional enhancements</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+  <li><a href="#real-time-ambient-occlusion" id="markdown-toc-real-time-ambient-occlusion">Real Time Ambient Occlusion</a>    <ul>
+      <li><a href="#ssao" id="markdown-toc-ssao">SSAO</a></li>
+    </ul>
+  </li>
+  <li><a href="#bibliography" id="markdown-toc-bibliography">Bibliography</a></li>
+</ul>
+
+<!-- 
+GIDE FOR WRITING THIS POST
+- Ultimate goal: explain ambient occlusion technique and the child techniques such as SSAO
+
+- Contextualize the problem. All media, stylized or not, needs a certain Lighting realism to feel appealing. This has been the motivation for thousands of artists and different movements such as impressionism
+
+- Games and films developed physical based rendering textures and environment maps to improve Lighting and global illumination.
+
+- For real time applications we need to fake some real phenomena such as shadows.
+
+- materials are composed of two components: Diffuse and Specular.
+  
+- Each component requires a faking method for occlusion shadows: Diffuse->AO and Specular->RO
+
+- This techniques (AO RO) where developed by ILM.
+
+- Reflection Occlusion: 
+  - requirements
+    - view dependent
+    - light independent
+    - reflective surfaces
+  - Calculation:
+    - normal and position vectors -> reflection vector -> occlusion factor
+  - Example
+  - Path tracing approximation with real reflections
+  - it can be stored as textures
+
+- Ambient Occlusion:
+  - Requirements
+    - view independent
+    - light independent
+  - Calculation
+    - Normal and position, generate random vectors, check occlusion of each one, calculate factor (weighted).
+  - Additional improvements
+    - Store the direction with most influence to extract the environment color later.
+
+- Compare two images: path tracing vs image based Lighting + AO + RO
+
+- SSAO: Real-Time Approximation
+
+- Screen-Space Ambient Occlusion (SSAO) approximates ambient occlusion using depth and normal buffers rendered from the camera’s point of view.
+
+- It’s fast and doesn’t require ray-tracing, but it has drawbacks:
+  - Only accounts for visible geometry.
+  - Can produce noise or artifacts.
+
+- Common SSAO Variants
+  - **HBAO+** (Horizon-Based AO by NVIDIA): better edge detection.
+  - **GTAO** (Ground Truth AO by Epic): balances performance and realism.
+  - **SSDO** (SS Diffuse Occlusion): includes directional lighting and color bleeding.
+
+-->
+
+<p style="margin-top:30px;margin-bottom:-20px;color:#888;font-size:1.05em;">
+Check my video (˶ᵔ ᵕ ᵔ˶)
+</p>
+
+<figure id="youtube" class="figure-block" style="width: 100%;" data-figure-number="1">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <div class="figure-video">
+  <iframe src="https://www.youtube.com/embed/lFb3bZGwnyQ" title="" frameborder="0" allowfullscreen=""></iframe>
+</div>
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 1: Oclusion ambiental</figcaption>
+</figure>
+
+<h1 id="introduction">Introduction</h1>
+<!-- Representing reality has been an impactful research field for centuries. It exists across various artistic techniques such as painting and sculpture.  -->
+
+<p>Understanding reality and representing it accuratelly has been an active research field for centuries on all artistic disciplines.</p>
+
+<p>Movements like impressionism have tried to find better ways of illustrating reality than reality itself (perceived reality). They depict objects as light strokes, avoiding a defined shape or form. <strong>Light representation affects emotions, credibility, intention and context.</strong></p>
+
+<p>In recent years we have seen an increasing graphical improvement on computer generated images trying to get closer to reality. This provided new techniques to simulate light behavior on virtual enviorments.</p>
+
+<!-- We all like Games, Films, cartoons and other media contents. In recent years we have seen an increasing graphical improvement trying to get closer to reality. This pursuit has existed for centuries across various artistic fields such as paintings and sculpture. On the impressionist movement, they tried to capture a scene without shapes or form, just representing the light and letting it define the elements.  -->
+
+<figure id="paintings" class="figure-block" style="width: 100%;" data-figure-number="2">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/960px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/ambient_occlusion/toystory.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 2: Paintings trying to represent light in an appealing way</figcaption>
+</figure>
+
+<p>Computer generated films such as Toy story, illustrates the evolution of phisically based rendering techniques (PBR). Even high stylized games are not free of this requirement of respecting <strong>light behavior</strong> since it <strong>directly impacts the viewers inmersion into the story</strong>.</p>
+
+<p>That is why some rules are constant for good looking media such as <strong>light propertyes</strong> (color, intensity, spectrum, …) and <strong>light interaction</strong> (global illumination, ambient occlusion, transparency, caustics, … ).</p>
+
+<figure id="Ambient-Occlusion-Skyrim" class="figure-block" style="width: 100%;" data-figure-number="3">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 3: https://www.gamedesigning.org/wp-content/uploads/2019/10/enabling-ambient-occlusion-1.jpg</figcaption>
+</figure>
+
+<h2 id="global-illumination--image-base-lighting">Global Illumination &amp; Image Base Lighting</h2>
+<p>These concepts are out of scope but I will summarize them.</p>
+
+<h3 id="global-illumination">Global Illumination</h3>
+<p><code class="language-plaintext highlighter-rouge">Global Illumination</code> is a collection of techniques to simulate realistic lighting.</p>
+
+<p>One of the characteristics of light is that it bounces from one surface to another. Calculating all bounces of light reaching each surface point is expensive but provides good results. For this calculations we use path tracing and ray tracing algorithms.</p>
+
+<figure id="lumen" class="figure-block" style="width: 66%;" data-figure-number="4">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="https://cdn2.unrealengine.com/feed-ue5-early-access-livestream-lumen-1920x1080-a4d78e37fd8e.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 4: Unreal Engine: Lumen technology.</figcaption>
+</figure>
+
+<p>Algorithms like <strong>ray tracing</strong> and <strong>path tracing</strong> simulate full <code class="language-plaintext highlighter-rouge">global illumination</code>, but they require significant processing power. In exchange, they provide <strong>close to real light occlusion</strong> and <strong>do not need to use ambient occlusion techniques</strong>. AO can still be used for enhancing some effects.</p>
+
+<p>This techniques are so realistic because <strong>they use the scene geometry and textures to calculate the light</strong> for a certain number of iterations (<code class="language-plaintext highlighter-rouge">global illumination</code>). This iterations are known as <code class="language-plaintext highlighter-rouge">bounces</code>, the number of times a light path collides on a surface and changes direction.</p>
+
+<div class="alert alert-secondary" role="alert"><p><strong>Example Renderers:</strong></p>
+<ul>
+  <li><em>Ray tracing renderer:</em> Arnold, V-Ray, or Mental Ray</li>
+  <li><em>Path tracing renderer:</em> Cycles (Blender), LuxCoreRender, or Octane Render<br />
+Cycles, for example, is a path tracing renderer integrated in Blender that simulates global illumination by tracing the paths of many light rays per pixel.</li>
+</ul>
+</div>
+
+<p>To simplify or “fake” global illumination <strong>we could place lights from all directions</strong> by “gessing” how the surface should look. Whith this strategy we avoid computing <code class="language-plaintext highlighter-rouge">global illumination</code> and we only use a single bounce from each light.</p>
+
+<figure id="global-illumination" class="figure-block" style="width: 100%;" data-figure-number="5">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/ambient_occlusion/global_ilumination.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/ambient_occlusion/global_ilumination_back.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 5: Global Illumination using virtual lights.</figcaption>
+</figure>
+
+<h3 id="image-base-lighting">Image Base Lighting</h3>
+<p>Instead of placing hundreds of lights in the scene, we can <strong>group them into an image</strong>. This images are called: environment texture, cube map, HDRI, spherical map… Each one with its own characteristics.</p>
+
+<figure id="global_enviorment" class="figure-block" style="width: 66%;" data-figure-number="6">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/photo_studio_loft_hall_2k.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 6: HDRI image of a house</figcaption>
+</figure>
+
+<figure id="gi_cycles" class="figure-block" style="width: 50%;" data-figure-number="7">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/global_ilumination_cycles.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 7: Global Illumination using environment image and path trace engine (cycles).</figcaption>
+</figure>
+
+<figure id="ibl" class="figure-block" style="width: 50%;" data-figure-number="8">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/global_ilumination_eevee.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 8: Global Illumination using environment image and Image Based Lighting (IBL).</figcaption>
+</figure>
+
+<p>For <code class="language-plaintext highlighter-rouge">global illumination</code> we will calculate light and bounces assuming the environment image are virtual light placed really far.</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">Image Based Lightning</code> we will use it as a projected texture on the surface making the calculation almost instant compared to Ray Tracing or Path Tracing. One limitation of <code class="language-plaintext highlighter-rouge">IBL</code> is that <strong>we do not take into account occlusion</strong>, buuuuut… we are trying to overcome that.</p>
+
+<figure id="IBL-no-shadows" class="figure-block" style="width: 49%;" data-figure-number="9">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ao_without_shadows.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 9: Suzanne with Image Based Lighting shows light under the hat and is not casting shadows from the windows</figcaption>
+</figure>
+
+<figure id="global-illumination-path-tracing" class="figure-block" style="width: 49%;" data-figure-number="10">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ao_with_shadows.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 10: Suzanne rendered with path tracing shows how light is blocked by near geometry as well as blocking lights from the windows</figcaption>
+</figure>
+
+<div class="alert alert-primary" role="alert"><p>RESUME: <strong>The most physically accurate approach for rendering is by ray trancing and path tracing. Real time techniques require a global illumination simplifications, usually Image Based Lighting techniques. This simplifications have limitations that we must overcome</strong>.</p>
+</div>
+
+<h1 id="birth-of-a-new-technique">Birth of a new technique</h1>
+<p>Ambient Occlusion was first used in “Pearl harbour” to store the quantity of ambient light that reaches the surface of an airplane <a href='#pearl-harbor'>11</a>. This same technique was used in Cruise Control a few years before to determine the reflection intensity of each window. Find more information on  <a href="#history-background" class="citation-link">[<span class="citation-number">1</span>: <span class="citation-link-title">Ben Snow: the evolution of ILM’s lighting tools</span>; <span class="citation-link-author">NEO January, et al.</span>; <span class="citation-link-year">2014</span>]</a>.</p>
+
+<figure id="pearl-harbor" class="figure-block" style="width: 100%;" data-figure-number="11">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ocllusionpearlharbor.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 11: Pearl Harbor Reflection Occlusion.</figcaption>
+</figure>
+
+<p>We already mentioned that this technique can be expensive and time consuming. Luckily for them, films do not require real time processes even though its still desired. For this productions, they <strong>baked geometry occlusions in image sequences</strong> and use it in the rendering pipeline as another texture.</p>
+
+<p>We are going to explore <strong>two different techniques developed by ILM: <code class="language-plaintext highlighter-rouge">Ambient Occlusion</code> and <code class="language-plaintext highlighter-rouge">Reflection Occlusion</code></strong>. The reason they developed two techniques is because materials are usually composed of two components: <code class="language-plaintext highlighter-rouge">Diffuse</code> and <code class="language-plaintext highlighter-rouge">Specular</code>.</p>
+
+<div id="fr_diffuse" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      fr_{diffuse} = k_{diffuse} \cdot f_{lambert}
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(1)</div>
+</div>
+
+<div id="fr_specular" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      fr_{specular} = k_{specular} \cdot f_{cook-torrance}
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(2)</div>
+</div>
+
+<div id="energy" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      fr = fr_{diffuse} + fr_{specular}
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(3)</div>
+</div>
+
+<div class="glb-viewer" data-id="BRDF" data-models="[&quot;sphere&quot;]" data-materials="[&quot;basic_brdf&quot;]">
+</div>
+
+<div class="alert alert-primary" role="alert"><p>We will need to evaluate how much light reaches a point for both of this components.</p>
+</div>
+
+<h1 id="reflection-occlusion">Reflection Occlusion</h1>
+<p>We will start by explaining Reflection Occlusion. It corresponds to the <span class="equation-inline">$fr_{specular}$</span>  component of the light.</p>
+
+<p><strong>Reflection Occlusion (RO)</strong> is a rendering technique used to estimate how much <code class="language-plaintext highlighter-rouge">reflected light</code> reaches a surface point. In essence, it simulates how exposed each point is towards the reflection vector.</p>
+<div id="camera-vector" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      v = \text{camera\_position} - \text{surface\_position}
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(4)</div>
+</div>
+
+<div id="reflection-vector" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      r = v - 2(v \cdot n)n
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(5)</div>
+</div>
+
+<p>First, compute the reflection vector <span class="equation-inline">$r$</span> of the view direction <span class="equation-inline">$v$</span> (from the surface to the camera) against the normal <span class="equation-inline">$n$</span>  using the <a href='#reflection-vector'>5</a> formula.</p>
+
+<p>Now, define the <strong>Reflection Occlusion</strong> at point <span class="equation-inline">$p$</span> using a visibility function:</p>
+
+<div id="R-occlusion-function" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      RO(p) = V(p, r)
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(6)</div>
+</div>
+
+<p>Where the visibility function <span class="equation-inline">$V(p, \omega)$</span> is defined as:</p>
+
+<div id="visibility-function-RO" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      V(p, \omega) = \begin{cases} 
+0 &amp; \text{if } d(p, \omega) &lt; \epsilon \\
+1 &amp; \text{otherwise}
+\end{cases}
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(7)</div>
+</div>
+
+<p><strong>Where:</strong></p>
+<ul>
+  <li><span class="equation-inline">$r$</span>: Reflection vector computed from <a href='#reflection-vector'>5</a>.</li>
+  <li><span class="equation-inline">$V(p, \omega)$</span>: Visibility function that returns 1 if direction <span class="equation-inline">$\omega$</span> from point <span class="equation-inline">$p$</span> is unoccluded, 0 if occluded.</li>
+  <li><span class="equation-inline">$d(p, \omega)$</span>: Distance to the nearest surface intersection along direction <span class="equation-inline">$\omega$</span> from point <span class="equation-inline">$p$</span>.</li>
+  <li><span class="equation-inline">$\epsilon$</span>: Maximum occlusion distance threshold.</li>
+</ul>
+
+<p>In other words, <strong>we cast a ray from the surface point <span class="equation-inline">$p$</span> along the reflection direction <span class="equation-inline">$r$</span> and check if it hits any geometry within distance <span class="equation-inline">$\epsilon$</span></strong> using the visibility function. If it does, the reflection is considered occluded (<span class="equation-inline">$V(p,r) = 0$</span>); otherwise, it’s unoccluded (<span class="equation-inline">$V(p,r) = 1$</span>).</p>
+
+<p>Other visibility functions are possible, providing smoother results. We use the boolean approach because it visualizes the concept more clearly and shows the limitations.</p>
+
+<div class="alert alert-warning" role="alert"><p>Here, <span class="equation-inline">$\epsilon$</span> represents the radius where we are detecting collisions. If <span class="equation-inline">$\epsilon$</span> is too small we may end up not detecting any collision and assuming the surface is exposed to the enviorment map even if it is enclosed in a room for example. The distance to the walls would be big, but still it should not be considered exposed to an environment map.
+<!-- TODO: i need an image representing an epsilon too small and a correct epsilon. --></p>
+</div>
+
+<p>Remember, this technique is <strong>view dependent</strong> therefore we need to compute it each frame or bake it if we know the camera position and the scene will not be modified.</p>
+
+<h3 id="computation">Computation</h3>
+<p><code class="language-plaintext highlighter-rouge">The process to obtain the Reflection Occlusion path is</code>:</p>
+<ol>
+  <li>Get the surface normal and position.</li>
+  <li>Get the camera position.</li>
+  <li>Calculate the reflection vector from the three previous variables <a href='#reflection-vector'>5</a>. It will look like figure <a href='#reflect-vectors'>12</a>.</li>
+  <li>Use some technique to calculate ray intersections from the surface to the rest of geometry <a href='#reflection-occlusion-image'>13</a>.</li>
+  <li>Store the collision distance per fragment.</li>
+  <li>Use it to darken the Reflection Map with a shader.</li>
+</ol>
+
+<figure id="reflect-vectors" class="figure-block" style="width: 50%;" data-figure-number="12">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ReflectionOcclusion.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 12: Generate reflect vectors</figcaption>
+</figure>
+
+<figure id="reflection-occlusion-image" class="figure-block" style="width: 50%;" data-figure-number="13">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ReflectionOcclusion_raytrace.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 13: Detect reflect vectors occlusions</figcaption>
+</figure>
+
+<div class="alert alert-primary" role="alert"><p>The arrows in this images are the reflection vectors computed with <a href='#reflection-vector'>5</a></p>
+</div>
+
+<p>The limitation of this technique is that, <strong>instead of reflecting the collided surface, it  just darkens the fragment</strong>. For general purposes this is enough.</p>
+
+<!-- One of the scenarios where this approach may fail is on the use of ``enviorment maps`` with ``IBL``. If  <span class="equation-inline">$RO(p)$</span> is pondered by distance as <span class="equation-inline">$V(p,r)=max(0,1− \frac{d\(p,r\)​}{R} )$</span> with a small R, we may end up with a reflection through a wall that does not make sense. Imagine being in a basement and you see the sky being reflected by a glass of water, that would be weird... -->
+
+<!-- This method generates abrupt changes on the boundary of function. The boundary can be expressed as <span class="equation-inline">$d(p, r) = \epsilon$</span>. -->
+
+<!-- <div class="alert alert-warning" role="alert"><p>Here, <span class="equation-inline">$\epsilon$</span> represents the radius where we are detecting collisions. If <span class="equation-inline">$\epsilon$</span> is too small we may end up not detecting any collision and assuming the surface is exposed to the enviorment map even if it is on the inside of a house.</p>
+</div> -->
+
+<p>In <strong>path tracing renderers</strong>, you are usually provided a <strong>parameter to choose the bounces limit</strong>. This is of course more realistic, but may take several minutes <a href='#reflect-bounces'>14</a>. We also avoid showing incorrect reflections when occluders are far since we dont use IBL techniques.</p>
+
+<figure id="reflect-bounces" class="figure-block" style="width: 100%;" data-figure-number="14">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/cyclesReflections.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 14: Cycles Reflections with 0, 1 and 2 bounces respectively.</figcaption>
+</figure>
+
+<p>As easy and powerful this method may seem, it is not used because of the processing time it takes for each frame to calculate collision. New techniques like Ray Tracing may be able to provide real time Reflection Maps in the future.</p>
+
+<h1 id="ambient-occlusion">Ambient Occlusion</h1>
+<p>Finally!!, we get to point of the post. We are now on the <code class="language-plaintext highlighter-rouge">Diffuse side of the formula</code> <a href='#energy'>3</a>.</p>
+
+<p><strong>Ambient Occlusion (AO)</strong> is a rendering technique used to estimate how much ambient light reaches a surface point. In essence, <strong>it simulates how exposed each point is to surrounding light</strong>, based on nearby geometry.</p>
+
+<!-- <div id="ao-formula" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      AO(p) = \frac{1}{\pi} \int_{\Omega} V(p, \omega) \, (n \cdot \omega) \, d\omega
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(8)</div>
+</div>
+
+
+**Where:**  
+- <span class="equation-inline">$p$</span>: Surface point being evaluated.  
+- <span class="equation-inline">$n$</span>: Surface normal at <span class="equation-inline">$p$</span>.  
+- <span class="equation-inline">$\omega$</span>: Sampled direction within the hemisphere <span class="equation-inline">$\Omega$</span> centered around <span class="equation-inline">$n$</span>.  
+- <span class="equation-inline">$V(p, \omega)$</span>: Visibility function; returns 1 if the direction <span class="equation-inline">$\omega$</span> from <span class="equation-inline">$p$</span> is unoccluded, 0 if occluded by geometry. There are other visibility functions that we can choose from. 
+- <span class="equation-inline">$n \cdot \omega$</span>: Lambertian cosine weighting, giving more influence to directions closer to the normal.   -->
+
+<p>AO follows the same principle as Reflection Occlusion, but instead of checking a single reflection direction, <strong>we must evaluate all directions from which light can reach the surface point</strong>.</p>
+
+<p>This difference stems from the fundamental behavior of diffuse materials: while specular reflections bounce light in a single direction (like a mirror), <strong>Lambertian materials</strong> (also known as perfectly diffuse surfaces) <strong>absorb incoming light from any direction and scatter it uniformly in all directions</strong>. Therefore, to accurately compute ambient occlusion, we need to sample the entire hemisphere of possible incoming light directions.</p>
+
+<div class="alert alert-primary" role="alert"><p>At this point, you may be a bit confused on what exactly is “diffuse” or “specular” and what is the difference between this concepts and the irradiance of the surface point.</p>
+
+<p>I want to make the following very clear: In Bidirectional Reflectance Distribution Function (BRDF) we are describing how light reflects off a surface, detailing how incident light from one direction is reflecting into another, considering angles, material properties, wavelenghts and much more.</p>
+
+<p>We are using some concepts related to BRDF because there is a lot of relation between how BRDF behaves and how AO+RO behave BUT we are one step early on the pipeline.</p>
+
+<p><strong>We are evaluating the directions and quantity of light that we will feed to the BRDF to produce a rendeder.</strong></p>
+</div>
+<p>Since global light arrives from all directions in a hemisphere <a href='#lambert-w'>19</a>, we integrate the visibility function <span class="equation-inline">$V(p, \omega)$</span> over that hemisphere, weighted by Lambert’s cosine law:</p>
+
+<div id="ao-formula" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      AO(p) = \frac{1}{\pi} \int_{\Omega} V(p, \omega) \, (n \cdot \omega) \, d\omega
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(8)</div>
+</div>
+
+<p><strong>Where:</strong></p>
+<ul>
+  <li><span class="equation-inline">$\Omega$</span>: Hemisphere centered around the surface normal <span class="equation-inline">$n$</span>.</li>
+  <li><span class="equation-inline">$V(p, \omega)$</span>: Same visibility function used in Reflection Occlusion.</li>
+  <li><span class="equation-inline">$n \cdot \omega$</span>: Lambertian cosine weighting — directions aligned with the normal contribute more.</li>
+</ul>
+
+<p>This formula computes how much unblocked ambient light reaches point <span class="equation-inline">$p$</span> by averaging visibility across all incoming directions.</p>
+
+<p>In the real world, light rays are often blocked or “occluded” by objects. This effect happens naturally and gives surfaces subtle shadows in creases, corners, and areas where objects are close together. Recreating this effect adds a layer of realism to CGI scenes (<a href='#real-world-ao'>15</a>).</p>
+
+<!-- we will use a hemisphere per fragment instead of one vector. To avoid millions of calculations, we will approximate the integral with montecarlo approximation.   -->
+
+<!-- <div class="alert alert-secondary" role="alert"><p><strong>Reminder:</strong></p>
+
+<p>Diffuse component is calculated by adding the incident light of all directions into the surface point. For this reason, occlusion can come from any of those directions.</p>
+</div>
+
+<div class="alert alert-warning" role="alert"><p><strong>A note on material components:</strong></p>
+
+<p>In practice, materials often have <strong>three light response components</strong> rather than two:</p>
+
+<ol>
+  <li><strong>Diffuse</strong> — Light scattered in all directions by the surface</li>
+  <li><strong>Specular</strong> — Direct mirror-like reflections</li>
+  <li><strong>Ambient</strong> — A constant base illumination term (artistic addition)</li>
+</ol>
+
+<p>The <strong>ambient component</strong> doesn’t exist in physically-based light transport — it’s an artistic hack used in real-time rendering to prevent surfaces from going completely black in the absence of direct lighting.</p>
+
+<p>While <strong>ambient occlusion is derived from diffuse light behavior</strong> (hemisphere sampling based on Lambert’s cosine law), the resulting AO factor can be applied to <strong>both the diffuse and ambient components</strong>. This is because both represent indirect, non-directional illumination, and both should be darkened in occluded areas.</p>
+
+<p>In summary:</p>
+<ul>
+  <li><strong>Diffuse + Specular</strong> = physically-based components</li>
+  <li><strong>Ambient</strong> = artistic enhancement (optional)</li>
+  <li><strong>AO</strong> = applies to diffuse (physically) and ambient (artistically)</li>
+</ul>
+</div> -->
+
+<figure id="real-world-ao" class="figure-block" style="width: 49%;" data-figure-number="15">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/real_ao.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 15: Ambient occlusion visible in real-world objects.</figcaption>
+</figure>
+
+<p>That said, <strong>ambient occlusion is not physically accurate</strong>, but rather an <em>artistic approximation</em> of a real-world phenomenon. It’s designed to enhance depth perception and spatial relationships in rendered images without simulating full global illumination <a href='#ao-example'>16</a>.</p>
+
+<figure id="ao-example" class="figure-block" style="width: 100%;" data-figure-number="16">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/ambient_occlusion/blender_ao_shader_off.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/ambient_occlusion/blender_ao_shader.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 16: Wave grid before and after applying Ambient Occlusion</figcaption>
+</figure>
+
+<p>AO(p) is a scalar field with values usually between 0 and 1 over a surface. It encodes how much light is reaching at any point in the field. This technique is agnostic to the scene lights, therefore to calculate it we only need the geometry. As long as geometry doesn’t change, it can be baked.</p>
+
+<p>In the world of games and other real time applications, it is common to only bake <strong>local ambient occlusion</strong>, meaning that only the self geometry of the object is used to calculate AO. If the object moves around the scene, the AO map does not need to change but there will not be any darkening on near by surfaces.</p>
+
+<!-- TODO: generate scalar field image -->
+
+<p><strong>Ambient occlusion will take care of the contact shadows</strong>. It will not account for directional shadows cast by distant light sources like a window — it only simulates shadowing caused by nearby geometry.</p>
+
+<p>Let’s now compare the result with <em><code class="language-plaintext highlighter-rouge">path tracing</code></em> and <em><code class="language-plaintext highlighter-rouge">Image Based Lightning+AO</code></em>. The model <strong>Suzanne should have a shadow under the hat and also occlude light to his right ear</strong>.</p>
+
+<div class="alert alert-secondary" role="alert"><p>We will use an Image Based Lighting Global Illumination technique where we project an image into the geometry based on its normal direction (diffuse lightning).
+All darkened and lighted areas will be provided from an irradiance texture of the environment.</p>
+
+<p>For the path tracing, we assume the enviorment image are just millions of points irradiating light towards the object.</p>
+</div>
+
+<figure id="shadow-example" class="figure-block" style="width: 80%;" data-figure-number="17">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/ambient_occlusion/shadow_example.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/ambient_occlusion/ao_example .png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 17: LEFT: Path Tracing. RIGHT: IBL+AO</figcaption>
+</figure>
+
+<p>The following interactive example offers three slides:</p>
+<ul>
+  <li>global_illumination: Image Based Lighting approach where we project an irradiance texture on the geometry based on surface normal direction.</li>
+  <li>AO: Blocked light factor.</li>
+  <li>shadow: Physically based rendered shadow.</li>
+</ul>
+
+<p>We need all this three components to recreate what we would obtain with path or ray tracing. We are just simplifying the computation at the cost of visual quality.</p>
+
+<div class="glb-viewer" data-id="viewer-1" data-models="[&quot;suzane&quot;,&quot;sphere&quot;]" data-materials="[&quot;material1&quot;,&quot;enviorment&quot;]">
+</div>
+
+<h3 id="computation-1">Computation</h3>
+
+<p>You may have noticed that if Reflection Occlusion was already expensive on computation terms, calculating all rays in a hemisphere for each surface point would be prohibitive in real world applications. We will use a monte carlo simplification to only calculate a few rays for each point <a href='#ao-monte'>9</a>.</p>
+
+<div id="ao-monte" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      AO(p) \approx \frac{1}{N} \sum_{i=1}^{N} V(p, w_i) \cdot (n \cdot w_i)
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(9)</div>
+</div>
+
+<!-- ``The diffuse light Concept:`` Mirrors bounce light from exactly one point (at least in a perfect mirror). There are cases where the mirror may be a bit dirty and it reflects light from closer directions generating a blurred image. Diffuse light works under the premise that  ``light will hit the surface from all directions``. This is due at the nature of photons that penetrates on the first layers of the object and bounce back to the observator. -->
+
+<!-- <figure id="diffuse-variable" class="figure-block" style="width: 100%;" data-figure-number="18">
+  <div class="figure-content">
+    /images/ambient_occlusion/comparing_spheres.png
+  </div>
+  <figcaption class="figure-caption">Fig. 18: Three spheres with different diffuse component</figcaption>
+</figure>
+ -->
+
+<!-- <div class="alert alert-warning" role="alert"><p>This is only for illustration purposes. 
+<strong>Concepts like Specular, Diffuse, microfacet model, Roughness, Metalness, Fresnel, Physically Based Rendering and scattering light deserve a post for themselves.</strong></p>
+
+<p>I will try to explain in the future the physical principles behind  diffuse and specular lights. For the moment lets just assume the <code class="language-plaintext highlighter-rouge">diffuse component represents the absorbed light inside the surface and radiated back in random directions</code>.</p>
+</div> -->
+
+<p>For more context we can look at the lambertian formula. You can also look at <a href="#learnopengl_diffuse_irradiance" class="citation-link">[<span class="citation-number">2</span>: <span class="citation-link-title">Diffuse Irradiance</span>; <span class="citation-link-author">Joey de Vries</span>; <span class="citation-link-year">n.d.</span>]</a>:</p>
+<div id="eq:lambert" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      L_d = k_d \cdot I \cdot max(0,N \cdot L)
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(10)</div>
+</div>
+
+<figure id="lambert-w" class="figure-block" style="width: 50%;" data-figure-number="19">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ibl_hemisphere_sample.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 19: Lambert. Image extracted from ``learnopengl``.</figcaption>
+</figure>
+
+<p>In Global Illumination, light hits a point from all directions <a href='#lambert-w'>19</a>, <strong>we must check occlusion on all directions too!!</strong>.</p>
+
+<!-- If there is no occlusion, the diffuse component will become the weighted average of all incident light.  -->
+
+<p>A basic algorithm to calculate Ambient Occlusion is to <strong>generate random vectors inside a hemisphere aligned with the fragment normal</strong>. We ray cast in those directions and store how many rays have been occluded. We average the result and store it in a texture.</p>
+
+<div id="ao-simple" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      AO(p) = \frac{1}{N} \sum_{i=1}^{N} V(p, w_i)
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(11)</div>
+</div>
+
+<figure id="ao-basic" class="figure-block" style="width: 50%;" data-figure-number="20">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ambient occlusion example2.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 20: Generate random vectors in a hemisphere oriented with the fragment normal</figcaption>
+</figure>
+
+<figure id="ao-average" class="figure-block" style="width: 50%;" data-figure-number="21">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ambient occlusion example.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 21: Average the number of collisions for each fragment</figcaption>
+</figure>
+
+<figure id="ao-result" class="figure-block" style="width: 50%;" data-figure-number="22">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ambient occlusion example1.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 22: Ambient occlusion Basic implementation</figcaption>
+</figure>
+
+<p>An additional layer of realism would be to integrate lambert’s rule that states: <strong>the more aligned incident rays are with the fragment’s normal, the more they contribute to the final result</strong>.</p>
+
+<div id="ao-weighted" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      AO(p) = \frac{1}{N} \sum_{i=1}^{N} V(p, w_i) \cdot (n \cdot w_i)
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(12)</div>
+</div>
+
+<figure id="ao-result" class="figure-block" style="width: 50%;" data-figure-number="22">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/ambient occlusion dot.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 22: Ambient occlusion with dot product weight</figcaption>
+</figure>
+
+<p><strong>This technique is view independent</strong> therefore we can bake it and use it in any context as long as geometry does not change. In case the floating disk moved dynamically over time, we would have to recompute ambient occlusion for all geometry. This makes the technique invalid for real time applications with dinamic geometry.</p>
+
+<!-- With the above implementations, hemisphere rays weighted by aligment with normal direction, would be enough to make a correct implementation.  -->
+<!-- Further improvements would involve keeping track of the bounce color and weight it on the angle. In case the predominant direction is occluded, we will not use the main color but the surrounding ones. This is particularly usefull to avoid the sky illumination for example when there is a roof.   A simplification of this method is to store a vector that is not the normal but it represents better the final color we look for -->
+
+<h4 id="optional-enhancements">Optional enhancements</h4>
+<p>We can go even further and register the mean direction of no-occlusion to later on color that fragment based on the bended normal direction of not occluded vectors. We can also detect the distance of the occluding object to weight length collision.</p>
+
+<div id="ao-bent-normal" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      \mathbf{b}(p) = \frac{1}{M} \sum_{i=1}^{N} V(p, w_i) \cdot w_i
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(13)</div>
+</div>
+
+<p>Where:</p>
+<ul>
+  <li><span class="equation-inline">$\mathbf{b}(p)$</span>: Bent normal (mean not-occluded direction) at point <span class="equation-inline">$p$</span>.</li>
+  <li><span class="equation-inline">$w_i$</span>: Sampled direction in the hemisphere.</li>
+  <li><span class="equation-inline">$V(p, w_i)$</span>: Visibility function (1 if not occluded, 0 if occluded).</li>
+  <li><span class="equation-inline">$M = \sum_{i=1}^{N} V(p, w_i)$</span>: Number of not-occluded samples.</li>
+</ul>
+
+<p>This formula averages all incident directions that are not occluded, resulting in the mean direction of unblocked ambient light.</p>
+
+<figure id="ao-result" class="figure-block" style="width: 50%;" data-figure-number="22">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/ambient_occlusion/normal collision direction.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 22: Plot of Bent Normals affected by two occluders (red and yellow elipsoides)</figcaption>
+</figure>
+
+<!-- 
+imatge de llum occluida amb la calavera
+imatge de ambient occlusion applicat
+imatge guardant el vector mes representatiu de la geometria
+imatge de ambient occlusion amb nou vector applicat
+-->
+<div class="alert alert-primary" role="alert"><p>Lets review what we got until this point and put names to this techineques:</p>
+<ul>
+  <li>Ray traced AO: Realistic but requires Ray tracing only avalible on some GPU’s and of limited capacity (maybe a 100 rays for a hole sceene), too little resolution unless multiple passes. This technique can be used to bake textures but not for dynamic and real time applications.</li>
+  <li>Hemispherical sampling: with some path traycing or ray tracing technique we check the occlusion on each surface point taking into account all directions on a hemisphere oriented in the normal direction.</li>
+  <li>Bent normals/irradiance volume: we store the less occluded direction and use it to calculate the surface color.</li>
+  <li>Baked AO maps in textures: once the above calculations are done, we proceed to store the result.</li>
+</ul>
+</div>
+
+<!-- Ambient Occlusion map: Once we have the scene geometry, we iterate over all points in the surface and generate an hemisphere oriented in the surface normal direction. Now we can check for colisions of the rays being casted in those directions and store the result plus the angle. Based on the lambertian formula, we know that incident light has more effect when the angle is close to 0º and it starts to reflect more light the closer it gets to 90º degrees.
+
+<!-- Ambient Occlusion bend normal map -->
+<!-- To know which part of the enviorment map is most representative of a certain surface point we can store that information based on the hemisphere rays generated before. -->
+
+<h1 id="conclusion">Conclusion</h1>
+<figure id="imb-result" class="figure-block" style="width: 100%;" data-figure-number="23">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 32%;">
+  <img src="/images/ambient_occlusion/IMB1.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/ambient_occlusion/IMB2.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/ambient_occlusion/IMB3.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 23: Image Based Lightning implementation with AO+RO</figcaption>
+</figure>
+
+<p>This is the basic idea behind Ambient occlusion. The combination of AO and RO on the different sides of PBR rendering provides a good starting point that can be improved further artistically.</p>
+
+<div id="eq:PBR" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      fr = (fr_{diffuse} \cdot AO_{map})  + (fr_{specular} \cdot RO_{map})
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(14)</div>
+</div>
+
+<p>As mentioned, there is a big computation requirement for this technique that prevents it’s use in real time. To solve this problem, a new set of techniques called Real Time Ambient Occlusion emerged. In exchange for accuracy, they archieve real time rendering on dynamic scenes that can not be backed. Usually they do not implement the reflection occlusion component since it requires too much computations that can not be avoided if we want a good result on the RO map.</p>
+
+<h1 id="real-time-ambient-occlusion">Real Time Ambient Occlusion</h1>
+<p>When games entered in a <em>graphics war</em> they looked for applying AO in the gamplay. At first the only method known was to bake it for static elements of the scene.</p>
+
+<p>For dynamic elements, the solution was to take into account only objects self geometry to calculate AO. The contact shadows of dynamic elements on the static ones was still an unsolved problem</p>
+
+<!-- image of a skull with a darkened bottom, when rotated, the ao does not update. -->
+
+<h2 id="ssao">SSAO</h2>
+<p>Screen space ambient occlusion techniques as the name suggest, will provide AO by using the screen space coordinates of the render. This provides a real time ambient occlusion calculation even though that it requires a few triks to perform fast that lead to less accuracy.</p>
+
+<ul>
+  <li>basic SSAO</li>
+  <li>HBAO/HBAO+</li>
+  <li>GTAO</li>
+  <li>SSDO</li>
+  <li>VXAO</li>
+  <li>SAO</li>
+</ul>
+
+<h1 id="bibliography">Bibliography</h1>
+<div class="bibliography bibliography-ieee"><ol class="bibliography-list"><li id="history-background" class="bibliography-entry ieee-style" data-key="history-background"><span class="bib-authors">NEO January, et al.</span>, <span class="bib-title">"Ben Snow: the evolution of ILM’s lighting tools"</span>, <span class="bib-year">2014</span>, <span class="bib-url"><a href="https://www.fxguide.com/fxfeatured/ben-snow-the-evolution-of-ilm-lighting-tools/">URL</a></span>.</li>
+<li id="learnopengl_diffuse_irradiance" class="bibliography-entry ieee-style" data-key="learnopengl_diffuse_irradiance"><span class="bib-authors">Joey de Vries</span>, <span class="bib-title">"Diffuse Irradiance"</span>, <span class="bib-year">n.d.</span>, <span class="bib-url"><a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">URL</a></span>.</li>
+</ol></div>
+
+
+        </div>
+
+    </div>
+    <link rel="stylesheet" href="/assets/css/footer.css">
+
+<footer class="container-fluid bg-light border-top pt-4 mt-4">
+    <div class="container">
+
+        <div class="row">
+            <!-- _includes/social_links.html -->
+<link rel="stylesheet" href="/assets/css/media.css">
+
+
+
+<ul class="list-inline text-center social-links">
+    
+    <li class="list-inline-item">
+        <a href="https://github.com/carlesmatoses">
+            <i class="fa fa-github fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="mailto:carlesmatosesg@gmail.com">
+            <i class="fa fa-envelope fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.youtube.com/channel/UC6aWlHNMv-VGU7LRBeZaj7w">
+            <i class="fa fa-youtube fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.linkedin.com/in/carles-matoses-b2b9a82b7">
+            <i class="fa fa-linkedin fa-3x"></i>
+        </a>
+    </li>
+    
+</ul>
+
+        </div>
+
+        <hr>
+
+        <div class="row additional-info">
+            <div class="col">
+                <p><strong>Name</strong></p>
+                <p>Carles Matoses Gimenez</p>
+                <p><strong>Contanct</strong></p>
+                <p>carlesmatosesg@gmail.com</p>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Anchor highlight script -->
+    <script src="/assets/js/anchor-highlight.js"></script>
+</body>
+
+</html>

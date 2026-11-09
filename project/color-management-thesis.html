@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/assets/css/figure.css"> -->
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    
+    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Three.js, dat.GUI, and science-kit scripts are auto-injected by jekyll-skcg gem -->
+    
+  <!--KaTeX-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+          });
+      });
+  </script>
+
+  <!-- mermaid -->
+  <!-- <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script> -->
+  
+  <script type="module"> import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.15.0/+esm' </script>
+  
+  <!-- Title -->
+  <title> Color Management for Multimedia Applications </title>
+
+  <!-- Jekyll Science Kit Computer Graphics - Auto-injected dependencies -->
+  <link rel="stylesheet" type="text/css" href="/assets/jekyll-skcg/css/science-kit-computer-graphics.css">
+  <script src="/assets/jekyll-skcg/js/science-kit-computer-graphics.js"></script>
+  <!-- End Jekyll Science Kit Computer Graphics dependencies -->
+</head>
+
+
+
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Carles Matoses Gimenez</a>
+        
+        <!-- Hamburger button for mobile -->
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Breadcrumb Navigation - Desktop (horizontal) -->
+            <nav aria-label="breadcrumb" class="ms-auto d-none d-lg-block">
+                <ol class="breadcrumb mb-0">
+                    <!-- Home breadcrumb -->
+                    <li class="breadcrumb-item">
+                        <a href="/" class="breadcrumb-link">Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item">
+                                    
+                                        <!-- Format intermediate path titles -->
+                                        
+                                        
+                                        <span class="breadcrumb-text">
+                                            
+                                                Project
+                                            
+                                        </span>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    
+                                        <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                        
+                                        
+                                        
+                                            Color
+                                        
+                                            Management
+                                        
+                                            Thesis
+                                        
+                                    
+                                </li>
+                            
+                        
+                    
+                </ol>
+            </nav>
+            
+            <!-- Breadcrumb Navigation - Mobile (vertical) -->
+            <nav aria-label="breadcrumb" class="d-lg-none mt-2">
+                <ul class="navbar-nav">
+                    <!-- Home breadcrumb -->
+                    <li class="nav-item">
+                        <a href="/" class="nav-link breadcrumb-link">🏠 Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    
+                                        <!-- Format intermediate path titles -->
+                                        
+                                        
+                                        <span class="nav-link breadcrumb-text">
+                                            📂 
+                                                Project
+                                            
+                                        </span>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    <span class="nav-link active breadcrumb-current">
+                                        📄 
+                                            <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                            
+                                            
+                                            
+                                                Color
+                                            
+                                                Management
+                                            
+                                                Thesis
+                                            
+                                        
+                                    </span>
+                                </li>
+                            
+                        
+                    
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+</nav>
+
+    <div class="container baseContainer">
+        <div class="row">
+            <div class="col">
+                <p class="post-title"> Color Management for Multimedia Applications </p>
+            </div>
+        </div>
+
+        
+        <img src="/images/color-management-thesis/header-comprobar-luz.png" alt="Couldn't load preview image :\" class="headerIMG">
+        
+
+
+        <div class="row justify-content-center">
+            <div class="alert alert-secondary" role="alert"><p>This is the digital version of my <strong>bachelor’s thesis</strong>, <em>Development of an Application for Color Management in Multimedia Environments</em>. It is a complete, from-scratch introduction to digital color science — how light becomes a photograph, how a photograph becomes a file, and how that file ends up looking right (or wrong) on a screen — paired with <strong>Study Image</strong>, a node-based Python application I built so every one of those steps can be seen and tested instead of taken on faith.</p>
+</div>
+        </div>
+        <div class="row justify-content-center">
+            
+
+<!-- index -->
+<ul id="markdown-toc">
+  <li><a href="#motivation" id="markdown-toc-motivation">Motivation</a></li>
+  <li><a href="#digital-color-science" id="markdown-toc-digital-color-science">Digital color science</a>    <ul>
+      <li><a href="#the-current-paradigm" id="markdown-toc-the-current-paradigm">The current paradigm</a></li>
+      <li><a href="#scene-referred-vs-display-referred" id="markdown-toc-scene-referred-vs-display-referred">Scene-Referred vs. Display-Referred</a></li>
+      <li><a href="#the-basics-of-light" id="markdown-toc-the-basics-of-light">The basics of light</a></li>
+      <li><a href="#from-real-color-to-digital-color" id="markdown-toc-from-real-color-to-digital-color">From real color to digital color</a></li>
+      <li><a href="#raw-a-worked-example-of-the-full-pipeline" id="markdown-toc-raw-a-worked-example-of-the-full-pipeline">RAW: a worked example of the full pipeline</a></li>
+      <li><a href="#why-cgi-isnt-raw" id="markdown-toc-why-cgi-isnt-raw">Why CGI isn’t RAW</a></li>
+      <li><a href="#color-spaces" id="markdown-toc-color-spaces">Color spaces</a>        <ul>
+          <li><a href="#how-the-render-space-itself-changes-the-image" id="markdown-toc-how-the-render-space-itself-changes-the-image">How the render space itself changes the image</a></li>
+          <li><a href="#rolling-off-to-white" id="markdown-toc-rolling-off-to-white">Rolling off to white</a></li>
+          <li><a href="#converting-between-spaces" id="markdown-toc-converting-between-spaces">Converting between spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="#dynamic-range-and-bit-depth-are-not-the-same-thing" id="markdown-toc-dynamic-range-and-bit-depth-are-not-the-same-thing">Dynamic range and bit depth are not the same thing</a></li>
+      <li><a href="#transfer-functions-oetfs-and-luts" id="markdown-toc-transfer-functions-oetfs-and-luts">Transfer functions, OETFs and LUTs</a></li>
+      <li><a href="#open-color-io" id="markdown-toc-open-color-io">Open Color IO</a></li>
+      <li><a href="#image-formats" id="markdown-toc-image-formats">Image formats</a></li>
+    </ul>
+  </li>
+  <li><a href="#display-technology" id="markdown-toc-display-technology">Display technology</a></li>
+  <li><a href="#a-proposed-open-color-pipeline" id="markdown-toc-a-proposed-open-color-pipeline">A proposed open color pipeline</a></li>
+  <li><a href="#study-image-a-node-based-tool-for-studying-color" id="markdown-toc-study-image-a-node-based-tool-for-studying-color">Study Image: a node-based tool for studying color</a>    <ul>
+      <li><a href="#how-the-node-graph-executes" id="markdown-toc-how-the-node-graph-executes">How the node graph executes</a></li>
+      <li><a href="#building-a-node" id="markdown-toc-building-a-node">Building a node</a></li>
+      <li><a href="#what-it-does" id="markdown-toc-what-it-does">What it does</a></li>
+      <li><a href="#a-worked-example-building-a-lut-from-scratch" id="markdown-toc-a-worked-example-building-a-lut-from-scratch">A worked example: building a LUT from scratch</a></li>
+      <li><a href="#catching-problems-before-they-reach-a-shot" id="markdown-toc-catching-problems-before-they-reach-a-shot">Catching problems before they reach a shot</a></li>
+    </ul>
+  </li>
+  <li><a href="#a-blender-color-management-addon" id="markdown-toc-a-blender-color-management-addon">A Blender color-management addon</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+  <li><a href="#bibliography" id="markdown-toc-bibliography">Bibliography</a></li>
+</ul>
+
+<h1 id="motivation">Motivation</h1>
+
+<p>Free material on color science tends to be scattered and incomplete: a post explains gamma, another explains gamuts, a third explains RAW processing, and none of them connect into a full picture of what happens to an image between capture and display. Having worked as a VFX, compositing and color-grading supervisor on several university productions, I kept running into the same gap — artists and generalists picking up half-explained terminology and, as a result, misconfiguring color pipelines in ways that are hard to diagnose later.</p>
+
+<p>This thesis tries to close that gap with two things: a complete, ordered explanation of color management aimed at artists rather than engineers, and a piece of software, <strong>Study Image</strong>, that lets you <em>see</em> the concepts — color space primaries, transfer functions, dynamic range, file formats — instead of taking them on faith.</p>
+
+<div class="alert alert-primary" role="alert"><p>A recurring theme throughout: <strong>the render color space itself changes the final image</strong>, independently of any later color-space conversion. Two scenes lit with identical sRGB-defined colors but rendered internally in sRGB vs. ACEScg do not converge to the same result after converting both back to sRGB — the highlights saturate and roll off differently. This is one of the most under-documented behaviors in day-to-day CG color work, and a large part of the thesis is spent making it legible.</p>
+</div>
+
+<h1 id="digital-color-science">Digital color science</h1>
+
+<p>Digital color science is the study of how colors are created, measured, captured, reproduced and perceived across digital systems <a href="#Homann2009" class="citation-link">[<span class="citation-number">1</span>: <span class="citation-link-title">The Principles of Color Management</span>; <span class="citation-link-year">2009</span>]</a> — a field that spans far more than “color management” alone: from the physics of light, through sensors and renderers, to file formats and the screens that finally display them.</p>
+
+<h2 id="the-current-paradigm">The current paradigm</h2>
+
+<p>Digital color science is extensive and spans many disciplines, and it developed very quickly, chasing hardware that itself kept evolving. That history left behind a wide, inconsistent nomenclature that is a real barrier for newcomers.</p>
+
+<p>A small example makes this concrete. Mobile screens, computer monitors and televisions can often all emit the <em>same</em> set of colors, called sRGB — yet the same content still looks different across them. That’s because of the transfer function layered on top of the primaries: TVs typically use a curve called rec.709, while computer and phone screens use a curve called sRGB (confusingly, the same name as the color space). To complicate things further, there are <em>two</em> curves both called “sRGB”: one is an exact piecewise formula, the other an approximation often written “~gamma 2.2” that differs mainly in the shadows. <strong>A color space is defined by more than just its range of colors, and every one of those extra properties matters for correct color management</strong> — this thesis works through them one at a time.</p>
+
+<h2 id="scene-referred-vs-display-referred">Scene-Referred vs. Display-Referred</h2>
+
+<p>Two concepts run through the whole pipeline:</p>
+
+<ul>
+  <li><strong>Scene-Referred</strong> — values that represent the linear light of a real (or simulated) scene, exactly as captured.</li>
+  <li><strong>Display-Referred</strong> — values that have been reshaped, usually with a perceptual/logarithmic curve, to be shown on a screen, the same way our own eyes compress the light they receive.</li>
+</ul>
+
+<figure id="scene-display" class="figure-block" style="width: 90%;" data-figure-number="1">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/scene-to-display-pipeline.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 1: A real scene becomes a photograph via a RAW-format camera: linear, Scene-Referred light gets reshaped into Display-Referred values fit for a screen.</figcaption>
+</figure>
+
+<h2 id="the-basics-of-light">The basics of light</h2>
+
+<p>To understand dynamic range and primaries, it helps to start from the actual physical behavior of light. The units that matter across a digital image’s lifetime:</p>
+
+<ul>
+  <li><strong>Photons</strong> — light itself, and its frequency (color). Sensors receive photons directly.</li>
+  <li><strong>Candela</strong> — the SI base unit of <em>luminous intensity</em>.</li>
+  <li><strong>Nits</strong> — one nit equals one candela per square meter; used for the light emitted by screens. Ordinary displays run around 100 nits, HDR displays at 1000–10000 nits.</li>
+  <li><strong>Watts</strong> — the unit 3D renderers and ray tracers actually compute in (0.05 W ≈ 1 candle). As reference points <a href="#blenderlight" class="citation-link">[<span class="citation-number">2</span>: <span class="citation-link-title">Light Objects</span>; <span class="citation-link-year">2023</span>]</a>: a clear sky ≈ 1000 W/m², an overcast sky ≈ 500 W/m², a very overcast sky ≈ 200 W/m², a full-moon night ≈ 0.001 W/m².</li>
+</ul>
+
+<h2 id="from-real-color-to-digital-color">From real color to digital color</h2>
+
+<p>Light is rarely a single wavelength (510 nm for green, say) — it’s a <strong>spectrum</strong>, many frequencies combined, and the surfaces it bounces off reflect a <em>new</em>, altered spectrum <a href="#inbook" class="citation-link">[<span class="citation-number">3</span>: <span class="citation-link-title">Artificial Lighting System for Plant Growth and Development: Chronological Advancement, Working Principles, and Comparative Assessment</span>; <span class="citation-link-author">Dutta Gupta, Snehasish, Agarwal, Avinash</span>; <span class="citation-link-year">2017</span>]</a>. The color of the light source itself has a direct effect on perceived color too: a UV blacklight is the extreme case, making some pigments fluoresce brightly while leaving others completely unaffected.</p>
+
+<figure id="spectra" class="figure-block" style="width: 100%;" data-figure-number="2">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/spectra-d65-d57.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/spectral-outputs-light-sources.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 2: Left: the spectral power distribution of two standard illuminants, D65 (daylight) and D57. Right: spectra of several different real-world light sources.</figcaption>
+</figure>
+
+<p>To go from a real spectrum to something representable digitally, we lean on <strong>metamerism</strong>: the phenomenon where two color samples match under one set of viewing conditions (light source, observer, geometry) but not under another. Converting a spectrum into RGB means finding a <em>new</em> spectrum — one a screen’s monochromatic LEDs can actually emit — that produces the same visual response.</p>
+
+<p>Working from the premise that any color can be described as a mix of three primaries, the CIE defined the <strong>CIE XYZ color space</strong> <a href="#CIE015" class="citation-link">[<span class="citation-number">4</span>: <span class="citation-link-title">Colorimetry - 4th Edition</span>; <span class="citation-link-author">CIE (Commission Internationale de l’Eclairage)</span>; <span class="citation-link-year">2018</span>]</a>, built from human cone-response experiments (William David Wright and John Guild measured how sensitive human eyes are to monochromatic light at different wavelengths) so that it contains every color a human eye can see. Each XYZ value runs 0–100; Y carries luminance, X is roughly “red vs. green” energy, and Z is roughly “blue vs. yellow” energy.</p>
+
+<figure id="xyz-transition" class="figure-block" style="width: 85%;" data-figure-number="3">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/spectrum-to-xyz-transition.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 3: The sun's spectrum reduced to a single tristimulus value (X=95.047, Y=100, Z=108.883) and then to 2D chromaticity coordinates (x=0.3128, y=0.3290).</figcaption>
+</figure>
+
+<p>XYZ is turned into the familiar 2D chromaticity coordinates <em>xy</em> (dropping luminance) simply by normalizing:</p>
+
+<div id="xyy" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      x = \frac{X}{X+Y+Z}, \qquad y = \frac{Y}{X+Y+Z}
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(1)</div>
+</div>
+
+<p>Converting XYZ into an RGB working space should look <em>perceptually</em> similar no matter which space you land in. <a href='#colorcheckers'>4</a> shows the same real color-checker patches: their real xy positions on the left, then re-plotted inside sRGB and ACEScg. <strong>In sRGB the patches crowd toward the center — the space physically cannot hold their real saturation — while in ACEScg they land almost exactly where their real coordinates say they should.</strong></p>
+
+<figure id="colorcheckers" class="figure-block" style="width: 100%;" data-figure-number="4">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/colorchecker-real-xy.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/colorchecker-acescg.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/colorchecker-srgb.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 4: The same N Ohta color-checker patches: real xy chromaticity (left), plotted inside ACEScg (center, preserves the real color), and plotted inside sRGB (right, colors get compressed to fit the smaller gamut).</figcaption>
+</figure>
+
+<p>This is why a sRGB screen, which can’t reproduce every color, can still show a <em>difference</em> between two colors that are both technically outside its gamut — a green patch will look less saturated on an sRGB screen than on an ACEScg one (no screen can actually show the full ACES gamut, but the point stands for wide-gamut displays). Matching a real, known color across multiple devices is genuinely hard, and artistic decisions inevitably creep in to make the result “look more believable.”</p>
+
+<h2 id="raw-a-worked-example-of-the-full-pipeline">RAW: a worked example of the full pipeline</h2>
+
+<p>RAW processing is a clean, concrete example of the whole color pipeline in miniature. In an <strong>analog camera</strong>, exposure blackens a photosensitive film; a <strong>digital camera</strong> replaces the film with a <strong>sensor made of pixels</strong>, each storing how many photons it received during the exposure. The sensor’s dynamic range is limited by how many photons it can register at minimum and maximum, and by pixel noise and saturation — the camera (or the photographer) has to choose which slice of the light to keep.</p>
+
+<figure id="sensor-photons" class="figure-block" style="width: 55%;" data-figure-number="5">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/sensor-photons-to-dn.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 5: A camera sensor turning incoming photons into digital numbers (DN).</figcaption>
+</figure>
+
+<p>RAW formats vary by manufacturer (Nikon NEF, Canon CR2, Sony SR2, Pentax PTX, Olympus ORF, Fujifilm RAF, Panasonic RAW2…), but they all store the same kind of thing: a 2D matrix in <strong>Bayer pattern</strong>, one color per photosite, Scene-Referred. Getting from that matrix to a finished image follows a fixed sequence of steps:</p>
+
+<p><strong>1. Black-level subtraction.</strong> Even with zero light, a sensor’s pixels register a small baseline signal specific to the camera hardware, which must be subtracted per channel before anything else.</p>
+
+<figure id="raw-black-level" class="figure-block" style="width: 100%;" data-figure-number="6">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 55%;">
+  <img src="/images/color-management-thesis/raw-black-level-1.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 43%;">
+  <img src="/images/color-management-thesis/raw-black-level-2.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 6: The raw Bayer matrix and its per-channel maximum before black-level subtraction.</figcaption>
+</figure>
+
+<p><strong>2. White balance.</strong> A per-channel multiplier that makes a chosen reference read as pure white, correcting for the scene’s illuminant — this is usually stored right in the RAW file’s metadata (e.g. <code class="language-plaintext highlighter-rouge">[1.74, 1, 1.58, 1]</code> for <code class="language-plaintext highlighter-rouge">[R, G, B, G]</code>).</p>
+
+<figure id="raw-wb" class="figure-block" style="width: 100%;" data-figure-number="7">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 35%;">
+  <img src="/images/color-management-thesis/raw-white-balance-image.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 55%;">
+  <img src="/images/color-management-thesis/raw-white-balance-hist.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 7: White balance applied to a RAW image and its histogram — a per-channel multiplier that shifts the color balance toward neutral.</figcaption>
+</figure>
+
+<p><strong>3. Correct the light level</strong> (only relevant in fixed-precision formats). A photographed scene’s linear light typically spans about 14 EV, encoded in 14 bits. Editing that in a 16-bit-integer environment without rescaling makes the image look about 4× darker than it should — the fix is to redistribute those 14 bits of range across the full 16-bit container. (Working in float32, as most editing software does, avoids this problem entirely, since the image is normalized against its own maximum value.)</p>
+
+<figure id="raw-clipping" class="figure-block" style="width: 100%;" data-figure-number="8">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 35%;">
+  <img src="/images/color-management-thesis/raw-clipped-14.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 55%;">
+  <img src="/images/color-management-thesis/raw-clipped-14-hist.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 35%;">
+  <img src="/images/color-management-thesis/raw-clipped-5000.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 55%;">
+  <img src="/images/color-management-thesis/raw-clipped-5000-hist.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 8: Where the maximum representable value is set changes how bright the image looks, at the cost of losing detail in the brightest areas.</figcaption>
+</figure>
+
+<p><strong>4. Highlight reconstruction.</strong> After white balance, the red and blue channels usually clip above the green channel’s own maximum — normalizing again produces an ugly cast, since green loses information the other two channels still have.</p>
+
+<figure id="raw-highlight-problem" class="figure-block" style="width: 100%;" data-figure-number="9">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 45%;">
+  <img src="/images/color-management-thesis/raw-highlight-clip-hist.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/raw-highlight-clip-bad.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 9: The white-balance histogram shows the green channel clipping before red and blue — left unfixed, this produces a visible color cast in the highlights.</figcaption>
+</figure>
+
+<p>The simplest fix, <strong>clip</strong>, just discards the overflow and loses roughly 2/3 of an EV of highlight detail. A better one, <strong>mean</strong>, recovers that lost range by averaging the red and blue channels back into blown-out green pixels:</p>
+
+<div id="mean-highlights" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      pixel_{G_i} = \begin{cases} (pixel_{R_i} + pixel_{B_i}) / 2, &amp; pixel_{G_i} &gt; \text{threshold} \\ pixel_{G_i}, &amp; \text{otherwise} \end{cases}
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(2)</div>
+</div>
+
+<figure id="raw-highlight-methods" class="figure-block" style="width: 100%;" data-figure-number="10">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/raw-highlight-method-clip.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/raw-highlight-method-mean.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 10: Left: the simple clip method loses highlight detail. Right: the mean method recovers roughly 2/3 EV more range (the image looks darker only because the full dynamic range is now being shown).</figcaption>
+</figure>
+
+<p>More elaborate reconstruction methods exist too — reconstructing in LCh space from unclipped neighboring pixels, transferring color information from unclipped regions, or guided-Laplacian gradient propagation, all used by tools like darktable.</p>
+
+<p><strong>5. Demosaicing.</strong> The sensor is covered by a color filter that only lets specific wavelengths reach specific photosites — each pixel only ever records <em>one</em> channel natively. Demosaicing interpolates the missing two channels from neighboring pixels. The simplest scheme, <strong>bilinear</strong>, just averages same-channel neighbors:</p>
+
+<div id="bilinear-demosaic" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      R_x = \tfrac{1}{4}(R_1+R_2+R_3+R_4), \quad B_x = \tfrac{1}{4}(B_1+B_2+B_3+B_4), \quad G_x = \tfrac{1}{4}(G_1+G_2+G_3+G_4)
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(3)</div>
+</div>
+
+<figure id="demosaic" class="figure-block" style="width: 55%;" data-figure-number="11">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/demosaic-bilinear.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 11: Bilinear demosaicing: each missing channel is the average of its same-channel neighbors.</figcaption>
+</figure>
+
+<p>(More sophisticated schemes — Malvar2004, Menon2007, DDFAPD — do better by adapting to local edges and gradients instead of blindly averaging.)</p>
+
+<p><strong>6. Color transformation and correction.</strong> The sensor’s RGB response doesn’t match human perception, so the camera manufacturer photographs known color-checker patches and derives a 3×3 matrix that maps the camera’s native RGB into CIE XYZ. That matrix ships in the RAW file’s metadata.</p>
+
+<figure id="colorchecker-patches" class="figure-block" style="width: 70%;" data-figure-number="12">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/colorchecker-chart.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/colorchecker-photo.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 12: Reference color-checker patches — a printed chart with precisely known real-world XYZ values, and a photograph of the physical target.</figcaption>
+</figure>
+
+<figure id="camera-matrix" class="figure-block" style="width: 70%;" data-figure-number="13">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/raw-camera-matrix-metadata.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 13: The camera-to-XYZ matrix as stored in a RAW file's metadata, alongside its inverse.</figcaption>
+</figure>
+
+<p>That raw matrix has one problem: a pure white input (R=G=B=1) needs to produce luminance Y=1, and it doesn’t out of the box — so it gets renormalized against a chosen white-point illuminant (D65 for daylight, D50 for print viewing conditions, etc.) before use.</p>
+
+<figure id="rgb-to-xyz" class="figure-block" style="width: 70%;" data-figure-number="14">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/raw-rgb-to-xyz.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 14: An image transformed into CIE XYZ with a D65 illuminant, working through the renormalized camera matrix.</figcaption>
+</figure>
+
+<p>Once the data sits in a standardized space, it can go anywhere — here, sRGB under both D65 and D50:</p>
+
+<figure id="linear-images" class="figure-block" style="width: 100%;" data-figure-number="15">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/raw-srgb-linear-d65.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/raw-srgb-linear-d50.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 15: The same RAW file converted to linear sRGB under two different white-point illuminants, D65 and D50.</figcaption>
+</figure>
+
+<p><strong>7. Apply the transfer function (OETF).</strong> Only at the very end does a curve like the sRGB OETF get applied — the sRGB space uses gamma = pixel^(1/2.2) going out to a display, and a display itself applies gamma = pixel^2.2 to invert it.</p>
+
+<figure id="oetf-srgb" class="figure-block" style="width: 55%;" data-figure-number="16">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/oetf-srgb-curve.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 16: The sRGB OETF curve.</figcaption>
+</figure>
+
+<p>A <strong>gamma function</strong> is a pure exponential; an <strong>OETF</strong> is a more elaborate curve that doesn’t have to follow a strict exponent, often written with a tilde (~gamma 2.2) to signal “close to, but not exactly.” Applying the sRGB OETF is what turns the darker-looking linear renders above into a finished, displayable photograph:</p>
+
+<figure id="raw-final" class="figure-block" style="width: 100%;" data-figure-number="17">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/raw-final-srgb-d65.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/raw-final-srgb-d50.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 17: The finished, Display-Referred image — sRGB with its OETF applied, under D65 and D50 white points.</figcaption>
+</figure>
+
+<h2 id="why-cgi-isnt-raw">Why CGI isn’t RAW</h2>
+
+<p>Computer-generated images work differently. There’s no real light to demosaic — a renderer’s “virtual sensor” is assumed lossless, printing exactly what the simulation computes, so final image quality is a function of the render engine rather than any camera-like artifact. That means CGI output can’t correctly be called “RAW”: there’s no demosaic step, the stored values are already representable, the renderer starts from <em>some</em> declared color space with its own white point (shared by all the textures and lights in the scene), and curves are sometimes applied before storage anyway.</p>
+
+<p>A common misconception is that formats like <code class="language-plaintext highlighter-rouge">.exr</code> or <code class="language-plaintext highlighter-rouge">.bmp</code> store “raw” data simply because they <em>can</em> carry linear values — they don’t. They store Scene-Referred <strong>renders</strong>, computed inside whatever color space the renderer used, which brings us to the next point.</p>
+
+<h2 id="color-spaces">Color spaces</h2>
+
+<p>A color space is defined by four things: a <strong>color model</strong> (RGB, CMYK, HSV…), a <strong>gamut</strong> (its primaries — the triangle of colors it can represent, plotted on a CIE diagram), a <strong>white point</strong> (D65, D50…), and a <strong>transfer function</strong>.</p>
+
+<figure id="cie-diagrams" class="figure-block" style="width: 100%;" data-figure-number="18">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/cie1931-diagram.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/xyy-3d-diagram.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 18: Left: the CIE 1931 chromaticity diagram with sRGB (D65) and ACEScg (D60) primaries plotted as triangles. Right: the same comparison in 3D (xyY), which reveals how highlights saturate and desaturate differently between spaces — a behavior the flat 2D diagram hides.</figcaption>
+</figure>
+
+<p>Most applications don’t let you freely choose a working color space — it comes baked into the software. Blender defaults to sRGB D65; DaVinci Resolve works in its own DaVinci YRGB space. <strong>OpenColorIO (OCIO)</strong> <a href="#OpenColorIO" class="citation-link">[<span class="citation-number">5</span>]</a> exists to let different tools share one configurable pipeline instead of each hard-coding its own.</p>
+
+<h3 id="how-the-render-space-itself-changes-the-image">How the render space itself changes the image</h3>
+
+<p>This is the thesis’s central practical warning. Unlike a simple space-to-space conversion (which <em>does</em> preserve chromaticity), <strong>the color space a renderer computes in has a direct effect on the final colors</strong>, independent of anything that happens afterward.</p>
+
+<figure id="tree-comparison" class="figure-block" style="width: 100%;" data-figure-number="19">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/tree-acescg-native.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/tree-acescg-to-srgb.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/tree-srgb-to-acescg.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/tree-srgb-native.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 19: The same scene, sRGB-defined colors, rendered natively in ACEScg (left two) vs. natively in sRGB (right two) — both pairs shown before and after conversion to a common space. The results are visibly different even though the source colors were identical.</figcaption>
+</figure>
+
+<p>This happens because sRGB’s maximum green and ACEScg’s maximum green are <strong>not the same green</strong> — sRGB’s brightest green renders as a mid-green inside ACEScg — even though to a human viewer both still read as roughly “the same” green.</p>
+
+<figure id="primaries-comparison" class="figure-block" style="width: 70%;" data-figure-number="20">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/aces-green-primary.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/srgb-green-primary.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 20: sRGB's maximum-saturation green, plotted inside the ACEScg gamut (left) and the sRGB gamut (right): the same nominal color sits in very different places.</figcaption>
+</figure>
+
+<p>This is the core argument for treating <strong>ACES-like wide-gamut spaces as the working space for computation</strong>: calculations happen against colors closer to what human eyes can actually see, and only get compressed down to a narrower delivery space (sRGB, Rec.709…) at the very end.</p>
+
+<h3 id="rolling-off-to-white">Rolling off to white</h3>
+
+<p>Interpreting channel luminosity also matters — via OETFs or LUTs. What happens if a linear ACEScg image and a linear sRGB image are both converted to sRGB (OETF included)?</p>
+
+<figure id="gradient-oetf" class="figure-block" style="width: 80%;" data-figure-number="21">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/gradient-srgb-oetf.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 21: A pure sRGB OETF applied to a color gradient. Very bright colors freeze into a single hue — 'the notorious six' — instead of rolling smoothly toward white.</figcaption>
+</figure>
+
+<p>At very high intensities, colors freeze into pure primaries instead of rolling toward white — “the notorious six” <a href="#Brejon_2021" class="citation-link">[<span class="citation-number">6</span>: <span class="citation-link-title">Ocio, display transforms and misconceptions</span>; <span class="citation-link-author">Brejon, Chris</span>; <span class="citation-link-year">2021</span>]</a>. The usual artistic fix is a more elaborate LUT, like the one Blender’s Filmic view transform uses, that bends those highlights back toward white instead of clipping into a saturated primary:</p>
+
+<figure id="gradient-filmic" class="figure-block" style="width: 80%;" data-figure-number="22">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/gradient-filmic-srgb-oetf.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 22: The same gradient through a Filmic-style sRGB OETF — highlights now roll smoothly toward white instead of freezing into a saturated hue.</figcaption>
+</figure>
+
+<p>A “roll-off to white” like this is usually built from three stages: an <strong>allocation</strong> step that reshapes Scene-Referred light into Display-Referred space with a log-like curve (log2, Cineon…); a <strong>LUT or matrix</strong> that actually bends the highlights toward white (Blender ships this as a 3D cube LUT; AgX uses a fixed 3×3 matrix instead); and finally a standard <strong>OETF</strong> like sRGB to add the contrast a display needs.</p>
+
+<p>The effect is visible directly on a rendered scene, not just a gradient — the same spheres, lit identically, render noticeably differently depending on whether the computation happened in sRGB or in ACEScg:</p>
+
+<figure id="spheres-comparison" class="figure-block" style="width: 100%;" data-figure-number="23">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/spheres-rendered-srgb.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/spheres-rendered-acescg.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 23: The same lighting setup, rendered in sRGB (left) vs. ACEScg (right), both shown after conversion back to sRGB for comparison.</figcaption>
+</figure>
+
+<h3 id="converting-between-spaces">Converting between spaces</h3>
+
+<p>Moving data cleanly from one color space to another (assuming linear gamma) is a chain of well-defined matrix multiplications: from a working space like ACEScg into the ACES AP0 primaries, from AP0 into CIE XYZ, then — through a <strong>Profile Connection Space (PCS)</strong>, almost always XYZ — a chromatic-adaptation step that re-maps the white point (Bradford being the most common adaptation matrix in practice), and finally from XYZ into the destination space, such as sRGB. Every well-behaved OCIO config implements exactly this chain; the practical takeaway is less about memorizing the matrices and more about knowing <em>that this chain exists</em> and trusting your tools’ bundled configs (Blender’s, Nuke’s, Resolve’s…) rather than re-deriving it by hand.</p>
+
+<h2 id="dynamic-range-and-bit-depth-are-not-the-same-thing">Dynamic range and bit depth are not the same thing</h2>
+
+<p>In a real scene, dynamic range is potentially <strong>infinite</strong>, and has to be compressed into a storable range before it can be processed at all. A RAW file stores 12–14 bits <a href="#Raw_bit_depth" class="citation-link">[<span class="citation-number">7</span>: <span class="citation-link-title">Raw bit depth</span>; <span class="citation-link-author">Butler, Richard</span>; <span class="citation-link-year">2017</span>]</a>, which — in a perfect noiseless sensor — corresponds almost 1:1 to 12–14 EV of dynamic range; each extra bit doubles that range, and new bits are spent on the highlights.</p>
+
+<figure id="bitdepth-evs" class="figure-block" style="width: 90%;" data-figure-number="24">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/bitdepth-evs.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 24: 12 bits of RAW data distributed across EVs of dynamic range — half the available codes go to the brightest single stop.</figcaption>
+</figure>
+
+<p><strong>Bit depth and dynamic range are not the same thing</strong>, though it’s an easy conflation to make. A signal can be encoded with a tiny number of bits and still cover a huge range — 2 bits give 4 quantization steps, and a 0–1000 range can technically be encoded correctly (if uselessly) in those 4 steps. What more bits actually buy you is enough intermediate tones to avoid visible <strong>banding</strong>: too few gray levels between black and white, most noticeable in the shadows where human vision is most sensitive to small steps.</p>
+
+<figure id="six-grays" class="figure-block" style="width: 55%;" data-figure-number="25">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/gray-steps-banding.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 25: sRGB encoded with only six tones of gray — the same dynamic range as a normal 8-bit image, just far too few steps to look smooth.</figcaption>
+</figure>
+
+<p>For CGI it’s more useful to describe a curve by its <strong>minimum encoded value, maximum encoded value, bit depth, and whether it uses a log-like reallocation</strong> than by “stops,” since the same 8-bit container can represent wildly different dynamic ranges depending on which curve is applied:</p>
+
+<figure id="dr-comparison" class="figure-block" style="width: 100%;" data-figure-number="26">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/dr-srgb.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/dr-filmic-srgb.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/dr-filmic-log.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 26: Three 8-bit images with identical bit depth but very different dynamic range: sRGB (0–1), Filmic sRGB (2⁻¹².⁴⁷ – 4.03), and Filmic Log (2⁻¹².⁴⁷ – 12.53).</figcaption>
+</figure>
+
+<p>Formats that can only store values between 0 and 1, like PNG, get no benefit from extra bit depth for highlights — every extra bit just adds resolution to the shadows, since the highlights are already clipped at 1.0 regardless of bit depth. Push a wide dynamic range through too few bits and banding artifacts appear exactly where the display curve compresses the most:</p>
+
+<figure id="png-bitdepth" class="figure-block" style="width: 100%;" data-figure-number="27">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/png-32bit-log.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/png-16bit-log.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/png-8bit-log.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 27: The same logarithmically-encoded image at 32-bit, 16-bit and 8-bit — visible banding appears only once there aren't enough steps left to represent the curve smoothly.</figcaption>
+</figure>
+
+<p>Even so, the 0–1 range by itself carries a lot of usable information — a well-exposed sRGB image still reads fine several stops under its nominal exposure:</p>
+
+<figure id="ev-range" class="figure-block" style="width: 100%;" data-figure-number="28">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/exposure-neg1ev.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/exposure-neg5ev.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 28: The same sRGB 8-bit image at -1 EV and -5 EV — the 0–1 range alone still holds enough detail to read the scene.</figcaption>
+</figure>
+
+<p>For images meant for <strong>further manipulation</strong> — compositing, CGI integration — you generally need more headroom than a straight 0–1 image gives you, and there are three ways to get it: more bit depth (best quality and versatility, at a real disk-space cost); a specialized, non-pretty log-like OETF that trades highlight resolution for extra shadow detail; or a format built to combine both, like DPX, which supports selectable bit depth <em>and</em> an optional CINEON log curve in the same container.</p>
+
+<h2 id="transfer-functions-oetfs-and-luts">Transfer functions, OETFs and LUTs</h2>
+
+<p>An <strong>OETF (Opto-Electric Transfer Function)</strong> reshapes light so shadows get better resolution (avoiding banding) and highlights compress into the 0–1 range (tone mapping). OETFs meant for final display are usually tuned to <em>look</em> good at low bit depth — expressed as a “perceptually linear” gradient, which is not the same as a physically linear one: a purely linear gradient’s darkest step reads as a huge jump from pure black, while its brightest steps are barely distinguishable from each other.</p>
+
+<figure id="gray-gradients" class="figure-block" style="width: 55%;" data-figure-number="29">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/oetf-gray-gradients.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 29: A linear gradient reshaped by different Display-Referred OETFs — each aims for a step size that looks evenly spaced to human eyes, not evenly spaced numerically.</figcaption>
+</figure>
+
+<p>Other OETFs exist purely to <strong>preserve information</strong> for later use rather than to look pleasant — the log curves. Recovering a scene’s real linear values later is dramatically easier from a log-encoded image than from a straight Display-Referred one:</p>
+
+<figure id="log-vs-linear" class="figure-block" style="width: 80%;" data-figure-number="30">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/log-vs-linear-exposure.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 30: Pushing exposure on a linear image vs. a log-encoded one — the log-encoded version holds together far better because it was built to preserve highlight detail, not to look correct as-is.</figcaption>
+</figure>
+
+<p>A handful of well-known log curves, each trading shadow/highlight allocation slightly differently — Filmic Log, Log2, LogC (ARRI), S-Log2 (Sony):</p>
+
+<figure id="log-curves" class="figure-block" style="width: 100%;" data-figure-number="31">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/curve-filmiclog-render.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/curve-lg2-render.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/curve-logc800-render.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/curve-slog2-render.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 31: Four common log transfer curves applied to the same test image: Filmic Log, Log2, LogC800, S-Log2.</figcaption>
+</figure>
+
+<p>To be precise about terms: <strong>OETFs are the mathematical functions</strong> applied to reshape values between linear and non-linear color — this includes gammas, LUTs, and Look Modification Transforms. The sRGB OETF, for instance, is a piecewise function rather than a single clean exponent:</p>
+
+<div id="srgb-oetf" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      V_{out} = \begin{cases} 12.92\,V_{in}, &amp; V_{in} \le 0.0031308 \\ 1.055\,V_{in}^{1/2.4} - 0.055, &amp; V_{in} &gt; 0.0031308 \end{cases}
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(4)</div>
+</div>
+
+<p><strong>LUTs</strong>, meanwhile, are just lookup tables that map inputs to outputs — the mechanism most complex OETFs and creative looks are actually <em>stored</em> as, since curves like sRGB and rec.709 rarely get re-derived from formula every time a program needs them. A 1D LUT handles the transfer curve; a 3D <code class="language-plaintext highlighter-rouge">.cube</code>/<code class="language-plaintext highlighter-rouge">.spi3d</code> LUT can additionally handle full-color creative looks by accounting for every possible input combination at once.</p>
+
+<h2 id="open-color-io">Open Color IO</h2>
+
+<p><strong>OCIO</strong> <a href="#OpenColorIO" class="citation-link">[<span class="citation-number">5</span>]</a> is a complete, open-source color-management solution built for film and VFX production. It gives every compatible application a consistent user experience while allowing very sophisticated configuration underneath, and it’s ACES-aware and LUT-format-agnostic.</p>
+
+<p>An OCIO config is a single <code class="language-plaintext highlighter-rouge">config.ocio</code> file: it declares a Profile Connection Space, named color spaces with <code class="language-plaintext highlighter-rouge">to_reference</code>/<code class="language-plaintext highlighter-rouge">from_reference</code> transforms (LUTs, matrices, 3D cubes), a set of <em>displays</em> and <em>views</em>, and <em>roles</em> mapping generic names like <code class="language-plaintext highlighter-rouge">scene_linear</code> to a concrete space. Nuke, Blender and Resolve each ship their own config tuned to their own render space and LUTs — using one of these proven configs, rather than writing your own from scratch, avoids most conversion mistakes.</p>
+
+<p>Blender’s stock config is a good worked example of a “roll-off to white”: its <code class="language-plaintext highlighter-rouge">Filmic Log</code> color space allocates Scene-Referred light onto a log2 curve spanning roughly -12.47 to +12.53 stops, runs it through a desaturating 3D LUT (<code class="language-plaintext highlighter-rouge">filmic_desat65cube.spi3d</code>), and only then does <code class="language-plaintext highlighter-rouge">Filmic sRGB</code> chain that log space into a final 1D LUT and display OETF.</p>
+
+<h2 id="image-formats">Image formats</h2>
+
+<p>The industry generally settles on high-bit-depth formats (16–32 bit) for CGI and VFX work — 16-bit PNG, 16–32-bit EXR, 16-bit TIFF — and they differ mainly in <em>what the stored values actually represent</em>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Format</th>
+      <th>Bit depth</th>
+      <th>Data type</th>
+      <th>Color space</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BMP</td>
+      <td>8</td>
+      <td>uint</td>
+      <td>OETF</td>
+    </tr>
+    <tr>
+      <td>PNG</td>
+      <td>8, 16</td>
+      <td>uint</td>
+      <td>OETF</td>
+    </tr>
+    <tr>
+      <td>JPEG <a href="#9418160" class="citation-link">[<span class="citation-number">8</span>: <span class="citation-link-title">Performance Comparison of Jpeg, Jpeg XT, Jpeg LS, Jpeg 2000, Jpeg XR, HEVC, EVC and VVC for Images</span>; <span class="citation-link-author">Naveen Kumar, S., Vamshi Bharadwaj, M. V., Subbarayappa, Shreyanka</span>; <span class="citation-link-year">2021</span>]</a></td>
+      <td>8</td>
+      <td>uint</td>
+      <td>OETF</td>
+    </tr>
+    <tr>
+      <td>JPEG 2000 <a href="#9418160" class="citation-link">[<span class="citation-number">8</span>: <span class="citation-link-title">Performance Comparison of Jpeg, Jpeg XT, Jpeg LS, Jpeg 2000, Jpeg XR, HEVC, EVC and VVC for Images</span>; <span class="citation-link-author">Naveen Kumar, S., Vamshi Bharadwaj, M. V., Subbarayappa, Shreyanka</span>; <span class="citation-link-year">2021</span>]</a></td>
+      <td>8, 12, 16</td>
+      <td>uint</td>
+      <td>OETF</td>
+    </tr>
+    <tr>
+      <td>Targa <a href="#TruevisionTGA" class="citation-link">[<span class="citation-number">9</span>: <span class="citation-link-title">Truevision TGA: FILE FORMAT SPECIFICATION VERSION 2.0</span>; <span class="citation-link-author">Truevision, Inc.</span>; <span class="citation-link-year">1991</span>]</a></td>
+      <td>8, 15, 16, 24, 32</td>
+      <td>uint</td>
+      <td>OETF</td>
+    </tr>
+    <tr>
+      <td>Cineon <a href="#UnderstandingCineon" class="citation-link">[<span class="citation-number">10</span>: <span class="citation-link-title">Understanding Cineon</span>; <span class="citation-link-author">Richard Patterson</span>; <span class="citation-link-year">2001</span>]</a></td>
+      <td>8, 10, 12, 16</td>
+      <td>uint</td>
+      <td>linear (log-encoded)</td>
+    </tr>
+    <tr>
+      <td>DPX <a href="#7291593" class="citation-link">[<span class="citation-number">11</span>: <span class="citation-link-title">ST 268:2003 - SMPTE Standard - For File Format for Digital Moving-Picture Exchange (DPX), Version 2.0</span>; <span class="citation-link-year">2003</span>]</a></td>
+      <td>8, 10, 12, 16</td>
+      <td>uint</td>
+      <td>linear (log-encoded)</td>
+    </tr>
+    <tr>
+      <td>OpenEXR <a href="#Technical_Introduction_to_OpenEXR" class="citation-link">[<span class="citation-number">12</span>]</a></td>
+      <td>16, 32</td>
+      <td>float / half-float</td>
+      <td>linear</td>
+    </tr>
+    <tr>
+      <td>Radiance HDR <a href="#Guertault_Guertault_2013" class="citation-link">[<span class="citation-number">13</span>: <span class="citation-link-title">RGBD Archives</span>; <span class="citation-link-author">Guertault, Julien, Guertault, Julien</span>; <span class="citation-link-year">2013</span>]</a></td>
+      <td>8</td>
+      <td>uint (RGBE)</td>
+      <td>linear</td>
+    </tr>
+    <tr>
+      <td>TIFF <a href="#TIFF" class="citation-link">[<span class="citation-number">14</span>: <span class="citation-link-title">TIFF</span>; <span class="citation-link-author">Adobe Developers Association</span>; <span class="citation-link-year">1992</span>]</a></td>
+      <td>8, 16</td>
+      <td>uint</td>
+      <td>OETF</td>
+    </tr>
+    <tr>
+      <td>WebP <a href="#DotWhat_net" class="citation-link">[<span class="citation-number">15</span>]</a></td>
+      <td>8</td>
+      <td>uint</td>
+      <td>OETF</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>OpenEXR</strong> is the default choice for CGI production because of its float precision and arbitrary multi-channel layout (color, normals, cryptomatte IDs, all in one file). Its half-float encoding stores more precision near zero than near its maximum <a href="#reusser_2021" class="citation-link">[<span class="citation-number">16</span>: <span class="citation-link-title">Half-precision floating-point, visualized</span>; <span class="citation-link-author">Reusser, Ricky</span>; <span class="citation-link-year">2021</span>]</a>, mirroring how humans perceive brightness — which is exactly why applying a display transfer function <em>before</em> saving to EXR (instead of after) throws away the format’s main advantage. That flexibility has a real disk-space cost, though: a 150-frame 1080p sequence ranges from tens of megabytes (WebP, JPEG) up to several <strong>gigabytes</strong>, depending on the EXR compression scheme chosen — the “just use EXR for everything” instinct needs to be weighed against actual project needs.</p>
+
+<h1 id="display-technology">Display technology</h1>
+
+<p>Consumer HDR technology (Dolby Vision, HDR10, HDR10+) typically works at 10–12 bit depth with Rec.2020 primaries and a <strong>PQ (Perceptual Quantizer)</strong> transfer function <a href="#8445022" class="citation-link">[<span class="citation-number">17</span>: <span class="citation-link-title">2018 Update on High Dynamic Range Television</span>; <span class="citation-link-author">Miller, Scott</span>; <span class="citation-link-year">2018</span>]</a>, designed so a fixed number of code values maps to visually even steps of <em>absolute</em> brightness — unlike SDR curves, which are relative to a reference white. HDR10 targets 10 bits as enough to avoid visible banding; Dolby Vision uses 12. Since PQ is incompatible with the Rec.709 curve SDR displays use, HDR and SDR masters are usually graded as two separate deliverables from the same source.</p>
+
+<figure id="dolby-pq" class="figure-block" style="width: 70%;" data-figure-number="32">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/dolby-pq-eotf.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 32: The Dolby PQ EOTF and the banding it avoids, as a function of bit depth.</figcaption>
+</figure>
+
+<h1 id="a-proposed-open-color-pipeline">A proposed open color pipeline</h1>
+
+<p>Building on all of the above, the thesis proposes a small, coherent color-management scheme aimed at VFX/CGI generalists: <strong>Rec.2020</strong> as the working (rendering) space — its gamut sits close to a full spectral render <a href="#Langlands" class="citation-link">[<span class="citation-number">18</span>: <span class="citation-link-title">Anders Langlands</span>; <span class="citation-link-author">Langlands, Anders</span>]</a> while staying inside the CIE 1931 horseshoe (unlike ACEScg, which extends slightly beyond it) — paired with a Display Rendering Transform based on Jed Smith’s <strong>OpenDRT</strong> <a href="#Smith" class="citation-link">[<span class="citation-number">19</span>: <span class="citation-link-title">Jedypod/open-display-transform: Open display transform is a collection of tools and experiments for rendering wide-gamut scene-linear data into an image for an SDR or HDR display device.</span>; <span class="citation-link-author">Smith, Jed</span>]</a>: gamut mapping from the render space to the output space, a tone scale, and chroma-preserving compression toward white in the highlights.</p>
+
+<figure id="opendrt-gradient" class="figure-block" style="width: 100%;" data-figure-number="33">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/opendrt-acescg.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/opendrt-rec2020.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/color-management-thesis/opendrt-rec709.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 33: The same color gradient run through the proposed OpenDRT-based transform from three different working-space primaries: ACEScg, Rec.2020, and Rec.709.</figcaption>
+</figure>
+
+<p>That pipeline became an actual OCIO config and a set of 3D LUTs, generated with a small Python routine that samples a 65³ cube, converts each sample from Display-Referred back to Scene-Referred, runs it through the DRT, and re-encodes the resulting table — the same kind of workflow Chris Brejon discusses <a href="#Brejon_2021" class="citation-link">[<span class="citation-number">6</span>: <span class="citation-link-title">Ocio, display transforms and misconceptions</span>; <span class="citation-link-author">Brejon, Chris</span>; <span class="citation-link-year">2021</span>]</a> for OCIO display transforms. On a real test scene, the OpenDRT transform holds onto the best reflections and emissive-material highlights, while the other transforms give a subjectively different “sense of luminosity”:</p>
+
+<figure id="rec2020-comparison" class="figure-block" style="width: 100%;" data-figure-number="34">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/rec2020-filmic.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/rec2020-srgb.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/rec2020-opendrt.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/color-management-thesis/rec2020-aces-srgb.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 34: The same scene, rendered in Rec.2020, run through four different display transforms: Filmic sRGB, plain sRGB, the proposed OpenDRT, and ACES sRGB.</figcaption>
+</figure>
+
+<h1 id="study-image-a-node-based-tool-for-studying-color">Study Image: a node-based tool for studying color</h1>
+
+<p>The concrete software contribution is <strong>Study Image</strong>, a lightweight, node-based application written entirely in Python (<code class="language-plaintext highlighter-rouge">dearpygui</code>), built to fill a specific gap: none of the mainstream tools are both <em>fast to open</em> and <em>simple to extend</em>. Blender doesn’t load RAW files; Nuke opens raw images and does node compositing well but has a steep learning curve for a generalist; Photoshop and Lightroom are the usual stopgap for RAW-to-standard-format conversion.</p>
+
+<p>Design goals were explicit: lightweight and fast (no heavier than needed just to inspect images and color spaces); visual and step-by-step (every operation inspectable, not a black box); OCIO-native (color management goes through real OCIO configs, portable to Blender, Nuke or Resolve); and simple, hackable code (a new node is a plain Python function plus a small class — no plugin SDK to learn).</p>
+
+<h2 id="how-the-node-graph-executes">How the node graph executes</h2>
+
+<p>Node-based applications typically execute <em>asynchronously</em>, working backward from a single output node and calling only the upstream nodes actually needed:</p>
+
+<figure id="nodes-async" class="figure-block" style="width: 70%;" data-figure-number="35">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/nodes-async-execution.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 35: Asynchronous execution: nodes are called (C) from the output backward, each returning a result (R) only when needed.</figcaption>
+</figure>
+
+<p>Study Image deliberately does the opposite: it can have <strong>multiple independent output nodes</strong> rather than one single sink, which complicates a purely output-driven executor. Instead, it runs <strong>synchronously, forward from any modified node</strong> — every node caches its own output and a record of “already executed” nodes; changing a node clears that record for itself and everything downstream, and only that subgraph re-runs:</p>
+
+<figure id="nodes-sync" class="figure-block" style="width: 100%;" data-figure-number="36">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/nodes-sync-execution.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/nodes-sync-modified.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 36: Synchronous forward execution. Left: normal state, every node executed once. Right: after editing one node, it and everything downstream drop out of the executed list and re-run.</figcaption>
+</figure>
+
+<p>The one wrinkle this design has to handle explicitly: a node that depends on other nodes which haven’t executed yet must wait its turn rather than running with stale or missing inputs.</p>
+
+<figure id="nodes-complex" class="figure-block" style="width: 60%;" data-figure-number="37">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/nodes-sync-complex-case.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 37: A branch that depends on not-yet-executed inputs waits until they're resolved before running — no node ever executes twice in the same pass, and none runs ahead of its own dependencies.</figcaption>
+</figure>
+
+<h2 id="building-a-node">Building a node</h2>
+
+<p>Every node follows the same three-part layout — a <strong>header</strong> (name, plus a shared debug line with execution time and node ID), a <strong>static</strong> area for custom widgets the user adds freely, and colored <strong>pins</strong> for inputs/outputs:</p>
+
+<figure id="node-anatomy" class="figure-block" style="width: 55%;" data-figure-number="38">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/node-anatomy.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 38: The three parts of a node: header, static area, and pins.</figcaption>
+</figure>
+
+<p>A minimal new node is just a function plus a small subclass declaring its title, its input/output pin names, and any custom widgets to place in the static area — no plugin SDK, just plain Python:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">exposition</span><span class="p">(</span><span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">,</span> <span class="o">*</span><span class="n">argss</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">val1</span> <span class="o">**</span> <span class="n">val2</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">Exposition</span><span class="p">(</span><span class="n">NodeV2</span><span class="p">):</span>
+    <span class="n">Title</span> <span class="o">=</span> <span class="s">"Exposition"</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">inp_list</span> <span class="o">=</span> <span class="p">{</span><span class="s">"val"</span><span class="p">:</span> <span class="p">{</span><span class="s">"slider"</span><span class="p">:</span> <span class="p">{</span><span class="s">"width"</span><span class="p">:</span> <span class="mi">120</span><span class="p">}},</span>
+                     <span class="s">"exp"</span><span class="p">:</span> <span class="p">{</span><span class="s">"value"</span><span class="p">:</span> <span class="p">{</span><span class="s">"width"</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span> <span class="s">"format"</span><span class="p">:</span> <span class="s">'%.8f'</span><span class="p">}}}</span>
+        <span class="n">out_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"val"</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">exposition</span><span class="p">,</span> <span class="n">inp_list</span><span class="p">,</span> <span class="n">out_list</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">Title</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Input pins can carry small interactive widgets (a slider, a numeric field) that disappear automatically the moment another node gets connected to that pin:</p>
+
+<figure id="node-inputs" class="figure-block" style="width: 70%;" data-figure-number="39">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/node-custom-inputs.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 39: Input pins with an attached widget — the slider vanishes once an upstream node is wired into that pin.</figcaption>
+</figure>
+
+<h2 id="what-it-does">What it does</h2>
+
+<ul>
+  <li><strong>RAW image processing</strong> — the full pipeline described above, exposed as inspectable nodes.</li>
+  <li><strong>Loading a wide range of formats</strong> — JPG, PNG, HDR, TIFF, EXR, DPX and more.</li>
+  <li><strong>Full OCIO-based color management</strong> and transforms.</li>
+  <li>Image viewing and saving.</li>
+  <li>Tools for catching color-management artifacts before they reach a shot — false-color exposure checks, side-by-side transform comparisons.</li>
+  <li>A simple API for adding new nodes with custom, user-defined functions.</li>
+</ul>
+
+<figure id="app-screenshots-1" class="figure-block" style="width: 100%;" data-figure-number="40">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/app-raw-processing.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/color-management-thesis/app-load-formats.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 40: RAW processing exposed as a node graph (left), and loading images across a wide range of formats — JPG, PNG, HDR, TIFF, EXR, DPX and more (right).</figcaption>
+</figure>
+
+<figure id="app-ocio" class="figure-block" style="width: 80%;" data-figure-number="41">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/app-ocio-transforms.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 41: OCIO-based color transforms applied directly inside the node graph.</figcaption>
+</figure>
+
+<h2 id="a-worked-example-building-a-lut-from-scratch">A worked example: building a LUT from scratch</h2>
+
+<p>A full color-pipeline workflow — from a loaded image through a color transform to a saved LUT — collapses into a handful of connected nodes:</p>
+
+<figure id="app-workflow" class="figure-block" style="width: 90%;" data-figure-number="42">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/app-workflow-example.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 42: A complete workflow graph: load an image, apply a saturation transform, preview it, and export the result as a LUT.</figcaption>
+</figure>
+
+<figure id="app-lut-example" class="figure-block" style="width: 90%;" data-figure-number="43">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/app-lut-creation-example.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 43: The same workflow in practice inside Study Image.</figcaption>
+</figure>
+
+<h2 id="catching-problems-before-they-reach-a-shot">Catching problems before they reach a shot</h2>
+
+<p>Study Image includes a <strong>False Color</strong> exposure tool that segments an image’s luminance into bands, making it easy to spot clipped highlights or crushed shadows at a glance — this is the screenshot used as this post’s header image:</p>
+
+<figure id="false-color" class="figure-block" style="width: 90%;" data-figure-number="44">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/header-comprobar-luz.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 44: Exposure checking with a False Color technique — luminance bands make clipping and crushed shadows immediately visible.</figcaption>
+</figure>
+
+<p>It also makes comparing color transforms fast — side by side, instead of one at a time:</p>
+
+<figure id="drt-comparison" class="figure-block" style="width: 90%;" data-figure-number="45">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/app-drt-comparison.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 45: Comparing several Display Rendering Transforms side by side on the same source image.</figcaption>
+</figure>
+
+<p>The full source is on GitHub: <a href="https://github.com/UPV-TFG-Carles-Matoses-Gimenez/Study-Image-Code">Study-Image-Code</a>.</p>
+
+<h1 id="a-blender-color-management-addon">A Blender color-management addon</h1>
+
+<p>Blender’s built-in color management is intentionally minimal — one OCIO config, one input transform per image, one output space. As a companion to the thesis, I built an addon that lets you switch between custom OCIO configs stored anywhere in your Blender config (not just the bundled one), adds built-in support for ACEScg/ACES, AgX base and looks, Cineon Log, and in-program switching of the <em>render-time</em> working space (sRGB vs. ACEScg primaries), and ships an expanded internal config (<code class="language-plaintext highlighter-rouge">blender_Advanced</code>) adding AgX and Filmic looks, the experimental OpenDRT transform from this thesis, ACES output transforms, a reorganized [sRGB, XYZ, Utils] display layout, and naming consistent between Blender’s and ACES’ own conventions.</p>
+
+<figure id="blender-addon" class="figure-block" style="width: 70%;" data-figure-number="46">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/color-management-thesis/blender-addon-screenshot.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 46: The custom OCIO config switcher addon running inside Blender.</figcaption>
+</figure>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Unifying camera-captured and computer-generated imagery under one color pipeline is not a solved problem — it depends on the specific cameras, renderers, and delivery targets involved. But a two-stage separation, computing in a space that covers the visible spectrum and applying a single, well-understood Display Rendering Transform on the way out, gives CGI the same starting point as photographed material: comparable storage requirements, the same dynamic-range characteristics, and identical behavior under color grading — turning what is usually a case-by-case integration headache into a standard, repeatable process.</p>
+
+<h1 id="bibliography">Bibliography</h1>
+<div class="bibliography bibliography-ieee"><ol class="bibliography-list"><li id="Homann2009" class="bibliography-entry ieee-style" data-key="Homann2009"><span class="bib-authors">Unknown Author</span>, <span class="bib-title">"The Principles of Color Management"</span>, <span class="bib-publisher">Springer Berlin Heidelberg</span>, <span class="bib-year">2009</span>, <span class="bib-doi"><a href="https://doi.org/10.1007/978-3-540-69377-2_3">DOI</a></span> | <span class="bib-url"><a href="https://doi.org/10.1007/978-3-540-69377-2_3">URL</a></span>.</li>
+<li id="blenderlight" class="bibliography-entry ieee-style" data-key="blenderlight"><span class="bib-authors">Unknown Author</span>, <span class="bib-title">"Light Objects"</span>, <span class="bib-journal"><i>Light Objects - Blender Manual</i></span>, <span class="bib-year">2023</span>, <span class="bib-url"><a href="https://docs.blender.org/manual/en/latest/render/lights/light_object.html">URL</a></span>.</li>
+<li id="inbook" class="bibliography-entry ieee-style" data-key="inbook"><span class="bib-authors">Dutta Gupta, Snehasish, Agarwal, Avinash</span>, <span class="bib-title">"Artificial Lighting System for Plant Growth and Development: Chronological Advancement, Working Principles, and Comparative Assessment"</span>, <span class="bib-journal"><i>Light Emitting Diodes for Agriculture: Smart Lighting</i></span>, pp. <span class="bib-pages">1-25</span>, <span class="bib-year">2017</span>, <span class="bib-doi"><a href="https://doi.org/10.1007/978-981-10-5807-3_1">DOI</a></span>.</li>
+<li id="CIE015" class="bibliography-entry ieee-style" data-key="CIE015"><span class="bib-authors">CIE (Commission Internationale de l’Eclairage)</span>, <span class="bib-title">"Colorimetry - 4th Edition"</span>, <span class="bib-publisher">CIE Central Bureau</span>, <span class="bib-year">2018</span>.</li>
+<li id="OpenColorIO" class="bibliography-entry ieee-style" data-key="OpenColorIO"><span class="bib-authors">Unknown Author</span>, <span class="bib-title">"Untitled"</span>, <span class="bib-year">Unknown Year</span>, <span class="bib-url"><a href="https://opencolorio.org/">URL</a></span>.</li>
+<li id="Brejon_2021" class="bibliography-entry ieee-style" data-key="Brejon_2021"><span class="bib-authors">Brejon, Chris</span>, <span class="bib-title">"Ocio, display transforms and misconceptions"</span>, <span class="bib-journal"><i>ocio display transforms and misconceptions</i></span>, <span class="bib-year">2021</span>, <span class="bib-url"><a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/">URL</a></span>.</li>
+<li id="Raw_bit_depth" class="bibliography-entry ieee-style" data-key="Raw_bit_depth"><span class="bib-authors">Butler, Richard</span>, <span class="bib-title">"Raw bit depth"</span>, <span class="bib-publisher">Richard Butler</span>, <span class="bib-year">2017</span>, <span class="bib-url"><a href="https://www.dpreview.com/articles/4653441881/bit-depth-is-about-dynamic-range-not-the-number-of-colors-you-get-to-capture">URL</a></span>.</li>
+<li id="9418160" class="bibliography-entry ieee-style" data-key="9418160"><span class="bib-authors">Naveen Kumar, S., Vamshi Bharadwaj, M. V., Subbarayappa, Shreyanka</span>, <span class="bib-title">"Performance Comparison of Jpeg, Jpeg XT, Jpeg LS, Jpeg 2000, Jpeg XR, HEVC, EVC and VVC for Images"</span>, <span class="bib-year">2021</span>, <span class="bib-doi"><a href="https://doi.org/10.1109/I2CT51068.2021.9418160">DOI</a></span>.</li>
+<li id="TruevisionTGA" class="bibliography-entry ieee-style" data-key="TruevisionTGA"><span class="bib-authors">Truevision, Inc.</span>, <span class="bib-title">"Truevision TGA: FILE FORMAT SPECIFICATION VERSION 2.0"</span>, <span class="bib-publisher">Truevision, Inc.</span>, <span class="bib-year">1991</span>, <span class="bib-url"><a href="https://www.dca.fee.unicamp.br/ martino/disciplinas/ea978/tgaffs.pdf">URL</a></span>.</li>
+<li id="UnderstandingCineon" class="bibliography-entry ieee-style" data-key="UnderstandingCineon"><span class="bib-authors">Richard Patterson</span>, <span class="bib-title">"Understanding Cineon"</span>, <span class="bib-year">2001</span>, <span class="bib-url"><a href="http://www.digital-intermediate.co.uk/film/pdf/Cineon.pdf">URL</a></span>.</li>
+<li id="7291593" class="bibliography-entry ieee-style" data-key="7291593"><span class="bib-title">"ST 268:2003 - SMPTE Standard - For File Format for Digital Moving-Picture Exchange (DPX), Version 2.0"</span>, <span class="bib-journal"><i>ST 268:2003</i></span>, pp. <span class="bib-pages">1-17</span>, <span class="bib-year">2003</span>, <span class="bib-doi"><a href="https://doi.org/10.5594/SMPTE.ST268.2003">DOI</a></span>.</li>
+<li id="Technical_Introduction_to_OpenEXR" class="bibliography-entry ieee-style" data-key="Technical_Introduction_to_OpenEXR"><span class="bib-authors">Unknown Author</span>, <span class="bib-title">"Untitled"</span>, <span class="bib-journal"><i>Technical Introduction to OpenEXR</i></span>, <span class="bib-year">Unknown Year</span>, <span class="bib-url"><a href="https://openexr.com/en/latest/TechnicalIntroduction.html">URL</a></span>.</li>
+<li id="Guertault_Guertault_2013" class="bibliography-entry ieee-style" data-key="Guertault_Guertault_2013"><span class="bib-authors">Guertault, Julien, Guertault, Julien</span>, <span class="bib-title">"RGBD Archives"</span>, <span class="bib-journal"><i>Light is beautiful</i></span>, <span class="bib-year">2013</span>, <span class="bib-url"><a href="http://lousodrome.net/blog/light/tag/rgbd/">URL</a></span>.</li>
+<li id="TIFF" class="bibliography-entry ieee-style" data-key="TIFF"><span class="bib-authors">Adobe Developers Association</span>, <span class="bib-title">"TIFF"</span>, <span class="bib-year">1992</span>, <span class="bib-url"><a href="http://www.adobe.com/Support/TechNotes.html">URL</a></span>.</li>
+<li id="DotWhat_net" class="bibliography-entry ieee-style" data-key="DotWhat_net"><span class="bib-authors">Unknown Author</span>, <span class="bib-title">"Untitled"</span>, <span class="bib-journal"><i>DotWhat.net</i></span>, <span class="bib-year">Unknown Year</span>, <span class="bib-url"><a href="http://dotwhat.net/file/extension/webp/10843">URL</a></span>.</li>
+<li id="reusser_2021" class="bibliography-entry ieee-style" data-key="reusser_2021"><span class="bib-authors">Reusser, Ricky</span>, <span class="bib-title">"Half-precision floating-point, visualized"</span>, <span class="bib-journal"><i>Observable</i></span>, <span class="bib-year">2021</span>, <span class="bib-url"><a href="https://observablehq.com/@rreusser/half-precision-floating-point-visualized">URL</a></span>.</li>
+<li id="8445022" class="bibliography-entry ieee-style" data-key="8445022"><span class="bib-authors">Miller, Scott</span>, <span class="bib-title">"2018 Update on High Dynamic Range Television"</span>, <span class="bib-journal"><i>SMPTE Motion Imaging Journal</i></span>, vol. <span class="bib-volume">127</span>, pp. <span class="bib-pages">91-93</span>, <span class="bib-year">2018</span>, <span class="bib-doi"><a href="https://doi.org/10.5594/JMI.2018.2849659">DOI</a></span>.</li>
+<li id="Langlands" class="bibliography-entry ieee-style" data-key="Langlands"><span class="bib-authors">Langlands, Anders</span>, <span class="bib-title">"Anders Langlands"</span>, <span class="bib-journal"><i>Render Color Spaces</i></span>, <span class="bib-year">Unknown Year</span>, <span class="bib-url"><a href="https://www.colour-science.org/anders-langlands/">URL</a></span>.</li>
+<li id="Smith" class="bibliography-entry ieee-style" data-key="Smith"><span class="bib-authors">Smith, Jed</span>, <span class="bib-title">"Jedypod/open-display-transform: Open display transform is a collection of tools and experiments for rendering wide-gamut scene-linear data into an image for an SDR or HDR display device."</span>, <span class="bib-journal"><i>GitHub</i></span>, <span class="bib-year">Unknown Year</span>, <span class="bib-url"><a href="https://github.com/jedypod/open-display-transform">URL</a></span>.</li>
+</ol></div>
+
+
+        </div>
+
+    </div>
+    <link rel="stylesheet" href="/assets/css/footer.css">
+
+<footer class="container-fluid bg-light border-top pt-4 mt-4">
+    <div class="container">
+
+        <div class="row">
+            <!-- _includes/social_links.html -->
+<link rel="stylesheet" href="/assets/css/media.css">
+
+
+
+<ul class="list-inline text-center social-links">
+    
+    <li class="list-inline-item">
+        <a href="https://github.com/carlesmatoses">
+            <i class="fa fa-github fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="mailto:carlesmatosesg@gmail.com">
+            <i class="fa fa-envelope fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.youtube.com/channel/UC6aWlHNMv-VGU7LRBeZaj7w">
+            <i class="fa fa-youtube fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.linkedin.com/in/carles-matoses-b2b9a82b7">
+            <i class="fa fa-linkedin fa-3x"></i>
+        </a>
+    </li>
+    
+</ul>
+
+        </div>
+
+        <hr>
+
+        <div class="row additional-info">
+            <div class="col">
+                <p><strong>Name</strong></p>
+                <p>Carles Matoses Gimenez</p>
+                <p><strong>Contanct</strong></p>
+                <p>carlesmatosesg@gmail.com</p>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Anchor highlight script -->
+    <script src="/assets/js/anchor-highlight.js"></script>
+</body>
+
+</html>

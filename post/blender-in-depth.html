@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/assets/css/figure.css"> -->
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    
+    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Three.js, dat.GUI, and science-kit scripts are auto-injected by jekyll-skcg gem -->
+    
+  <!--KaTeX-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+          });
+      });
+  </script>
+
+  <!-- mermaid -->
+  <!-- <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script> -->
+  
+  <script type="module"> import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.15.0/+esm' </script>
+  
+  <!-- Title -->
+  <title> Blender In Depth </title>
+
+  <!-- Jekyll Science Kit Computer Graphics - Auto-injected dependencies -->
+  <link rel="stylesheet" type="text/css" href="/assets/jekyll-skcg/css/science-kit-computer-graphics.css">
+  <script src="/assets/jekyll-skcg/js/science-kit-computer-graphics.js"></script>
+  <!-- End Jekyll Science Kit Computer Graphics dependencies -->
+</head>
+
+
+
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Carles Matoses Gimenez</a>
+        
+        <!-- Hamburger button for mobile -->
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Breadcrumb Navigation - Desktop (horizontal) -->
+            <nav aria-label="breadcrumb" class="ms-auto d-none d-lg-block">
+                <ol class="breadcrumb mb-0">
+                    <!-- Home breadcrumb -->
+                    <li class="breadcrumb-item">
+                        <a href="/" class="breadcrumb-link">Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item">
+                                    
+                                        <a href="/?posts" class="breadcrumb-link">Posts</a>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    
+                                        <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                        
+                                        
+                                        
+                                            Blender
+                                        
+                                            In
+                                        
+                                            Depth
+                                        
+                                    
+                                </li>
+                            
+                        
+                    
+                </ol>
+            </nav>
+            
+            <!-- Breadcrumb Navigation - Mobile (vertical) -->
+            <nav aria-label="breadcrumb" class="d-lg-none mt-2">
+                <ul class="navbar-nav">
+                    <!-- Home breadcrumb -->
+                    <li class="nav-item">
+                        <a href="/" class="nav-link breadcrumb-link">🏠 Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    
+                                        <a href="/?posts" class="nav-link breadcrumb-link">📝 Posts</a>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    <span class="nav-link active breadcrumb-current">
+                                        📄 
+                                            <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                            
+                                            
+                                            
+                                                Blender
+                                            
+                                                In
+                                            
+                                                Depth
+                                            
+                                        
+                                    </span>
+                                </li>
+                            
+                        
+                    
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+</nav>
+
+    <div class="container baseContainer">
+        <div class="row">
+            <div class="col">
+                <p class="post-title"> Blender In Depth </p>
+            </div>
+        </div>
+
+        
+        <img src="/images/blender-in-depth/images/camera_thumbnail.png" alt="Couldn't load preview image :\" class="headerIMG">
+        
+
+
+        <div class="row justify-content-center">
+            <div class="alert alert-secondary" role="alert"><p>Lets deep dive into blender’s DNA. What composes blender? What can be modified? and what is the blender way?
+</p>
+</div>
+        </div>
+        <div class="row justify-content-center">
+            </p>
+
+<p>Blender is a complex and big project managed by <strong>blender studios</strong>, as the official orchestrator, many collaborators and volunteers. This combination makes blender a fast evolving application that needs lots of documentation. For this reason, there are many sources we can use to try answer <strong><code class="language-plaintext highlighter-rouge">What is blender?</code></strong></p>
+
+<h1 id="what-is-blender">What is Blender?</h1>
+
+<p>In its essence, blender is just a collection of Python, C++, C, GLSL and CMake scripts. But nothing explains better what this code does than the official page itself:</p>
+
+<div class="alert alert-primary" role="alert"><p>Blender is the free and open source 3D creation suite. It supports the entirety of the 3D pipeline: modeling, rigging, animation, simulation, rendering, compositing and motion tracking, even video editing.</p>
+
+<p>Development of Blender happens at <a href="https://projects.blender.org/">projects.blender.org</a> and is <a href="https://fund.blender.org/">funded</a> entirely by donations from entrepreneurs, companies, and users.</p>
+</div>
+
+<p>And because the good resources are the ones that exist, we will rely in blender’s already official documentation to dive into its skeleton.</p>
+
+<ul>
+  <li><a href="https://developer.blender.org/docs/handbook/contributing/using_git/#github-mirror">https://developer.blender.org/docs/handbook/contributing/using_git/#github-mirror</a></li>
+  <li><a href="https://docs.blender.org/manual/en/latest/">https://docs.blender.org/manual/en/latest/</a></li>
+  <li><a href="https://docs.blender.org/api/current/">https://docs.blender.org/api/current/</a></li>
+  <li><a href="https://developer.blender.org/docs/">https://developer.blender.org/docs/</a></li>
+  <li><a href="https://studio.blender.org/welcome/">https://studio.blender.org/welcome/</a></li>
+  <li><a href="https://www.youtube.com/@BlenderOfficial">https://www.youtube.com/@BlenderOfficial</a></li>
+  <li><a href="https://www.youtube.com/@BlenderStudio">https://www.youtube.com/@BlenderStudio</a></li>
+  <li><a href="https://extensions.blender.org/about/">https://extensions.blender.org/</a></li>
+  <li><a href="https://developer.blender.org/docs/handbook/new_developers/navigate_code/">https://developer.blender.org/docs/handbook/new_developers/navigate_code/</a></li>
+  <li><a href="https://www.youtube.com/live/tCdx7gzp0Ac?si=PskMa_x3hDusAtD3">https://www.youtube.com/live/tCdx7gzp0Ac?si=PskMa_x3hDusAtD3</a></li>
+</ul>
+
+<p>This is … in fact … overwelming.</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Lets not get too ahead of ourselves. Blender is composed of modules and the combination of all them creates the project we know and love. For that reason we will explore each of them on depth in the future but for now we want to understand the machinery behind the nature of Blender.</p>
+
+<h1 id="blenders-code">Blender’s code</h1>
+<p>Blender source code can be found in two official places, their web page and in a github mirror:</p>
+<ul>
+  <li>https://github.com/blender/blender</li>
+  <li>https://projects.blender.org/blender/blender</li>
+</ul>
+
+<p>At this point in time (26/09/2026) we see the following structure:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>blender
+├── assets
+├── AUTHORS
+├── build_files
+├── .clang-format
+├── .clang-tidy
+├── CMakeLists.txt
+├── COPYING
+├── doc
+├── .editorconfig
+├── extern
+├── .git
+├── .gitattributes
+├── .git-blame-ignore-revs
+├── .gitea
+├── .github
+├── .gitignore
+├── .gitmodules
+├── GNUmakefile
+├── intern
+├── lib
+├── locale
+├── make.bat
+├── pyproject.toml
+├── README.md
+├── release
+├── scripts
+├── source
+├── tests
+├── tools
+└── .well-known
+</code></pre></div></div>
+
+<p>And it is composed mainly of c++. That does not strictly mean that development implies knowing c++ but it will be handy ;)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Language</th>
+      <th style="text-align: left">%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">C++</td>
+      <td style="text-align: left">80.8%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Python</td>
+      <td style="text-align: left">15%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">C</td>
+      <td style="text-align: left">1.5%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">CMake</td>
+      <td style="text-align: left">1.2%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">GLSL</td>
+      <td style="text-align: left">0.8%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Objective-C++</td>
+      <td style="text-align: left">0.7%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+To prevent overcomplicating things too early, i will not expose the  underlying code yet. First I want to focus on the idea blender and many other softwares use to split responsibility on code.</p>
+
+<p>Blender code is in charge of two things: Exposing the data structure and Exposing the functionality. This becomes clear when we split the Graphical user interface and the operators under those buttons against the .blend file that contains plain data like the vertex information. This two things are “independent”.</p>
+
+<p>I find interesting to explore the data we are working on before studying how we operate on it. Inside blender code we find a few structures that we use virtually always: Mesh and Object. Remember that this is an example, the real structures are more complex.</p>
+
+<figure id="blender-data-structure-object" class="figure-block" style="width: 100%;" data-figure-number="1">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <div class="mermaid">classDiagram
+    direction LR
+    classDef objStyle  fill:#FFC55C,stroke:#EEA011,stroke-width:1px
+    class Object:::objStyle {
+      ID id
+      float location[3]
+      float rotation[4]
+      float scale[3]
+      ListBase modifiers
+      ID* data
+    }
+    Object</div>
+  
+</div>
+
+  <div class="fig-child" style="width: 49%;">
+  <div class="mermaid">classDiagram
+    direction LR
+    classDef meshStyle fill:#A8D8A8,stroke:#4CAF50,stroke-width:1px
+     class Mesh:::meshStyle {
+      ID id
+      int verts_num
+      int edges_num
+      int faces_num
+      int corners_num
+      AttributeStorage attributes
+    }
+    Mesh</div>
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 1: Blender's Object &amp; Mesh structure</figcaption>
+</figure>
+
+<p>Each object can point towards a mesh ID, which means a single mesh can be reused for many object. This is known as instance and it is used during rendering to lower memory usage and speed up rasterization.</p>
+
+<div class="alert alert-secondary" role="alert"><p>Instances are widely explored in the literature so I will assume we already know them, otherwise I invite you to explore by yourselves how they work.</p>
+</div>
+
+<p>In this minimal example, <code class="language-plaintext highlighter-rouge">Mesh</code> structure takes 448 bytes independently of the mesh number of vertices.</p>
+<pre><code class="language-raw">Mesh                                      size    offset
+├── ID id                                  408       0
+├── int verts_num                            4     408
+├── int edges_num                            4     412
+├── int faces_num                            4     416
+├── int corners_num                          4     420
+└── AttributeStorage attributes             24     424
+                                          ─────
+                                           448 bytes
+</code></pre>
+<p>To do so we follow the same strategy as Instances. We store the real geometry (verts, edges, faces) on a different structure. <code class="language-plaintext highlighter-rouge">Mesh</code> points to them through this AttributeStorage structure. Therefore, even if the number of verts changes at runtime, we dont need to update the Mesh structure itself unless we want to update the <code class="language-plaintext highlighter-rouge">verts_num</code> for example.</p>
+
+<p>We will explore more about this in the future but for now just keep in mind that this conceptual elements called “object” and “mesh” exist as data in some kind of format blender can read.</p>
+
+<p>A .blend file will work as the database. This becomes clear when we try to link or append structures inside a new blend file, you just have to notice how the search tree shows each element as a folder with multiple files inside.</p>
+
+<figure id="blender_file" class="figure-block" style="width: 100%;" data-figure-number="2">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/blender-in-depth/images/folders.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/blender-in-depth/images/workspace_items.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 2: Blender file with two meshes and three objects</figcaption>
+</figure>
+
+<p>But even more convenient is blender’s built in file explorer where we can see all the information being stored in the current file.</p>
+
+<p>In image <a href='#blender_file'>2</a>, after opening blenders “Current File” tree, we observe two meshes called <code class="language-plaintext highlighter-rouge">spring</code> and <code class="language-plaintext highlighter-rouge">Suzane</code> as well as three independent objects that reference both meshes. <code class="language-plaintext highlighter-rouge">Monky1</code> and <code class="language-plaintext highlighter-rouge">Monky2</code> do in fact share the same Mesh, meaning that any modification on Suzanne mesh will be visible by both objects inmediatly.</p>
+
+<figure id="blender_file" class="figure-block" style="width: 49%;" data-figure-number="2">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/blender-in-depth/images/object_mesh.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 2: Blender file with two meshes and three objects</figcaption>
+</figure>
+
+<p>With this introduction I want that, from now on, we think of blender files as something similar to a file tree instead of a complex window system with many labels. The separation is simple, the .blend file will only contain the database while blender’s executable program will be in charge of presenting the information.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">file</span><span class="p">.</span><span class="n">blend</span>
+  <span class="err">├──</span> <span class="n">scenes</span><span class="o">/</span>
+  <span class="err">│</span>   <span class="err">└──</span> <span class="n">Scene</span>
+  <span class="err">├──</span> <span class="n">collections</span><span class="o">/</span>
+  <span class="err">│</span>   <span class="err">└──</span> <span class="n">Props</span>
+  <span class="err">├──</span> <span class="n">objects</span><span class="o">/</span>
+  <span class="err">│</span>   <span class="err">├──</span> <span class="n">Spring</span>
+  <span class="err">│</span>   <span class="err">├──</span> <span class="n">Monkey1</span>
+  <span class="err">│</span>   <span class="err">└──</span> <span class="n">Monkey2</span>
+  <span class="err">├──</span> <span class="n">meshes</span><span class="o">/</span>
+  <span class="err">│</span>   <span class="err">├──</span> <span class="n">Spring</span>
+  <span class="err">│</span>   <span class="err">└──</span> <span class="n">Suzanne</span>
+  <span class="err">├──</span> <span class="n">materials</span><span class="o">/</span>
+  <span class="err">│</span>   <span class="err">├──</span> <span class="n">Brass</span>
+  <span class="err">│</span>   <span class="err">└──</span> <span class="n">Skin</span>
+  <span class="err">├──</span> <span class="n">lights</span><span class="o">/</span>
+  <span class="err">│</span>   <span class="err">├──</span> <span class="n">Key</span>
+  <span class="err">│</span>   <span class="err">└──</span> <span class="n">Fill</span>
+  <span class="err">├──</span> <span class="n">cameras</span><span class="o">/</span>
+  <span class="err">│</span>   <span class="err">└──</span> <span class="n">Camera</span>
+  <span class="err">├──</span> <span class="n">images</span><span class="o">/</span>
+  <span class="err">│</span>   <span class="err">└──</span> <span class="n">skin_diffuse</span><span class="p">.</span><span class="n">png</span>
+  <span class="err">└──</span> <span class="n">node_groups</span><span class="o">/</span>
+      <span class="err">└──</span> <span class="n">Push</span>
+</code></pre></div></div>
+
+<h1 id="blender-binary-file">Blender Binary File</h1>
+<p>At <code class="language-plaintext highlighter-rouge">https://docs.blender.org/manual/en/5.2/files/blend/open_save.html</code> we are explained that .blend format is by default a Zstandard compressed file. Interestingly, a non compressed .blend file will expose human readable hexadecimal data. Lets take a look.</p>
+
+<p>For this purpose I will use an uncompressed blend file and neovim with hexadecimal reading option <code class="language-plaintext highlighter-rouge">:%!xxd -g 1</code>. The first thing that calls my attention is the blender versions stored on the header:</p>
+
+<pre><code class="language-raw">Position   Bytes in hexadecimal                             ASCII code   
+____________________________________________________________________________
+00000000:  42 4c 45 4e 44 45 52 31 37 2d 30 31 76 30 35 30  BLENDER17-01v050
+00000010:  32 52 45 4e 44 00 00 00 00 10 00 00 00 00 00 00  2REND...........
+00000020:  00 08 01 00 00 00 00 00 00 01 00 00 00 00 00 00  ................
+00000030:  00 01 00 00 00 c3 ba 00 00 00 53 63 65 6e 65 00  ..........Scene.
+</code></pre>
+
+<p>The values on the left column are <code class="language-plaintext highlighter-rouge">00000000</code>, <code class="language-plaintext highlighter-rouge">00000010</code>, <code class="language-plaintext highlighter-rouge">00000020</code>, …, but don’t worry, they are just visual. In short it is just the number of the line but instead of having the common [1,2,3,4,5] we are provided the offset of bytes per line. The first line has an offset of zero bytes while the second line starts after 16 bytes from the beginning of the file.</p>
+
+<p>Before proceeding any further, please become familiar with what a bit, byte and hexadecimal are. You can read the following annotations to develop a bit of intuition.</p>
+
+<div class="alert alert-primary" role="alert"><p>Memory is made up of bits. A bit is simply a value that can have one of two states: 0 or 1.</p>
+
+<p>In fact, we can combine multiple bits to represent larger numbers. Any decimal value can therefore become a sequence of binary values:</p>
+
+<pre><code class="language-raw">0  =   0       8 = 1000  
+1  =   1       9 = 1001
+2  =  10      10 = 1010
+3  =  11      11 = 1011 
+4  = 100      12 = 1100
+5  = 101      13 = 1101
+6  = 110      14 = 1110
+7  = 111      15 = 1111
+</code></pre>
+
+<p>I decided to represent the binary form of the sixteen first decimal values because they offer an interesting property for representation. It turns out that memory is divided in chunks of eight bits that we call a Byte. If we tried to represent a file grouping each byte we would simply see groups of eight binary values which is not really useful for humans. Instead, programmers came up with an idea to represent such values as two single characters.</p>
+
+<p>The system consists on dividing a byte in two segments of four bits and replacing the four bits by a single hexadecimal value.</p>
+
+<pre><code class="language-raw">| Binary has 2 digits:   0 1
+| Decimal has 10 digits: 0 1 2 3 4 5 6 7 8 9
+| Hex has 16 digits:     0 1 2 3 4 5 6 7 8 9 A B C D E F
+</code></pre>
+
+<p>By convention, since our system only has 10 different symbols, we borrowed letters from the alphabet to represent the rest. This is a convention therefore we could use any set of symbols to represent hexadecimal, it is just that this was convenient because most languages already recognize those symbols.</p>
+
+<pre><code class="language-raw">| Decimal: 0 1 2 ... 9 10 11 12 13 14 15 16 17 18 ... 24 25 26 27 28
+| Hex:     0 1 2 ... 9  A  B  C  D  E  F 10 11 12 ... 18 19 1A 1B 1C
+</code></pre>
+
+<p>What matters here is what each position means in the numerical system. In the decimal system, value <code class="language-plaintext highlighter-rouge">18</code> means we have “1” tens and “8” units while in hexadecimal it is translated as value <code class="language-plaintext highlighter-rouge">12</code> which means “1” sixteen and “2” units. Both are “the same number of oranges” but they have a different symbols to be represented. Can you transform 8B oranges to decimal system? Answer: we have eight sixteens and B units -&gt; <code class="language-plaintext highlighter-rouge">8*16+11 = 139</code> oranges.</p>
+
+<pre><code class="language-raw">| Decimal 18 = 1 sixteens + 2 = hex 12
+| Decimal 139 = 8 sixteens + B = hex 8B
+</code></pre>
+</div>
+
+<p>Lets go back to the first line which is known as the header of <code class="language-plaintext highlighter-rouge">.blend</code>. When we open a file, we are usually presented with sixteen bytes for each line, or in other words, 32 hexadecimal values. The file has no lines, It is a single long line but for a screen this would become a headache.</p>
+
+<p>I know for a fact that the header of the blender file is 17 bytes long so i will show them below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000000: 42 4c 45 4e 44 45 52 31 37 2d 30 31 76 30 35 30
+00000010: 32
+</code></pre></div></div>
+<p>Now we can see more information than before, grouping data helps us recognize patterns. The problem is that unless we know what we are looking for, it still takes a long time to process the information on our heads. The solution to this is called ASCII, a table containing a set of human readable symbols:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    0 1 2 3 4 5 6 7 8 9 A B C D E F
+2x    ! " # $ % &amp; ' ( ) * + , - . /
+3x  0 1 2 3 4 5 6 7 8 9 : ; &lt; = &gt; ?
+4x  @ A B C D E F G H I J K L M N O
+5x  P Q R S T U V W X Y Z [ \ ] ^ _
+6x  ` a b c d e f g h i j k l m n o
+7x  p q r s t u v w x y z { | } ~
+</code></pre></div></div>
+
+<p>If you notice, we have six rows and sixteen columns. This was designed to be encoded in a single byte, in other words two hexadecimal values.</p>
+
+<p>We know (by design) that blender’s first 17 bytes are in fact ASCII characters therefore we can decode and read them.</p>
+
+<pre><code class="language-raw">Remember that this is the first line of the file:
+42 4c 45 4e 44 45 52 31 37 2d 30 31 76 30 35 30 32
+</code></pre>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Byte (binary)  Hex   ASCII
+0100 0010   -&gt; 4 2    B
+0100 1100   -&gt; 4 C    L
+0100 0101   -&gt; 4 5    E
+0100 1110   -&gt; 4 E    N
+0100 0100   -&gt; 4 4    D
+0100 0101   -&gt; 4 5    E
+0101 0010   -&gt; 5 2    R
+0011 0001   -&gt; 3 1    1
+0011 0111   -&gt; 3 7    7
+0010 1101   -&gt; 2 D    -
+0011 0000   -&gt; 3 0    0
+0011 0001   -&gt; 3 1    1
+0111 0110   -&gt; 7 6    v
+0011 0000   -&gt; 3 0    0
+0011 0101   -&gt; 3 5    5
+0011 0000   -&gt; 3 0    0
+0011 0000   -&gt; 3 2    2
+</code></pre></div></div>
+
+<p>But of course we don’t have to do this manually each time. Instead, nvim or other file readers usually offer an automatic translation “if” the hexadecimal can be translated. This means that sometimes we will get random generated text because it matches an ASCII entry. <em>Please note that for the sake of saving space, I will remove the space between pairs of bytes</em>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000160: c280 0000 0048 0000 0027 2727 c3bf 2a2a  .....H...'''..**
+00000170: 2ac3 bf2a 2a2a c3bf 1f1f 1fc3 bf30 3030  *..***.......000
+00000180: c3bf 2929 29c3 bf2b 2b2b c3bf 2424 24c3  ..)))..+++..$$$.
+00000190: bf2a 2a2a c3bf 2020 20c3 bf2c 2c2c c3bf  .***..   ..,,,..
+000001a0: 2a2a 2ac3 bf27 2727 c3bf 2020 20c3 bf18  ***..'''..   ...
+</code></pre></div></div>
+
+<p>Going back again to the first lines of the file, we have 17 bytes that contain the headers information. Because of the reading program we use, nvim, we split the header in groups of 16 bytes but notice that the integer “2” on the second line belongs to the header:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000000: 424c 454e 4445 5231 372d 3031 7630 3530  BLENDER17-01v050
+00000010: 3252 454e 4400 0000 0010 0000 0000 0000  2REND...........
+00000020: 0008 0100 0000 0000 0001 0000 0000 0000  ................
+00000030: 0001 0000 00c3 ba00 0000 5363 656e 6500  ..........Scene.
+</code></pre></div></div>
+
+<p>The first 7 bytes <code class="language-plaintext highlighter-rouge">424c 454e 4445 52</code> are translated as <code class="language-plaintext highlighter-rouge">BLENDER</code>. If we ask blender to read a file and it does not start with those exact characters, we notify the user this file is not readable by blender.</p>
+
+<p>The next two bytes (16 bits) are meant for storing the byte size of the header. In those 16 bits we could represent any value between 0 and 65535. If we had bits <code class="language-plaintext highlighter-rouge">00000000 00010001</code>, grouped them in bytes and represent them in hexadecimal, we would get <code class="language-plaintext highlighter-rouge">0011</code> successfully storing the size of the header.</p>
+
+<p>Funny enough, this is incorrect not because of the math but because blender’s developers decided to store the values in ASCII instead of 16 bit integers. The real file has the hexadecimal values <code class="language-plaintext highlighter-rouge">31 37</code> that can be converted to ASCII as <code class="language-plaintext highlighter-rouge">17</code>. We will take this as a future lesson, unless we know what the underlying binary represents, we cant translate it properly. I know what all this bytes are meant to represent because I looked at the source code.</p>
+
+<p>The next byte is just a separator used in older files so the parser understands that we now have to interpret the rest of bits in a different way, for now we can ignore it.</p>
+
+<p>The next two bytes also in hexadecimal representing a value are translated to <code class="language-plaintext highlighter-rouge">01</code>. Blender’s recent updates have modified the header shape because it was no longer capable of representing certain data. For example, they had to extend the bytes representing “version” because they expect a blender 10.0 in the future that 3 bytes where not able to represent in ASCII. In this change they also introduced the file’s version that in future case when the data arrangement inside blender changes, they just have to update the value in the header to specify the parser which version it has to use.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">v</code> byte in the header is for the endian type and the following four bytes are for the blender version the file was saved with.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bytes</th>
+      <th>Text</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7</td>
+      <td><code class="language-plaintext highlighter-rouge">BLENDER</code></td>
+      <td>Magic word identifying a <code class="language-plaintext highlighter-rouge">.blend</code> file</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">17</code></td>
+      <td>Size of this header in bytes (17)</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td>Separator (in older files this spot meant 64-bit pointers)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">01</code></td>
+      <td>Version of the file <em>format</em> itself</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">v</code></td>
+      <td>Byte order: lowercase <code class="language-plaintext highlighter-rouge">v</code> = little-endian, uppercase <code class="language-plaintext highlighter-rouge">V</code> = big-endian</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code class="language-plaintext highlighter-rouge">0502</code></td>
+      <td>Blender version: <strong>5.2</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+Right after the header, at byte <code class="language-plaintext highlighter-rouge">0x11</code> (1*16 + 1), we find the main contents of the document. There is one issue, each group of data can have arbitrary lengths and we have no way of knowing when a chunk starts or ends. To solve that issue blender has declared the following structure at <code class="language-plaintext highlighter-rouge">blender/source/blender/blenloader_core/BLO_core_bhead.hh</code>. Now all headers will have this shape:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">LargeBHead8</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">code</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">SDNAnr</span><span class="p">;</span>
+  <span class="kt">uint64_t</span> <span class="n">old</span><span class="p">;</span>
+  <span class="kt">int64_t</span> <span class="n">len</span><span class="p">;</span>
+  <span class="kt">int64_t</span> <span class="n">nr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+<p>If you are an experienced programmer, you probably notice that  the default <em>int</em> in c++ equals 4 bytes or, in other words, 32 bits. Therefore int64_t is twice as big, 8 bytes. This scheme applies to uint as well. If we add up all the fields of a Head block we end up with $4+4+8+8+8=32$ bytes. On the file we are reading, this chunk corresponds to:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>52 45 4E 44 00 00 00 00 10 00 00 00 00 00 00 00 
+08 01 00 00 00 00 00 00 01 00 00 00 00 00 00 00 
+</code></pre></div></div>
+<!-- 
+Keep in mind that old machines or certain systems may use a different bit size so blender switches the parser depending on the system. My case , and most cases, it is Large byte system. The 32 bytes are splitted like this:
+```
+BHead4 (old 32-bit files): 4 + 4 + 4 + 4 + 4 = 20 bytes
+SmallBHead8 (old 64-bit files): 4 + 4 + 8 + 4 + 4 = 24 bytes
+LargeBHead8 (5.0 and later): 4 + 4 + 8 + 8 + 8 = 32 bytes
+```
+
+
+
+At `blender/source/blender/blenloader_core/BLO_core_bhead.hh` we are shown the "head" codes: DATA, GLOB, DNA1, TEST, REND, USER, ENDB. We are also provided with the structure of the header from which we can extrapolate the 32 bytes we mentioned before: -->
+
+<p>We notice the first four bytes happens to be readable in ASCII (because it was designed that way). It says <code class="language-plaintext highlighter-rouge">REND</code> and it is stored at field <code class="language-plaintext highlighter-rouge">LargeBHead8.code</code>. In fact, this block does not appear in the documentation since it is not meant for “normal” users. To find its meaning we need to navigate back to <code class="language-plaintext highlighter-rouge">blender/source/blender/blenloader_core/BLO_core_bhead.hh</code>.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+  * Used for #RenderInfo, basic Scene and frame range info,
+  * can be easily read by other applications without writing 
+  * a full blend file parser.
+  */</span>
+<span class="n">BLO_CODE_REND</span> <span class="o">=</span> <span class="n">BLEND_MAKE_ID</span><span class="p">(</span><span class="sc">'R'</span><span class="p">,</span> <span class="sc">'E'</span><span class="p">,</span> <span class="sc">'N'</span><span class="p">,</span> <span class="sc">'D'</span><span class="p">),</span>
+</code></pre></div></div>
+<p>The complete translation of the 32 bits looks like this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int code     -&gt; 52 45 4E 44             -&gt; REND
+int SDNAnr   -&gt; 00 00 00 00             -&gt;    0
+uint64_t old -&gt; 10 00 00 00 00 00 00 00 -&gt;   16
+int64_t len  -&gt; 08 01 00 00 00 00 00 00 -&gt;  264
+int64_t nr   -&gt; 01 00 00 00 00 00 00 00 -&gt;    1
+</code></pre></div></div>
+
+<div class="alert alert-primary" role="alert"><p>But wait, how did we calculate the values from the hexadecimal bytes? why is an integer just a list of characters?</p>
+
+<p>Okay, I did skip some important notes here. First of all, what we are seeing is just values, interpretation relies completely on the code. The first four bytes are written below next to its hexadecimal interpretation. When we read the file using a hexadecimal interpreter we are only shown the second line but the code itself is reading the bits, it has zero knowledge of what hexadecimal is or how it works.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bits 0101 0010   0100 0101   0100 1110   0100 0100
+hex         52          45          4E          44
+</code></pre></div></div>
+<p>In this particular case, <em>REND</em> are not actually characters, it is an integer which hexadecimal representation translated to ASCII is exactly REND. If you are curious, that integer is $1145980242$.</p>
+
+<p>The rest of inputs are treated exactly the same way, they are interpreted as integers.</p>
+</div>
+
+<p>Again, file <code class="language-plaintext highlighter-rouge">BLO_core_bhead.hh</code> contains what each field really means.</p>
+<ul>
+  <li>code: Identifier for this #BHead. Can be any of BLO_CODE_* or an ID code like ID_OB.</li>
+  <li>SDNAnr:   Identifier of the struct type that is stored in this block.</li>
+  <li>*old: Identifier the block had when it was written. This is used to remap memory blocks on load. Typically, this is the pointer that the memory had when it was written. This should be unique across the whole blend-file, except for <code class="language-plaintext highlighter-rouge">BLEND_DATA</code> blocks, which should be unique within a same ID.</li>
+  <li>len: Number of bytes in the block</li>
+  <li>nr: Number of structs in the array (1 for simple structs).</li>
+</ul>
+
+<p>So, translating the bytes to natural language, we get: The code is REND, the struct type is ignored (0), it was previously written at position 16, it has length of 264 bytes and finally there is only one chunk inside it.</p>
+
+<p>What do this 264 bytes contain? The first eight bytes are two integers containing the starting and ending frame of the animation. In this case we have:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01 00 00 00 ff 01 00 00
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">start</code> -&gt; 00000001 -&gt; \(1\)</li>
+  <li><code class="language-plaintext highlighter-rouge">end</code> -&gt; 000001ff -&gt; \(1*16*16+15*16+15=511\)</li>
+</ul>
+
+<p>The rest of 256 bytes contain the ASCII for the scene name. In fact only the first 9 bytes are used and the others are left as zeros. The conversion returns <code class="language-plaintext highlighter-rouge">Scene.001</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>53 63 65 6e 65 2e 30 30 31 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+</code></pre></div></div>
+
+<p>In the source code we have two files from which we can inherit this information called <code class="language-plaintext highlighter-rouge">readfile.cc</code> and <code class="language-plaintext highlighter-rouge">writefile.cc</code>.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// writefile.cc lines 1188 to 1221</span>
+
+<span class="k">struct</span> <span class="nc">RenderInfo</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">sfra</span><span class="p">;</span>                          <span class="c1">// 4 bytes</span>
+  <span class="kt">int</span> <span class="n">efra</span><span class="p">;</span>                          <span class="c1">// 4 bytes</span>
+  <span class="kt">char</span> <span class="n">scene_name</span><span class="p">[</span><span class="n">MAX_ID_NAME</span> <span class="o">-</span> <span class="mi">2</span><span class="p">];</span>  <span class="c1">// 258 - 2 = 256 bytes</span>
+<span class="p">};</span>                                   <span class="c1">// = 264</span>
+<span class="p">...</span>
+<span class="n">writedata</span><span class="p">(</span><span class="n">wd</span><span class="p">,</span> <span class="n">BLO_CODE_REND</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">);</span>
+</code></pre></div></div>
+<p>This code is not really used by blender as the comments in the file explain. It is mainly a legacy functionality that stayed because it can be used by third party apps. Nevertheless this is not that much useful in  cases where we don’t know the scene we are aiming to render. In my .blend file I got two scenes and REND only stores the last opened one, so keep an eye on this before using the information blindly.</p>
+
+<p>The next block ,TEST , is the embedded preview thumbnail of the .blend file. Unlike REND, Blender does read its contents.  It uses the same 32-byte block header as REND:</p>
+
+<pre><code class="language-raw">54 45 53 54 00 00 00 00 e0 92 b7 4d 56 93 c5 7b
+08 8a 00 00 00 00 00 00 01 00 00 00 00 00 00 00
+</code></pre>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int code     -&gt; 54 45 53 54             -&gt; TEST
+int SDNAnr   -&gt; 00 00 00 00             -&gt;    0
+uint64_t old -&gt; e0 92 b7 4d 56 93 c5 7b -&gt;  0x7BC593564DB792E0 (8918696635957482208)
+int64_t len  -&gt; 08 8a 00 00 00 00 00 00 -&gt;  35336
+int64_t nr   -&gt; 01 00 00 00 00 00 00 00 -&gt;    1
+</code></pre></div></div>
+
+<p>I want to focus on the size of this block. 35336 is quite a lot for text or certain types of information. TEST encodes the preview of the file. This means any app or browser (like windows browser, dolphin, …) can look at this chunk of bytes and extract the preview image. The first eight bytes are the dimensions <code class="language-plaintext highlighter-rouge">80 00 00 00 45 00 00 00</code> -&gt; 128x69 pixels.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">HEADER_SIZE</span> <span class="o">=</span> <span class="mi">17</span>   <span class="c1"># "BLENDER17-01v0501" (new large-header format)
+</span><span class="n">BHEAD</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="n">Struct</span><span class="p">(</span><span class="s">"&lt;4si Q q q"</span><span class="p">)</span>  <span class="c1"># code, SDNAnr, old, len, nr = 32 bytes
+</span><span class="s">"""
+Part   Meaning                                         Bytes  Field
+&lt;      bytes order in little-endian, without padding   –      –
+4s     4 bytes character chain                         4      code (b"TEST", b"REND"...)
+i      32 bits integer                                 4      SDNAnr
+Q      64 bits integer                                 8      old (puntero)
+q      64 bits signed integer                          8      len
+q      64 bits signed integer                          8      nr
+"""</span>
+
+<span class="k">def</span> <span class="nf">read_thumbnail</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="s">"""Return an (h, w, 4) uint8 RGBA array, or None if the file has no thumbnail."""</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">HEADER_SIZE</span><span class="p">)</span> <span class="c1"># 17 header bytes
+</span>        
+        <span class="c1"># Check if .blend file is valid
+</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">header</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s">"BLENDER"</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"Not a plain .blend (maybe compressed?): %r"</span> <span class="o">%</span> <span class="n">header</span><span class="p">[:</span><span class="mi">12</span><span class="p">])</span>
+
+        <span class="c1"># We read the rest of the file
+</span>        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="c1"># read 32 bytes
+</span>            <span class="n">raw</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">BHEAD</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+
+            <span class="c1"># make sure the size is correct
+</span>            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">BHEAD</span><span class="p">.</span><span class="n">size</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="c1"># use python struct.unpack method
+</span>            <span class="n">code</span><span class="p">,</span> <span class="n">sdna</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">nr</span> <span class="o">=</span> <span class="n">BHEAD</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="sa">b</span><span class="s">"REND"</span><span class="p">:</span>
+                <span class="c1"># skip bytes inside REND
+</span>                <span class="n">f</span><span class="p">.</span><span class="n">seek</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="sa">b</span><span class="s">"TEST"</span><span class="p">:</span>
+                <span class="c1"># Read image
+</span>                <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">"&lt;ii"</span><span class="p">,</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+                <span class="k">assert</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">==</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"unexpected TEST size"</span>
+                <span class="n">pixels</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">uint8</span><span class="p">)</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">pixels</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>        <span class="c1"># stored bottom row first
+</span>            
+            <span class="k">else</span><span class="p">:</span> <span class="c1"># just in case. TEST always comes right after REND
+</span>                <span class="k">return</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+<p>I would have expected the preview image to be some kind of low resolution render of the scene but instead I got a window capture <a href='#blender_preview'>3</a>. This is due the conditional tree blender uses to decide how to capture the preview. At <code class="language-plaintext highlighter-rouge">wm_files.cc:2160-2196</code> we see four options: USER_FILE_PREVIEW_SCREENSHOT, USER_FILE_PREVIEW_CAMERA, USER_FILE_PREVIEW_AUTO, USER_FILE_PREVIEW_NONE. Depending on you’r settings (by default is “auto”) you will get the camera preview <a href='#blender_preview_cam'>4</a> if a camera exists and a capture otherwise.</p>
+
+<figure id="blender_preview" class="figure-block" style="width: 60%;" data-figure-number="3">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/blender-in-depth/images/plain_thumbnail.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 3: Blender's TEST image preview</figcaption>
+</figure>
+
+<figure id="blender_preview_cam" class="figure-block" style="width: 35%;" data-figure-number="4">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/blender-in-depth/images/camera_thumbnail.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 4: Blender's TEST image preview with camera</figcaption>
+</figure>
+
+<h1 id="blender-loading-system">Blender Loading System</h1>
+
+<p>With that out of the way, it is a good moment to introduce how blender actually loads the saved files instead of the naive strategy: “read from top and separate each chunk when found”.</p>
+
+<!-- Remember, we are starting with a .blend file with a really specific format. It is composed of small memory blocks all of them defined by a header with the size and type of the block. -->
+
+<p>Blender’s strategy consists on a two step process to load a file from disk into memory.</p>
+
+<p><strong>The first step</strong> consists on:</p>
+<ol>
+  <li>Find the .blend file.</li>
+  <li>Check it has the proper header.</li>
+  <li>Create a wrapper around it so we can read it independendtly of the operating system.</li>
+  <li>return a FileData c++ structure.</li>
+</ol>
+
+<p><strong>The second step</strong> consists on:</p>
+<ol>
+  <li>Parsing: read the file block by block</li>
+  <li>Populate c++ structures with this information</li>
+  <li>return BlendFileData c++ structure</li>
+</ol>
+
+<p>Yea… its not that simple. In practice that is all we need to understand, we dont have to care about version managing, efficient file searching, or anything else really. But this post is about deep understanding so we will have to take a look in the deep waters of blender’s version control and parsing methodology.</p>
+
+<!-- I feel like we can start putting names to all this processes so we ilustrate how this logic was created. -->
+
+<p>When we press <em>open file</em> or any other method that involves a .blend document, Blender executes a method called  <code class="language-plaintext highlighter-rouge">BlendFileData *BLO_read_from_file(...)</code> that we can find at header <code class="language-plaintext highlighter-rouge">BLO_readfile.hh</code> and its implementation at <code class="language-plaintext highlighter-rouge">readblenentry.cc</code>. Two things call our atention here:</p>
+<ul>
+  <li>This method returns a <code class="language-plaintext highlighter-rouge">BlendFileData</code> structure, more about this structure on the next section.</li>
+  <li>It has the prefix <code class="language-plaintext highlighter-rouge">BLO_</code>, translated to plain english it means blender_loading library. It is a method defined in a specific library blender created to manage loading operations.</li>
+</ul>
+
+<p>This is stright forward, you want to load a .blend file? execute this method. Thats it really. But loading the file itself is not as stright forward, the method <code class="language-plaintext highlighter-rouge">BLO_read_from_file</code> has many nested methods before archieving its final structure.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">BlendFileData</span> <span class="o">*</span><span class="n">BLO_read_from_file</span><span class="p">(...)</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<p>The first action of <code class="language-plaintext highlighter-rouge">BLO_read_from_file</code> is to makes sure the path exists. After a successful check, it executes method <code class="language-plaintext highlighter-rouge">FileData *blo_filedata_from_file(filepath, reports)</code>. Here, reports is just an empty list where we will be appending any error or information while processing the file.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">BlendFileData</span> <span class="o">*</span><span class="nf">BLO_read_from_file</span><span class="p">(...)</span>
+  <span class="n">BLI_assert</span><span class="p">(</span><span class="o">!</span><span class="n">BLI_path_is_rel</span><span class="p">(</span><span class="n">filepath</span><span class="p">));</span>
+  <span class="n">BLI_assert</span><span class="p">(</span><span class="n">BLI_path_is_abs_from_cwd</span><span class="p">(</span><span class="n">filepath</span><span class="p">));</span>
+  <span class="n">fd</span> <span class="o">=</span> <span class="n">blo_filedata_from_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">);</span>
+  <span class="p">...</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<p>Inside <code class="language-plaintext highlighter-rouge">blo_filedata_from_file</code>, we call <code class="language-plaintext highlighter-rouge">FileData *blo_filedata_from_file_open(filepath, reports)</code>, whose job is to open the file and prepare a reader for it. It calls <code class="language-plaintext highlighter-rouge">BLI_open</code>, which asks the operating system to open the file and returns a file descriptor: a small integer that identifies the open file in the process’s table of open files. The operating system gives the lowest free number. Numbers 0, 1 and 2 are always taken by standard input, standard output and standard error, so in a fresh program the first file gets 3. If the file can’t be opened (it doesn’t exist, or we don’t have permission), <code class="language-plaintext highlighter-rouge">BLI_open</code> returns -1, and a warning with the reason is added to the <code class="language-plaintext highlighter-rouge">reports</code> list.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">BlendFileData</span> <span class="o">*</span><span class="nf">BLO_read_from_file</span><span class="p">(...)</span>
+  <span class="n">BLI_assert</span><span class="p">(</span><span class="o">!</span><span class="n">BLI_path_is_rel</span><span class="p">(</span><span class="n">filepath</span><span class="p">));</span>
+  <span class="n">BLI_assert</span><span class="p">(</span><span class="n">BLI_path_is_abs_from_cwd</span><span class="p">(</span><span class="n">filepath</span><span class="p">));</span>
+  <span class="n">fd</span> <span class="o">=</span> <span class="n">blo_filedata_from_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">);</span>
+    <span class="n">FileData</span> <span class="o">*</span><span class="n">fd</span> <span class="o">=</span> <span class="n">blo_filedata_from_file_open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">);</span>
+      <span class="k">const</span> <span class="kt">int</span> <span class="n">file</span> <span class="o">=</span> <span class="n">BLI_open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">O_BINARY</span> <span class="o">|</span> <span class="n">O_RDONLY</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="p">...</span>
+    <span class="p">...</span>
+  <span class="p">...</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<div class="alert alert-secondary" role="alert"><p>The way computers load and read files is out of the scope for this document but I want to clarify something.</p>
+
+<p>When we say a file is “Open” it means we keep track of the starting point of this file in memory. Lets say a disk is just a bookshelf. In that case opening a file is discovering where the book is positioned in the bookshelf but we still dont know the contents of the pages. “Reading” means “load page x y and z into memory” and the system keeps track of how many pages we have read. If we try to read again, it will skip the previous pages and resume where it left.</p>
+
+<p>Right now, we are only storing the position of the book and not reading anything yet.</p>
+</div>
+
+<div class="alert alert-primary" role="alert"><p>In case you are wondering what <code class="language-plaintext highlighter-rouge">BLI_open</code> is, Blender has many modules and libraries reused in all parts of the source code. Some of them we have already seen like <strong>BLI_</strong> and <strong>BLO_</strong>. This is a rough list of some libraries even though maybe I missed some of them.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prefix</th>
+      <th>Module</th>
+      <th>Folder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BLI_</code></td>
+      <td>Blender library: utilities, OS wrappers</td>
+      <td><code class="language-plaintext highlighter-rouge">blenlib/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BKE_</code></td>
+      <td>Blender kernel: logic for scenes, objects, meshes…</td>
+      <td><code class="language-plaintext highlighter-rouge">blenkernel/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BLO_</code></td>
+      <td>Blender loader: reading and writing .blend files</td>
+      <td><code class="language-plaintext highlighter-rouge">blenloader/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DNA_</code></td>
+      <td>The data structures and the schema system</td>
+      <td><code class="language-plaintext highlighter-rouge">makesdna/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RNA_</code></td>
+      <td>The property system used by the UI and Python</td>
+      <td><code class="language-plaintext highlighter-rouge">makesrna/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MEM_</code></td>
+      <td>Memory allocation with leak checking</td>
+      <td><code class="language-plaintext highlighter-rouge">intern/guardedalloc/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IMB_</code></td>
+      <td>Image buffers (the thumbnail <code class="language-plaintext highlighter-rouge">ImBuf</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">imbuf/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WM_</code></td>
+      <td>Window manager: windows, events, file open and save</td>
+      <td><code class="language-plaintext highlighter-rouge">windowmanager/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ED_</code></td>
+      <td>Editors and operators</td>
+      <td><code class="language-plaintext highlighter-rouge">editors/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GHOST_</code></td>
+      <td>The lowest OS layer: windows, input, GPU context</td>
+      <td><code class="language-plaintext highlighter-rouge">intern/ghost/</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The method <code class="language-plaintext highlighter-rouge">BLI_open</code> is a wrapper around <code class="language-plaintext highlighter-rouge">open</code>, part of the POSIX standard that Unix-like systems (Linux, macOS, BSD) implement. When blender is being compiled, it decides against which libraries and functions it has to compile. Windows systems do not have certain operating system calls so we switch <strong>open</strong> for <strong>upone</strong> method.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fileops_c</span><span class="p">.</span><span class="n">cc</span>
+
+ <span class="mi">551</span>  <span class="err">#</span><span class="n">ifdef</span> <span class="n">WIN32</span>
+        <span class="p">...</span>
+ <span class="mi">615</span>    <span class="kt">int</span> <span class="nf">BLI_open</span><span class="p">(...)</span> <span class="p">{</span> <span class="p">...</span> <span class="k">return</span> <span class="n">uopen</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">oflag</span><span class="p">,</span> <span class="n">pmode</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">...</span>
+ <span class="mi">883</span>  <span class="err">#</span><span class="k">else</span> <span class="cm">/* The UNIX world */</span>
+        <span class="p">...</span>
+<span class="mi">1199</span>    <span class="kt">int</span> <span class="n">BLI_open</span><span class="p">(...)</span> <span class="p">{</span> <span class="p">...</span> <span class="k">return</span> <span class="n">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">oflag</span><span class="p">,</span> <span class="n">pmode</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">...</span>
+<span class="mi">1572</span>  <span class="err">#</span><span class="n">endif</span>
+</code></pre></div></div>
+</div>
+
+<p>We then execute <code class="language-plaintext highlighter-rouge">blo_filedata_from_file_descriptor(filepath, reports, file)</code>. The purpose of this method is to wrap the reader in a generalized structure that can be reused anywhere in the code. This structure is called <code class="language-plaintext highlighter-rouge">FileReader</code> and provides methods to read, seek and close the file. Additionally we will use another wrapper called <code class="language-plaintext highlighter-rouge">FileData</code> containing references to the <strong>reports</strong>, <code class="language-plaintext highlighter-rouge">FileReader</code> and any other structure that may be required in the future.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">BlendFileData</span> <span class="o">*</span><span class="nf">BLO_read_from_file</span><span class="p">(...)</span>
+  <span class="n">BLI_assert</span><span class="p">(</span><span class="o">!</span><span class="n">BLI_path_is_rel</span><span class="p">(</span><span class="n">filepath</span><span class="p">));</span>
+  <span class="n">BLI_assert</span><span class="p">(</span><span class="n">BLI_path_is_abs_from_cwd</span><span class="p">(</span><span class="n">filepath</span><span class="p">));</span>
+  <span class="n">fd</span> <span class="o">=</span> <span class="n">blo_filedata_from_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">);</span>
+    <span class="n">FileData</span> <span class="o">*</span><span class="n">fd</span> <span class="o">=</span> <span class="n">blo_filedata_from_file_open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">);</span>
+      <span class="k">const</span> <span class="kt">int</span> <span class="n">file</span> <span class="o">=</span> <span class="n">BLI_open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">O_BINARY</span> <span class="o">|</span> <span class="n">O_RDONLY</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nf">blo_filedata_from_file_descriptor</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">,</span> <span class="n">file</span><span class="p">);</span>
+        <span class="n">file_reader</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">FileData</span><span class="p">(</span><span class="n">file_reader</span><span class="p">)</span>
+      <span class="p">...</span>
+    <span class="p">...</span>
+  <span class="p">...</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">FileData</span> <span class="p">{</span>
+  <span class="n">FileReader</span> <span class="o">*</span><span class="n">file</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+  <span class="n">BlendFileReadReport</span> <span class="o">*</span><span class="n">reports</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+  <span class="n">DNA_ReconstructInfo</span> <span class="o">*</span><span class="n">reconstruct_info</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If you followed through, you probably know already that blender reads the first 7 bytes to check for the identifier “BLENDER”. If necessary, it executes decompression first. Once the file is in the correct format and has the identifier,  it is converted to the FileData and then into a BlendFileData. We will explore the conversion from FileData to BlendFileData in the future sections. For now i will provide an overview to the full loading process as a tree with the most important functions:</p>
+
+<figure id="loading" class="figure-block" style="width: 100%;" data-figure-number="5">
+  <div class="figure-content">
+    <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">BlendFileData</span> <span class="o">*</span><span class="n">BLO_read_from_file</span><span class="p">(...)</span>
+<span class="err">├──</span> <span class="n">FileData</span> <span class="n">blo_filedata_from_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">)</span>
+<span class="err">│</span>    <span class="err">├──</span> <span class="n">FileData</span> <span class="o">*</span><span class="n">blo_filedata_from_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">)</span>
+<span class="err">│</span>    <span class="err">│</span>   <span class="err">└──</span> <span class="n">FileData</span> <span class="o">*</span><span class="n">blo_filedata_from_file_open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">)</span>
+<span class="err">│</span>    <span class="err">│</span>       <span class="err">└──</span><span class="n">FileData</span> <span class="o">*</span><span class="n">blo_filedata_from_file_descriptor</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="err">│</span>    <span class="err">│</span>          <span class="err">├──</span><span class="n">FileReader</span> <span class="o">*</span><span class="n">file</span> <span class="o">=</span> <span class="n">BLO_file_reader_uncompressed_from_descriptor</span><span class="p">(</span><span class="n">filedes</span><span class="p">)</span>
+<span class="err">│</span>    <span class="err">│</span>          <span class="err">├──</span><span class="n">BLI_stat_t</span> <span class="n">stat</span>  <span class="o">=</span> <span class="n">BLI_stat</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">stat</span><span class="p">)</span>
+<span class="err">│</span>    <span class="err">│</span>          <span class="err">└──</span><span class="n">FileData</span> <span class="o">*</span><span class="n">fd</span>     <span class="o">=</span> <span class="n">filedata_new</span><span class="p">(</span><span class="n">reports</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">stat</span><span class="p">)</span>
+<span class="err">│</span>    <span class="err">└──</span> <span class="n">blo_decode_and_check</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">reports</span><span class="o">-&gt;</span><span class="n">reports</span><span class="p">)</span>
+<span class="err">│</span>        <span class="err">└──</span> <span class="n">read_file_dna</span>
+<span class="err">│</span>            <span class="err">└──</span> <span class="n">DNA_sdna_from_data</span> 
+<span class="err">│</span>                <span class="err">└──</span> <span class="n">init_structDNA</span>
+<span class="err">├──</span>  <span class="n">BlendFileData</span> <span class="o">*</span><span class="n">bfd</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+<span class="err">├──</span>  <span class="n">bfd</span> <span class="o">=</span> <span class="n">blo_read_file_internal</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">filepath</span><span class="p">);</span>
+<span class="err">└──</span>  <span class="n">blo_filedata_free</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span></code></pre></figure>
+  </div>
+  <figcaption class="figure-caption">Fig. 5: Figure</figcaption>
+</figure>
+
+<p>Dont worry about all this methods like <code class="language-plaintext highlighter-rouge">blo_decode_and_check</code>, <code class="language-plaintext highlighter-rouge">blo_read_file_internal</code> or <code class="language-plaintext highlighter-rouge">read_file_dna</code> and so on. They are important, don’t get me wrong, but we will explore them better in the following sections.</p>
+
+<div class="alert alert-primary" role="alert"><p><strong>As a conclusion of this section</strong></p>
+
+<p>I just want you to focus on the blender strategy for designing a loading system that is splitted in two parts. They have a .blend file configured in a really particualr way divided in many chunks, all of them with a header for easy identification.</p>
+
+<p>First, they created a series of methods that: find the .blend file, check it is correct, creates a wrapper around it, and finally waits for further instructions on when to read it. We can call this step <code class="language-plaintext highlighter-rouge">FileData</code>.</p>
+
+<p>The second step is to actually ‘read the file and generate the ram memory objects’. They parse the file, get all the information while making sure it is correct and finally they fill the ram with all this structures so the program can retrieve it fast. Now we dont search an object by its bytes offsets, instead we call the pointers to the structures in ram memory (way faster 👍). We call this the <code class="language-plaintext highlighter-rouge">BlendFileData</code>.</p>
+</div>
+
+<h1 id="blender-parsing">Blender Parsing</h1>
+
+<!-- As promised, lets take a look at the **BlendFileData** structure that is constructed using method `blo_read_file_internal` and providing the **FileData** as well as the path.
+
+```c++
+blender/source/blender/blenloader/BLO_readfile.hh
+
+struct BlendFileData : NonCopyable, NonMovable {
+  Main *main = nullptr;
+  UserDef *user = nullptr;
+
+  int fileflags = 0;
+  int globalf = 0;
+  /**
+   * Typically the actual filepath of the read blend-file, except when recovering
+   * save-on-exit/autosave files. In the latter case, it will be the path of the file that
+   * generated the auto-saved one being recovered.
+   *
+   * NOTE: Currently expected to be the same path as #BlendFileData.filepath.
+   */
+  char filepath[/*FILE_MAX*/ 1024] = {};
+
+  /** TODO: think this isn't needed anymore? */
+  bScreen *curscreen = nullptr;
+  Scene *curscene = nullptr;
+  /** Layer to activate in workspaces when reading without UI. */
+  ViewLayer *cur_view_layer = nullptr;
+
+  eBlenFileType type = eBlenFileType(0);
+};
+```
+
+`main (Main *)`: Main is Blender's database. It holds one list per data type (scenes, objects, meshes, materials, images, node trees, ...), and every ID block from the file ends up in one of those lists. Almost everything you think of as "the file" is here.
+
+`user (UserDef *)`: These are the theme, keymaps, add-ons and so on. It's only filled when the file has a USER block, which normally means the startup file or the preferences file. A regular .blend has none, so this is usually empty.
+
+`filepath (text, 1024 characters)`: where the file is. Normally the path you opened. When recovering an autosave, it's the path of the original file instead, so saving goes back to the right place. This is the same value as relabase in FileData. -->
+
+<!-- TODO: is relabase a typo of realbase? -->
+
+<!-- There are other fields but for now we don't need to bother about them.  -->
+<p>Lets go back to the wrapper function <code class="language-plaintext highlighter-rouge">BLO_read_from_file</code> that we saw in the previous section. This is how it looks in the blender repo:</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">BlendFileData</span> <span class="o">*</span><span class="nf">BLO_read_from_file</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">filepath</span><span class="p">,</span>
+                                  <span class="n">eBLOReadSkip</span> <span class="n">skip_flags</span><span class="p">,</span>
+                                  <span class="n">BlendFileReadReport</span> <span class="o">*</span><span class="n">reports</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">BLI_assert</span><span class="p">(</span><span class="o">!</span><span class="n">BLI_path_is_rel</span><span class="p">(</span><span class="n">filepath</span><span class="p">));</span>
+  <span class="n">BLI_assert</span><span class="p">(</span><span class="n">BLI_path_is_abs_from_cwd</span><span class="p">(</span><span class="n">filepath</span><span class="p">));</span>
+
+  <span class="n">BlendFileData</span> <span class="o">*</span><span class="n">bfd</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+  <span class="n">FileData</span> <span class="o">*</span><span class="n">fd</span><span class="p">;</span>
+
+  <span class="n">fd</span> <span class="o">=</span> <span class="n">blo_filedata_from_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">reports</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">fd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fd</span><span class="o">-&gt;</span><span class="n">skip_flags</span> <span class="o">=</span> <span class="n">skip_flags</span><span class="p">;</span>
+    <span class="n">bfd</span> <span class="o">=</span> <span class="n">blo_read_file_internal</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">filepath</span><span class="p">);</span> <span class="c1">// &lt;----</span>
+    <span class="n">blo_filedata_free</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">bfd</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<!-- You may have noticed I ignored the methods `blo_decode_and_check`, `read_file_dna`, `DNA_sdna_from_data` and `init_structDNA` on the previous sections in figure <a href='#loading'>5</a>. This was deliberate. I consider this methods to be a separated issue.  -->
+
+<p>Inside the if statement we find <code class="language-plaintext highlighter-rouge">blo_read_file_internal(fd, filepath)</code> which recieves the already generated <code class="language-plaintext highlighter-rouge">FileData</code> structure and turns it into a <code class="language-plaintext highlighter-rouge">BlenderFileData</code> structure.</p>
+
+<p>There is one issue though. Blender’s source code changes. They get new structures, new functionalities and remodel already existing systems. This represents a big issue on softwares that develop really fast with big changes almost every month. Blender named this solution <code class="language-plaintext highlighter-rouge">Structure DNA</code>.</p>
+
+<p>We can summarize it as: The .blend file will contain a block called <code class="language-plaintext highlighter-rouge">DNA1</code> at the end of the file which will store the size and fields of each structure a blender file is designed to contain.</p>
+
+<p>Lets say Blender 4.0 saves materials with this struct:</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">Material</span> <span class="p">{</span>        <span class="c1">// 4.0</span>
+  <span class="n">ID</span> <span class="n">id</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+  <span class="kt">short</span> <span class="n">flag</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>In version 4.1, a developer adds a field and makes “flag” larger:</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">Material</span> <span class="p">{</span>        <span class="c1">// 4.1</span>
+  <span class="n">ID</span> <span class="n">id</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">roughness</span><span class="p">;</span>       <span class="c1">// new</span>
+  <span class="kt">int</span> <span class="n">flag</span><span class="p">;</span>              <span class="c1">// was short</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>When we open the old <em>.blend</em> file into the new version, we first read this <strong><code class="language-plaintext highlighter-rouge">DNA1</code></strong> block. Inside the block we find that Material structure is stored as <code class="language-plaintext highlighter-rouge">Material = id, r, g, b, flag (short)</code> while the compiled schema <em>inside blender’s installation</em> says <code class="language-plaintext highlighter-rouge">id, r, g, b, roughness, flag (int)</code>. There is a discrepancy between versions that prevents to load the old fields using a newer blender file parser. While reading the DNA1 structure, blender stores flags alerting of this incompatibility with <code class="language-plaintext highlighter-rouge">compflags[Material] = SDNA_CMP_NOT_EQUAL</code>.</p>
+
+<p>The method in charge of all this “cheking” compatibility is in fact <code class="language-plaintext highlighter-rouge">blo_read_file_internal(...)</code> which takes 454 lines, and that is without counting the functions it calls from inside. You are more than welcome to look at it at <em>source/blender/blenloader/intern/readfile.cc</em>. In this post we are simply summarizing it.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">blo_read_file_internal</span>                  <span class="n">readfile</span><span class="p">.</span><span class="n">cc</span><span class="o">:</span><span class="mi">4446</span>
+<span class="err">└─</span> <span class="n">read_libblock</span>                        <span class="n">readfile</span><span class="p">.</span><span class="n">cc</span><span class="o">:</span><span class="mi">4620</span> <span class="p">(</span><span class="n">call</span><span class="p">)</span>
+   <span class="err">├─</span> <span class="n">read_id_struct</span>                    <span class="n">readfile</span><span class="p">.</span><span class="n">cc</span><span class="o">:</span><span class="mi">3683</span> <span class="p">(</span><span class="n">reads</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">struct</span> <span class="nc">itself</span><span class="p">)</span>
+   <span class="err">│</span>  <span class="err">└─</span> <span class="n">read_struct</span>                    <span class="n">readfile</span><span class="p">.</span><span class="n">cc</span><span class="o">:</span><span class="mi">2015</span>
+   <span class="err">│</span>     <span class="err">└─</span> <span class="n">DNA_struct_reconstruct</span>      <span class="n">readfile</span><span class="p">.</span><span class="n">cc</span><span class="o">:</span><span class="mi">1952</span>
+   <span class="err">└─</span> <span class="n">read_data_into_datamap</span>            <span class="n">readfile</span><span class="p">.</span><span class="n">cc</span><span class="o">:</span><span class="mi">3748</span> <span class="p">(</span><span class="n">reads</span> <span class="n">the</span> <span class="n">BLO_CODE_DATA</span> <span class="n">blocks</span> <span class="n">after</span> <span class="n">the</span> <span class="n">ID</span><span class="p">)</span>
+      <span class="err">└─</span> <span class="n">read_struct</span>                    <span class="n">readfile</span><span class="p">.</span><span class="n">cc</span><span class="o">:</span><span class="mi">2986</span>
+         <span class="err">└─</span> <span class="n">DNA_struct_reconstruct</span>      <span class="n">readfile</span><span class="p">.</span><span class="n">cc</span><span class="o">:</span><span class="mi">1952</span>
+
+
+</code></pre></div></div>
+
+<!-- The old file's **DNA1** structure says: Material structure is stored with `Material = id, r, g, b, flag (short)` fields. while the compiled schema says `id, r, g, b, roughness, flag (int)`. There is a discrepancy between versions that prevents to load the old fields using a newer blender file parser. While reading the DNA1 structure, blender stores flags alerting of this incompatibility with `compflags[Material] = SDNA_CMP_NOT_EQUAL`.  -->
+<!-- This is decided once per struct type, not once per material since all materials will have the old structure.  -->
+
+<p>For every Material block in the .blend file, <code class="language-plaintext highlighter-rouge">DNA_struct_reconstruct</code> allocates a new zeroed 4.1 struct and fills it using the stored values if they exist.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   4.0 block (file)                                 4.1 block (memory)
+                                                    zeroed    final
+┌───────────┬───────┐                      ┌───────────┬────────┬───────┐
+│ id        │ "Mat" │ ───── memcpy ──────&gt; │ id        │   0    │ "Mat" │
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ r         │  0.8  │ ───── memcpy ──────&gt; │ r         │   0    │  0.8  │
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ g         │  0.2  │ ───── memcpy ──────&gt; │ g         │   0    │  0.2  │
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ b         │  0.1  │ ───── memcpy ──────&gt; │ b         │   0    │  0.1  │
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ (absent)  │   -   │    no match in 4.0   │ roughness │   0    │   0   │ &lt;- never written
+├───────────┼───────┤                      ├───────────┼────────┼───────┤
+│ flag      │   3   │ ─ cast short→int ──&gt; │ flag      │   0    │   3   │
+│ (short)   │       │                      │ (int)     │        │       │
+└───────────┴───────┘                      └───────────┴────────┴───────┘
+</code></pre></div></div>
+
+<p>In the above diagram, <code class="language-plaintext highlighter-rouge">id, r, g, b</code> are found by name and copied (RECONSTRUCT_STEP_MEMCPY).</p>
+
+<p>On the other hand, field <code class="language-plaintext highlighter-rouge">flag</code> has the same name but a different type, so it’s converted from short to int (RECONSTRUCT_STEP_CAST_PRIMITIVE).</p>
+
+<p>On the third case, <code class="language-plaintext highlighter-rouge">roughness</code> isn’t in the old file, so it stays 0 (RECONSTRUCT_STEP_INIT_ZERO).</p>
+
+<!-- There is something more important to take into account. -->
+<p>When a change is introduced in the code and we are aware that in the future there may be old files that need to be updated, they will need to populate non existen fields with a default value. That is what versioning is for. Versioning is a step on the file loading process that aims to check default values for fields that did not exist before. In the third step we simply populated roughness with value 0 which in most cases is not desired. A more standard approach is to asign value 0.5 so it is neither reflective or diffuse.</p>
+
+<div class="alert alert-secondary" role="alert"><p>To define a default value we need to modify the source code itself.</p>
+</div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">MAIN_VERSION_FILE_ATLEAST</span><span class="p">(</span><span class="n">bmain</span><span class="p">,</span> <span class="mi">401</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">Material</span> <span class="o">*</span><span class="n">ma</span> <span class="o">:</span> <span class="n">bmain</span><span class="o">-&gt;</span><span class="n">materials</span><span class="p">)</span> <span class="n">ma</span><span class="o">-&gt;</span><span class="n">roughness</span> <span class="o">=</span> <span class="mf">0.5</span><span class="n">f</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is just an example. The code above shows that if the .blend file was stored with a smaller version than 4.1.3, it will need in fact to update the already stored structures to match the new material structure. I invite you to check any of the following files to see for yourself how blender manages versioning:</p>
+<ul>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_250.cc">versioning_250.cc</a></li>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_260.cc">versioning_260.cc</a></li>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_270.cc">versioning_270.cc</a></li>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_280.cc">versioning_280.cc</a></li>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_290.cc">versioning_290.cc</a></li>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_300.cc">versioning_300.cc</a></li>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_400.cc">versioning_400.cc</a></li>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_401.cc">versioning_401.cc</a></li>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_402.cc">versioning_402.cc</a></li>
+  <li><a href="https://github.com/blender/blender/blob/main/source/blender/blenloader/intern/versioning_502.cc">versioning_502.cc</a></li>
+</ul>
+
+<p>For forward compatibility (opening a modern file 4.1 in older blender versions 4.0) we make the same checks. <code class="language-plaintext highlighter-rouge">roughness</code> has no field to go into, so it’s dropped. <code class="language-plaintext highlighter-rouge">flag</code> is converted from int to short. The file loads, but the roughness value is lost if you re-save it in version 4.0.</p>
+
+<p>Renaming is a separate case, and it doesn’t involve reconstruction. If <code class="language-plaintext highlighter-rouge">r</code> were renamed to color_r in the source, <code class="language-plaintext highlighter-rouge">dna_rename_defs.h</code> would get an entry: <code class="language-plaintext highlighter-rouge">DNA_STRUCT_RENAME_MEMBER(Material, r, color_r)</code>. There are about 260 of these member renames. At build time, makesdna uses the table to write the old name into the <code class="language-plaintext highlighter-rouge">DNA</code>, so files keep saying <code class="language-plaintext highlighter-rouge">r</code>, both old and new. C++ code uses <code class="language-plaintext highlighter-rouge">color_r</code>, while the name stored on disk never changes, so old files still match.</p>
+
+<div class="alert alert-primary" role="alert"><p>Dont worry if all this feels too overwhelming .The idea is to be aware of the existence of multiple mechanisms inside the code that manage the loading and understanding of a blend file. The more time we spend reading and analyzing code and its designing choices the more we assimilate it.</p>
+
+<!-- We will summarize all this in a bit. -->
+</div>
+
+<p>On our example file we can, in fact, find the DNA1 struct by searching the string in the ASCII representation:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0007a2f0: 00 00 00 00 00 00 44 4e 41 31 00 00 00 00 d0 f4  ......DNA1......
+0007a300: 21 a6 20 b7 a5 7e d8 0d 02 00 00 00 00 00 01 00  !. ..~..........
+0007a310: 00 00 00 00 00 00 53 44 4e 41 4e 41 4d 45 99 14  ......SDNANAME..
+0007a320: 00 00 2a 64 65 73 63 72 69 70 74 69 6f 6e 00 72  ..*description.r
+0007a330: 6e 61 5f 73 75 62 74 79 70 65 00 5f 70 61 64 5b  na_subtype._pad[
+0007a340: 34 5d 00 2a 69 64 65 6e 74 69 66 69 65 72 00 2a  4].*identifier.*
+0007a350: 6e 61 6d 65 00 76 61 6c 75 65 00 69 63 6f 6e 00  name.value.icon.
+</code></pre></div></div>
+
+<p>And again we can take the first 32 bytes containing the header:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>44 4e 41 31 00 00 00 00 d0 f4 21 a6 20 b7 a5 7e 
+d8 0d 02 00 00 00 00 00 01 00 00 00 00 00 00 00
+
+int      code   -&gt; 44 4e 41 31             -&gt; DNA1
+int      SDNAnr -&gt; 00 00 00 00             -&gt; 0
+uint64_t old    -&gt; d0 f4 21 a6 20 b7 a5 7e -&gt; 0x7EA5B720A621F4D0
+int64_t  len    -&gt; d8 0d 02 00 00 00 00 00 -&gt; 134616
+int64_t  nr     -&gt; 01 00 00 00 00 00 00 00 -&gt; 1
+</code></pre></div></div>
+
+<p>We can see it is a really big chunk of information. It will take a while to digest but lets try our best. The important concept here is that <code class="language-plaintext highlighter-rouge">DNA1</code> is a wrapper of an independent structure called <code class="language-plaintext highlighter-rouge">SDNA</code> also found in the file itself as <code class="language-plaintext highlighter-rouge">53 44 4e 41 -&gt; SDNA</code>. In the example below, look at the last line and you will see <code class="language-plaintext highlighter-rouge">SDNANAME</code>. They are two independent strings (SDNA, NAME)but because we are reading directly from the binary file they just apear one next to the other:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0007a2f0: 00 00 00 00 00 00 44 4e 41 31 00 00 00 00 d0 f4  ......DNA1......
+0007a300: 21 a6 20 b7 a5 7e d8 0d 02 00 00 00 00 00 01 00  !. ..~..........
+0007a310: 00 00 00 00 00 00 53 44 4e 41 4e 41 4d 45 99 14  ......SDNANAME..
+</code></pre></div></div>
+
+<p>At <code class="language-plaintext highlighter-rouge">dna_genfile.cc:368-557</code> we see the parser <code class="language-plaintext highlighter-rouge">init_structDNA(...)</code>. Its purpose is to skip all the file until reaching SDNA structure. Once it is loaded, it starts parsing it. It is divided in four sections called:</p>
+<ul>
+  <li>NAME: list of names</li>
+  <li>TYPE: list of types</li>
+  <li>TLEN: size of the types</li>
+  <li>STRC: list of structures</li>
+</ul>
+
+<p>In the pasted chunk of binary content we can only see <code class="language-plaintext highlighter-rouge">NAME</code> but I swear the rest are there too, just a little bit after.</p>
+
+<p>With those four segments, we can recover the structures on which the file was stored. Lets see this with two structures called IDPropertyData and IDPropertyUIDataEnumItem:</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">IDPropertyUIData</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">description</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">rna_subtype</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">_pad</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">IDPropertyUIDataEnumItem</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">identifier</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">description</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">icon</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Look how the section starts with code NAME. We are provided the number of names in this segment but not the total lengh since that is arbitrary. To know when a name starts or ends  we check the suffix “x00” and we keep track of how many names we have already collected:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4e 41 4d 45 -&gt; NAME
+99 14 00 00 -&gt; 5273 (number of NAMES)
+2a 64 65 73 63 72 69 70 74 69 6f 6e 00   -&gt;  "*description."   name #0
+72 6e 61 5f 73 75 62 74 79 70 65 00      -&gt;  "rna_subtype."    name #1
+5f 70 61 64 5b 34 5d 00                  -&gt;  "_pad[4]."        name #2
+2a 69 64 65 6e 74 69 66 69 65 72 00      -&gt;  "*identifier."    name #3
+2a 6e 61 6d 65 00                        -&gt;  "*name."           name #4
+76 61 6c 75 65 00                        -&gt;  "value."          name #5
+69 63 6f 6e 00                           -&gt;  "icon."           name #6
+...
+73 65 6c 69 74 65 6d 00 00 00            -&gt;  "selitem..."      name #5272
+</code></pre></div></div>
+
+<p>Now we reach all the types the .blend file contains. This will be reused by the structures as well as creating an entry for each structure itself.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>54 59 50 45 -&gt; TYPE
+71 04 00 00 -&gt; 1137 (number of TYPEs)
+63 68 61 72 00                              -&gt;  "char."       type #0
+75 63 68 61 72 00                           -&gt;  "uchar."      type #1
+73 68 6f 72 74 00                           -&gt;  "short."      type #2
+75 73 68 6f 72 74 00                        -&gt;  "ushort."     type #3
+69 6e 74 00                                 -&gt;  "int."        type #4
+6c 6f 6e 67 00                              -&gt;  "long."       type #5
+75 6c 6f 6e 67 00                           -&gt;  "ulong."      type #6
+66 6c 6f 61 74 00                           -&gt;  "float."      type #7
+64 6f 75 62 6c 65 00                        -&gt;  "double."     type #8
+69 6e 74 36 34 5f 74 00                     -&gt;  "int64_t."    type #9
+75 69 6e 74 36 34 5f 74 00                  -&gt;  "uint64_t."   type #10
+76 6f 69 64 00                              -&gt;  "void."       type #11
+69 6e 74 38 5f 74 00                        -&gt;  "int8_t."     type #12
+72 61 77 5f 64 61 74 61 00                  -&gt;  "raw_data."   type #13
+49 44 50 72 6f 70 65 72 74 79 55 49 44 61
+74 61 00                                    -&gt;  "IDPropertyUIData."          type #14
+49 44 50 72 6f 70 65 72 74 79 55 49 44 61
+74 61 45 6e 75 6d 49 74 65 6d 00            -&gt;  "IDPropertyUIDataEnumItem."  type #15
+...
+58 72 41 63 74 69 6f 6e 4d 61 70 00 00 00 00 -&gt; "XrActionMap..."             type #1136
+</code></pre></div></div>
+
+<p>We are now provided the number of bytes each type has:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>54 4c 45 4e -&gt; TLEN
+01 00 -&gt; 1      sizeof(char)
+01 00 -&gt; 1      sizeof(uchar)
+02 00 -&gt; 2      sizeof(short)
+02 00 -&gt; 2      sizeof(ushort)
+04 00 -&gt; 4      sizeof(int)
+04 00 -&gt; 4      sizeof(long)
+04 00 -&gt; 4      sizeof(ulong)
+04 00 -&gt; 4      sizeof(float)
+08 00 -&gt; 8      sizeof(double)
+08 00 -&gt; 8      sizeof(int64_t)
+08 00 -&gt; 8      sizeof(uint64_t)
+00 00 -&gt; 0      sizeof(void)
+01 00 -&gt; 1      sizeof(int8_t)
+00 00 -&gt; 0      sizeof(raw_data)
+10 00 -&gt; 16     sizeof(IDPropertyUIData)           &lt;- our first struct
+20 00 -&gt; 32     sizeof(IDPropertyUIDataEnumItem)   &lt;- our second struct
+...
+68 00 -&gt; 104    sizeof(XrActionMap)                   type #1136
+00 00 -&gt; (padding, 1137 shorts = 2274 bytes -&gt; align to 4)
+</code></pre></div></div>
+
+<p>STRC connects names to structs by index. Each STRC entry says “struct X has N members, and they are these (type index, name index) pairs”. We know when each starts or ends by reading the chunk in order. The first two bytes are the type index and the next two are the number of fields. With that information we can compute the length as <code class="language-plaintext highlighter-rouge">type_index -&gt; 2 bytes</code> + <code class="language-plaintext highlighter-rouge">member count -&gt; 2 bytes</code> + <code class="language-plaintext highlighter-rouge">member count × 4 bytes</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>53 54 52 43 -&gt; STRC
+e1 03 00 00 -&gt; 993 (number of STRCs)
+
+0d 00       -&gt; type #13 "raw_data"              struct #0
+00 00       -&gt; 0 fields
+
+0e 00       -&gt; type #14 "IDPropertyUIData"      struct #1
+03 00       -&gt; 3 fields
+00 00 00 00 -&gt; type #0 "char" / name #0 "*description"  -&gt;  char *description;
+04 00 01 00 -&gt; type #4 "int"  / name #1 "rna_subtype"   -&gt;  int rna_subtype;
+00 00 02 00 -&gt; type #0 "char" / name #2 "_pad[4]"       -&gt;  char _pad[4];
+
+0f 00       -&gt; type #15 "IDPropertyUIDataEnumItem"      struct #2
+05 00       -&gt; 5 fields
+00 00 03 00 -&gt; type #0 "char" / name #3 "*identifier"   -&gt;  char *identifier;
+00 00 04 00 -&gt; type #0 "char" / name #4 "*name"         -&gt;  char *name;
+00 00 00 00 -&gt; type #0 "char" / name #0 "*description"  -&gt;  char *description;
+04 00 05 00 -&gt; type #4 "int"  / name #5 "value"         -&gt;  int value;
+04 00 06 00 -&gt; type #4 "int"  / name #6 "icon"          -&gt;  int icon;
+...
+</code></pre></div></div>
+
+<p>We now have all the information required to understand how the file was previously stored and we have the tools to upadte this information to work on newer or older versions.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NAME:  list of names       ("*description", "rna_subtype", ...)
+TYPE:  list of type names  ("char", "int", ..., "IDPropertyUIData", ...)
+TLEN:  size of each type   (1, 4, ..., 16, ...)
+STRC:  for each struct:  [type index][member count][type, name][type, name]...
+</code></pre></div></div>
+
+<!-- Of course, in our particular example there are no missmatches because the file was stored by the same blender version it was created. If there was a missmatch though, it will be picked up on `read_file_dna` method, and fixed on `blo_read_file_internal` block by block. The final result is a properly   -->
+
+<p><strong><em>It is time to make a technical stop</em></strong>!!!</p>
+
+<p>This has been a heck of a journy and it starts to feel foggy and confusing. I definetly need to abstract many things away and that is why the previous sections were dense. I will now proceed on summarizing in plain text what just happend and why, instead I will introduce some of blender’s code.</p>
+
+<p>First of all, the above explanation had the intetion of explaining how blender parses a file. It starts by makeing some general tests like the format and then it loads the stored SDNA. Once loaded it is compared to Blender’s compiled SDNA to make sure they match.</p>
+
+<!-- Before any of that happens, blender already has a SDNA loaded that was compiled into the source code. -->
+
+<p>Lets call them <code class="language-plaintext highlighter-rouge">host_SDNA</code> (as blenders compiled SDNA) and <code class="language-plaintext highlighter-rouge">remote_SDNA</code> (as an arbitrary SDNA of any procedence).</p>
+
+<p>On starting the program we store <code class="language-plaintext highlighter-rouge">host_SDNA</code> into memory. We do this through a method called <code class="language-plaintext highlighter-rouge">DNA_sdna_current_get()</code> that, at any place in the code, allows us to retrieve <code class="language-plaintext highlighter-rouge">host_SDNA</code>.</p>
+
+<p>At <code class="language-plaintext highlighter-rouge">readfile.cc:1162</code>, we store a pointer to <code class="language-plaintext highlighter-rouge">host_SDNA</code> calling <code class="language-plaintext highlighter-rouge">DNA_sdna_current_get()</code>. We then load the <code class="language-plaintext highlighter-rouge">remote_SDNA</code> by calling  <code class="language-plaintext highlighter-rouge">read_file_dna → DNA_sdna_from_data → init_structDNA</code>.</p>
+
+<p>The two are compared to create the apropaite flags:</p>
+<ol>
+  <li>Look up the same name in Blender’s schema. Not found → SDNA_CMP_REMOVED.</li>
+  <li>Different number of members → NOT_EQUAL.</li>
+  <li>Different total size (TLEN) → NOT_EQUAL.</li>
+  <li>Compare the members one by one, in order: different type name → NOT_EQUAL; different member name → NOT_EQUAL; a pointer while the pointer sizes differ → NOT_EQUAL.</li>
+  <li>If a member is itself a struct (like ID id), compare that struct first. If it isn’t equal, the parent isn’t either.</li>
+  <li>Otherwise → SDNA_CMP_EQUAL.</li>
+</ol>
+
+<p>The comparison is strict and positional: it checks each slot against the same slot in the other struct. If a field only moves, the struct still contains the same fields, but it’s marked NOT_EQUAL because its bytes are no longer in the same place and a plain copy would put values in the wrong fields. Matching by name only happens later, when the conversion steps are built, and that’s what lets each moved field keep its value.</p>
+
+<p><code class="language-plaintext highlighter-rouge">DNA_reconstruct_info_create</code> then precomputes the conversion steps (MEMCPY, CAST_PRIMITIVE, INIT_ZERO, …) for every struct marked NOT_EQUAL. Both results are stored in FileData.</p>
+
+<!-- 4. The flags are used per block. In `blo_read_file_internal`, every read_struct checks `fd->compflags[bh->SDNAnr]` and then copies, reconstructs or skips. -->
+
+<p>The versioning hapens after this. It checks the prevoius version the file was stored from and the current version. The code exposes the value it has to use for populating new values.</p>
+
+<p>Thats it, this is blender parsing strategy. Of course the code has a bit more complexity, additional checks, pointers, structures and some other additional design choices. I want to prioritize a mental model of the code so when reading the actual source it becames clear what each part is doing instead of explaining one by one each function from the start.</p>
+
+<p>As a gift I will be showing now all the blocks that exist in the .blend file and some of the sublocks we have seen so far.</p>
+
+<pre><code class="language-raw">.blend
+  ├── BLENDER header
+  ├── REND
+  │   ├── start/end frame
+  │   └── scene name
+  ├── TEST
+  │   ├── width/height
+  │   └── pixels
+  ├── GLOB
+  │   ├── subversion / minversion
+  │   ├── current screen / scene / view layer
+  │   ├── file flags / global flags
+  │   ├── build timestamp / build hash
+  │   ├── filepath
+  │   └── color space name + matrix
+  ├── ID blocks
+  │   │
+  │   │   Interface
+  │   ├── WM  window manager
+  │   ├── WS  workspace
+  │   ├── SR  screen
+  │   │
+  │   │   Scene structure
+  │   ├── SC  scene
+  │   ├── GR  collection
+  │   ├── OB  object
+  │   ├── WO  world
+  │   │
+  │   │   Object data
+  │   ├── ME  mesh
+  │   ├── CV  curves (hair)
+  │   ├── CU  curve, legacy
+  │   ├── MB  metaball
+  │   ├── PT  point cloud
+  │   ├── VO  volume
+  │   ├── GP  grease pencil
+  │   ├── GD  grease pencil, legacy
+  │   ├── LT  lattice
+  │   ├── AR  armature
+  │   ├── CA  camera
+  │   ├── LA  light
+  │   ├── LP  light probe
+  │   ├── SK  speaker
+  │   ├── KE  shape keys
+  │   │
+  │   │   Shading and textures
+  │   ├── MA  material
+  │   ├── NT  node tree
+  │   ├── TE  texture
+  │   ├── IM  image
+  │   ├── LS  Freestyle line style
+  │   │
+  │   │   Animation and simulation
+  │   ├── AC  action
+  │   ├── PA  particle settings
+  │   ├── CF  cache file
+  │   │
+  │   │   Painting and sculpting
+  │   ├── BR  brush
+  │   ├── PL  palette
+  │   ├── PC  paint curve
+  │   │
+  │   │   Media and other
+  │   ├── MC  movie clip
+  │   ├── MS  mask
+  │   ├── SO  sound
+  │   ├── VF  font
+  │   └── TX  text
+  ├── LI  (library) + linked placeholders
+  ├── USER
+  ├── DNA1
+  │   ├── SDNA
+  │   ├── NAME
+  │   ├── TYPE
+  │   ├── TLEN
+  │   └── STRC
+  └── ENDB
+</code></pre>
+
+<p>In the future we will study this components by themselves now that we understand where they live and how they are writend/readed. Not only that but we will also study the ID blocks parsing methodology and what the rest of blocks really mean.</p>
+
+<p>And in case you are still unsure of understanding everything that happened in this sections, here is a summary:</p>
+
+<div class="alert alert-primary" role="alert"><ol>
+  <li>User starts blender.</li>
+  <li>User decides to load a .blend file.</li>
+  <li>Blender executes method BLO_read_from_file.</li>
+  <li>BLO_read_from_file reads the SDNA block from inside .blend.</li>
+  <li>All blocks from the SDNA are checked against blenders internal SDNA.</li>
+  <li>All missalignments between both SDNA are corrected in a list of “what should we do once we load the real data”.</li>
+  <li>The migration is applied to the .blend data.</li>
+  <li>We return the BlendFileData containing all structures.</li>
+</ol>
+</div>
+
+<p>and this is the final streucture that contains everithing blender owns:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">blender</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">blender</span><span class="o">/</span><span class="n">blenloader</span><span class="o">/</span><span class="n">BLO_readfile</span><span class="p">.</span><span class="n">hh</span>
+
+<span class="k">struct</span> <span class="nc">BlendFileData</span> <span class="o">:</span> <span class="n">NonCopyable</span><span class="p">,</span> <span class="n">NonMovable</span> <span class="p">{</span>
+  <span class="n">Main</span> <span class="o">*</span><span class="n">main</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+  <span class="n">UserDef</span> <span class="o">*</span><span class="n">user</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="n">fileflags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">globalf</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="cm">/**
+   * Typically the actual filepath of the read blend-file, except when recovering
+   * save-on-exit/autosave files. In the latter case, it will be the path of the file that
+   * generated the auto-saved one being recovered.
+   *
+   * NOTE: Currently expected to be the same path as #BlendFileData.filepath.
+   */</span>
+  <span class="kt">char</span> <span class="n">filepath</span><span class="p">[</span><span class="cm">/*FILE_MAX*/</span> <span class="mi">1024</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+
+  <span class="cm">/** TODO: think this isn't needed anymore? */</span>
+  <span class="n">bScreen</span> <span class="o">*</span><span class="n">curscreen</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+  <span class="n">Scene</span> <span class="o">*</span><span class="n">curscene</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+  <span class="cm">/** Layer to activate in workspaces when reading without UI. */</span>
+  <span class="n">ViewLayer</span> <span class="o">*</span><span class="n">cur_view_layer</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+
+  <span class="n">eBlenFileType</span> <span class="n">type</span> <span class="o">=</span> <span class="n">eBlenFileType</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">main (Main *)</code>: Main is Blender’s database. It holds one list per data type (scenes, objects, meshes, materials, images, node trees, …), and every ID block from the file ends up in one of those lists. Almost everything you think of as “the file” is here.</p>
+
+<p><code class="language-plaintext highlighter-rouge">user (UserDef *)</code>: These are the theme, keymaps, add-ons and so on. It’s only filled when the file has a USER block, which normally means the startup file or the preferences file. A regular .blend has none, so this is usually empty.</p>
+
+<p><code class="language-plaintext highlighter-rouge">filepath (text, 1024 characters)</code>: where the file is. Normally the path you opened. When recovering an autosave, it’s the path of the original file instead, so saving goes back to the right place. This is the same value as relabase in FileData.</p>
+
+<h1 id="structures-inside-blender">Structures inside Blender</h1>
+<p>Well, now we understand how blender stores and retrieves the information from disk. But … what information can be stored?</p>
+
+<p>Anyone that has used blender has used at least an “object” and a “mesh” structure. It is basically mandatory. Lets put for example the default cube. This cube lives.</p>
+
+<!-- 
+show the mesh and object structures.
+show how multiple meshes are stored in a .blend file.
+show how they are loaded again.
+
+-->
+
+<h1 id="audaspace">Audaspace</h1>
+
+<h1 id="blender-data-structures">Blender Data Structures</h1>
+<p>Once we have finished editing a file, it has to be stored somehow the same way it must be loaded in memory at execution time. Blender implements a read/write library that stores Data Structures and loads them back when necessary.</p>
+
+<p>This building blocks are the essence of blender. They compose the building blocks of the software and we can think of them as lego pieces. Blender has developed the $2\times2$ red piece with two toppings and the $1\times1$ green piece. I, myself would like to build a bridge with this blocks so I make as many instances as I wish and build the wall. At saving the file, we just end up with a .blend file that contains a list of this objects, they’re position rotation and scale as well as any other property they may have.</p>
+
+<p>It is a silly example but if I do it correctly, it will help generate intuition for less experienced users on code architecture.</p>
+
+<p>Lets now deep down into a more specific example!!</p>
+
+<p>A Data Structure that everyone has used without noticing is the <code class="language-plaintext highlighter-rouge">Mesh Data Structure</code> <a href="https://developer.blender.org/docs/features/objects/mesh/mesh/">mesh data documentation</a></p>
+
+<!-- TODO: we need to explain the code and fields of this data structure  -->
+
+<p>In this scene of blender we see three different <code class="language-plaintext highlighter-rouge">objects</code>, each of them has a unique mesh data associated to them. Look what happens when we use the same mesh for all the objects.</p>
+
+<!-- Add figure of blender -->
+
+<p>Suddenly we have the same geometry on all objects but with an additional transformation added to each one. Do you know what that is? It is called instance and is huge. Instances are the funding block of all game engines and 3D applications. But then, if the <code class="language-plaintext highlighter-rouge">object</code> instance is independent of the <code class="language-plaintext highlighter-rouge">mesh</code> instance, what is <code class="language-plaintext highlighter-rouge">object</code>? It is just another building block called <code class="language-plaintext highlighter-rouge">Object Data</code> altogether with <code class="language-plaintext highlighter-rouge">Object</code>.</p>
+
+<!-- Add a graph with mermaid maybe, showing that we have "Object"" that has three fields: rotation, position, scale, and it also has a type field that inherits the datatype propertyes such as mesh vertex position or focal length of a camera.   -->
+
+<figure id="blender-data-structure" class="figure-block" style="width: 50%;" data-figure-number="6">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <div class="mermaid">classDiagram
+
+  class Object {
+        Vector3 position
+        Quaternion rotation
+        Vector3 scale
+        ----
+        DataStructure data
+    }
+  style Object fill:#FFC55C,stroke:#EEA011,stroke-width:1
+
+  class DataStructure {
+        Name name
+    }
+  style DataStructure fill:#7BC8F6,stroke:#2196F3,stroke-width:1
+
+  class Mesh {
+        Name name
+        Material material
+    }
+  style Mesh fill:#A8D8A8,stroke:#4CAF50,stroke-width:1
+
+  class Camera {
+        Name name
+        FocalLength 50mm
+    }
+  style Camera fill:#F6A8C0,stroke:#E91E8C,stroke-width:1
+
+  Object --&gt; DataStructure : data
+  DataStructure &lt;|-- Mesh
+  DataStructure &lt;|-- Camera</div>
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 6: Blender Object Data Structure</figcaption>
+</figure>
+
+<p>This graph <span class="ref-placeholder" data-ref-type="blender-data-structure" data-ref-id=""></span> is an over simplification. In blender, each of this data structures have hundreds of attributes and they additionally rely on arrays and tensors that contain even more information (like vertices, edges and faces connections).</p>
+
+<p>A better visualization of this structures shown inside blender itself. Visit <a href="https://docs.blender.org/manual/en/latest/editors/index.html">Editor</a> and <a href="https://docs.blender.org/manual/en/latest/editors/outliner/introduction.html">Outliner</a> for the documentation on what are editors inside blender and what is the Outliner editor specifically. We cite the page directly:</p>
+
+<div class="alert alert-primary" role="alert"><p>Blender provides a number of different editors for displaying and modifying different aspects of data. An Editor is contained inside an Area which determines its size and placement within the Blender window. Every area may contain any type of editor.</p>
+
+<p>The Editor Type selector, the first button at the left side of a header, allows you to change the Editor in that area. It is also possible to open the same Editor type in different areas at the same time.</p>
+</div>
+
+
+        </div>
+
+    </div>
+    <link rel="stylesheet" href="/assets/css/footer.css">
+
+<footer class="container-fluid bg-light border-top pt-4 mt-4">
+    <div class="container">
+
+        <div class="row">
+            <!-- _includes/social_links.html -->
+<link rel="stylesheet" href="/assets/css/media.css">
+
+
+
+<ul class="list-inline text-center social-links">
+    
+    <li class="list-inline-item">
+        <a href="https://github.com/carlesmatoses">
+            <i class="fa fa-github fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="mailto:carlesmatosesg@gmail.com">
+            <i class="fa fa-envelope fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.youtube.com/channel/UC6aWlHNMv-VGU7LRBeZaj7w">
+            <i class="fa fa-youtube fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.linkedin.com/in/carles-matoses-b2b9a82b7">
+            <i class="fa fa-linkedin fa-3x"></i>
+        </a>
+    </li>
+    
+</ul>
+
+        </div>
+
+        <hr>
+
+        <div class="row additional-info">
+            <div class="col">
+                <p><strong>Name</strong></p>
+                <p>Carles Matoses Gimenez</p>
+                <p><strong>Contanct</strong></p>
+                <p>carlesmatosesg@gmail.com</p>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Anchor highlight script -->
+    <script src="/assets/js/anchor-highlight.js"></script>
+</body>
+
+</html>

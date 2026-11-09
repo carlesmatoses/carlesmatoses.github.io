@@ -1,0 +1,69 @@
+/* Breadcrumb styling */
+.breadcrumb {
+    background-color: transparent;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.breadcrumb-link {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+    color: #495057;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #212529;
+    font-weight: 500;
+}
+
+.breadcrumb-text {
+    color: #6c757d;
+}
+
+/* Mobile vertical breadcrumb styling */
+.breadcrumb-current {
+    color: #212529 !important;
+    font-weight: 500;
+    cursor: default;
+}
+
+.navbar-nav .breadcrumb-link {
+    color: #6c757d !important;
+    padding: 0.25rem 1rem;
+}
+
+.navbar-nav .breadcrumb-link:hover {
+    color: #495057 !important;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.navbar-nav .breadcrumb-text {
+    color: #6c757d !important;
+    padding: 0.25rem 1rem;
+    cursor: default;
+}
+
+/* Responsive breadcrumb */
+@media (max-width: 768px) {
+    .breadcrumb {
+        font-size: 0.8rem;
+    }
+    
+    /* Ensure hamburger menu shows breadcrumb vertically */
+    .navbar-collapse {
+        background-color: #f8f9fa;
+        border-radius: 0.375rem;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+    }
+}

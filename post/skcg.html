@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/assets/css/figure.css"> -->
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    
+    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Three.js, dat.GUI, and science-kit scripts are auto-injected by jekyll-skcg gem -->
+    
+  <!--KaTeX-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+          });
+      });
+  </script>
+
+  <!-- mermaid -->
+  <!-- <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script> -->
+  
+  <script type="module"> import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.15.0/+esm' </script>
+  
+  <!-- Title -->
+  <title> SKCG, jekyll-scholar-graphics </title>
+
+  <!-- Jekyll Science Kit Computer Graphics - Auto-injected dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/EXRLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.19"></script>
+  <link rel="stylesheet" type="text/css" href="/assets/jekyll-skcg/css/science-kit-computer-graphics.css">
+  <script src="/assets/jekyll-skcg/js/science-kit-computer-graphics.js"></script>
+  <!-- End Jekyll Science Kit Computer Graphics dependencies -->
+</head>
+
+
+
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Carles Matoses Gimenez</a>
+        
+        <!-- Hamburger button for mobile -->
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Breadcrumb Navigation - Desktop (horizontal) -->
+            <nav aria-label="breadcrumb" class="ms-auto d-none d-lg-block">
+                <ol class="breadcrumb mb-0">
+                    <!-- Home breadcrumb -->
+                    <li class="breadcrumb-item">
+                        <a href="/" class="breadcrumb-link">Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item">
+                                    
+                                        <a href="/?posts" class="breadcrumb-link">Posts</a>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    
+                                        <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                        
+                                        
+                                        
+                                            Skcg
+                                        
+                                    
+                                </li>
+                            
+                        
+                    
+                </ol>
+            </nav>
+            
+            <!-- Breadcrumb Navigation - Mobile (vertical) -->
+            <nav aria-label="breadcrumb" class="d-lg-none mt-2">
+                <ul class="navbar-nav">
+                    <!-- Home breadcrumb -->
+                    <li class="nav-item">
+                        <a href="/" class="nav-link breadcrumb-link">🏠 Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    
+                                        <a href="/?posts" class="nav-link breadcrumb-link">📝 Posts</a>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    <span class="nav-link active breadcrumb-current">
+                                        📄 
+                                            <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                            
+                                            
+                                            
+                                                Skcg
+                                            
+                                        
+                                    </span>
+                                </li>
+                            
+                        
+                    
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+</nav>
+
+    <div class="container baseContainer">
+        <div class="row">
+            <div class="col">
+                <p class="post-title"> SKCG, jekyll-scholar-graphics </p>
+            </div>
+        </div>
+
+        
+        <img src="/images/pluggin.png" alt="Couldn't load preview image :\" class="headerIMG">
+        
+
+
+        <div class="row justify-content-center">
+            <div class="alert alert-secondary" role="alert"><p>SKCG is used in the webpage to provide image, bibliography and some other liquid tags for faster formatting.</p>
+</div>
+        </div>
+        <div class="row justify-content-center">
+            
+
+<!-- index -->
+<ul id="markdown-toc">
+  <li><a href="#what-is-it" id="markdown-toc-what-is-it">What is it?</a></li>
+  <li><a href="#alerts--block-content" id="markdown-toc-alerts--block-content">Alerts &amp; block content</a></li>
+  <li><a href="#images" id="markdown-toc-images">Images:</a></li>
+  <li><a href="#graphs" id="markdown-toc-graphs">Graphs</a></li>
+  <li><a href="#equations" id="markdown-toc-equations">Equations</a></li>
+  <li><a href="#3d-viewer" id="markdown-toc-3d-viewer">3D viewer</a></li>
+  <li><a href="#bibliography" id="markdown-toc-bibliography">Bibliography</a>    <ul>
+      <li><a href="#loading-bibliography" id="markdown-toc-loading-bibliography">Loading Bibliography</a></li>
+      <li><a href="#citing-references" id="markdown-toc-citing-references">Citing References</a></li>
+      <li><a href="#multiple-citations" id="markdown-toc-multiple-citations">Multiple Citations</a></li>
+      <li><a href="#citation-styles" id="markdown-toc-citation-styles">Citation Styles</a></li>
+      <li><a href="#complete-bibliography" id="markdown-toc-complete-bibliography">Complete Bibliography</a>        <ul>
+          <li><a href="#default" id="markdown-toc-default">Default</a></li>
+          <li><a href="#apa" id="markdown-toc-apa">apa</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<!-- Load all references -->
+
+<h1 id="what-is-it">What is it?</h1>
+<p>SKCG is a custom gem that works with jekyll and provides useful liquid tags to create more academic posts. It is useful to create equations, images and references to them. Also provides bibliography funcitonalities.</p>
+
+<div class="alert alert-primary" role="alert"><p>Download the gem in:</p>
+
+<p>https://github.com/carlesmatoses/jekyll-science-kit-computer-graphics</p>
+</div>
+
+<!-- # Text:
+You can write the following code as follow  `code in line`, **bold letter**, *cursiva*. ´
+
+```liquid
+
+`code in line`  
+**bold letter**  
+*cursiva*
+
+``` -->
+
+<!-- ## Code:
+
+```liquid
+
+{% highlight ruby %}
+def print_hi(name)
+  puts "Hi, #{name}"
+end
+print_hi('Tom')
+#=> prints 'Hi, Tom' to STDOUT.
+{% endhighlight %}
+
+```
+
+```liquid
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+
+``` -->
+
+<!-- ## Links
+This is an external link [jekyll-docs](https://jekyllrb.com/docs/home)  
+
+# Header 1
+## Header 2
+### Header 3
+#### Header 4 -->
+
+<h1 id="alerts--block-content">Alerts &amp; block content</h1>
+<p>Alerts are just a wrapper div with background color. We use bootstrap styles in the background.</p>
+
+<div class="alert alert-primary" role="alert"><p>This is how we use liquid tags for alerts:</p>
+
+<p>{% alert primary %} {% endalert %}</p>
+</div>
+
+<div class="alert alert-secondary" role="alert"><p>This is how we use liquid tags for alerts:</p>
+
+<p>{% alert secondary %} {% endalert %}</p>
+</div>
+
+<div class="alert alert-success" role="alert"><p>A simple success alert—check it out!</p>
+
+<p>{% alert success %} {% endalert %}</p>
+</div>
+
+<div class="alert alert-danger" role="alert"><p>This is how we use liquid tags for alerts:</p>
+
+<p>{% alert danger %} {% endalert %}</p>
+</div>
+
+<div class="alert alert-warning" role="alert"><p>A simple warning alert—check it out!</p>
+
+<p>{% alert warning %} {% endalert %}</p>
+</div>
+
+<div class="alert alert-info" role="alert"><p>This is how we use liquid tags for alerts:</p>
+
+<p>{% alert info %} {% endalert %}</p>
+</div>
+
+<div class="alert alert-light" role="alert"><p>A simple light alert—check it out!</p>
+
+<p>{% alert light %} {% endalert %}</p>
+</div>
+
+<div class="alert alert-dark" role="alert"><p>A simple dark alert—check it out!</p>
+
+<p>{% alert dark %} {% endalert %}</p>
+</div>
+
+<h1 id="images">Images:</h1>
+
+<ul>
+  <li>Multiple images in a single figure  <a href='#1-2-3'>1</a>:</li>
+</ul>
+
+<figure id="1-2-3" class="figure-block" style="width: 100%;" data-figure-number="1">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/image-not-found.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/image-not-found-long.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/image-not-found-long.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 1: Three images but only a max of two images per row</figcaption>
+</figure>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Multiple images in a single figure  <span class="p">{%</span><span class="w"> </span><span class="nt">ref</span><span class="w"> </span><span class="na">figure</span><span class="o">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="w"> </span><span class="p">%}</span>
+
+<span class="p">{%</span><span class="w"> </span><span class="nt">figure</span><span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s2">"1:2:3"</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="s2">"1.0"</span><span class="w"> </span><span class="err">
+</span><span class="w">  </span><span class="na">caption</span><span class="o">=</span><span class="s2">"Three images but only a max of two images per row 48%"</span><span class="err">
+</span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">fig_img</span><span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"/images/image-not-found.png"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"29%"</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">fig_img</span><span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"/images/image-not-found-long.png"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"49%"</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">fig_img</span><span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"/images/image-not-found-long.png"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"49%"</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfigure</span><span class="w"> </span><span class="p">%}</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>multiple figures in the same line <a href='#img'>2</a> <a href='#img3'>3</a> <a href='#img2'>4</a>:</li>
+</ul>
+
+<figure id="img" class="figure-block" style="width: 49%;" data-figure-number="2">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/image-not-found.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 2: square image</figcaption>
+</figure>
+
+<figure id="img3" class="figure-block" style="width: 49%;" data-figure-number="3">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/image-not-found-long.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 3: long image</figcaption>
+</figure>
+
+<figure id="img2" class="figure-block" style="width: 49%;" data-figure-number="4">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/image-not-found-long.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 4: long image</figcaption>
+</figure>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+Multiple figures in the same line <span class="p">{%</span><span class="w"> </span><span class="nt">ref</span><span class="w"> </span><span class="na">figure</span><span class="o">:</span>img<span class="w"> </span><span class="p">%}</span> <span class="p">{%</span><span class="w"> </span><span class="nt">ref</span><span class="w"> </span><span class="na">figure</span><span class="o">:</span>img3<span class="w"> </span><span class="p">%}</span> <span class="p">{%</span><span class="w"> </span><span class="nt">ref</span><span class="w"> </span><span class="na">figure</span><span class="o">:</span>img2<span class="w"> </span><span class="p">%}</span>: 
+
+<span class="p">{%</span><span class="w"> </span><span class="nt">figure</span><span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s2">"img"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"49%"</span><span class="w"> </span><span class="na">caption</span><span class="o">=</span><span class="s2">"square image"</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">fig_img</span><span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"/images/image-not-found.png"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"100%"</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfigure</span><span class="w"> </span><span class="p">%}</span>
+
+<span class="p">{%</span><span class="w"> </span><span class="nt">figure</span><span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s2">"img3"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"49%"</span><span class="w"> </span><span class="na">caption</span><span class="o">=</span><span class="s2">"long image"</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">fig_img</span><span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"/images/image-not-found-long.png"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"100%"</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfigure</span><span class="w"> </span><span class="p">%}</span>
+
+<span class="p">{%</span><span class="w"> </span><span class="nt">figure</span><span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s2">"img2"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"49%"</span><span class="w"> </span><span class="na">caption</span><span class="o">=</span><span class="s2">"long image"</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">fig_img</span><span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"/images/image-not-found-long.png"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"100%"</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfigure</span><span class="w"> </span><span class="p">%}</span>
+
+
+</code></pre></div></div>
+
+<h1 id="graphs">Graphs</h1>
+<p>We can add mermaid graphs inside a figure the same way we do images:</p>
+
+<figure id="fig-graph" class="figure-block" style="width: 100%;" data-figure-number="5">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <div class="mermaid">sequenceDiagram
+    Alice -&gt;&gt; Bob: Hello Bob, how are you?
+    Bob--&gt;&gt;John: How about you John?
+    Bob--x Alice: I am good thanks!
+    Bob-x John: I am good thanks!
+    Note right of John: Bob thinks a long<br />long time, so long<br />that the text does<br />not fit on a row.
+
+    Bob--&gt;Alice: Checking with John...
+    Alice-&gt;John: Yes... John, how are you?</div>
+  <p class="fig-child-caption">optional caption</p>
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 5: Dependency graph</figcaption>
+</figure>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{%</span><span class="w"> </span><span class="nt">figure</span><span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s2">"fig-graph"</span><span class="w"> </span><span class="na">caption</span><span class="o">=</span><span class="s2">"Dependency graph"</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"100%"</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">fig_mermaid</span><span class="w"> </span><span class="na">width</span><span class="o">=</span><span class="s2">"100%"</span><span class="w"> </span><span class="na">caption</span><span class="o">=</span><span class="s2">"optional caption"</span><span class="w"> </span><span class="p">%}</span>
+sequenceDiagram
+    Alice -&gt;&gt; Bob: Hello Bob, how are you?
+    Bob--&gt;&gt;John: How about you John?
+    Bob--x Alice: I am good thanks!
+    Bob-x John: I am good thanks!
+    Note right of John: Bob thinks a long&lt;br/&gt;long time, so long&lt;br/&gt;that the text does&lt;br/&gt;not fit on a row.
+
+    Bob--&gt;Alice: Checking with John...
+    Alice-&gt;John: Yes... John, how are you?
+  <span class="p">{%</span><span class="w"> </span><span class="nt">endfig_mermaid</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfigure</span><span class="w"> </span><span class="p">%}</span>
+
+</code></pre></div></div>
+
+<h1 id="equations">Equations</h1>
+<div id="energy" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      E = mc^2
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(1)</div>
+</div>
+
+<p>As shown in equation <a href='#energy'>1</a>, energy is proportional to mass. Also we can write in line equations as  <span class="equation-inline">$E = mc^2$</span></p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{%</span><span class="w"> </span><span class="nt">equation</span><span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s2">"energy"</span><span class="w"> </span><span class="p">%}</span>
+E = mc^2
+<span class="p">{%</span><span class="w"> </span><span class="nt">endequation</span><span class="w"> </span><span class="p">%}</span>
+
+As shown in equation <span class="p">{%</span><span class="w"> </span><span class="nt">ref</span><span class="w"> </span><span class="na">equation</span><span class="o">:</span>energy<span class="w"> </span><span class="p">%}</span>, energy is proportional to mass. Also we can write in line equations as <span class="p">{%</span><span class="w"> </span><span class="nt">equation_inline</span><span class="w"> </span><span class="na">E</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>mc^2<span class="w"> </span><span class="p">%}</span>
+
+</code></pre></div></div>
+
+<h1 id="3d-viewer">3D viewer</h1>
+<p>I personally like to keep the code clean. For this reason I delegate the render properties to files like shaders and jsons that define Properties and render pipeline.</p>
+
+<p>Additionally, all models will be stored in a unique path (even though you can add subpaths) because they can be heavy and I like to reuse them. The same idea with materials. Textures should be placed wherever you think is best for the shaders.</p>
+
+<p>This is the structure I use:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assets/
+├── models/
+│   ├── model1.glb
+│   ├── model2.glb
+│   └── materials/
+│       ├── material1/
+│       │   ├── fragment.glsl
+│       │   ├── uniforms.json
+│       │   └── vertex.glsl
+│       └── material2/
+│           ├── fragment.glsl
+│           ├── uniforms.json
+│           └── vertex.glsl
+</code></pre></div></div>
+
+<div class="glb-viewer" data-id="viewer-1" data-models="[&quot;suzane&quot;,&quot;sphere&quot;]" data-materials="[&quot;material1&quot;,&quot;enviorment&quot;]">
+</div>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{%</span><span class="w"> </span><span class="nt">glb_viewer</span><span class="w"> 
+</span><span class="na">id</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s1">'viewer-1'</span><span class="w"> </span><span class="err">
+</span><span class="na">models</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s1">'suzane,    sphere'</span><span class="w"> </span><span class="err">
+</span><span class="na">materials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'material1, enviorment'</span><span class="w"> </span><span class="err">
+</span><span class="p">%}</span>
+
+</code></pre></div></div>
+
+<h1 id="bibliography">Bibliography</h1>
+<p>Bibliography management allows you to load references from a BibTeX file and cite them throughout your document. The gem supports both IEEE and APA citation styles.</p>
+
+<h2 id="loading-bibliography">Loading Bibliography</h2>
+<p>First, load your bibliography file at the beginning of your document:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{%</span><span class="w"> </span><span class="nt">bibliography_loader</span><span class="w"> </span>_bibliography/references.bib<span class="w"> </span><span class="p">%}</span>
+
+</code></pre></div></div>
+
+<h2 id="citing-references">Citing References</h2>
+<p>You can cite references anywhere in your text using the cite tag. For example, citing Ruby <a href="#ruby" class="citation-link">[<span class="citation-number">1</span>: <span class="citation-link-title">The Ruby Programming Language</span>; <span class="citation-link-author">Flanagan, David, Matsumoto, Yukihiro</span>; <span class="citation-link-year">2008</span>]</a>:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+We can reference bibliography elements <span class="p">{%</span><span class="w"> </span><span class="nt">cite</span><span class="w"> </span>ruby<span class="w"> </span><span class="p">%}</span> with a liquid tag.
+
+</code></pre></div></div>
+
+<h2 id="multiple-citations">Multiple Citations</h2>
+<p>You can cite multiple sources in the same paragraph. Here’s an example citing different programming languages <a href="#ruby" class="citation-link">[<span class="citation-number">1</span>: <span class="citation-link-title">The Ruby Programming Language</span>; <span class="citation-link-author">Flanagan, David, Matsumoto, Yukihiro</span>; <span class="citation-link-year">2008</span>]</a> and <a href="#my001" class="citation-link">[<span class="citation-number">2</span>: <span class="citation-link-title">Flow Cytometry: The Glass Is Half Full</span>; <span class="citation-link-author">Shapiro, Howard M.</span>; <span class="citation-link-year">2018</span>]</a> frameworks:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Multiple citations can be used like <span class="p">{%</span><span class="w"> </span><span class="nt">cite</span><span class="w"> </span>ruby<span class="w"> </span><span class="p">%}</span> and <span class="p">{%</span><span class="w"> </span><span class="nt">cite</span><span class="w"> </span>my001<span class="w"> </span><span class="p">%}</span>.
+
+</code></pre></div></div>
+
+<h2 id="citation-styles">Citation Styles</h2>
+<p>The bibliography tag supports different citation styles (IEEE by default, APA available):</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;!-- Default IEEE style --&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">bibliography</span><span class="w"> </span><span class="p">%}</span>
+
+&lt;!-- APA style --&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">bibliography</span><span class="w"> </span>apa<span class="w"> </span><span class="p">%}</span>
+
+</code></pre></div></div>
+
+<h2 id="complete-bibliography">Complete Bibliography</h2>
+<p>The bibliography displays all cited references in the order they appear in your document:</p>
+
+<h3 id="default">Default</h3>
+<div class="bibliography bibliography-ieee"><ol class="bibliography-list"><li id="ruby" class="bibliography-entry ieee-style" data-key="ruby"><span class="bib-authors">Flanagan, David, Matsumoto, Yukihiro</span>, <span class="bib-title">"The Ruby Programming Language"</span>, <span class="bib-publisher">O’Reilly Media</span>, <span class="bib-year">2008</span>, <span class="bib-doi"><a href="https://doi.org/https://doi.org/10.1016/B978-155860659-3.50017-2">DOI</a></span> | <span class="bib-url"><a href="https://www.sciencedirect.com/science/article/pii/B9781558606593500172">URL</a></span>.</li>
+<li id="my001" class="bibliography-entry ieee-style" data-key="my001"><span class="bib-authors">Shapiro, Howard M.</span>, <span class="bib-title">"Flow Cytometry: The Glass Is Half Full"</span>, <span class="bib-publisher">Springer</span>, <span class="bib-year">2018</span>, <span class="bib-doi"><a href="https://doi.org/https://doi.org/10.1016/B978-155860659-3.50017-2">DOI</a></span> | <span class="bib-url"><a href="https://www.sciencedirect.com/science/article/pii/B9781558606593500172">URL</a></span>.</li>
+</ol></div>
+
+<h3 id="apa">apa</h3>
+<div class="bibliography bibliography-apa"><ol class="bibliography-list"><li id="ruby" class="bibliography-entry apa-style" data-key="ruby"><span class="bib-authors">Flanagan, David, Matsumoto, Yukihiro</span>. <span class="bib-year">(2008)</span>. <span class="bib-title">The Ruby Programming Language</span>. <span class="bib-publisher">O’Reilly Media</span>. <span class="bib-doi"><a href="https://doi.org/https://doi.org/10.1016/B978-155860659-3.50017-2">DOI</a></span> | <span class="bib-url"><a href="https://www.sciencedirect.com/science/article/pii/B9781558606593500172">URL</a></span>.</li>
+<li id="my001" class="bibliography-entry apa-style" data-key="my001"><span class="bib-authors">Shapiro, Howard M.</span>. <span class="bib-year">(2018)</span>. <span class="bib-title">Flow Cytometry: The Glass Is Half Full</span>. <span class="bib-publisher">Springer</span>. <span class="bib-doi"><a href="https://doi.org/https://doi.org/10.1016/B978-155860659-3.50017-2">DOI</a></span> | <span class="bib-url"><a href="https://www.sciencedirect.com/science/article/pii/B9781558606593500172">URL</a></span>.</li>
+</ol></div>
+
+
+        </div>
+
+    </div>
+    <link rel="stylesheet" href="/assets/css/footer.css">
+
+<footer class="container-fluid bg-light border-top pt-4 mt-4">
+    <div class="container">
+
+        <div class="row">
+            <!-- _includes/social_links.html -->
+<link rel="stylesheet" href="/assets/css/media.css">
+
+
+
+<ul class="list-inline text-center social-links">
+    
+    <li class="list-inline-item">
+        <a href="https://github.com/carlesmatoses">
+            <i class="fa fa-github fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="mailto:carlesmatosesg@gmail.com">
+            <i class="fa fa-envelope fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.youtube.com/channel/UC6aWlHNMv-VGU7LRBeZaj7w">
+            <i class="fa fa-youtube fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.linkedin.com/in/carles-matoses-b2b9a82b7">
+            <i class="fa fa-linkedin fa-3x"></i>
+        </a>
+    </li>
+    
+</ul>
+
+        </div>
+
+        <hr>
+
+        <div class="row additional-info">
+            <div class="col">
+                <p><strong>Name</strong></p>
+                <p>Carles Matoses Gimenez</p>
+                <p><strong>Contanct</strong></p>
+                <p>carlesmatosesg@gmail.com</p>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Anchor highlight script -->
+    <script src="/assets/js/anchor-highlight.js"></script>
+</body>
+
+</html>

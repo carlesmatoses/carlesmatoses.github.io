@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/assets/css/figure.css"> -->
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    
+    <script src="/assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Three.js, dat.GUI, and science-kit scripts are auto-injected by jekyll-skcg gem -->
+    
+  <!--KaTeX-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+          });
+      });
+  </script>
+
+  <!-- mermaid -->
+  <!-- <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script> -->
+  
+  <script type="module"> import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.15.0/+esm' </script>
+  
+  <!-- Title -->
+  <title> Gaussian Splatting and Mesh Reconstruction </title>
+
+  <!-- Jekyll Science Kit Computer Graphics - Auto-injected dependencies -->
+  <link rel="stylesheet" type="text/css" href="/assets/jekyll-skcg/css/science-kit-computer-graphics.css">
+  <script src="/assets/jekyll-skcg/js/science-kit-computer-graphics.js"></script>
+  <!-- End Jekyll Science Kit Computer Graphics dependencies -->
+</head>
+
+
+
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Carles Matoses Gimenez</a>
+        
+        <!-- Hamburger button for mobile -->
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Breadcrumb Navigation - Desktop (horizontal) -->
+            <nav aria-label="breadcrumb" class="ms-auto d-none d-lg-block">
+                <ol class="breadcrumb mb-0">
+                    <!-- Home breadcrumb -->
+                    <li class="breadcrumb-item">
+                        <a href="/" class="breadcrumb-link">Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item">
+                                    
+                                        <!-- Format intermediate path titles -->
+                                        
+                                        
+                                        <span class="breadcrumb-text">
+                                            
+                                                Project
+                                            
+                                        </span>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    
+                                        <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                        
+                                        
+                                        
+                                            Gaussian
+                                        
+                                            Splatting
+                                        
+                                            Mesh
+                                        
+                                            Reconstruction
+                                        
+                                    
+                                </li>
+                            
+                        
+                    
+                </ol>
+            </nav>
+            
+            <!-- Breadcrumb Navigation - Mobile (vertical) -->
+            <nav aria-label="breadcrumb" class="d-lg-none mt-2">
+                <ul class="navbar-nav">
+                    <!-- Home breadcrumb -->
+                    <li class="nav-item">
+                        <a href="/" class="nav-link breadcrumb-link">🏠 Home</a>
+                    </li>
+                    
+                    <!-- Dynamic breadcrumbs based on URL structure -->
+                    
+                    
+                    
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    
+                                        <!-- Format intermediate path titles -->
+                                        
+                                        
+                                        <span class="nav-link breadcrumb-text">
+                                            📂 
+                                                Project
+                                            
+                                        </span>
+                                    
+                                </li>
+                            
+                        
+                    
+                        
+                            
+                            
+                            <!-- Check if this is the last item (current page) -->
+                            
+                                <li class="nav-item">
+                                    <span class="nav-link active breadcrumb-current">
+                                        📄 
+                                            <!-- Format page title: replace hyphens with spaces and capitalize -->
+                                            
+                                            
+                                            
+                                                Gaussian
+                                            
+                                                Splatting
+                                            
+                                                Mesh
+                                            
+                                                Reconstruction
+                                            
+                                        
+                                    </span>
+                                </li>
+                            
+                        
+                    
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+</nav>
+
+    <div class="container baseContainer">
+        <div class="row">
+            <div class="col">
+                <p class="post-title"> Gaussian Splatting and Mesh Reconstruction </p>
+            </div>
+        </div>
+
+        
+        <video class="headerIMG" autoplay loop muted playsinline preload="metadata"
+               poster="/images/gaussian-splatting-mesh/header_poster.jpg">
+            <source src="/images/gaussian-splatting-mesh/header_loop.mp4" type="video/mp4">
+            <img src="/images/gaussian-splatting-mesh/hero_mesh_reconstruction.jpg" alt="Couldn't load header video :\" class="headerIMG">
+        </video>
+        
+
+
+        <div class="row justify-content-center">
+            <div class="alert alert-secondary" role="alert"><p>This post is a summary of my thesis. It walks through how a scene captured with photos becomes a clean, low-polygon 3D mesh, and describes my two contributions:</p>
+
+<ol>
+  <li><strong>Meshfacto</strong> — porting the state-of-the-art <em>Mesh-In-the-Loop</em> (MILo) method into the <strong>Nerfstudio</strong> library, cutting the polygon count of the extracted meshes dramatically.</li>
+  <li><strong>Differentiable smoothers</strong> — extra training losses that regularize the mesh and stabilize the optimization.</li>
+</ol>
+</div>
+        </div>
+        <div class="row justify-content-center">
+            
+
+<!-- index -->
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#what-is-gaussian-splatting" id="markdown-toc-what-is-gaussian-splatting">What is Gaussian Splatting?</a></li>
+  <li><a href="#from-splats-to-a-mesh" id="markdown-toc-from-splats-to-a-mesh">From splats to a mesh</a></li>
+  <li><a href="#contribution-1--meshfacto-milo-inside-nerfstudio" id="markdown-toc-contribution-1--meshfacto-milo-inside-nerfstudio">Contribution 1 — Meshfacto: MILo inside Nerfstudio</a></li>
+  <li><a href="#polycount-results" id="markdown-toc-polycount-results">Polycount results</a></li>
+  <li><a href="#contribution-2--differentiable-smoothers" id="markdown-toc-contribution-2--differentiable-smoothers">Contribution 2 — Differentiable smoothers</a></li>
+  <li><a href="#conclusions-and-future-work" id="markdown-toc-conclusions-and-future-work">Conclusions and future work</a></li>
+  <li><a href="#additional-context" id="markdown-toc-additional-context">Additional context</a>    <ul>
+      <li><a href="#spherical-harmonics" id="markdown-toc-spherical-harmonics">Spherical harmonics</a></li>
+      <li><a href="#colmap-and-structure-from-motion" id="markdown-toc-colmap-and-structure-from-motion">COLMAP and Structure-from-Motion</a></li>
+      <li><a href="#marching-cubes-and-marching-tetrahedra" id="markdown-toc-marching-cubes-and-marching-tetrahedra">Marching Cubes and Marching Tetrahedra</a></li>
+      <li><a href="#mesh-quality-metrics" id="markdown-toc-mesh-quality-metrics">Mesh-quality metrics</a></li>
+      <li><a href="#sustainability-and-licensing" id="markdown-toc-sustainability-and-licensing">Sustainability and licensing</a></li>
+    </ul>
+  </li>
+  <li><a href="#bibliography" id="markdown-toc-bibliography">Bibliography</a></li>
+</ul>
+
+<h1 id="introduction">Introduction</h1>
+
+<figure id="hero" class="figure-block" style="width: 100%;" data-figure-number="1">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/gaussian-splatting-mesh/hero_mesh_reconstruction.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 1: The same surface reconstructed by MILo (left, red) and by Meshfacto (right, green). Both trace the geometry faithfully, but the wireframe insets reveal the difference this post is about: Meshfacto reaches the same surface with a far leaner, more regular tessellation.</figcaption>
+</figure>
+
+<p>Long before computers, the <em>pointillists</em> had already discovered that a whole scene can be built from thousands of tiny, individually meaningless marks. Seurat and Signac painted with dots of pure color that the eye blends into light and form. Look closely and you see the primitives; step back and you see the picture.</p>
+
+<figure id="pointillism" class="figure-block" style="width: 100%;" data-figure-number="2">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/pointillism_signac.jpg" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/pointillism_pissarro.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 2: Pointillism: a scene emerges from thousands of small colored primitives. Paul Signac (left) and Camille Pissarro (right).</figcaption>
+</figure>
+
+<p><strong>Gaussian Splatting</strong> <a href="#kerbl20233dgs" class="citation-link">[<span class="citation-number">1</span>: <span class="citation-link-title">3D Gaussian Splatting for Real-Time Radiance Field Rendering</span>; <span class="citation-link-author">Kerbl, Bernhard, Kopanas, Georgios, Leimkühler, Thomas, Drettakis, George</span>; <span class="citation-link-year">2023</span>]</a> is the 3D version of the same idea. A scene is represented by millions of small, semi-transparent 3D blobs (<code class="language-plaintext highlighter-rouge">Gaussians</code>). Each one carries a position, a shape, a color and an opacity, and when they are blended together from a given viewpoint they reproduce a photograph of the scene. Because the whole representation is differentiable, the blobs can be <em>optimized</em> directly against a set of input images until the rendering matches reality.</p>
+
+<p>Gaussian Splatting is excellent at <strong>novel view synthesis</strong> — generating photorealistic images from new camera positions — but the cloud of blobs is not a <em>surface</em>. For games, VFX, simulation or 3D printing we usually want a <strong>mesh</strong>: a connected set of triangles. Extracting one from a splat cloud is the core problem this post works through.</p>
+
+<p>A crucial distinction runs through the whole project:</p>
+
+<div class="alert alert-primary" role="alert"><p><strong>Geometry-reconstruction quality</strong> asks <em>“does the surface match the real object?”</em> — <strong>mesh/tessellation quality</strong> asks <em>“are the triangles themselves well-shaped and economical?”</em> A mesh can trace the object perfectly and still be a tangle of millions of sliver triangles. This work targets the second question without sacrificing the first.</p>
+</div>
+
+<h1 id="what-is-gaussian-splatting">What is Gaussian Splatting?</h1>
+
+<p>Each Gaussian is an anisotropic 3D blob defined by a mean <span class="equation-inline">$\mu$</span> (its center) and a covariance matrix <span class="equation-inline">$\Sigma$</span> that controls its size and orientation. To keep the covariance valid during optimization, it is factored into a rotation <span class="equation-inline">$R$</span> and a per-axis scale <span class="equation-inline">$S$</span>:</p>
+
+<div id="covariance" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      \Sigma = R S S^\top R^\top
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(1)</div>
+</div>
+
+<p>Alongside <a href='#covariance'>1</a>, every splat stores an opacity <span class="equation-inline">$\alpha$</span> and a view-dependent color. To render a pixel, the Gaussians that project onto it are sorted by depth and blended front-to-back with the standard <em>over</em> operator:</p>
+
+<div id="alpha-blend" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      C = \sum_{i} c_i\, \alpha_i \prod_{j&lt;i} (1 - \alpha_j)
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(2)</div>
+</div>
+
+<figure id="gaussian-splats" class="figure-block" style="width: 100%;" data-figure-number="3">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/gaussian_splats.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/ray_marching.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 3: Left: individual Gaussian primitives with different scales, rotations and colors. Right: alpha-compositing several splats along a viewing ray.</figcaption>
+</figure>
+
+<p>Training is plain gradient descent on the rendered image. The 3DGS loss mixes an <span class="equation-inline">$\mathcal{L}_1$</span> photometric term with a structural (D-SSIM) term:</p>
+
+<div id="gs-loss" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      \mathcal{L} = (1 - \lambda)\,\mathcal{L}_1 + \lambda\,\mathcal{L}_{\text{D-SSIM}}, \qquad \lambda = 0.2
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(3)</div>
+</div>
+
+<p>Two pieces of the pipeline appear repeatedly but are <strong>context only</strong> for this post — see the <a href="#additional-context">Additional context</a> section at the end for detail:</p>
+
+<ul>
+  <li><strong>Spherical harmonics</strong> encode the <em>view-dependent</em> color of each splat, so surfaces can change appearance with the viewing angle (specular highlights, Fresnel rim light). See <a href='#fresnel'>4</a> for the effect they capture.</li>
+  <li><strong>COLMAP</strong> <a href="#schoenberger2016sfm" class="citation-link">[<span class="citation-number">2</span>: <span class="citation-link-title">Structure-from-Motion Revisited</span>; <span class="citation-link-author">Schönberger, Johannes Lutz, Frahm, Jan-Michael</span>; <span class="citation-link-year">2016</span>]</a> is the Structure-from-Motion tool that recovers the camera poses and an initial sparse point cloud from the raw photos, before any splatting begins.</li>
+</ul>
+
+<figure id="fresnel" class="figure-block" style="width: 66%;" data-figure-number="4">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/drag1.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/drag2.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 4: View-dependent shading (specular / Fresnel): the same surface changes appearance with the viewing angle — this is what spherical harmonics encode per splat.</figcaption>
+</figure>
+
+<h1 id="from-splats-to-a-mesh">From splats to a mesh</h1>
+
+<p>To turn the cloud into a surface we need to decide <em>where the surface is</em>. The approach followed here (from GOF <a href="#yu2024gaussianopacityfieldsefficient" class="citation-link">[<span class="citation-number">3</span>: <span class="citation-link-title">Gaussian Opacity Fields: Efficient Adaptive Surface Reconstruction in Unbounded Scenes</span>; <span class="citation-link-author">Yu, Zehao, Sattler, Torsten, Geiger, Andreas</span>; <span class="citation-link-year">2024</span>]</a> and MILo <a href="#guedon2025milo" class="citation-link">[<span class="citation-number">4</span>: <span class="citation-link-title">MILo: Mesh-In-the-Loop Gaussian Splatting for Detailed and Efficient Surface Reconstruction</span>; <span class="citation-link-author">Guédon, Antoine, Gomez, Diego, Maruani, Nissim, Gong, Bingchen, Drettakis, George, Ovsjanikov, Maks</span>; <span class="citation-link-year">2025</span>]</a>) attaches geometry to the splats themselves.</p>
+
+<p>Each Gaussian contributes a small set of <strong>Delaunay vertices</strong> — points placed around its center, offset along its own axes. If <span class="equation-inline">$\tilde{s}_k$</span> is the (inflated) scale of splat <span class="equation-inline">$k$</span> and <span class="equation-inline">$b_i$</span> is a fixed offset direction, vertex <span class="equation-inline">$i$</span> of that splat is:</p>
+
+<div id="delaunay-verts" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      p_{k,i} = \mu_k + (b_i \odot \tilde{s}_k)
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(4)</div>
+</div>
+
+<p>These vertices are connected by a <strong>Delaunay tetrahedralization</strong> <a href="#10.1093/comjnl/24.2.162" class="citation-link">[<span class="citation-number">5</span>: <span class="citation-link-title">Computing Dirichlet Tessellations</span>; <span class="citation-link-author">Bowyer, Adrian</span>; <span class="citation-link-year">1981</span>]</a>, and each vertex is assigned a <strong>signed distance</strong> value (inside vs. outside the surface). A <strong>differentiable Marching Tetrahedra</strong> <a href="#shen2021deepmarchingtetrahedrahybrid" class="citation-link">[<span class="citation-number">6</span>: <span class="citation-link-title">Deep Marching Tetrahedra: A Hybrid Representation for High-Resolution 3D Shape Synthesis</span>; <span class="citation-link-author">Shen, Tianchang, Gao, Jun, Yin, Kangxue, Liu, Ming-Yu, Fidler, Sanja</span>; <span class="citation-link-year">2021</span>]</a> step then extracts the surface: wherever an edge of a tetrahedron connects an inside vertex <span class="equation-inline">$i$</span> to an outside vertex <span class="equation-inline">$j$</span>, a mesh vertex is placed by linear interpolation of their SDF values <span class="equation-inline">$f$</span>:</p>
+
+<div id="dmtet" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      v_n = \frac{f_i\, p_j - f_j\, p_i}{f_i - f_j}
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(5)</div>
+</div>
+
+<figure id="delaunay-pipeline" class="figure-block" style="width: 100%;" data-figure-number="5">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/gaussian-splatting-mesh/delaunay_vertex4.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 5: The splats-to-mesh pipeline: Gaussian splats, their Delaunay vertices colored by SDF sign, the tetrahedralization, and the extracted surface mesh.</figcaption>
+</figure>
+
+<p><strong>MILo</strong> <a href="#guedon2025milo" class="citation-link">[<span class="citation-number">4</span>: <span class="citation-link-title">MILo: Mesh-In-the-Loop Gaussian Splatting for Detailed and Efficient Surface Reconstruction</span>; <span class="citation-link-author">Guédon, Antoine, Gomez, Diego, Maruani, Nissim, Gong, Bingchen, Drettakis, George, Ovsjanikov, Maks</span>; <span class="citation-link-year">2025</span>]</a> is the state-of-the-art method that puts this extraction <em>inside</em> the training loop (hence <em>Mesh-In-the-Loop</em>). It makes the per-Gaussian SDF <strong>learnable</strong> and supervises the extracted mesh directly, comparing the mesh’s own rendered depth <span class="equation-inline">$D_M$</span> and normals <span class="equation-inline">$N_M$</span> against the depth <span class="equation-inline">$D$</span> and normals <span class="equation-inline">$N$</span> of the splat rendering:</p>
+
+<div id="milo-losses" class="equation-block" style="display: flex; justify-content: space-between; align-items: center; margin: 1em 0;">
+  <div style="flex: 1; overflow-x: auto; max-width: 100%;">
+    <div style="min-width: max-content;">
+      \[
+      \mathcal{L}_{\text{MD}} = \sum \log\!\big(1 + |D - D_M|\big), \qquad
+\mathcal{L}_{\text{MN}} = \sum \big(1 - N \cdot N_M\big)
+      \]
+    </div>
+  </div>
+  <div style="margin-left: 1em; white-space: nowrap;">(6)</div>
+</div>
+
+<p>Because the mesh is optimized jointly with the splats, MILo produces meshes that are far more faithful than a naive post-hoc extraction.</p>
+
+<h1 id="contribution-1--meshfacto-milo-inside-nerfstudio">Contribution 1 — Meshfacto: MILo inside Nerfstudio</h1>
+
+<p>MILo’s reference implementation is built on the original 3DGS codebase. My first contribution re-implements its ideas as a first-class method inside <strong>Nerfstudio</strong> <a href="#nerfstudio" class="citation-link">[<span class="citation-number">7</span>: <span class="citation-link-title">Nerfstudio: A Modular Framework for Neural Radiance Field Development</span>; <span class="citation-link-author">Tancik, Matthew, Weber, Ethan, Ng, Evonne, Li, Ruilong, Yi, Brent, Wang, Terrance, Kristoffersen, Alexander, Austin, Jake, Salahi, Kamyar, Ahuja, Abhik, Mcallister, David, Kerr, Justin, Kanazawa, Angjoo</span>; <span class="citation-link-year">2023</span>]</a>, the modular framework whose gsplat <a href="#ye2024gsplatopensourcelibrarygaussian" class="citation-link">[<span class="citation-number">8</span>: <span class="citation-link-title">gsplat: An Open-source Library for Gaussian Splatting</span>; <span class="citation-link-author">Ye, Vickie, Li, Ruilong, Kerr, Justin, Turkulainen, Matias, Yi, Brent, Pan, Zhuoyang, Seiskari, Otto, Ye, Jianbo, Hu, Jeffrey, Tancik, Matthew, Kanazawa, Angjoo</span>; <span class="citation-link-year">2025</span>]</a> backend is widely used for research. The result is a new method I call <strong>Meshfacto</strong>, registered as a Nerfstudio entry point and extending its <code class="language-plaintext highlighter-rouge">splatfacto</code> model.</p>
+
+<figure id="nerfstudio-gsplat" class="figure-block" style="width: 70%;" data-figure-number="6">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 56%;">
+  <img src="/images/gaussian-splatting-mesh/nerfstudio_logo.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 15%;">
+  <img src="/images/gaussian-splatting-mesh/gsplat_logo.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 6: Meshfacto is built on top of Nerfstudio and its gsplat rendering backend.</figcaption>
+</figure>
+
+<p>Getting there required filling gaps in the stock gsplat backend:</p>
+
+<ul>
+  <li><strong>A median-depth render kernel.</strong> gsplat only exposes <em>expected</em> depth; MILo-style supervision needs the more surface-accurate <strong>median</strong> depth, so a custom backward pass was added.</li>
+  <li><strong>A normal render kernel.</strong> Surface normals are computed from the depth map with finite differences (<code class="language-plaintext highlighter-rouge">depths_to_points</code> → <code class="language-plaintext highlighter-rouge">point_to_normal</code>), with a camera-facing sign convention, making the whole normal path differentiable.</li>
+  <li><strong>Densification / reinitialization.</strong> Instead of relying only on the original adaptive density control, Meshfacto can reinitialize the splats with the depth-based strategy from <strong>Mini-Splatting2</strong> <a href="#fang2026efficientscenemodelingstructureaware" class="citation-link">[<span class="citation-number">9</span>: <span class="citation-link-title">Efficient Scene Modeling via Structure-Aware and Region-Prioritized 3D Gaussians (Mini-Splatting2)</span>; <span class="citation-link-author">Fang, Guangchi, Wang, Bing</span>; <span class="citation-link-year">2026</span>]</a> <a href="#fang2024minisplattingrepresentingscenesconstrained" class="citation-link">[<span class="citation-number">10</span>: <span class="citation-link-title">Mini-Splatting: Representing Scenes with a Constrained Number of Gaussians</span>; <span class="citation-link-author">Fang, Guangchi, Wang, Bing</span>; <span class="citation-link-year">2024</span>]</a>, which redistributes Gaussians onto surfaces far more economically.</li>
+</ul>
+
+<div class="alert alert-secondary" role="alert"><p><strong>A caveat.</strong> The large drop in polygon count reported below comes <strong>mostly from the densification / reinitialization strategy, not from the smoothing losses</strong> of Contribution 2. The smoothers improve <em>tessellation regularity</em>; low-poly <em>and</em> high-quality meshes need the two together.</p>
+</div>
+
+<h1 id="polycount-results">Polycount results</h1>
+
+<p>The headline result: at the <strong>same Gaussian count</strong>, Meshfacto produces meshes with roughly <strong>47% fewer vertices and 76% fewer faces</strong> than MILo (base). With Mini-Splatting2 reinitialization enabled (<em>Ours + reinit</em>), the face count drops to about <strong>21–24% of MILo’s</strong> while using only a fraction of the Gaussians — on MipNeRF-360, around <strong>0.04M</strong> Gaussians versus MILo’s 0.38M.</p>
+
+<figure id="gaussians-per-mesh" class="figure-block" style="width: 80%;" data-figure-number="7">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/gaussian-splatting-mesh/gaussians_per_mesh.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 7: Vertices and faces produced per Gaussian across methods. Meshfacto sits far lower than MILo, extracting far leaner meshes for a comparable splat budget.</figcaption>
+</figure>
+
+<p>The difference is easiest to <em>see</em> in the wireframes. Below, the same object (the <em>Caterpillar</em> scene from Tanks &amp; Temples <a href="#knapitsch2017tanks" class="citation-link">[<span class="citation-number">11</span>: <span class="citation-link-title">Tanks and Temples: Benchmarking Large-Scale Scene Reconstruction</span>; <span class="citation-link-author">Knapitsch, Arno, Park, Jaesik, Zhou, Qian-Yi, Koltun, Vladlen</span>; <span class="citation-link-year">2017</span>]</a>) is reconstructed by MILo, by <em>Ours + reinit</em> and by Meshfacto:</p>
+
+<figure id="mesh-renders" class="figure-block" style="width: 100%;" data-figure-number="8">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 32%;">
+  <img src="/images/gaussian-splatting-mesh/miloImage.jpg" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/gaussian-splatting-mesh/ours_reinitImage.jpg" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/gaussian-splatting-mesh/meshfactoImage.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 8: Solid mesh renders — MILo (base), Ours + reinit, and Meshfacto. Surface fidelity is preserved across all three.</figcaption>
+</figure>
+
+<figure id="mesh-wireframes" class="figure-block" style="width: 100%;" data-figure-number="9">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 32%;">
+  <img src="/images/gaussian-splatting-mesh/milo_wiImage.jpg" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/gaussian-splatting-mesh/ours_reinit_wiImage.jpg" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 32%;">
+  <img src="/images/gaussian-splatting-mesh/meshfacto_wiImage.jpg" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 9: The same three meshes in wireframe. The polygon-count reduction of Ours + reinit (center) and Meshfacto (right) versus MILo (left) is now visible directly.</figcaption>
+</figure>
+
+<p>Fewer polygons are only worth it if the surface still looks right. Using MILo’s image-space <strong>Mesh-NVS</strong> evaluation — rendering novel views <em>from the extracted mesh</em> — the leaner meshes lose only a little quality:</p>
+
+<figure id="mesh-nvs" class="figure-block" style="width: 90%;" data-figure-number="10">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/gaussian-splatting-mesh/mesh_nvs_comparison.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 10: Mesh-NVS comparison on Tanks &amp; Temples: novel views rendered directly from the extracted meshes. The lower-poly meshes stay visually faithful.</figcaption>
+</figure>
+
+<h1 id="contribution-2--differentiable-smoothers">Contribution 2 — Differentiable smoothers</h1>
+
+<p>Extracting a mesh inside the training loop has a downside: nothing stops the tetrahedralization from producing <strong>degenerate triangles</strong> — long, thin slivers that both look bad and destabilize the optimization, since their gradients are ill-conditioned. In early iterations these stretched faces flicker across the surface.</p>
+
+<figure id="tetrahedra-error" class="figure-block" style="width: 80%;" data-figure-number="11">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/gaussian-splatting-mesh/tetrahedra_error.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 11: Stretched, degenerate faces appearing across early training iterations — the artifact the smoothers are designed to suppress.</figcaption>
+</figure>
+
+<p>The same problem shows up on real reconstructions. In <a href='#degenerate-scene'>12</a> the degenerate faces are highlighted in red, scattered all over an otherwise clean mesh:</p>
+
+<figure id="degenerate-scene" class="figure-block" style="width: 80%;" data-figure-number="12">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/gaussian-splatting-mesh/degenerate_faces_scene.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 12: Degenerate faces (red) on a real reconstructed scene before smoothing — thin slivers spread across the surface that hurt both appearance and training stability.</figcaption>
+</figure>
+
+<p>My second contribution adds a family of <strong>differentiable smoothing losses</strong> that act on the extracted mesh every iteration. Because each mesh vertex depends (through <a href='#delaunay-verts'>4</a> and <a href='#dmtet'>5</a>) on the underlying Gaussians’ positions, scales and SDF values, the gradient of these losses flows <em>back into the splats</em> — the mesh gets smoother by nudging the primitives that generate it.</p>
+
+<p>Four losses were studied:</p>
+
+<ul>
+  <li><strong>Uniform (umbrella) Laplacian</strong> — pulls each vertex toward the barycenter of its neighbors, encouraging even spacing.</li>
+  <li><strong>Cotangent Laplacian</strong> — an area-aware variant that respects local curvature.</li>
+  <li><strong>Edge-length loss</strong> — penalizes the <em>variance</em> of edge lengths, <span class="equation-inline">$\mathcal{L}_{\text{edge}} = \mathrm{Var}(\ell_e)$</span>, to curb oversized distant faces.</li>
+  <li><strong>Normal-smoothness loss</strong> — a low-pass filter over face normals, gated by <span class="equation-inline">$g_{ij} = |n_i \cdot n_j|^{k}$</span> so that genuine sharp edges are preserved while noise is smoothed.</li>
+</ul>
+
+<p>The exponent <span class="equation-inline">$k$</span> controls that gate. At <span class="equation-inline">$k = 0$</span> the loss is a <em>high-pass</em> filter that penalizes every normal difference; increasing <span class="equation-inline">$k$</span> turns it into a <em>low-pass</em> filter that ignores near-orthogonal normals (real edges) while still smoothing near-parallel ones:</p>
+
+<figure id="normal-lp" class="figure-block" style="width: 80%;" data-figure-number="13">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/gaussian-splatting-mesh/normal_lp_plot.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 13: The normal-smoothness gate. k = 0 is a high-pass filter (penalizes all normal differences); larger k pushes the response toward parallel normals, preserving genuine sharp edges. k = 2 was chosen.</figcaption>
+</figure>
+
+<figure id="torus-smooth" class="figure-block" style="width: 80%;" data-figure-number="14">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/gaussian-splatting-mesh/torus_smooth.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 14: Left: raw Marching-Tetrahedra torus. Right: after cotangent-Laplacian smoothing. Curvature heatmaps show a much more regular tessellation.</figcaption>
+</figure>
+
+<p>A three-stage sweep (Laplacian-variant selection → per-loss weight → combination) settled on a final recipe: <strong>uniform Laplacian (<span class="equation-inline">$\lambda = 10$</span>), edge-length loss (<span class="equation-inline">$\lambda = 10$</span>), and normal low-pass (<span class="equation-inline">$k = 2$</span>)</strong>. The uniform Laplacian, despite being the simplest, outperformed the area-aware variants here:</p>
+
+<figure id="laplacian-sweep" class="figure-block" style="width: 100%;" data-figure-number="15">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 24%;">
+  <img src="/images/gaussian-splatting-mesh/sweep_baseline.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/gaussian-splatting-mesh/uniform_laplacian_10.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/gaussian-splatting-mesh/cotangent_laplacian_10.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 24%;">
+  <img src="/images/gaussian-splatting-mesh/cotangent_area_laplacian_10.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 15: Laplacian-variant comparison on the Truck scene (λ = 10): baseline vs. uniform, cotangent and area-cotangent Laplacians. The uniform variant gave the best regularity.</figcaption>
+</figure>
+
+<p>The payoff is measurable. Across Tanks &amp; Temples and MipNeRF-360, the smoothed models improve mesh-quality metrics and, most importantly, drive the fraction of <strong>degenerate faces down from about 0.30% to below 0.01%</strong> — a ~97% reduction — at a negligible cost in reconstruction fidelity.</p>
+
+<figure id="smoothing-improvement" class="figure-block" style="width: 100%;" data-figure-number="16">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/smoothing_improvement_tnt.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/smoothing_improvement_360.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 16: Mesh-quality improvement from the smoothers on Tanks &amp; Temples (left) and MipNeRF-360 (right).</figcaption>
+</figure>
+
+<h1 id="conclusions-and-future-work">Conclusions and future work</h1>
+
+<p>Two takeaways stand out. First, the dominant lever for <strong>polygon count</strong> is the densification / reinitialization strategy — bringing MILo’s mesh-in-the-loop idea into Nerfstudio and pairing it with Mini-Splatting2 reinitialization is what makes the meshes lean. Second, the <strong>differentiable smoothers</strong> are a conditional but valuable addition: they don’t reduce polygon count on their own, but they regularize the tessellation and stabilize training, nearly eliminating degenerate faces.</p>
+
+<p>Promising directions for future work include geometry-driven densification, decoupling the Delaunay point cloud from the splat cloud, normalizing the smoothing losses by local scale (the coordinate domains of Nerfstudio and COLMAP differ by roughly 5×), and adopting MILo’s TSDF depth-fusion reinitialization.</p>
+
+<h1 id="additional-context">Additional context</h1>
+
+<p>The sections below expand on the background material that the main text kept brief. They are optional reading.</p>
+
+<h2 id="spherical-harmonics">Spherical harmonics</h2>
+
+<p>Spherical harmonics <a href="#937651" class="citation-link">[<span class="citation-number">12</span>: <span class="citation-link-title">Lambertian Reflectance and Linear Subspaces</span>; <span class="citation-link-author">Basri, Ronen, Jacobs, David</span>; <span class="citation-link-year">2001</span>]</a> are an orthonormal basis of functions on the sphere — the angular analogue of a Fourier series. In Gaussian Splatting, each splat stores a small vector of SH coefficients per color channel; evaluating them in the viewing direction gives that splat’s color from the current camera. A degree-3 expansion uses 16 coefficients per channel (48 floats per splat) and is enough to capture soft view-dependent effects such as the specular and Fresnel shading in <a href='#fresnel'>4</a>. For pure geometry extraction the SH color is not strictly necessary, but it improves the photometric supervision that drives the whole optimization.</p>
+
+<h2 id="colmap-and-structure-from-motion">COLMAP and Structure-from-Motion</h2>
+
+<p>Before any splatting happens, we need to know where each photo was taken from. <strong>Structure-from-Motion (SfM)</strong> recovers, from an unordered set of images, both the camera poses and a sparse 3D point cloud. <strong>COLMAP</strong> <a href="#schoenberger2016sfm" class="citation-link">[<span class="citation-number">2</span>: <span class="citation-link-title">Structure-from-Motion Revisited</span>; <span class="citation-link-author">Schönberger, Johannes Lutz, Frahm, Jan-Michael</span>; <span class="citation-link-year">2016</span>]</a> <a href="#schoenberger2016mvs" class="citation-link">[<span class="citation-number">13</span>: <span class="citation-link-title">Pixelwise View Selection for Unstructured Multi-View Stereo</span>; <span class="citation-link-author">Schönberger, Johannes Lutz, Zheng, Enliang, Pollefeys, Marc, Frahm, Jan-Michael</span>; <span class="citation-link-year">2016</span>]</a> is the de-facto incremental SfM tool: it detects and matches feature points across images, estimates relative camera geometry, and triangulates 3D points, refining everything with bundle adjustment. Global alternatives such as <strong>GLOMAP</strong> <a href="#pan2024globalstructurefrommotionrevisited" class="citation-link">[<span class="citation-number">14</span>: <span class="citation-link-title">Global Structure-from-Motion Revisited (GLOMAP)</span>; <span class="citation-link-author">Pan, Linfei, Baráth, Dániel, Pollefeys, Marc, Schönberger, Johannes L.</span>; <span class="citation-link-year">2024</span>]</a> trade some robustness for large speedups. The sparse COLMAP point cloud is what initializes the Gaussian splat positions.</p>
+
+<h2 id="marching-cubes-and-marching-tetrahedra">Marching Cubes and Marching Tetrahedra</h2>
+
+<p><strong>Marching Cubes</strong> <a href="#10.1145/37402.37422" class="citation-link">[<span class="citation-number">15</span>: <span class="citation-link-title">Marching Cubes: A High Resolution 3D Surface Construction Algorithm</span>; <span class="citation-link-author">Lorensen, William E., Cline, Harvey E.</span>; <span class="citation-link-year">1987</span>]</a> is the classic algorithm for extracting a surface (isosurface) from a scalar field sampled on a regular grid: for each cell it looks up a triangulation from a case table based on which corners are inside vs. outside the surface.</p>
+
+<figure id="marching-tetrahedra" class="figure-block" style="width: 100%;" data-figure-number="17">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/marching_tetrahedra.png" alt="" class="figure-image" />
+  
+</div>
+  <div class="fig-child" style="width: 49%;">
+  <img src="/images/gaussian-splatting-mesh/marching_tetrahedra_torus.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 17: Left: the marching-tetrahedra unit — a cell split into tetrahedra, then triangulated by SDF sign. Right: a torus reconstructed from a point set.</figcaption>
+</figure>
+
+<p><strong>Marching Tetrahedra</strong> is the tetrahedral counterpart. It is attractive here because the cell structure can follow an irregular, scene-adaptive Delaunay tetrahedralization rather than a fixed grid, and — crucially — its interpolation step (<a href='#dmtet'>5</a>) is <strong>differentiable</strong>, so gradients from the mesh flow back to the field values.</p>
+
+<h2 id="mesh-quality-metrics">Mesh-quality metrics</h2>
+
+<p>To evaluate tessellation quality objectively, I use local shape metrics such as the <strong>mean-ratio</strong> <span class="equation-inline">$S_3$</span> (how close a triangle or tetrahedron is to equilateral), the fraction of <strong>degenerate faces</strong>, and a global <strong>gradation</strong> metric measuring how smoothly element sizes vary across the mesh. Two triangles can share the same edge-length ratio yet differ wildly in angles — <a href='#mesh-quality'>18</a> illustrates why a single ratio is not enough and multiple indicators are needed.</p>
+
+<figure id="mesh-quality" class="figure-block" style="width: 55%;" data-figure-number="18">
+  <div class="figure-content">
+    <div class="fig-child" style="width: 100%;">
+  <img src="/images/gaussian-splatting-mesh/triangles.png" alt="" class="figure-image" />
+  
+</div>
+  </div>
+  <figcaption class="figure-caption">Fig. 18: Two triangles with a similar edge-length ratio but very different angles — a reminder that mesh quality needs more than one indicator.</figcaption>
+</figure>
+
+<h2 id="sustainability-and-licensing">Sustainability and licensing</h2>
+
+<p>All experiments ran on a single consumer GPU (RTX 5070, 12 GB), with each full run taking roughly 40 minutes to 2 hours — a fraction of the compute assumed by the reference MILo setup (RTX 4090, 24 GB). On the legal side, the Meshfacto core stays compatible with permissive licenses: Nerfstudio and gsplat are <strong>Apache-2.0</strong> <a href="#apache-license-2.0" class="citation-link">[<span class="citation-number">16</span>: <span class="citation-link-title">Apache License, Version 2.0</span>; <span class="citation-link-author">Apache Software Foundation</span>; <span class="citation-link-year">2004</span>]</a>, while some upstream components (MILo’s Gaussian-Splatting License <a href="#gaussian-splatting-license" class="citation-link">[<span class="citation-number">17</span>: <span class="citation-link-title">Gaussian-Splatting License</span>; <span class="citation-link-author">Inria, Max Planck Institute for Informatics</span>; <span class="citation-link-year">2023</span>]</a> and nvdiffrast’s NVIDIA source license <a href="#nvidia-source-code-license" class="citation-link">[<span class="citation-number">18</span>: <span class="citation-link-title">NVIDIA Source Code License (1-Way Commercial)</span>; <span class="citation-link-author">NVIDIA Corporation</span>; <span class="citation-link-year">2020</span>]</a> <a href="#Laine2020diffrast" class="citation-link">[<span class="citation-number">19</span>: <span class="citation-link-title">Modular Primitives for High-Performance Differentiable Rendering (nvdiffrast)</span>; <span class="citation-link-author">Laine, Samuli, Hellsten, Janne, Karras, Tero, Seol, Yeongho, Lehtinen, Jaakko, Aila, Timo</span>; <span class="citation-link-year">2020</span>]</a>) are non-commercial — worth keeping in mind for any downstream use.</p>
+
+<h1 id="bibliography">Bibliography</h1>
+<div class="bibliography bibliography-ieee"><ol class="bibliography-list"><li id="kerbl20233dgs" class="bibliography-entry ieee-style" data-key="kerbl20233dgs"><span class="bib-authors">Kerbl, Bernhard, Kopanas, Georgios, Leimkühler, Thomas, Drettakis, George</span>, <span class="bib-title">"3D Gaussian Splatting for Real-Time Radiance Field Rendering"</span>, <span class="bib-journal"><i>ACM Transactions on Graphics</i></span>, vol. <span class="bib-volume">42</span>, <span class="bib-year">2023</span>, <span class="bib-doi"><a href="https://doi.org/10.1145/3592433">DOI</a></span> | <span class="bib-url"><a href="https://arxiv.org/abs/2308.04079">URL</a></span>.</li>
+<li id="schoenberger2016sfm" class="bibliography-entry ieee-style" data-key="schoenberger2016sfm"><span class="bib-authors">Schönberger, Johannes Lutz, Frahm, Jan-Michael</span>, <span class="bib-title">"Structure-from-Motion Revisited"</span>, <span class="bib-year">2016</span>.</li>
+<li id="yu2024gaussianopacityfieldsefficient" class="bibliography-entry ieee-style" data-key="yu2024gaussianopacityfieldsefficient"><span class="bib-authors">Yu, Zehao, Sattler, Torsten, Geiger, Andreas</span>, <span class="bib-title">"Gaussian Opacity Fields: Efficient Adaptive Surface Reconstruction in Unbounded Scenes"</span>, <span class="bib-journal"><i>ACM Transactions on Graphics</i></span>, vol. <span class="bib-volume">43</span>, <span class="bib-year">2024</span>, <span class="bib-doi"><a href="https://doi.org/10.1145/3687937">DOI</a></span>.</li>
+<li id="guedon2025milo" class="bibliography-entry ieee-style" data-key="guedon2025milo"><span class="bib-authors">Guédon, Antoine, Gomez, Diego, Maruani, Nissim, Gong, Bingchen, Drettakis, George, Ovsjanikov, Maks</span>, <span class="bib-title">"MILo: Mesh-In-the-Loop Gaussian Splatting for Detailed and Efficient Surface Reconstruction"</span>, <span class="bib-journal"><i>ACM Transactions on Graphics</i></span>, <span class="bib-year">2025</span>, <span class="bib-url"><a href="https://anttwo.github.io/milo/">URL</a></span>.</li>
+<li id="10.1093/comjnl/24.2.162" class="bibliography-entry ieee-style" data-key="10.1093/comjnl/24.2.162"><span class="bib-authors">Bowyer, Adrian</span>, <span class="bib-title">"Computing Dirichlet Tessellations"</span>, <span class="bib-journal"><i>The Computer Journal</i></span>, vol. <span class="bib-volume">24</span>, pp. <span class="bib-pages">162–166</span>, <span class="bib-year">1981</span>, <span class="bib-doi"><a href="https://doi.org/10.1093/comjnl/24.2.162">DOI</a></span>.</li>
+<li id="shen2021deepmarchingtetrahedrahybrid" class="bibliography-entry ieee-style" data-key="shen2021deepmarchingtetrahedrahybrid"><span class="bib-authors">Shen, Tianchang, Gao, Jun, Yin, Kangxue, Liu, Ming-Yu, Fidler, Sanja</span>, <span class="bib-title">"Deep Marching Tetrahedra: A Hybrid Representation for High-Resolution 3D Shape Synthesis"</span>, <span class="bib-year">2021</span>.</li>
+<li id="nerfstudio" class="bibliography-entry ieee-style" data-key="nerfstudio"><span class="bib-authors">Tancik, Matthew, Weber, Ethan, Ng, Evonne, Li, Ruilong, Yi, Brent, Wang, Terrance, Kristoffersen, Alexander, Austin, Jake, Salahi, Kamyar, Ahuja, Abhik, Mcallister, David, Kerr, Justin, Kanazawa, Angjoo</span>, <span class="bib-title">"Nerfstudio: A Modular Framework for Neural Radiance Field Development"</span>, <span class="bib-year">2023</span>, <span class="bib-doi"><a href="https://doi.org/10.1145/3588432.3591516">DOI</a></span>.</li>
+<li id="ye2024gsplatopensourcelibrarygaussian" class="bibliography-entry ieee-style" data-key="ye2024gsplatopensourcelibrarygaussian"><span class="bib-authors">Ye, Vickie, Li, Ruilong, Kerr, Justin, Turkulainen, Matias, Yi, Brent, Pan, Zhuoyang, Seiskari, Otto, Ye, Jianbo, Hu, Jeffrey, Tancik, Matthew, Kanazawa, Angjoo</span>, <span class="bib-title">"gsplat: An Open-source Library for Gaussian Splatting"</span>, <span class="bib-journal"><i>Journal of Machine Learning Research</i></span>, vol. <span class="bib-volume">26</span>, pp. <span class="bib-pages">1–17</span>, <span class="bib-year">2025</span>.</li>
+<li id="fang2026efficientscenemodelingstructureaware" class="bibliography-entry ieee-style" data-key="fang2026efficientscenemodelingstructureaware"><span class="bib-authors">Fang, Guangchi, Wang, Bing</span>, <span class="bib-title">"Efficient Scene Modeling via Structure-Aware and Region-Prioritized 3D Gaussians (Mini-Splatting2)"</span>, <span class="bib-journal"><i>IEEE Transactions on Pattern Analysis and Machine Intelligence</i></span>, vol. <span class="bib-volume">48</span>, pp. <span class="bib-pages">4623–4641</span>, <span class="bib-year">2026</span>, <span class="bib-doi"><a href="https://doi.org/10.1109/TPAMI.2025.3646473">DOI</a></span>.</li>
+<li id="fang2024minisplattingrepresentingscenesconstrained" class="bibliography-entry ieee-style" data-key="fang2024minisplattingrepresentingscenesconstrained"><span class="bib-authors">Fang, Guangchi, Wang, Bing</span>, <span class="bib-title">"Mini-Splatting: Representing Scenes with a Constrained Number of Gaussians"</span>, <span class="bib-year">2024</span>, <span class="bib-doi"><a href="https://doi.org/10.1007/978-3-031-72980-5_10">DOI</a></span>.</li>
+<li id="knapitsch2017tanks" class="bibliography-entry ieee-style" data-key="knapitsch2017tanks"><span class="bib-authors">Knapitsch, Arno, Park, Jaesik, Zhou, Qian-Yi, Koltun, Vladlen</span>, <span class="bib-title">"Tanks and Temples: Benchmarking Large-Scale Scene Reconstruction"</span>, <span class="bib-journal"><i>ACM Transactions on Graphics</i></span>, vol. <span class="bib-volume">36</span>, <span class="bib-year">2017</span>, <span class="bib-doi"><a href="https://doi.org/10.1145/3072959.3073599">DOI</a></span>.</li>
+<li id="937651" class="bibliography-entry ieee-style" data-key="937651"><span class="bib-authors">Basri, Ronen, Jacobs, David</span>, <span class="bib-title">"Lambertian Reflectance and Linear Subspaces"</span>, <span class="bib-year">2001</span>, <span class="bib-doi"><a href="https://doi.org/10.1109/ICCV.2001.937651">DOI</a></span>.</li>
+<li id="schoenberger2016mvs" class="bibliography-entry ieee-style" data-key="schoenberger2016mvs"><span class="bib-authors">Schönberger, Johannes Lutz, Zheng, Enliang, Pollefeys, Marc, Frahm, Jan-Michael</span>, <span class="bib-title">"Pixelwise View Selection for Unstructured Multi-View Stereo"</span>, <span class="bib-year">2016</span>.</li>
+<li id="pan2024globalstructurefrommotionrevisited" class="bibliography-entry ieee-style" data-key="pan2024globalstructurefrommotionrevisited"><span class="bib-authors">Pan, Linfei, Baráth, Dániel, Pollefeys, Marc, Schönberger, Johannes L.</span>, <span class="bib-title">"Global Structure-from-Motion Revisited (GLOMAP)"</span>, <span class="bib-year">2024</span>, <span class="bib-doi"><a href="https://doi.org/10.1007/978-3-031-73661-2_4">DOI</a></span>.</li>
+<li id="10.1145/37402.37422" class="bibliography-entry ieee-style" data-key="10.1145/37402.37422"><span class="bib-authors">Lorensen, William E., Cline, Harvey E.</span>, <span class="bib-title">"Marching Cubes: A High Resolution 3D Surface Construction Algorithm"</span>, <span class="bib-journal"><i>SIGGRAPH Computer Graphics</i></span>, vol. <span class="bib-volume">21</span>, pp. <span class="bib-pages">163–169</span>, <span class="bib-year">1987</span>, <span class="bib-doi"><a href="https://doi.org/10.1145/37402.37422">DOI</a></span>.</li>
+<li id="apache-license-2.0" class="bibliography-entry ieee-style" data-key="apache-license-2.0"><span class="bib-authors">Apache Software Foundation</span>, <span class="bib-title">"Apache License, Version 2.0"</span>, <span class="bib-year">2004</span>, <span class="bib-url"><a href="https://www.apache.org/licenses/LICENSE-2.0.html">URL</a></span>.</li>
+<li id="gaussian-splatting-license" class="bibliography-entry ieee-style" data-key="gaussian-splatting-license"><span class="bib-authors">Inria, Max Planck Institute for Informatics</span>, <span class="bib-title">"Gaussian-Splatting License"</span>, <span class="bib-year">2023</span>, <span class="bib-url"><a href="https://github.com/graphdeco-inria/gaussian-splatting/blob/main/LICENSE.md">URL</a></span>.</li>
+<li id="nvidia-source-code-license" class="bibliography-entry ieee-style" data-key="nvidia-source-code-license"><span class="bib-authors">NVIDIA Corporation</span>, <span class="bib-title">"NVIDIA Source Code License (1-Way Commercial)"</span>, <span class="bib-year">2020</span>, <span class="bib-url"><a href="https://github.com/NVlabs/nvdiffrast/blob/main/LICENSE.txt">URL</a></span>.</li>
+<li id="Laine2020diffrast" class="bibliography-entry ieee-style" data-key="Laine2020diffrast"><span class="bib-authors">Laine, Samuli, Hellsten, Janne, Karras, Tero, Seol, Yeongho, Lehtinen, Jaakko, Aila, Timo</span>, <span class="bib-title">"Modular Primitives for High-Performance Differentiable Rendering (nvdiffrast)"</span>, <span class="bib-journal"><i>ACM Transactions on Graphics</i></span>, vol. <span class="bib-volume">39</span>, <span class="bib-year">2020</span>.</li>
+</ol></div>
+
+
+        </div>
+
+    </div>
+    <link rel="stylesheet" href="/assets/css/footer.css">
+
+<footer class="container-fluid bg-light border-top pt-4 mt-4">
+    <div class="container">
+
+        <div class="row">
+            <!-- _includes/social_links.html -->
+<link rel="stylesheet" href="/assets/css/media.css">
+
+
+
+<ul class="list-inline text-center social-links">
+    
+    <li class="list-inline-item">
+        <a href="https://github.com/carlesmatoses">
+            <i class="fa fa-github fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="mailto:carlesmatosesg@gmail.com">
+            <i class="fa fa-envelope fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.youtube.com/channel/UC6aWlHNMv-VGU7LRBeZaj7w">
+            <i class="fa fa-youtube fa-3x"></i>
+        </a>
+    </li>
+    
+    
+    <li class="list-inline-item">
+        <a href="https://www.linkedin.com/in/carles-matoses-b2b9a82b7">
+            <i class="fa fa-linkedin fa-3x"></i>
+        </a>
+    </li>
+    
+</ul>
+
+        </div>
+
+        <hr>
+
+        <div class="row additional-info">
+            <div class="col">
+                <p><strong>Name</strong></p>
+                <p>Carles Matoses Gimenez</p>
+                <p><strong>Contanct</strong></p>
+                <p>carlesmatosesg@gmail.com</p>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Anchor highlight script -->
+    <script src="/assets/js/anchor-highlight.js"></script>
+</body>
+
+</html>
