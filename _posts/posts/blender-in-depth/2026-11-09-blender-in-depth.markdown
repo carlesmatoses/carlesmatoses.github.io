@@ -898,6 +898,12 @@ Dont worry if all this feels too overwhelming .The idea is to be aware of the ex
 <!-- We will summarize all this in a bit. -->
 {% endalert %}
 
+# DNA1 block
+
+In the previous chapter we explained that blender needs to know the .blend file structure so it can be compared to the current programs structure in case versions changed. They call this structure DNA. The blender DNA is compared to the .blend file DNA and returns the differences between them. For exmaple, the "Material" structure could now have more fields, less fields or even change the names of some fields.
+
+The solution they came up with is to create a table with all the field names, all the types, all the type lengths, and all the structures. Comparing this table to another one returns all the differences in a really efficient manner.
+
 On our example file we can, in fact, find the DNA1 struct by searching the string in the ASCII representation: 
 ```
 0007a2f0: 00 00 00 00 00 00 44 4e 41 31 00 00 00 00 d0 f4  ......DNA1......
@@ -936,7 +942,7 @@ At `dna_genfile.cc:368-557` we see the parser `init_structDNA(...)`. Its purpose
 - TLEN: size of the types
 - STRC: list of structures
 
-In the pasted chunk of binary content we can only see `NAME` but I swear the rest are there too, just a little bit after.
+In the pasted chunk of binary content we can only see `NAME` but I swear the rest are there too, just a little bit further down.
 
 
 With those four segments, we can recover the structures on which the file was stored. Lets see this with two structures called IDPropertyData and IDPropertyUIDataEnumItem:
@@ -964,7 +970,7 @@ Look how the section starts with code NAME. We are provided the number of names 
 72 6e 61 5f 73 75 62 74 79 70 65 00      ->  "rna_subtype."    name #1
 5f 70 61 64 5b 34 5d 00                  ->  "_pad[4]."        name #2
 2a 69 64 65 6e 74 69 66 69 65 72 00      ->  "*identifier."    name #3
-2a 6e 61 6d 65 00                        ->  "*name."           name #4
+2a 6e 61 6d 65 00                        ->  "*name."          name #4
 76 61 6c 75 65 00                        ->  "value."          name #5
 69 63 6f 6e 00                           ->  "icon."           name #6
 ...
@@ -990,10 +996,12 @@ Now we reach all the types the .blend file contains. This will be reused by the 
 76 6f 69 64 00                              ->  "void."       type #11
 69 6e 74 38 5f 74 00                        ->  "int8_t."     type #12
 72 61 77 5f 64 61 74 61 00                  ->  "raw_data."   type #13
+
 49 44 50 72 6f 70 65 72 74 79 55 49 44 61
-74 61 00                                    ->  "IDPropertyUIData."          type #14
+74 61 00                         ->  "IDPropertyUIData."         type #14
+
 49 44 50 72 6f 70 65 72 74 79 55 49 44 61
-74 61 45 6e 75 6d 49 74 65 6d 00            ->  "IDPropertyUIDataEnumItem."  type #15
+74 61 45 6e 75 6d 49 74 65 6d 00 ->  "IDPropertyUIDataEnumItem." type #15
 ...
 58 72 41 63 74 69 6f 6e 4d 61 70 00 00 00 00 -> "XrActionMap..."             type #1136
 ```
@@ -1059,6 +1067,7 @@ STRC:  for each struct:  [type index][member count][type, name][type, name]...
 
 
 <!-- Of course, in our particular example there are no missmatches because the file was stored by the same blender version it was created. If there was a missmatch though, it will be picked up on `read_file_dna` method, and fixed on `blo_read_file_internal` block by block. The final result is a properly   -->
+# Summary up to this point
 
 ***It is time to make a technical stop***!!!
 
